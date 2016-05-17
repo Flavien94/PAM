@@ -1,0 +1,7 @@
+event:
+    resource: "@EventBundle/Resources/config/routing.yml"
+    prefix:   /event
+
+waiting:
+    resource: "@WaitingBundle/Resources/config/routing.yml"
+    prefix:   /

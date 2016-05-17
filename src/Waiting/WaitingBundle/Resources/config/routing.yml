@@ -1,0 +1,6 @@
+waiting_homepage:
+    path:     /
+    defaults: { _controller: WaitingBundle:Default:index }
+waiting_wait:
+    path:     /wait
+    defaults: { _controller: WaitingBundle:Wait:index }

@@ -1,0 +1,4 @@
+services:
+#    waiting.example:
+#        class: Waiting\WaitingBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]
