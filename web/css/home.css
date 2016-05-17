@@ -11,9 +11,13 @@ h1 {
   background-repeat: no-repeat;
   margin-left: 40px;
   margin-right: 40px;
+  height: 142px;
 }
 .une img {
   width: 100%;
+}
+.text-une{
+  height: 73px;
 }
 .titre-une, .text-une {
   background-color: #2AA7CB;
