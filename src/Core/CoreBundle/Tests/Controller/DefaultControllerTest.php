@@ -1,6 +1,6 @@
 <?php
 
-namespace Waiting\WaitingBundle\Tests\Controller;
+namespace Core\CoreBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
