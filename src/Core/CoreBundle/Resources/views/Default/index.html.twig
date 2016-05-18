@@ -1,4 +1,134 @@
 {% extends '::base.html.twig'%}
-{% block body%}
-  {% include 'modules/home.html.twig' %}
+{% block body %}
+  <div class="row no-padding">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 title">
+      <h1>À la Une</h1>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-5 col-lg5 une">
+      <div class="row">
+        <img src="{{ asset('images/img1.jpg') }}" alt="jeunes actifs"/>
+      </div>
+      <div class="row titre-une">
+        <div class="col-xs-12 col-sm-12 col-md-7 col-lg7">
+          <h3>Titre de l'événement</h3>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5">
+          <h5>jj-mm-aaaa - jj-mm-aaaa</h5>
+        </div>
+      </div>
+      <div class="row text-une">
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          <a href="#">En savoir plus</a>
+        </p>
+      </div>
+    </div>
+
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 scroll mCustomScrollbar">
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 img-mini" style="background-image:url('{{ asset("images/img1.jpg") }}')">
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 deux bleu">
+          <div class="row titre-deux">
+            <div class="col-md-6 col-lg-6">
+              <h4>Titre de l'événement</h4>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+              <h5>jj-mm-aaaa - jj-mm-aaaa</h5>
+            </div>
+          </div>
+          <div class="row text-deux">
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              <a href="#">En savoir plus</a>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 img-mini" style="background-image:url('{{ asset("images/img1.jpg") }}')">
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 deux orange">
+          <div class="row titre-deux">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+              <h4>Titre de l'événement</h4>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+              <h5>jj-mm-aaaa - jj-mm-aaaa</h5>
+            </div>
+          </div>
+          <div class="row text-deux">
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              <a href="#">En savoir plus</a>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 img-mini" style="background-image:url('{{ asset("images/img1.jpg") }}')">
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 deux bleu">
+          <div class="row titre-deux">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+              <h4>Titre de l'événement</h4>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+              <h5>jj-mm-aaaa - jj-mm-aaaa</h5>
+            </div>
+          </div>
+          <div class="row text-deux">
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              <a href="#">En savoir plus</a>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 img-mini" style="background-image:url('{{ asset("images/img1.jpg") }}')">
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 deux orange">
+          <div class="row titre-deux">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+              <h4>Titre de l'événement</h4>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+              <h5>jj-mm-aaaa - jj-mm-aaaa</h5>
+            </div>
+          </div>
+          <div class="row text-deux">
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              <a href="#">En savoir plus</a>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-3 img-mini" style="background-image:url('{{ asset("images/img1.jpg") }}')">
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 deux bleu">
+          <div class="row titre-deux">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+              <h4>Titre de l'événement</h4>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+              <h5>jj-mm-aaaa - jj-mm-aaaa</h5>
+            </div>
+          </div>
+          <div class="row text-deux">
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              <a href="#">En savoir plus</a>
+            </p>
+          </div>
+        </div>
+      </div>
+</div>
+</div>
 {% endblock %}
