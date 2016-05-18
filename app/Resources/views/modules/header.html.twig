@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-md-3">
         <div class="logo">
-          <a href="/">
+          <a href="{{ path("core_homepage") }}">
           <img src="{{ asset('images/logo-pole-emploi_region.png') }}" alt="logo Pôle Emploi">
         </a>
         </div>
@@ -26,10 +26,10 @@
         <div class="col-md-3">
           <ul class="nav navbar-nav">
             <li class="active">
-              <a class="navbar-brand" href="/">Accueil</a>
+              <a class="navbar-brand" href="{{ path("core_homepage") }}">Accueil</a>
             </li>
             <li>
-              <a class="navbar-brand" href="/event">Événements</a>
+              <a class="navbar-brand" href="{{ path("event") }}">Événements</a>
             </li>
           </ul>
         </div>
@@ -45,7 +45,7 @@
                 <a href="{{ path("fos_user_security_login") }}">Connexion</a>
               </li>
               <li>
-                <a href="/event/create">Publier un événement</a>
+                <a href="{{ path("event_new") }}">Publier un événement</a>
               </li>
               <li>
                 <a href="/contact">Contact</a>
