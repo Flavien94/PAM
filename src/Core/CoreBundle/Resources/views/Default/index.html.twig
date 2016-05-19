@@ -1,12 +1,10 @@
 {% extends '::base.html.twig'%}
 {% block body %}
-  <div class="row no-padding">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 title">
       <h1>À la Une</h1>
     </div>
     <div class="col-xs-12 col-sm-12 col-md-5 col-lg5 une">
-      <div class="row">
-        <img src="{{ asset('images/img1.jpg') }}" alt="jeunes actifs"/>
+      <div class="row img-une" style="background-image:url('{{ asset("images/img1.jpg") }}'">
       </div>
       <div class="row titre-une">
         <div class="col-xs-12 col-sm-12 col-md-7 col-lg7">
@@ -24,7 +22,7 @@
       </div>
     </div>
 
-    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 scroll mCustomScrollbar">
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 scroll">
       <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 img-mini" style="background-image:url('{{ asset("images/img1.jpg") }}')">
         </div>
@@ -129,6 +127,5 @@
           </div>
         </div>
       </div>
-</div>
 </div>
 {% endblock %}
