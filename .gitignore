@@ -8,5 +8,7 @@
 /app/phpunit.xml
 /build/
 /bin/
+/vendor/
 /composer.phar
 /app/sessions
+/vendor/

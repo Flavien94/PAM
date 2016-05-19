@@ -1,3 +1,7 @@
+core:
+    resource: "@CoreBundle/Resources/config/routing.yml"
+    prefix:   /
+
 users:
     resource: "@UsersBundle/Controller/"
     type:     annotation
@@ -6,10 +10,6 @@ users:
 event:
     resource: "@EventBundle/Resources/config/routing.yml"
     prefix:   /event
-
-waiting:
-    resource: "@WaitingBundle/Resources/config/routing.yml"
-    prefix:   /
 
 user_bundle:
    resource: "@UsersBundle/Resources/config/routing.yml"
