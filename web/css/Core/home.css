@@ -1,3 +1,8 @@
+@media screen and (min-width: 1919px) {
+  .img-une {
+    height:49vh;
+  }
+}
 h1 {
   text-align: center;
   margin: -10px 0 5px 0;
@@ -71,10 +76,4 @@ h1 {
 .scroll {
   height:65vh;;
   overflow-y:scroll;
-}
-
-@media screen and (min-width: 1919px) {
-  .img-une {
-    height:49vh;
-  }
 }
