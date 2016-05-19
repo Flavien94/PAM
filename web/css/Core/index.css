@@ -7,19 +7,17 @@ h1 {
   color: #1B2B66;
 }
 .une {
-  background-size: 100%;
+  height: calc(100vh - 210px);
   margin-left: 40px;
   margin-right: 40px;
 }
 .img-une {
-  height:48vh;
+  height: 80%;
   background-size:cover;
   background-repeat: no-repeat;
 }
-.text-une{
-  height: 11vh;
-}
 .titre-une, .text-une {
+  height: 10%;
   background-color: #2AA7CB;
 }
 .titre-une h3 {
@@ -69,6 +67,6 @@ h1 {
   color: #000;
 }
 .scroll {
-  height:65vh;;
+  height: calc(100vh - 210px);
   overflow-y:scroll;
 }
