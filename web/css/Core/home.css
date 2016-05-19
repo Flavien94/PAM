@@ -1,3 +1,6 @@
+.centrale {
+  height: 70vh;
+}
 h1 {
   text-align: center;
   margin: -10px 0 5px 0;
@@ -10,15 +13,14 @@ h1 {
   background-size: 100%;
   margin-left: 40px;
   margin-right: 40px;
-  height: 65vh;
 }
 .img-une {
-  height: 320px;;
+  height:48vh;
   background-size:cover;
   background-repeat: no-repeat;
 }
 .text-une{
-  height: 73px;
+  height: 11vh;
 }
 .titre-une, .text-une {
   background-color: #2AA7CB;
@@ -72,4 +74,10 @@ h1 {
 .scroll {
   height:65vh;;
   overflow-y:scroll;
+}
+
+@media screen and (min-width: 1919px) {
+  .img-une {
+    height:53vh;
+  }
 }
