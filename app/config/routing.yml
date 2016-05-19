@@ -14,3 +14,7 @@ event:
 user_bundle:
    resource: "@UsersBundle/Resources/config/routing.yml"
    prefix:   /
+
+admin_area:
+    resource: "@SonataAdminBundle/Resources/config/routing/sonata_admin.xml"
+    prefix: /chef
