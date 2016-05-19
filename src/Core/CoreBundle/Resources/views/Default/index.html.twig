@@ -1,11 +1,15 @@
 {% extends '::base.html.twig'%}
+{% block stylesheets %}
+  {{ parent() }}
+  <link href="{{ asset('css/core/media.css') }}" type="text/css" rel="stylesheet"/>
+{% endblock %}
 {% block body %}
 <div class="row centrale">
       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 title">
       <h1>À la Une</h1>
     </div>
     <div class="col-xs-12 col-sm-12 col-md-5 col-lg5 une">
-      <div class="row img-une" style="background-image:url('{{ asset("images/img1.jpg") }}'">
+      <div class="row img-une" style="background-image:url('{{ asset("images/img1.jpg") }}')">
       </div>
       <div class="row titre-une">
         <div class="col-xs-12 col-sm-12 col-md-7 col-lg7">
