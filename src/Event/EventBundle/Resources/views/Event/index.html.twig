@@ -1,60 +1,88 @@
 {% extends '::base.html.twig' %}
 {% block stylesheets %}
   {{ parent() }}
-  <link href="{{ asset('web/css/event/index.css') }}" type="text/css" rel="stylesheet"/>
+  <link href="{{ asset('css/event/index.css') }}" type="text/css" rel="stylesheet"/>
 {% endblock %}
 {% block body -%}
-    <h1>Événements</h1>
+  <h1>Événements</h1>
+  <div class="row research">
+    <form class="navbar-form navbar-fixed research-form inline-form">
+      <div class="center">
+        <input type="search" class="input-sm form-control" placeholder="Recherche">
+      </div>
+      <div class="row">
+        <div class="col-md-2 col-form first-col">
+          <label for="beginning">Date de début</label>
+          <input type="date" name="beginning">
+        </div>
+        <div class="col-md-2 col-form">
+          <label for="end">Date de fin</label>
+          <input type="date" name="end">
+        </div>
+      </div>
+      <div class="row right">
+        <button type="submit" class="btn btn-primary btn-sm research-btn">
+          <span class="glyphicon glyphicon-eye-open"></span>
+          Chercher
+        </button>
+      </div>
+    </form>
+  </div>
+  
+  <!-- <ul>
+      <li>
+        <a href="{{ path('event_new') }}">
+          Create a new entry
+        </a>
+      </li>
+    </ul> -->
 
-
-
+  <div class="row result">
     <table class="records_list">
-        <thead>
-            <tr>
-                <!-- <th>Id</th> -->
-                <th>Author</th>
-                <th>Title</th>
-                <th>Description</th>
-                <th>Contact_name</th>
-                <th>Contact_email</th>
-                <th>Place</th>
-                <th>Datestart</th>
-                <th>Dateend</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
+      <thead>
+        <tr>
+          <!-- <th>Id</th> -->
+          <!-- <th>Author</th> -->
+          <th>Title</th>
+          <th>Description</th>
+          <th>Contact_name</th>
+          <th>Contact_email</th>
+          <th>Place</th>
+          <th>Datestart</th>
+          <th>Dateend</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
         {% for entity in entities %}
-            <tr>
-                <!-- <td><a href="{{ path('event_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td> -->
-                <td>{{ entity.author }}</td>
-                <td>{{ entity.title }}</td>
-                <td>{{ entity.description }}</td>
-                <td>{{ entity.contactname }}</td>
-                <td>{{ entity.contactemail }}</td>
-                <td>{{ entity.place }}</td>
-                <td>{% if entity.dateStart %}{{ entity.dateStart|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{% if entity.dateEnd %}{{ entity.dateEnd|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('event_show', { 'id': entity.id }) }}">show</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('event_edit', { 'id': entity.id }) }}">edit</a>
-                    </li>
-                </ul>
-                </td>
-            </tr>
+          <tr>
+            <!-- <td><a href="{{ path('event_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td> -->
+            <!-- <td>{{ entity.author }}</td> -->
+            <td>{{ entity.title }}</td>
+            <td>{{ entity.description }}</td>
+            <td>{{ entity.contactname }}</td>
+            <td>{{ entity.contactemail }}</td>
+            <td>{{ entity.place }}</td>
+            <td>
+              {% if entity.dateStart %}{{ entity.dateStart|date('Y-m-d H:i:s') }}{% endif %}
+            </td>
+            <td>
+              {% if entity.dateEnd %}{{ entity.dateEnd|date('Y-m-d H:i:s') }}{% endif %}
+            </td>
+            <td>
+              <ul>
+                <li>
+                  <a href="{{ path('event_show', { 'id': entity.id }) }}">show</a>
+                </li>
+                <li>
+                  <a href="{{ path('event_edit', { 'id': entity.id }) }}">edit</a>
+                </li>
+              </ul>
+            </td>
+          </tr>
         {% endfor %}
-        </tbody>
+      </tbody>
     </table>
+  </div>
 
-        <ul>
-        <li>
-            <a href="{{ path('event_new') }}">
-                Create a new entry
-            </a>
-        </li>
-    </ul>
-    {% endblock %}
+{% endblock %}
