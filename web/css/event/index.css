@@ -11,11 +11,11 @@ body {
   text-align: center;
 }
 .research {
-  height: 23.5%;
+  height: 21.5%;
   z-index: 200;
   width: 100%;
   position: fixed;
-  margin-top: -2%;
+  margin-top: -4%;
   background-color: #FF5950;
 }
 .research-btn {
@@ -32,5 +32,13 @@ label {
   text-align: right;
 }
 h1 {
-  margin-top: 12%;
+  margin-top: 10%;
+}
+.result {
+  margin-left: 0px;
+  margin-right: 0px;
+}
+td {
+  border: 1px solid black;
+  padding: 1%;
 }
