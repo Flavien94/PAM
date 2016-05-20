@@ -1,6 +1,9 @@
+.container-fluid{
+  margin-top: 12%;
+}
 h1 {
   text-align: center;
-  margin: -10px 0 5px 0;
+  margin: -5px 0 5px 0;
   font-weight: 300;
   font-size: 44px;
   font-family: "Roboto", Helvetica, Arial, sans-serif;

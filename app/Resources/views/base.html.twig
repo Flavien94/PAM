@@ -15,9 +15,9 @@
   </head>
   <body>
     {% include 'modules/header.html.twig' %}
-    <div class="container-fluid">
-      {% block body %}{% endblock %}
-    </div>
+    {% block body %}
+      <div class="container-fluid"></div>
+    {% endblock %}
     {% block javascripts %}
       <script src="{{ asset('node_modules/jquery/dist/jquery.min.js') }}" charset="utf-8"></script>
       <script src="{{ asset('bootstrap/bootstrap.min.js') }}" charset="utf-8"></script>

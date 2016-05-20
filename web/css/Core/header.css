@@ -13,7 +13,7 @@
 .search-btn:hover {
   background-color: #FF372C;
 }
-.navbar-static-top {
+.static2 {
   background-color: #63B688;
   margin-top: 1%;
 }
@@ -25,7 +25,6 @@
     background-color: #599D78;
     color:#1B2B66;
 }
-
 .form-group {
   margin-top: 4.5%;
 }
