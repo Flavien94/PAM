@@ -44,19 +44,19 @@ class EventController extends Controller
      */
     public function createAction(Request $request)
     {
-        $entity = new Event();
-        $form = $this->createCreateForm($entity);
+        $event = new Event();
+        $form = $this->createCreateForm($event);
         $form->handleRequest($request);
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $em->persist($entity);
+            $em->persist($event);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('event_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('event_show', array('id' => $event->getId())));
         }
         return array(
-            'entity' => $entity,
+            'entity' => $event,
             'form'   => $form->createView(),
         );
     }
@@ -68,9 +68,9 @@ class EventController extends Controller
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createCreateForm(Event $entity)
+    private function createCreateForm(Event $event)
     {
-        $form = $this->createForm(new EventType(), $entity, array(
+        $form = $this->createForm(new EventType(), $event, array(
             'action' => $this->generateUrl('event_create'),
             'method' => 'POST',
         ));
@@ -89,11 +89,11 @@ class EventController extends Controller
      */
     public function newAction()
     {
-        $entity = new Event();
-        $form   = $this->createCreateForm($entity);
+        $event = new Event();
+        $form   = $this->createCreateForm($event);
 
         return array(
-            'entity' => $entity,
+            'entity' => $event,
             'form'   => $form->createView(),
         );
     }
