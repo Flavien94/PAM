@@ -1,7 +1,7 @@
 {% extends '::base.html.twig' %}
 {% block stylesheets %}
   {{ parent() }}
-  <link href="{{ asset('web/css/event/index.css') }}" type="text/css" rel="stylesheet"/>
+  <link href="{{ asset('css/event/index.css') }}" type="text/css" rel="stylesheet"/>
 {% endblock %}
 {% block body -%}
   <div class="container-fluid">
@@ -32,7 +32,7 @@
 
     <h1>Événements</h1>
 
-    <table class="records_list result mCustomScrollbar"></div>
+    <table class="col-xs-12 col-md-12 col-sm-12 col-lg-12 records_list result mCustomScrollbar"></div>
     <thead>
       <div class="row titles">
         <tr>
@@ -46,7 +46,7 @@
     <div class="row">
       <tbody>
         {% for entity in entities %}
-          <td style="background-image:url('{{ asset("web/images/img1.jpg") }}')"></td>
+          <td style="background-image:url('{{ asset("images/img1.jpg") }}')"></td>
           <td>
             <h4>{{ entity.title }}</h4>
             {{ entity.description }}
@@ -69,7 +69,7 @@
     <div class="row">
       <tbody>
         {% for entity in entities %}
-          <td style="background-image:url('{{ asset("web/images/img1.jpg") }}')"></td>
+          <td style="background-image:url('{{ asset("images/img1.jpg") }}')"></td>
           <td>
             <h4>{{ entity.title }}</h4>
             {{ entity.description }}
@@ -93,5 +93,5 @@
 {% endblock %}
 {% block javascripts %}
 {{ parent() }}
-<script src="{{ asset('web/js/scrollbar.js') }}" charset="utf-8"></script>
+<script src="{{ asset('js/scrollbar.js') }}" charset="utf-8"></script>
 {% endblock %}
