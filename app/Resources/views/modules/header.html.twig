@@ -1,11 +1,11 @@
-<div class="row no-padding">
+<nav class="navbar navbar-fixed-top row no-padding">
   <header class="col-md-12 col-lg-12">
-    <div class="row">
+    <div class="row white">
       <div class="col-md-3 col-lg-3">
         <div class="logo">
           <a href="{{ path("core_homepage") }}">
-          <img src="{{ asset('images/logo-pole-emploi_region.png') }}" alt="logo Pôle Emploi">
-        </a>
+            <img src="{{ asset('web/images/logo-pole-emploi_region.png') }}" alt="logo Pôle Emploi">
+          </a>
         </div>
       </div>
       <div class="col-md-5 col-lg-5"></div>
@@ -22,7 +22,7 @@
       </div>
     </div>
     <div class="row">
-      <nav class="navbar navbar-static-top">
+      <nav class="navbar navbar-static-top static2">
         <div class="col-md-3 col-lg-3">
           <ul class="nav navbar-nav">
             <li class="active">
@@ -42,15 +42,15 @@
             </button>
             <ul class="dropdown-menu">
               {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-              <li>
-                <a href="{{ path('fos_user_security_logout') }}">
+                <li>
+                  <a href="{{ path('fos_user_security_logout') }}">
                     {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
-                </a>
-              </li>
+                  </a>
+                </li>
               {% else %}
-              <li>
-                <a href="{{ path("fos_user_security_login") }}">Connexion</a>
-              </li>
+                <li>
+                  <a href="{{ path("fos_user_security_login") }}">Connexion</a>
+                </li>
               {% endif %}
               <li>
                 <a href="{{ path("event_new") }}">Publier un événement</a>
@@ -64,3 +64,4 @@
       </nav>
     </header>
   </div>
+</nav>

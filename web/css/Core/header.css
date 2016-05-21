@@ -2,9 +2,13 @@
   padding: 0;
   margin: 0;
 }
+.white {
+  background-color: #fff;
+  height: 60px;
+}
 .logo>a>img {
   margin: 1%;
-  margin-top: 7%;
+  margin-top: 5%;
 }
 .search-btn {
   background-color: #FF5950;
@@ -13,9 +17,8 @@
 .search-btn:hover {
   background-color: #FF372C;
 }
-.navbar-static-top {
+.static2 {
   background-color: #63B688;
-  margin-top: 1%;
 }
 .navbar-brand {
   color: white;
@@ -25,9 +28,8 @@
     background-color: #599D78;
     color:#1B2B66;
 }
-
 .form-group {
-  margin-top: 4.5%;
+  margin-top: 2.5%;
 }
 .padding {
   border-radius: 0;

@@ -23,18 +23,28 @@ class EventType extends AbstractType
             ->add('dateEnd')
             ->add('contact_name')
             ->add('contact_email')
-            ->add('publics', 'entity', array('class' => 'Event\EventBundle\Entity\Publics',
-            'property' => 'title',
-            'multiple' => false,
-            'empty_value' => 'Public'))
-            ->add('type', 'entity', array('class' => 'Event\EventBundle\Entity\Type',
-            'property' => 'title',
-            'multiple' => false,
-            'empty_value' => 'Type d\'évenement'))
-            ->add('sector', 'entity', array('class' => 'Event\EventBundle\Entity\Sector',
-            'property' => 'title',
-            'multiple' => false,
-            'empty_value' => 'Secteurs'))
+            ->add('publics', 'collection', array(
+            'type'         => new PublicsType(),
+            'allow_add'    => true,
+            'allow_delete' => true
+            ))
+            ->add('publics', 'entity', array(
+                  'class'    => 'EventBundle:Publics',
+                  'property' => 'title',
+                  'multiple' => false,
+                  'empty_value' => 'Public'
+                  ))
+            ->add('type', 'collection', array(
+                  'type'         => new TypeType(),
+                  'allow_add'    => true,
+                  'allow_delete' => true
+                  ))
+            ->add('type', 'entity', array(
+                   'class'    => 'EventBundle:Type',
+                   'property' => 'title',
+                   'multiple' => false,
+                   'empty_value' => 'Type d\'évenement'
+                  ))
             ;
     }
 

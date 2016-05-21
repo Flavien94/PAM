@@ -1,6 +1,6 @@
 $(window).load(function() {
-  $(".content").mCustomScrollbar({
-    axis: "yx",
-    theme:"rounded-dark"
+  $("body").mCustomScrollbar({
+    axis: "y",
+    theme:"minimal-dark"
   });
 });

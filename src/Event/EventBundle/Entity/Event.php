@@ -307,58 +307,64 @@ class Event
      *
      * @return Event
      */
-    public function addSector(\Event\EventBundle\Entity\Sector $sector)
+    // public function addSector(\Event\EventBundle\Entity\Sector $sector)
+    // {
+    //     $this->sector[] = $sector;
+    //
+    //     return $this;
+    // }
+    //
+    // /**
+    //  * Remove sector
+    //  *
+    //  * @param \Event\EventBundle\Entity\Sector $sector
+    //  */
+    // public function removeSector(\Event\EventBundle\Entity\Sector $sector)
+    // {
+    //     $this->sector->removeElement($sector);
+    // }
+    //
+    // /**
+    //  * Get sector
+    //  *
+    //  * @return \Doctrine\Common\Collections\Collection
+    //  */
+    // public function getSector()
+    // {
+    //     return $this->sector;
+    // }
+    //
+    // /**
+    //  * Add public
+    //  *
+    //  * @param \Event\EventBundle\Entity\Publics $public
+    //  *
+    //  * @return Event
+    //  */
+    // public function addPublic(\Event\EventBundle\Entity\Publics $public)
+    // {
+    //     $this->publics[] = $public;
+    //
+    //     $public->setEvent($this);
+    //     return $this;
+    // }
+    //
+    // /**
+    //  * Remove public
+    //  *
+    //  * @param \Event\EventBundle\Entity\Publics $public
+    //  */
+    // public function removePublic(\Event\EventBundle\Entity\Publics $public)
+    // {
+    //     $this->publics->removeElement($public);
+    // }
+    //
+    public function setPublics($publics)
     {
-        $this->sector[] = $sector;
+        $this->publics[] = $publics;
 
         return $this;
     }
-
-    /**
-     * Remove sector
-     *
-     * @param \Event\EventBundle\Entity\Sector $sector
-     */
-    public function removeSector(\Event\EventBundle\Entity\Sector $sector)
-    {
-        $this->sector->removeElement($sector);
-    }
-
-    /**
-     * Get sector
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getSector()
-    {
-        return $this->sector;
-    }
-
-    /**
-     * Add public
-     *
-     * @param \Event\EventBundle\Entity\Publics $public
-     *
-     * @return Event
-     */
-    public function addPublic(\Event\EventBundle\Entity\Publics $public)
-    {
-        $this->publics[] = $public;
-
-        $public->setEvent($this);
-        return $this;
-    }
-
-    /**
-     * Remove public
-     *
-     * @param \Event\EventBundle\Entity\Publics $public
-     */
-    public function removePublic(\Event\EventBundle\Entity\Publics $public)
-    {
-        $this->publics->removeElement($public);
-    }
-
     /**
      * Get publics
      *
@@ -376,28 +382,13 @@ class Event
      *
      * @return Event
      */
-    public function addType(\Event\EventBundle\Entity\Type $type)
+    public function setType($type)
     {
         $this->type[] = $type;
 
         return $this;
     }
-
-    /**
-     * Remove type
-     *
-     * @param \Event\EventBundle\Entity\Type $type
-     */
-    public function removeType(\Event\EventBundle\Entity\Type $type)
-    {
-        $this->type->removeElement($type);
-    }
-
-    /**
-     * Get type
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
+    
     public function getType()
     {
         return $this->type;
