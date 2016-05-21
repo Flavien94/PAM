@@ -1,7 +1,7 @@
 {% extends '::base.html.twig' %}
 {% block stylesheets %}
   {{ parent() }}
-  <link href="{{ asset('css/event/index.css') }}" type="text/css" rel="stylesheet"/>
+  <link href="{{ asset('web/css/event/index.css') }}" type="text/css" rel="stylesheet"/>
 {% endblock %}
 {% block body -%}
   <div class="container-fluid">
@@ -93,5 +93,5 @@
 {% endblock %}
 {% block javascripts %}
 {{ parent() }}
-<script src="{{ asset('js/scrollbar.js') }}" charset="utf-8"></script>
+<script src="{{ asset('web/js/scrollbar.js') }}" charset="utf-8"></script>
 {% endblock %}
