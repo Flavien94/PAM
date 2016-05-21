@@ -1,4 +1,4 @@
-.container-fluid{
+.container-fluid {
   margin-top: 12%;
 }
 h1 {
@@ -16,7 +16,7 @@ h1 {
 }
 .img-une {
   height: 80%;
-  background-size:cover;
+  background-size: cover;
   background-repeat: no-repeat;
 }
 .titre-une, .text-une {
@@ -46,12 +46,13 @@ h1 {
   color: white;
   margin-bottom: 1%;
   height: 142px;
+  width: 72%
 }
 .img-mini {
   background-repeat: no-repeat;
   background-size: cover;
   height: 142px;
-  max-height:142px;
+  max-height: 142px;
 }
 .bleu {
   background-color: #2AA7CB;
@@ -71,5 +72,7 @@ h1 {
 }
 .scroll {
   height: calc(100vh - 210px);
-  overflow-y:scroll;
+}
+.mCSB_dragger_bar {
+  background-color: #63B688 !important;
 }
