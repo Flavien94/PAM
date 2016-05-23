@@ -1,0 +1,9 @@
+{# {% extends 'base.html.twig' %} #}
+{# {% block body %} #}
+<h1>get all users</h1>
+{% for user in users %}
+<li>{{ user.username }} <a href="{{ path('delete', {'id': user.id}) }}">X</a></li>
+
+{% endfor %}
+<a href="{{ path('fos_user_registration_register') }}">Créer un contributeur</a>
+{# {% endblock %} #}
