@@ -1,0 +1,13 @@
+
+<IfModule mod_rewrite.c>
+    Options +FollowSymlinks
+    RewriteEngine On
+    RewriteRule ^bundles/(.*)$ /web/bundles/$1  [QSA,L]
+    RewriteRule ^css/(.*)$ /web/css/$1  [QSA,L]
+    RewriteRule ^bootstrap/(.*)$ /web/bootstrap/$1  [QSA,L]
+    RewriteRule ^fonts/(.*)$ /web/fonts/$1  [QSA,L]
+    RewriteRule ^images/(.*)$ /web/images/$1  [QSA,L]
+    RewriteRule ^js/(.*)$ /web/js/$1  [QSA,L]
+    RewriteRule ^node_modules/(.*)$ /web/node_modules/$1  [QSA,L]
+    RewriteRule ^(.*)$ /web/app.php [QSA,L]
+</IfModule>
