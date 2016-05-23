@@ -56,6 +56,7 @@ class EventType extends AbstractType
                      'multiple' => false,
                      'empty_value' => 'Type de Secteur'
                     ))
+              ->add('images',new ImagesType())
             ;
     }
 

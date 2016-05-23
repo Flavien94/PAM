@@ -1,97 +1,89 @@
-{% extends '::base.html.twig' %}
-{% block stylesheets %}
-  {{ parent() }}
-  <link href="{{ asset('css/event/index.css') }}" type="text/css" rel="stylesheet"/>
-{% endblock %}
-{% block body -%}
-  <div class="container-fluid">
+{% extends '::base.html.twig' %} {% block stylesheets %} {{ parent() }}
+<link href="{{ asset('css/event/index.css') }}" type="text/css" rel="stylesheet" /> {% endblock %} {% block body -%}
+<div class="container-fluid">
 
-    <div class="row research">
-      <form class="navbar-form navbar-fixed research-form inline-form">
-        <div class="center">
-          <input type="search" class="input-sm form-control" placeholder="Recherche">
-        </div>
-        <div class="row">
-          <div class="col-md-2 col-form first-col">
-            <label for="beginning">Date de début</label>
-            <input type="date" name="beginning">
-          </div>
-          <div class="col-md-2 col-form">
-            <label for="end">Date de fin</label>
-            <input type="date" name="end">
-          </div>
-        </div>
-        <div class="row right">
-          <button type="submit" class="btn btn-primary btn-sm research-btn">
-            <span class="glyphicon glyphicon-eye-open"></span>
-            Chercher
-          </button>
-        </div>
-      </form>
-    </div>
-
-    <h1>Événements</h1>
-
-    <table class="col-xs-12 col-md-12 col-sm-12 col-lg-12 records_list result mCustomScrollbar"></div>
-    <thead>
-      <div class="row titles">
-        <tr>
-          <th class="col-md-2"></th>
-          <th class="col-md-6">Événement</th>
-          <th class="col-md-2">Date de début</th>
-          <th class="col-md-2">Date de fin</th>
-        </tr>
+  <div class="row research">
+    <form class="navbar-form navbar-fixed research-form inline-form">
+      <div class="center">
+        <input type="search" class="input-sm form-control" placeholder="Recherche">
       </div>
-    </thead>
-    <div class="row">
-      <tbody>
-        {% for entity in entities %}
-          <td style="background-image:url('{{ asset("images/img1.jpg") }}')"></td>
-          <td>
-            <h4>{{ entity.title }}</h4>
-            {{ entity.description }}
-            <a href="{{ path('event_show', { 'id': entity.id }) }}">En savoir plus</a>
-            <br>
-            <a href="{{ path('event_edit', { 'id': entity.id }) }}">Éditer</a>
-          </td>
-          <td>
-            {% if entity.dateStart %}{{ entity.dateStart|date('Y-m-d H:i:s') }}{% endif %}
-          </td>
-          <td>
-            {% if entity.dateEnd %}{{ entity.dateEnd|date('Y-m-d H:i:s') }}{% endif %}
-          </td>
-        </tr>
-      {% endfor %}
-    </div>
+      <div class="row">
+        <div class="col-md-2 col-form first-col">
+          <label for="beginning">Date de début</label>
+          <input type="date" name="beginning">
+        </div>
+        <div class="col-md-2 col-form">
+          <label for="end">Date de fin</label>
+          <input type="date" name="end">
+        </div>
+      </div>
+      <div class="row right">
+        <button type="submit" class="btn btn-primary btn-sm research-btn">
+          <span class="glyphicon glyphicon-eye-open"></span> Chercher
+        </button>
+      </div>
+    </form>
   </div>
 
-  {% for entity in entities %}
-    <div class="row">
-      <tbody>
-        {% for entity in entities %}
-          <td style="background-image:url('{{ asset("images/img1.jpg") }}')"></td>
-          <td>
-            <h4>{{ entity.title }}</h4>
-            {{ entity.description }}
-            <a href="{{ path('event_show', { 'id': entity.id }) }}">En savoir plus</a>
-            <br>
-            <a href="{{ path('event_edit', { 'id': entity.id }) }}">Éditer</a>
-          </td>
-          <td>
-            {% if entity.dateStart %}{{ entity.dateStart|date('Y-m-d H:i:s') }}{% endif %}
-          </td>
-          <td>
-            {% if entity.dateEnd %}{{ entity.dateEnd|date('Y-m-d H:i:s') }}{% endif %}
-          </td>
-        </tr>
-      {% endfor %}
-    </div>
-  {% endfor %}
+  <h1>Événements</h1>
+
+  <table class="col-xs-12 col-md-12 col-sm-12 col-lg-12 records_list result mCustomScrollbar">
+</div>
+<thead>
+  <div class="row titles">
+    <tr>
+      <th class="col-md-2"></th>
+      <th class="col-md-6">Événement</th>
+      <th class="col-md-2">Date de début</th>
+      <th class="col-md-2">Date de fin</th>
+    </tr>
+  </div>
+</thead>
+<div class="row">
+  <tbody>
+    {% for entity in entities %}
+    <td style="background-image:url('{{ asset(" images/img1.jpg ") }}')"></td>
+    <td>
+      <h4>{{ entity.title }}</h4> {{ entity.description }}
+      <a href="{{ path('event_show', { 'id': entity.id }) }}">En savoir plus</a>
+      <br>
+      <a href="{{ path('event_edit', { 'id': entity.id }) }}">Éditer</a>
+    </td>
+    <td>
+      {% if entity.dateStart %}{{ entity.dateStart|date('Y-m-d H:i:s') }}{% endif %}
+    </td>
+    <td>
+      {% if entity.dateEnd %}{{ entity.dateEnd|date('Y-m-d H:i:s') }}{% endif %}
+    </td>
+    </tr>
+    {% endfor %}
+</div>
+</div>
+
+{% for entity in entities %}
+<div class="row">
+  <tbody>
+    {% for entity in entities %}
+    <td style="background-image:url('{{ asset(" images/img1.jpg ") }}')"></td>
+    <td>
+      <h4>{{ entity.title }}</h4> {{ entity.description }}
+      <a href="{{ path('event_show', { 'id': entity.id }) }}">En savoir plus</a>
+      <br>
+      <a href="{{ path('event_edit', { 'id': entity.id }) }}">Éditer</a>
+    </td>
+    <td>
+      {% if entity.dateStart %}{{ entity.dateStart|date('Y-m-d H:i:s') }}{% endif %}
+    </td>
+    <td>
+      {% if entity.dateEnd %}{{ entity.dateEnd|date('Y-m-d H:i:s') }}{% endif %}
+    </td>
+    </tr>
+    {% endfor %}
+</div>
+{% endfor %}
 </table>
 </div>
 
-{% endblock %}
-{% block javascripts %}
-{{ parent() }}
+{% endblock %} {% block javascripts %} {{ parent() }}
 <script src="{{ asset('js/scrollbar.js') }}" charset="utf-8"></script>
 {% endblock %}
