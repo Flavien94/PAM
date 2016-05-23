@@ -41,36 +41,54 @@
       {% endfor %}
     </div>
   </div>
+</thead>
+<div class="row">
+  <tbody>
+    {% for entity in entities %}
+    <td style="background-image:url('{{ asset(" images/img1.jpg ") }}')"></td>
+    <td>
+      <h4>{{ entity.title }}</h4> {{ entity.description }}
+      <a href="{{ path('event_show', { 'id': entity.id }) }}">En savoir plus</a>
+      <br>
+      <a href="{{ path('event_edit', { 'id': entity.id }) }}">Éditer</a>
+    </td>
+    <td>
+      {% if entity.dateStart %}{{ entity.dateStart|date('Y-m-d H:i:s') }}{% endif %}
+    </td>
+    <td>
+      {% if entity.dateEnd %}{{ entity.dateEnd|date('Y-m-d H:i:s') }}{% endif %}
+    </td>
+    </tr>
+    {% endfor %}
+</div>
+</div>
 
-  {% for entity in entities %}
-    <div class="row">
-      <tbody>
-        {% for entity in entities %}
-          <td style="background-image:url('{{ asset("images/img1.jpg") }}')"></td>
-          <td>
-            <h4>{{ entity.title }}</h4>
-            {{ entity.description }}
-            <a href="{{ path('event_show', { 'id': entity.id }) }}">En savoir plus</a>
-            <br>
-            <a href="{{ path('event_edit', { 'id': entity.id }) }}">Éditer</a>
-          </td>
-          <td>
-            {% if entity.dateStart %}{{ entity.dateStart|date('Y-m-d H:i:s') }}{% endif %}
-          </td>
-          <td>
-            {% if entity.dateEnd %}{{ entity.dateEnd|date('Y-m-d H:i:s') }}{% endif %}
-          </td>
-        </tr>
-      {% endfor %}
-    </div>
-  {% endfor %}
+{% for entity in entities %}
+<div class="row">
+  <tbody>
+    {% for entity in entities %}
+    <td style="background-image:url('{{ asset(" images/img1.jpg ") }}')"></td>
+    <td>
+      <h4>{{ entity.title }}</h4> {{ entity.description }}
+      <a href="{{ path('event_show', { 'id': entity.id }) }}">En savoir plus</a>
+      <br>
+      <a href="{{ path('event_edit', { 'id': entity.id }) }}">Éditer</a>
+    </td>
+    <td>
+      {% if entity.dateStart %}{{ entity.dateStart|date('Y-m-d H:i:s') }}{% endif %}
+    </td>
+    <td>
+      {% if entity.dateEnd %}{{ entity.dateEnd|date('Y-m-d H:i:s') }}{% endif %}
+    </td>
+    </tr>
+    {% endfor %}
+</div>
+{% endfor %}
 </table>
 </div>
 </div>
 
 
-{% endblock %}
-{% block javascripts %}
-{{ parent() }}
+{% endblock %} {% block javascripts %} {{ parent() }}
 <script src="{{ asset('js/scrollbar.js') }}" charset="utf-8"></script>
 {% endblock %}

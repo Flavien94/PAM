@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Event
  *
- * @ORM\Table()
+ *  @ORM\Table(options={"engine"="MyISAM"}, indexes={@ORM\Index(columns={"title", "description", "contact_name"}, flags={"fulltext"})})
  * @ORM\Entity
  */
 class Event
@@ -25,6 +25,10 @@ class Event
     * @ORM\ManyToMany(targetEntity="Event\EventBundle\Entity\Type", cascade={"persist"})
     */
     private $type;
+    /**
+    * @ORM\OneToOne(targetEntity="Event\EventBundle\Entity\Images", cascade={"persist"})
+    */
+    private $images;
 
     /**
      * @var integer
@@ -359,5 +363,15 @@ class Event
     public function getSector()
     {
         return $this->sector;
+    }
+
+    public function setImages(Images $images = null)
+    {
+      $this->images = $images;
+    }
+
+    public function getImages()
+    {
+      return $this->images;
     }
 }
