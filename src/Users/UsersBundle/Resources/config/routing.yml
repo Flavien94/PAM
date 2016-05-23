@@ -1,5 +1,5 @@
 fos_user_security:
-   resource: "@FOSUserBundle/Resources/config/routing/security.xml"
+   resource: "@FOSUserBundle/Resources/config/routing/all.xml"
 
 fos_user_profile:
    resource: "@FOSUserBundle/Resources/config/routing/profile.xml"
@@ -16,3 +16,13 @@ fos_user_resetting:
 fos_user_change_password:
    resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
    prefix: /profile
+
+list:
+    path: /list
+    defaults: { _controller: UsersBundle:List:index }
+
+delete:
+    path: /delete/{id}
+    defaults: { _controller: UsersBundle:Delete:delete }
+    requirements:
+    methods: GET

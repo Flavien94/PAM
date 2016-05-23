@@ -1,15 +1,6 @@
-admin:
-    resource: "@AdminBundle/Resources/config/routing.yml"
-    prefix:   /
-
-core:
-    resource: "@CoreBundle/Resources/config/routing.yml"
-    prefix:   /
-
-users:
-    resource: "@UsersBundle/Controller/"
-    type:     annotation
-    prefix:   /
+core_homepage:
+    path: /
+    defaults: { _controller: CoreBundle:Default:index }
 
 event:
     resource: "@EventBundle/Resources/config/routing.yml"
@@ -17,8 +8,4 @@ event:
 
 user_bundle:
    resource: "@UsersBundle/Resources/config/routing.yml"
-   prefix:   /
-
-admin_area:
-    resource: "@SonataAdminBundle/Resources/config/routing/sonata_admin.xml"
-    prefix: /chef
+   prefix:   /admin
