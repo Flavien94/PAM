@@ -1,3 +1,6 @@
+.search-top{
+  visibility: hidden;
+}
 .result {
   margin-left: 0px;
   margin-right: 0px;

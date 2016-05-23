@@ -19,10 +19,16 @@ class EventType extends AbstractType
             ->add('title')
             ->add('description')
             ->add('place')
-            ->add('dateStart')
-            ->add('dateEnd')
-            ->add('contact_name')
-            ->add('contact_email')
+            ->add('dateStart', 'datetime', array(
+                  'date_widget' => "single_text",
+                  'time_widget' => "single_text"
+            ))
+            ->add('dateEnd', 'datetime', array(
+                  'date_widget' => "single_text",
+                  'time_widget' => "single_text"
+            ))
+            ->add('contact_name', 'text')
+            ->add('contact_email', 'text')
             ->add('publics', 'collection', array(
             'type'         => new PublicsType(),
             'allow_add'    => true,
@@ -56,8 +62,7 @@ class EventType extends AbstractType
                      'multiple' => false,
                      'empty_value' => 'Type de Secteur'
                     ))
-              ->add('images',new ImagesType())
-            ;
+              ->add('images',new ImagesType()) ;
     }
 
     /**
