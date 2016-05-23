@@ -1,15 +1,61 @@
 {% extends '::base.html.twig' %}
-
-{% block body -%}
-    <h1>Event creation</h1>
-
-    {{ form(form) }}
-
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('event') }}">
-            Back to the list
-        </a>
-    </li>
-</ul>
+{% block stylesheets %}
+  {{ parent() }}
+  <link href="{{ asset('css/event/new.css') }}" type="text/css" rel="stylesheet"/>
 {% endblock %}
+{% block body -%}
+
+  <div class="container-fluid event-container">
+
+    <h1>Publier un événement</h1>
+    {{ form_errors(form) }}
+    <ul>
+      <label for="contact" class="big-label">Contact de l'événement</label>
+      <li>
+        {{ form(form.contact_name, { 'attr': {'class': 'inline', 'placeholder': 'Nom du contact'} })  }}
+          {{ form(form.contact_email, { 'attr': {'class': 'inline', 'placeholder': 'Email du contact'} }) }}
+          </li>
+          <label for="Détails" class="big-label">Détails de l'événement</label>
+          <li>
+            <label for="dateStart" class="small-label">Date de début</label><br>
+            {{ form(form.dateStart, { 'attr': {'class': ''} }) }}
+            </li>
+            <li>
+              <label for="dateEnd" class="small-label">Date de fin</label><br>
+              {{ form(form.dateEnd, { 'attr': {'class': ''} }) }}
+              </li>
+              <li>
+                <label for="secteurs" id ="secteurs" class="small-label">Secteurs</label>
+                {{ form(form.sector) }}
+                </li>
+                <li>
+                  <label for="publics" id ="publics" class="small-label">Publics</label>
+                  {{ form(form.publics) }}
+                  </li>
+                  <li>
+                    <label for="type" id ="types" class="small-label">Type d'événement</label>
+                    {{ form(form.type) }}
+                  </li><br>
+                    <li>
+                      <label for="contact" class="big-label">Description, Modalités</label> <br>
+                      {{ form(form.description, { 'attr': {'class': 'inline'}, 'label': 'Publier' }) }}
+                      </li>
+                      <li>
+                        <label for="place" class="big-label inline">Lieu de l'événement</label>
+                        {{ form(form.place) }}
+                      </li> <br>
+                        <li class="big-label">
+                          {{ form(form.images, { 'attr': {'class': 'big-label'} }) }}
+                          </li>
+                          {{ form_row(form.submit, { 'label': 'Publier' }) }}
+                        </ul>
+
+                        <ul class="record_actions">
+                          <li>
+                            <a href="{{ path('event') }}">
+                              Retour à la liste des événements
+                            </a>
+                          </li>
+                        </ul>
+
+                      {% endblock %}
