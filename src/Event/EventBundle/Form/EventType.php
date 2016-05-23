@@ -45,6 +45,17 @@ class EventType extends AbstractType
                    'multiple' => false,
                    'empty_value' => 'Type d\'évenement'
                   ))
+              ->add('sector', 'collection', array(
+                    'sector'         => new SectorType(),
+                    'allow_add'    => true,
+                    'allow_delete' => true
+                    ))
+              ->add('sector', 'entity', array(
+                     'class'    => 'EventBundle:Sector',
+                     'property' => 'caption',
+                     'multiple' => false,
+                     'empty_value' => 'Type de Secteur'
+                    ))
             ;
     }
 

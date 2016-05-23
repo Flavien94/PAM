@@ -90,7 +90,7 @@ class Event
 
     public function __construct()
     {
-      $this->sectors = new ArrayCollection();
+      $this->sector = new ArrayCollection();
       $this->publics = new ArrayCollection();
     }
 
@@ -300,65 +300,10 @@ class Event
         return $this->dateEnd;
     }
 
-    /**
-     * Add sector
-     *
-     * @param \Event\EventBundle\Entity\Sector $sector
-     *
-     * @return Event
-     */
-    // public function addSector(\Event\EventBundle\Entity\Sector $sector)
-    // {
-    //     $this->sector[] = $sector;
-    //
-    //     return $this;
-    // }
-    //
-    // /**
-    //  * Remove sector
-    //  *
-    //  * @param \Event\EventBundle\Entity\Sector $sector
-    //  */
-    // public function removeSector(\Event\EventBundle\Entity\Sector $sector)
-    // {
-    //     $this->sector->removeElement($sector);
-    // }
-    //
-    // /**
-    //  * Get sector
-    //  *
-    //  * @return \Doctrine\Common\Collections\Collection
-    //  */
-    // public function getSector()
-    // {
-    //     return $this->sector;
-    // }
-    //
-    // /**
-    //  * Add public
-    //  *
-    //  * @param \Event\EventBundle\Entity\Publics $public
-    //  *
-    //  * @return Event
-    //  */
-    // public function addPublic(\Event\EventBundle\Entity\Publics $public)
-    // {
-    //     $this->publics[] = $public;
-    //
-    //     $public->setEvent($this);
-    //     return $this;
-    // }
-    //
-    // /**
-    //  * Remove public
-    //  *
-    //  * @param \Event\EventBundle\Entity\Publics $public
-    //  */
-    // public function removePublic(\Event\EventBundle\Entity\Publics $public)
-    // {
-    //     $this->publics->removeElement($public);
-    // }
-    //
+
+
+
+
     public function setPublics($publics)
     {
         $this->publics[] = $publics;
@@ -388,9 +333,31 @@ class Event
 
         return $this;
     }
-    
+
     public function getType()
     {
         return $this->type;
+    }
+    /**
+     * set sector
+     *
+     * @param \Event\EventBundle\Entity\Sector $sector
+     *
+     * @return Event
+     */
+    public function setSector($sector)
+    {
+      $this->sector[] = $sector;
+
+      return $this;
+    }
+    /**
+     * Get sector
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getSector()
+    {
+        return $this->sector;
     }
 }
