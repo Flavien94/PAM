@@ -26,7 +26,7 @@ class Event
     */
     private $type;
     /**
-    * @ORM\OneToOne(targetEntity="Event\EventBundle\Entity\Images", cascade={"persist"})
+    * @ORM\OneToOne(targetEntity="Event\EventBundle\Entity\Images", cascade={"persist", "remove"})
     */
     private $images;
 
