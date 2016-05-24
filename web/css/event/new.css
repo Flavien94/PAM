@@ -1,0 +1,37 @@
+li {
+  list-style: none;
+  display: table-cell;
+}
+.inline {
+  display: inline;
+}
+.big-label {
+  margin-left: 0;
+  margin-bottom: 1%;
+  font-weight: bolder;
+}
+.small-label {
+  font-weight: 400;
+}
+textarea, input, select {
+  margin-right: 20px;
+}
+textarea {
+  width : 156px;
+  margin-top: 10%;
+}
+#event_eventbundle_event_place {
+  margin-top: 11%;
+}
+#secteurs {
+  margin-bottom: 4%;
+}
+#types {
+  margin-bottom: 3.5%;
+}
+#publics {
+  margin-bottom: 5.5%;
+}
+button {
+  margin-top: 1%;
+}

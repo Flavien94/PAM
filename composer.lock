@@ -5,7 +5,6 @@
         "This file is @generated automatically"
     ],
     "hash": "42fb4f028da4e6aef1eb9b2b9d435cf5",
-    "content-hash": "2807c98b8a92440a29a5f473baa294eb",
     "packages": [
         {
             "name": "coresphere/console-bundle",
