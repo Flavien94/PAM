@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Sector
  *
- * @ORM\Table()
+ * @ORM\Table(options={"engine"="MyISAM"})
  * @ORM\Entity
  */
 class Sector

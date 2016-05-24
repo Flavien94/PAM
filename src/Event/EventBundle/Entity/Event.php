@@ -4,12 +4,15 @@ namespace Event\EventBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 /**
  * Event
  *
  * @ORM\Table(options={"engine"="MyISAM"}, indexes={@ORM\Index(columns={"title", "description", "contact_name"}, flags={"fulltext"})})
  * @ORM\Entity
+ * @ORM\HasLifecycleCallbacks()
  */
 class Event
 {
@@ -27,6 +30,8 @@ class Event
     private $type;
     /**
     * @ORM\OneToOne(targetEntity="Event\EventBundle\Entity\Images", cascade={"persist", "remove"})
+    * @Assert\Valid()
+    * @Assert\Image(maxSize="1M")
     */
     private $images;
 
@@ -50,6 +55,7 @@ class Event
      * @var string
      *
      * @ORM\Column(name="title", type="string", length=255)
+     * @Assert\Length(min=5)
      */
     private $title;
 
@@ -57,18 +63,21 @@ class Event
      * @var string
      *
      * @ORM\Column(name="description", type="text")
+     * @Assert\NotBlank()
      */
     private $description;
     /**
      * @var string
      *
      * @ORM\Column(name="contact_name", type="string", length=255)
+     * @Assert\Length(min=2)
      */
     private $contact_name;
     /**
      * @var string
      *
      * @ORM\Column(name="contact_email", type="string", length=255)
+     * @Assert\Email()
      */
     private $contact_email;
     /**
@@ -368,6 +377,8 @@ class Event
     public function setImages(Images $images = null)
     {
       $this->images = $images;
+
+      return $this;
     }
 
     public function getImages()

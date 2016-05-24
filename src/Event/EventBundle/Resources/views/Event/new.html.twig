@@ -6,6 +6,7 @@
 {% block body -%}
 
   <div class="container-fluid event-container">
+    {{ form_start(form) }}
 
     <h1>Publier un événement</h1>
     {{ form_errors(form) }}
@@ -47,9 +48,10 @@
                         <li class="big-label">
                           {{ form(form.images, { 'attr': {'class': 'big-label'} }) }}
                           </li>
-                          {{ form_row(form.submit, { 'label': 'Publier' }) }}
+                          {{ form_rest(form)}}
+                          {{ form_widget(form.submit)}}
                         </ul>
-
+                        {{ form_end(form)}}
                         <ul class="record_actions">
                           <li>
                             <a href="{{ path('event') }}">

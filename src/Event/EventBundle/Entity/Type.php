@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Type
  *
- * @ORM\Table()
+ * @ORM\Table(options={"engine"="MyISAM"})
  * @ORM\Entity
  */
 class Type
@@ -63,4 +63,3 @@ class Type
         return $this->title;
     }
 }
-

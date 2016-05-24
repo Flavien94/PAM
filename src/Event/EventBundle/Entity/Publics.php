@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Publics
  *
- * @ORM\Table()
+ * @ORM\Table(options={"engine"="MyISAM"})
  * @ORM\Entity
  */
 class Publics
@@ -63,4 +63,3 @@ class Publics
         return $this->title;
     }
 }
-

@@ -73,9 +73,10 @@ class EventController extends Controller
         $form = $this->createForm(new EventType(), $event, array(
             'action' => $this->generateUrl('event_create'),
             'method' => 'POST',
+            'csrf_protection' => 'false'
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Create'));
+        $form->add('submit', 'submit', array('label' => 'Publier'));
 
         return $form;
     }
