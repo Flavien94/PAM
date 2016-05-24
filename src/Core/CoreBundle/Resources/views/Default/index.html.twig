@@ -12,23 +12,23 @@
       <div class="col-xs-12 col-sm-12 col-md-5 col-lg5 une">
         <div class="row img-une" style="background-image:url('{{ asset('images/img1.jpg') }}')"></div>
         <div class="row titre-une">
-          <div class="col-xs-12 col-sm-12 col-md-7 col-lg7">
-            <h3>Titre de l'événement</h3>
-          </div>
           <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5">
-            <h5>jj-mm-aaaa - jj-mm-aaaa</h5>
+            <h3>{{ events[0].title }}</h3>
+          </div>
+          <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7">
+            <h6>  {% if events[0].dateStart %}{{ events[0].dateStart|date('Y-m-d H:i:s') }}{% endif %} - {% if events[0].dateEnd %}{{ events[0].dateEnd|date('Y-m-d H:i:s') }}{% endif %}</h6>
           </div>
         </div>
         <div class="row text-une">
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            <a href="#">En savoir plus</a>
+              {{ events[0].description[:133] }}
+            <a href="{{ path('event_show', { 'id': events[0].id }) }}">En savoir plus</a>
           </p>
         </div>
       </div>
 
       <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 scroll mCustomScrollbar">
-        {% for event in events %}
+        {% for event in events | slice(1) %}
           {% if loop.index is odd %}
             <div class="row">
               <div class="hidden-md-down col-md-3 col-lg-3 img-mini" style="background-image:url('{{ asset('images/img1.jpg') }}')"></div>
@@ -38,14 +38,14 @@
                     <h4>{{ event.title }}</h4>
                   </div>
                   <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                    <h5>
+                    <h6>
                       {% if event.dateStart %}{{ event.dateStart|date('Y-m-d H:i:s') }}{% endif %}
-                      -{% if event.dateEnd %}{{ event.dateEnd|date('Y-m-d H:i:s') }}{% endif %}/h5>
+                      - {% if event.dateEnd %}{{ event.dateEnd|date('Y-m-d H:i:s') }}{% endif %}</h6>
                     </div>
                   </div>
                   <div class="row text-deux">
                     <p>
-                      {{ event.description }}
+                      {{ event.description[:149] }}
                       <a href="{{ path('event_show', { 'id': event.id }) }}">En savoir plus</a>
                     </p>
                   </div>
@@ -60,9 +60,9 @@
                       <h4>{{ event.title }}</h4>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                      <h5>
+                      <h6>
                         {% if event.dateStart %}{{ event.dateStart|date('Y-m-d H:i:s') }}{% endif %}
-                        -{% if event.dateEnd %}{{ event.dateEnd|date('Y-m-d H:i:s') }}{% endif %}/h5>
+                        -{% if event.dateEnd %}{{ event.dateEnd|date('Y-m-d H:i:s') }}{% endif %}</h6>
                       </div>
                     </div>
                     <div class="row text-deux">

@@ -15,9 +15,14 @@ class DefaultController extends Controller
       $events = $em ->createQueryBuilder()
                     ->select('b')
                     ->from('EventBundle:Event',  'b')
+                    ->where('b.dateEnd > :now')
+                    ->setParameter('now', new \DateTime('now'))
                     ->addOrderBy('b.dateStart', 'ASC')
                     ->getQuery()
                     ->getResult();
+                    // classer d'abord headline et ensuite par date state
+                    
+
 
 
         return $this->render('CoreBundle:Default:index.html.twig', array(
