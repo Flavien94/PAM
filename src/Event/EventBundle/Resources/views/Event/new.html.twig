@@ -8,6 +8,7 @@
   <div class="container-fluid event-container">
 
     <h1>Publier un événement</h1>
+    {{ form_start(form) }}
     {{ form_errors(form) }}
     <ul>
       <label for="contact" class="big-label">Contact de l'événement</label>
@@ -25,37 +26,42 @@
               {{ form(form.dateEnd, { 'attr': {'class': ''} }) }}
               </li>
               <li>
-                <label for="secteurs" id ="secteurs" class="small-label">Secteurs</label>
+                <label for="secteurs" id="secteurs" class="small-label">Secteurs</label>
                 {{ form(form.sector) }}
                 </li>
                 <li>
-                  <label for="publics" id ="publics" class="small-label">Publics</label>
+                  <label for="publics" id="publics" class="small-label">Publics</label>
                   {{ form(form.publics) }}
                   </li>
                   <li>
-                    <label for="type" id ="types" class="small-label">Type d'événement</label>
+                    <label for="type" id="types" class="small-label">Type d'événement</label>
                     {{ form(form.type) }}
-                  </li><br>
+                    </li><br>
                     <li>
-                      <label for="contact" class="big-label">Description, Modalités</label> <br>
-                      {{ form(form.description, { 'attr': {'class': 'inline'}, 'label': 'Publier' }) }}
-                      </li>
-                      <li>
-                        <label for="place" class="big-label inline">Lieu de l'événement</label>
-                        {{ form(form.place) }}
-                      </li> <br>
-                        <li class="big-label">
-                          {{ form(form.images, { 'attr': {'class': 'big-label'} }) }}
+                      <label for="contact" class="big-label">Description, Modalités</label>
+                      <br>
+                      {{ form(form.title, { 'attr': {'id': 'title', 'placeholder': 'Titre'}}) }}
+                        {{ form(form.description, { 'attr': {'class': 'inline', 'placeholder': 'Description'}}) }}
+                        </li>
+                        <li>
+                          <label for="place" class="big-label inline">Lieu de l'événement</label>
+                          {{ form(form.place) }}
                           </li>
-                          {{ form_row(form.submit, { 'label': 'Publier' }) }}
-                        </ul>
+                          <br>
+                          <li class="big-label">
+                            {{ form(form.images, { 'attr': {'class': 'big-label'} }) }}
+                            </li>
+                             {{ form_rest(form) }}
+                            {{ form_row(form.submit, { 'label': 'Publier' }) }}
+                          </ul>
+                          {{ form_end(form) }}
 
-                        <ul class="record_actions">
-                          <li>
-                            <a href="{{ path('event') }}">
-                              Retour à la liste des événements
-                            </a>
-                          </li>
-                        </ul>
+                          <ul class="record_actions">
+                            <li>
+                              <a href="{{ path('event') }}">
+                                Retour à la liste des événements
+                              </a>
+                            </li>
+                          </ul>
 
-                      {% endblock %}
+                        {% endblock %}
