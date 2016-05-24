@@ -8,8 +8,7 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 *Images
 *
 *@ORM\Table(options={"engine"="MyISAM"})
-*@ORM\Entity;
-*@ORM\HasLifecycleCallbacks()
+*@ORM\Entity
 */
 class Images
 {

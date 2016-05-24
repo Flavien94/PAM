@@ -12,7 +12,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *
  * @ORM\Table(options={"engine"="MyISAM"}, indexes={@ORM\Index(columns={"title", "description", "contact_name"}, flags={"fulltext"})})
  * @ORM\Entity
- * @ORM\HasLifecycleCallbacks()
+ * @ORM\HasLifecycleCallbacks
  */
 class Event
 {
@@ -100,6 +100,13 @@ class Event
      * @ORM\Column(name="date_end", type="datetime")
      */
     private $dateEnd;
+
+    /**
+     * @var \headlines
+     *
+     * @ORM\Column(name="headlines", type="boolean", nullable=true)
+     */
+    private $headlines;
 
     public function __construct()
     {
@@ -313,6 +320,29 @@ class Event
         return $this->dateEnd;
     }
 
+    /**
+     * Set headlines
+     *
+     * @param \Boolean $dateEnd
+     *
+     * @return Event
+     */
+    public function setHeadlines($headlines)
+    {
+        $this->headlines = $headlines;
+
+        return $this;
+    }
+
+    /**
+     * Get headlines
+     *
+     * @return \Boolean
+     */
+    public function getHeadlines()
+    {
+        return $this->headlines;
+    }
 
 
 
