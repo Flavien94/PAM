@@ -2,20 +2,20 @@ event:
     path:     /
     defaults: { _controller: EventBundle:Event:index }
 event_create:
-    path:     /create
+    path:     admin/create
     defaults: { _controller: EventBundle:Event:create }
 event_new:
-    path:     /new
+    path:     admin/new
     defaults: { _controller: EventBundle:Event:new }
 event_show:
     path:     /{id}
     defaults: { _controller: EventBundle:Event:show }
 event_edit:
-    path:     /{id}/edit
+    path:     admin/{id}/edit
     defaults: { _controller: EventBundle:Event:edit }
 event_update:
     path:     /{id}
     defaults: { _controller: EventBundle:Event:update }
 event_delete:
-    path:     /{id}/delete
+    path:     admin/{id}/delete
     defaults: { _controller: EventBundle:Event:delete }
