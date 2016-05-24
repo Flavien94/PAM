@@ -13,7 +13,7 @@
         <div class="row img-une" style="background-image:url('{{ asset('images/img1.jpg') }}')"></div>
         <div class="row titre-une">
           <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5">
-            <h4>{{ events[0].title[:25]  }}</h4>
+            <h4>{{ events[0].title[:20]  }}</h4>
           </div>
           <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7">
             <h6>  {% if events[0].dateStart %}{{ events[0].dateStart|date('Y-m-d H:i:s') }}{% endif %} - {% if events[0].dateEnd %}{{ events[0].dateEnd|date('Y-m-d H:i:s') }}{% endif %}</h6>
