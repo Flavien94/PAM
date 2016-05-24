@@ -4,10 +4,24 @@ namespace Core\CoreBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
+
 class DefaultController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('CoreBundle:Default:index.html.twig');
+      $em = $this ->getDoctrine()
+                  ->getManager();
+
+      $events = $em ->createQueryBuilder()
+                    ->select('b')
+                    ->from('EventBundle:Event',  'b')
+                    ->addOrderBy('b.dateStart', 'ASC')
+                    ->getQuery()
+                    ->getResult();
+
+
+        return $this->render('CoreBundle:Default:index.html.twig', array(
+            'events' => $events,
+        ));
     }
 }

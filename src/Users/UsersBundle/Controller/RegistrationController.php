@@ -41,7 +41,6 @@ class RegistrationController extends Controller
 
         $user = $userManager->createUser();
         $user->setEnabled(true);
-
         $event = new GetResponseUserEvent($user, $request);
         $dispatcher->dispatch(FOSUserEvents::REGISTRATION_INITIALIZE, $event);
 
@@ -57,9 +56,8 @@ class RegistrationController extends Controller
         if ($form->isValid()) {
             $event = new FormEvent($form, $request);
             $dispatcher->dispatch(FOSUserEvents::REGISTRATION_SUCCESS, $event);
-
+            $user->addRole("ROLE_ADMIN");
             $userManager->updateUser($user);
-
             // if (null === $response = $event->getResponse()) {
             //     $url = $this->generateUrl('fos_user_registration_confirmed');
             //     // $response = new RedirectResponse($url);
