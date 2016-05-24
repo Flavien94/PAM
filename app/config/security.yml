@@ -28,8 +28,5 @@ security:
 
    access_control:
        - { path: ^/admin/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
-       - { path: ^/admin/register, role: ROLE_SUPER_ADMIN }
-       - { path: ^/admin/resetting, role: ROLE_SUPER_ADMIN }
-       - { path: ^/admin/admin/, role: ROLE_SUPER_ADMIN }
-       - { path: ^/event, role: IS_AUTHENTICATED_ANONYMOUSLY }
-       - { path: ^/event/*, role: ROLE_SUPER_ADMIN }
+       - { path: ^/admin/*, role: ROLE_SUPER_ADMIN }
+       - { path: ^/event/admin, role: ROLE_SUPER_ADMIN }
