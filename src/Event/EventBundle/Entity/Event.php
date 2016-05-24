@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Event
  *
- *  @ORM\Table(options={"engine"="MyISAM"}, indexes={@ORM\Index(columns={"title", "description", "contact_name"}, flags={"fulltext"})})
+ * @ORM\Table(options={"engine"="MyISAM"}, indexes={@ORM\Index(columns={"title", "description", "contact_name"}, flags={"fulltext"})})
  * @ORM\Entity
  */
 class Event
@@ -26,7 +26,7 @@ class Event
     */
     private $type;
     /**
-    * @ORM\OneToOne(targetEntity="Event\EventBundle\Entity\Images", cascade={"persist"})
+    * @ORM\OneToOne(targetEntity="Event\EventBundle\Entity\Images", cascade={"persist", "remove"})
     */
     private $images;
 

@@ -86,6 +86,19 @@ class Images
   /**
   *@ORM\PreRemove()
   */
+  public function preRemoveUpload()
+  {
+    $this->tempFilename = $this->getUploadRootDir().'/'.$this->id.'.'.$this->url;
+  }
+  /**
+  *@ORM\PostRemove()
+  */
+  public function removeUpload()
+ {
+   if (file_exists($this->tempFilename)) {
+     unlink($this->tempFilename);
+   }
+ }
   public function getUploadDir()
   {
     return 'uploads/img';
