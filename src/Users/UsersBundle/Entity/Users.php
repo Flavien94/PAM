@@ -18,11 +18,11 @@ class Users extends BaseUser
     */
    protected $id;
 
+
    public function setUsername($username){
        parent::setUsername($username);
-       $this->setEmail('admin@admin.fr');
+       $this->setEmail(null);
    }
-
 
    public function __construct()
    {
