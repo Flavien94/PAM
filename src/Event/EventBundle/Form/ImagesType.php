@@ -16,7 +16,8 @@ class ImagesType extends AbstractType
     {
         $builder
             ->add('file', 'file', array(
-              'label' => 'Importer une image de couverture'
+              'label' => 'Importer une image de couverture',
+              'required' => false
             ))
         ;
     }

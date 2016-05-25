@@ -7,12 +7,12 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
 
+
 /**
  * Event
  *
- * @ORM\Table(options={"engine"="MyISAM"}, indexes={@ORM\Index(columns={"title", "description", "contact_name"}, flags={"fulltext"})})
- * @ORM\Entity
- * @ORM\HasLifecycleCallbacks
+ * @ORM\Table(name="event",options={"engine"="MyISAM"}, indexes={@ORM\Index(columns={"title", "description", "contact_name"}, flags={"fulltext"})})
+ * @ORM\Entity()
  */
 class Event
 {
@@ -30,8 +30,8 @@ class Event
     private $type;
     /**
     * @ORM\OneToOne(targetEntity="Event\EventBundle\Entity\Images", cascade={"persist", "remove"})
+    * @ORM\JoinColumn(name="image_id", referencedColumnName="id", nullable=true)
     * @Assert\Valid()
-    * @Assert\Image(maxSize="1M")
     */
     private $images;
 
@@ -90,6 +90,12 @@ class Event
     /**
      * @var \DateTime
      *
+     * @ORM\Column(name="date_create", type="datetime")
+     */
+    private $dateCreate;
+    /**
+     * @var \DateTime
+     *
      * @ORM\Column(name="date_start", type="datetime")
      */
     private $dateStart;
@@ -112,10 +118,14 @@ class Event
     {
       $this->sector = new ArrayCollection();
       $this->publics = new ArrayCollection();
+      $this->type = new ArrayCollection();
+      $this->dateCreate = new \DateTime();
+
     }
 
     public function __toString(){
       return (string) $this->getPublics();
+
     }
 
     /**
@@ -319,6 +329,28 @@ class Event
     {
         return $this->dateEnd;
     }
+    /**
+     * Set dateCreate
+     *
+     * @param \DateTime $dateCreate
+     * @return Images
+     */
+    public function setDateCreate($dateCreate)
+    {
+        $this->dateCreate = $dateCreate;
+
+        return $this;
+    }
+
+    /**
+     * Get dateCreate
+     *
+     * @return \DateTime
+     */
+    public function getDateCreate()
+    {
+        return $this->dateCreate;
+    }
 
     /**
      * Set headlines
@@ -403,14 +435,24 @@ class Event
     {
         return $this->sector;
     }
-
-    public function setImages(Images $images = null)
+    /**
+     * set images
+     *
+     * @param \Event\EventBundle\Entity\Images $images
+     *
+     * @return Event
+     */
+    public function setImages(\Event\EventBundle\Entity\Images $images = null)
     {
       $this->images = $images;
 
       return $this;
     }
-
+    /**
+     * Get images
+     *
+     * @return \Event\EventBundle\Entity\Images
+     */
     public function getImages()
     {
       return $this->images;

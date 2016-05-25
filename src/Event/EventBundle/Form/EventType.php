@@ -15,10 +15,8 @@ class EventType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('author')
-            ->add('title')
-            ->add('description')
-            ->add('place')
+            ->add('contact_name', 'text')
+            ->add('contact_email', 'text')
             ->add('dateStart', 'datetime', array(
                   'date_widget' => "single_text",
                   'time_widget' => "single_text"
@@ -27,8 +25,6 @@ class EventType extends AbstractType
                   'date_widget' => "single_text",
                   'time_widget' => "single_text"
             ))
-            ->add('contact_name', 'text')
-            ->add('contact_email', 'text')
             ->add('publics', 'collection', array(
             'type'         => new PublicsType(),
             'allow_add'    => true,
@@ -51,17 +47,21 @@ class EventType extends AbstractType
                    'multiple' => false,
                    'empty_value' => 'Type d\'évenement'
                   ))
-              ->add('sector', 'collection', array(
-                    'sector'         => new SectorType(),
-                    'allow_add'    => true,
-                    'allow_delete' => true
-                    ))
-              ->add('sector', 'entity', array(
-                     'class'    => 'EventBundle:Sector',
-                     'property' => 'caption',
-                     'multiple' => false,
-                     'empty_value' => 'Type de Secteur'
-                    ))
+            ->add('sector', 'collection', array(
+                  'sector'         => new SectorType(),
+                  'allow_add'    => true,
+                  'allow_delete' => true
+                  ))
+            ->add('sector', 'entity', array(
+                   'class'    => 'EventBundle:Sector',
+                   'property' => 'caption',
+                   'multiple' => false,
+                   'empty_value' => 'Type de Secteur'
+                  ))
+              ->add('author')
+              ->add('title')
+              ->add('description')
+              ->add('place')
               ->add('images',new ImagesType())
               // ->add('save','submit')
               ;

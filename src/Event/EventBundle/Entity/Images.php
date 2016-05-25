@@ -3,108 +3,184 @@
 namespace Event\EventBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\Validator\Constraints as Assert;
+
 /**
-*Images
-*
-*@ORM\Table(options={"engine"="MyISAM"})
-*@ORM\Entity
-*/
+ * Images
+ *
+ * @ORM\Table("images")
+ * @ORM\Entity()
+ * @ORM\HasLifecycleCallbacks
+ */
 class Images
 {
-  /**
-  *@var integer
-  *
-  *@ORM\Column(name="id", type="integer")
-  *@ORM\Id
-  *@ORM\GeneratedValue(strategy="AUTO")
-  */
-  private $id;
-  /**
-  *@var string
-  *
-  *@ORM\Column(name="url", type="string", length=255)
-  */
-  private $url;
-  /**
-  *@var string
-  *
-  *@ORM\Column(name="alt", type="string", length=255)
-  */
-  private $alt;
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+    /**
+     * @var \DateTime
+     *
+     * @ORM\COlumn(name="updated_at",type="datetime", nullable=true)
+     */
+    private $updateAt;
 
-  private $file;
+    /**
+     * @ORM\PostLoad()
+     */
+    public function postLoad()
+    {
+        $this->updateAt = new \DateTime();
+    }
 
-  private $tempFileName;
+    /**
+     * @ORM\Column(type="string",length=255)
+     */
+    private $alt;
 
-  public function getFile()
-  {
-    return $this->file;
-  }
-  public function setFile(UploadedFile $file = null)
-  {
-    $this->file = $file;
-    if(null === $this->url){
-      $this->tempFileName = $this->url;
-      $this->url = null;
-      $this->alt = null;
+    /**
+     * @ORM\Column(type="string",length=255, nullable=true)
+     */
+    private $url;
+
+    public $file;
+
+    public function __construct()
+    {
+        $this->alt = 'image';
+        $this->url = '';
     }
-  }
-  /**
-  *@ORM\PrePersist()
-  *@ORM\PreUpdate()
-  */
-  public function preUpload()
-  {
-    if(null === $this->file){
-      return;
+
+
+    public function getUploadRootDir()
+    {
+        return __dir__.'/../../../../web/uploads';
     }
-    $this->url = $this->file->guessExtension();
-    $this->alt = $this->getClientOrigninalName();
-  }
-  /**
-  *@ORM\PrePersist()
-  *@ORM\PostUpdate()
-  */
-  public function upload()
-  {
-    if(null === $this->file){
-      return;
+
+    public function getAbsolutePath()
+    {
+        return null === $this->url ? null : $this->getUploadRootDir().'/'.$this->url;
     }
-    if(null !== $this->tempFileName){
-      $oldFile = $this->getUploadRootDir().'/'.$this->id.'.'.$this->tempFileName;
-      if(file_exists($oldFile)){
-        unlink($oldFile);
-      }
+
+    public function getAssetPath()
+    {
+        return 'uploads/'.$this->url;
     }
-    $name= $this->file->getClientOrigninalName();
-    $this->file->move(
-      $this->getUploadRootDir(),
-      $this->id.'.'.$this->url
-    );
-  }
-  /**
-  *@ORM\PreRemove()
-  */
-  public function preRemoveUpload()
-  {
-    $this->tempFilename = $this->getUploadRootDir().'/'.$this->id.'.'.$this->url;
-  }
-  /**
-  *@ORM\PostRemove()
-  */
-  public function removeUpload()
- {
-   if (file_exists($this->tempFilename)) {
-     unlink($this->tempFilename);
-   }
- }
-  public function getUploadDir()
-  {
-    return 'uploads/img';
-  }
-  protected function getUploadRootDir()
-  {
-    return __DIR__.'/../../../../web'.$this->getUploadDir();
-  }
+
+    /**
+     * @ORM\PrePersist()
+     * @ORM\PreUpdate()
+     */
+    public function preUpload()
+    {
+        $this->tempFile = $this->getAbsolutePath();
+        $this->oldFile = $this->getUrl();
+        $this->updateAt = new \DateTime();
+
+        if (null !== $this->file)
+            $this->url= sha1(uniqid(mt_rand(),true)).'.'.$this->file->guessExtension();
+    }
+
+    /**
+     * @ORM\PostPersist()
+     * @ORM\PostUpdate()
+     */
+    public function upload()
+    {
+        if (null !== $this->file) {
+            $this->file->move($this->getUploadRootDir(),$this->url);
+            unset($this->file);
+
+            if ($this->oldFile != null) unlink($this->tempFile);
+        }
+    }
+
+    /**
+     * @ORM\PreRemove()
+     */
+    public function preRemoveUpload()
+    {
+        $this->tempFile = $this->getAbsolutePath();
+    }
+
+    /**
+     * @ORM\PostRemove()
+     */
+    public function removeUpload()
+    {
+        if (file_exists($this->tempFile)) unlink($this->tempFile);
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    public function getUrl()
+    {
+        return $this->url;
+    }
+
+    public function getAlt()
+    {
+        return $this->alt;
+    }
+
+    /**
+     * Set updateAt
+     *
+     * @param \DateTime $updateAt
+     * @return Images
+     */
+    public function setUpdateAt($updateAt)
+    {
+        $this->updateAt = $updateAt;
+
+        return $this;
+    }
+
+    /**
+     * Get updateAt
+     *
+     * @return \DateTime
+     */
+    public function getUpdateAt()
+    {
+        return $this->updateAt;
+    }
+
+    /**
+     * Set alt
+     *
+     * @param string $alt
+     * @return Images
+     */
+    public function setAlt($alt)
+    {
+        $this->alt = $alt;
+
+        return $this;
+    }
+
+    /**
+     * Set url
+     *
+     * @param string $url
+     * @return Images
+     */
+    public function setUrl($url)
+    {
+        $this->url = $url;
+
+        return $this;
+    }
 }
