@@ -92,7 +92,7 @@
                 </div>
                 <div class="row text-deux">
                   <p>
-                    {{ event.description }}
+                    {{ event.description[:170] }}
                     {% if event.description > event.description[: 170] %}
                       ...
                     {% endif %}
