@@ -4,13 +4,13 @@ namespace Users\UsersBundle\Entity;
 
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
-
 /**
 * @ORM\Entity
 * @ORM\Table(name="users")
 */
 class Users extends BaseUser
 {
+
    /**
     * @ORM\Id
     * @ORM\Column(type="integer")
@@ -18,9 +18,15 @@ class Users extends BaseUser
     */
    protected $id;
 
+   public function setUsername($username){
+       parent::setUsername($username);
+       $this->setEmail('admin@admin.fr');
+   }
+
+
    public function __construct()
    {
        parent::__construct();
-       // your own logic
-   }
+
+  }
 }
