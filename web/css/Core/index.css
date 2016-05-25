@@ -15,35 +15,38 @@ h1 {
   margin-right: 40px;
 }
 h6 {
-  text-align: right;
-  margin-top: 5%;
   color: #000;
   font-weight: 500;
   font-size: 13px;
 }
+h6 .right{
+  margin-top: 5%;
+  text-align: right;
+}
 .img-une {
-  height: 80%;
+  height: 70%;
   background-size: cover;
   background-repeat: no-repeat;
 }
-.titre-une, .text-une {
-  height: 10%;
+.titre-une, .date-une, .text-une {
   background-color: #2AA7CB;
 }
-.titre-une h3 {
-  margin-top: 3%;
-  margin-bottom: 1%;
-  color: black;
+.titre-une{
+  height: 10%;
 }
-.titre-une h5 {
+.date-une{
+  height: 5%;
+}
+.text-une{
+  height: 20%;
+}
+.titre-une h4 {
+  margin-top: 3%;
   color: black;
-  margin-top: 7%;
 }
 .text-une p {
   color: white;
   text-align: justify;
-  padding-left: 1%;
-  padding-right: 1%;
 }
 .text-une a, .deux a {
   color: white;
