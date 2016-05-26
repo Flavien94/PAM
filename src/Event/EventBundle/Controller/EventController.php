@@ -29,10 +29,19 @@ class EventController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('EventBundle:Event')->findAll();
+        $entities = $em->createQueryBuilder()
+                      ->select('b')
+                      ->from('EventBundle:Event',  'b')
+                      ->where('b.dateEnd > :now')
+                      ->setParameter('now', new \DateTime('now'))
+                      ->addOrderBy('b.dateStart', 'ASC')
+                      ->getQuery()
+                      ->getResult();
+
 
         return array(
             'entities' => $entities,
+
         );
     }
     /**
