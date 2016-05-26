@@ -34,6 +34,12 @@ class Event
     * @Assert\Valid()
     */
     private $images;
+    /**
+    * @ORM\OneToMany(targetEntity="Event\EventBundle\Entity\FileEvent", mappedBy="event",cascade={"persist"})
+    * @ORM\JoinColumn(nullable=true)
+    * @Assert\Valid()
+    */
+    private $files;
 
     /**
      * @var integer
@@ -119,12 +125,14 @@ class Event
       $this->sector = new ArrayCollection();
       $this->publics = new ArrayCollection();
       $this->type = new ArrayCollection();
+      $this->files = new ArrayCollection();
       $this->dateCreate = new \DateTime();
 
     }
 
     public function __toString(){
       return (string) $this->getPublics();
+      return (string) $this->getFile();
 
     }
 
@@ -456,5 +464,107 @@ class Event
     public function getImages()
     {
       return $this->images;
+    }
+
+    /**
+     * add files
+     *
+     * @param \Event\EventBundle\Entity\FileEvent $files
+     *
+     * @return Event
+     */
+    public function addFile(\Event\EventBundle\Entity\FileEvent $file)
+    {
+      $this->files[] = $file;
+      $file->setEvent($this);
+      return $this;
+    }
+    public function removeFile(\Event\EventBundle\Entity\FileEvent $file)
+     {
+       $this->files->removeElement($file);
+       $file->setEvent(null);
+     }
+
+    /**
+     * Get files
+     *
+     * @return \Event\EventBundle\Entity\FileEvent
+     */
+    public function getFiles()
+    {
+      return $this->files;
+    }
+
+
+    /**
+     * Add sector
+     *
+     * @param \Event\EventBundle\Entity\Sector $sector
+     *
+     * @return Event
+     */
+    public function addSector(\Event\EventBundle\Entity\Sector $sector)
+    {
+        $this->sector[] = $sector;
+
+        return $this;
+    }
+
+    /**
+     * Remove sector
+     *
+     * @param \Event\EventBundle\Entity\Sector $sector
+     */
+    public function removeSector(\Event\EventBundle\Entity\Sector $sector)
+    {
+        $this->sector->removeElement($sector);
+    }
+
+    /**
+     * Add public
+     *
+     * @param \Event\EventBundle\Entity\Publics $public
+     *
+     * @return Event
+     */
+    public function addPublic(\Event\EventBundle\Entity\Publics $public)
+    {
+        $this->publics[] = $public;
+
+        return $this;
+    }
+
+    /**
+     * Remove public
+     *
+     * @param \Event\EventBundle\Entity\Publics $public
+     */
+    public function removePublic(\Event\EventBundle\Entity\Publics $public)
+    {
+        $this->publics->removeElement($public);
+    }
+
+    /**
+     * Add type
+     *
+     * @param \Event\EventBundle\Entity\Type $type
+     *
+     * @return Event
+     */
+    public function addType(\Event\EventBundle\Entity\Type $type)
+    {
+        $this->type[] = $type;
+
+        return $this;
+    }
+
+    /**
+     * Remove type
+     *
+     * @param \Event\EventBundle\Entity\Type $type
+     */
+    public function removeType(\Event\EventBundle\Entity\Type $type)
+    {
+        $this->type->removeElement($type);
     }
 }

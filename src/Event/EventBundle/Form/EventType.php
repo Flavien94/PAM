@@ -5,6 +5,7 @@ namespace Event\EventBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\HttpFoundation\File\File;
 
 class EventType extends AbstractType
 {
@@ -26,10 +27,10 @@ class EventType extends AbstractType
                   'time_widget' => "single_text"
             ))
             ->add('publics', 'collection', array(
-            'type'         => new PublicsType(),
-            'allow_add'    => true,
-            'allow_delete' => true
-            ))
+                  'type'         => new PublicsType(),
+                  'allow_add'    => true,
+                  'allow_delete' => true
+                  ))
             ->add('publics', 'entity', array(
                   'class'    => 'EventBundle:Publics',
                   'property' => 'title',
@@ -48,7 +49,7 @@ class EventType extends AbstractType
                    'empty_value' => 'Type d\'évenement'
                   ))
             ->add('sector', 'collection', array(
-                  'sector'         => new SectorType(),
+                  'type'         => new SectorType(),
                   'allow_add'    => true,
                   'allow_delete' => true
                   ))
@@ -66,6 +67,7 @@ class EventType extends AbstractType
               ->add('description')
               ->add('place')
               ->add('images',new ImagesType())
+              ->add('files', 'collection', array('type' => new FileEventType()));
               // ->add('save','submit')
               ;
 

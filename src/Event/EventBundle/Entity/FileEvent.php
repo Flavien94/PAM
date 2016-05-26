@@ -8,14 +8,19 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 
 /**
- * Images
+ * FileEvent
  *
- * @ORM\Table("images")
+ * @ORM\Table("file_event")
  * @ORM\Entity()
  * @ORM\HasLifecycleCallbacks
  */
-class Images
+class FileEvent
 {
+    /**
+    * @ORM\ManyToOne(targetEntity="Event\EventBundle\Entity\Event", inversedBy="files",cascade={"persist"})
+    * @ORM\JoinColumn(nullable=true)
+    */
+    private $event;
     /**
      * @var integer
      *
@@ -56,7 +61,7 @@ class Images
      *
      * @Assert\File(
      *     maxSize = "1M",
-     *     mimeTypes = {"image/jpeg", "image/gif", "image/png", "image/tiff"},
+     *     mimeTypes = {"application/pdf"},
      *     maxSizeMessage = "The maxmimum allowed file size is 1MB.",
      *     mimeTypesMessage = "Only the filetypes image are allowed."
      * )
@@ -65,14 +70,14 @@ class Images
 
     public function __construct()
     {
-        $this->alt = 'image';
+        $this->alt = 'document';
         $this->url = '';
     }
 
 
     public function getUploadRootDir()
     {
-        return __dir__.'/../../../../web/uploads/img';
+        return __dir__.'/../../../../web/uploads/files';
     }
 
     public function getAbsolutePath()
@@ -153,7 +158,7 @@ class Images
      * Set updateAt
      *
      * @param \DateTime $updateAt
-     * @return Images
+     * @return FileEvent
      */
     public function setUpdateAt($updateAt)
     {
@@ -176,7 +181,7 @@ class Images
      * Set alt
      *
      * @param string $alt
-     * @return Images
+     * @return FileEvent
      */
     public function setAlt($alt)
     {
@@ -189,12 +194,23 @@ class Images
      * Set url
      *
      * @param string $url
-     * @return Images
+     * @return FileEvent
      */
     public function setUrl($url)
     {
         $this->url = $url;
 
         return $this;
+    }
+    public function setEvent(Event $event)
+    {
+      $this->event = $event;
+
+      return $this;
+    }
+
+    public function getEvent()
+    {
+      return $this->event;
     }
 }

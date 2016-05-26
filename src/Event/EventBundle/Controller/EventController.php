@@ -9,6 +9,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Event\EventBundle\Entity\Event;
 use Event\EventBundle\Form\EventType;
+use Event\EventBundle\Entity\FileEvent;
+
 
 /**
  * Event controller.
@@ -54,6 +56,8 @@ class EventController extends Controller
     public function createAction(Request $request)
     {
         $event = new Event();
+        $file = new FileEvent();
+        $event->addFile($file);
         $form = $this->createCreateForm($event);
         $form->handleRequest($request);
 
@@ -99,6 +103,8 @@ class EventController extends Controller
     public function newAction()
     {
         $event = new Event();
+        $file = new FileEvent();
+        $event->addFile($file);
         $form   = $this->createCreateForm($event);
 
         return array(
