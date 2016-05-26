@@ -58,6 +58,9 @@ class EventType extends AbstractType
                    'multiple' => false,
                    'empty_value' => 'Type de Secteur'
                   ))
+              ->add('headlines','checkbox', array(
+                    'required' => false
+                  ))
               ->add('author')
               ->add('title')
               ->add('description')
