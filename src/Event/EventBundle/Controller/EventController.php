@@ -43,7 +43,6 @@ class EventController extends Controller
 
         return array(
             'entities' => $entities,
-
         );
     }
     /**
@@ -258,4 +257,21 @@ class EventController extends Controller
             ->getForm()
         ;
     }
-}
+
+        //     public function searchAction()
+        // {
+        //
+        //         $em = $this ->getDoctrine()
+        //                      ->getManager();
+        //
+        //           $entities=$em->createQueryBuilder()
+        //                       ->select("b")
+        //                       ->from('EventBundle:Event',  "b")
+        //               ->andWhere('MATCH (b.title, b.description, b.contact_name, :textFilter "IN NATURAL LANGUAGE MODE WITH QUERY EXPANSION") AGAINST (b.title, b.description, b.contact_name, :textFilter "IN NATURAL LANGUAGE MODE WITH QUERY EXPANSION") > 0.8')
+        //               ->setParameter("textFilter", 'value')
+        //           ;
+        //                   return $this->render('EventBundle:Event:search.html.twig', array(
+        //                       'entities' => $entities,
+        //                         ));
+        // }
+    }

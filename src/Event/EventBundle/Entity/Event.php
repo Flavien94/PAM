@@ -120,6 +120,8 @@ class Event
      */
     private $headlines;
 
+    private $SearchIndexEvents;
+
     public function __construct()
     {
       $this->sector = new ArrayCollection();

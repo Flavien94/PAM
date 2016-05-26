@@ -1,0 +1,3 @@
+<service id="my.doctrine.subscriber" class="Event\EventBundle\Listen\SearchIndexerSubscriber">
+        <tag name="doctrine.listen_subscriber" connection="default" />
+</service>

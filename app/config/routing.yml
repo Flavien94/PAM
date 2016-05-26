@@ -9,3 +9,6 @@ event:
 user_bundle:
    resource: "@UsersBundle/Resources/config/routing.yml"
    prefix:   /admin
+search:
+    path:     /search
+    defaults: { _controller: EventBundle:Search:search }
