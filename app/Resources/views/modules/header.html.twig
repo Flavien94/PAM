@@ -5,7 +5,7 @@
         <img alt="Logo Pôle Emploi" src="{{ asset('images/logo-pole-emploi_region.png') }}">
       </a>
     </div>
-    <form class="navbar-form navbar-right inline-form search-top" role="search">
+    <form action="{{ path('search') }}" method="post" class="navbar-form navbar-right inline-form search-top" role="search">
       <div class="form-group">
         <input type="search" class="input-sm form-control" placeholder="Recherche">
       </div>
@@ -64,7 +64,7 @@
     </div>
   </nav>
 
-  {% if app.request.get('_route') == 'event' %}
+  {% if app.request.get('_route') == 'event' or app.request.get('_route') == 'search' %}
   <nav class="navbar navbar-lower navbar-left navbar3" role="navigation">
     <form class="navbar-form inline-form" role="search">
       <div class="container-fluid container3">
