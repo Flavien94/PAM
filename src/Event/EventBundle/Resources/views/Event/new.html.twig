@@ -6,10 +6,10 @@
 {% block body -%}
 
   <div class="container-fluid event-container">
-    {{ form_start(form) }}
 
     <h1>Publier un événement</h1>
-    {{ form_start(form) }}
+    {{ form(form) }}
+    <!-- {{ form_start(form) }}
     {{ form_errors(form) }}
     <ul>
       <label for="contact" class="big-label">Contact de l'événement</label>
@@ -50,12 +50,12 @@
                           </li>
                           <br>
                           <li class="big-label">
-                            {{ form(form.images, { 'attr': {'class': 'big-label'} }) }}
+                            {#{ form(form.images, { 'attr': {'class': 'big-label'} }) }}#}
                             </li>
                              {{ form_rest(form) }}
                             {{ form_row(form.submit, { 'label': 'Publier' }) }}
                           </ul>
-                          {{ form_end(form) }}
+                          {{ form_end(form) }} -->
 
                           <ul class="record_actions">
                             <li>

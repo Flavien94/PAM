@@ -47,6 +47,18 @@ class Images
      */
     private $url;
 
+    /**
+     * Image file
+     *
+     * @var File
+     *
+     * @Assert\File(
+     *     maxSize = "1M",
+     *     mimeTypes = {"image/jpeg", "image/gif", "image/png", "image/tiff"},
+     *     maxSizeMessage = "The maxmimum allowed file size is 1MB.",
+     *     mimeTypesMessage = "Only the filetypes image are allowed."
+     * )
+     */
     public $file;
 
     public function __construct()
