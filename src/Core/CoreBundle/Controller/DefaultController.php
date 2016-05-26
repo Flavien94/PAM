@@ -21,8 +21,6 @@ class DefaultController extends Controller
                     ->getQuery()
                     ->getResult();
                     // classer d'abord headline et ensuite par date state
-                    
-
 
 
         return $this->render('CoreBundle:Default:index.html.twig', array(
