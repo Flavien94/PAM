@@ -6,29 +6,24 @@ use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity
- * @ORM\Table(name="users")
- *
- *
- * @ORM\AttributeOverrides({
- *      @ORM\AttributeOverride(name="email",
- *          column=@ORM\Column(
- *              type =  "string",
- *              name     = "email",
- *              nullable = true,
- *              unique   = true
- *          )
- *      ),
- *      @ORM\AttributeOverride(name="emailCanonical",
- *          column=@ORM\Column(
- *              type = "string",
- *              name     = "email_canonical",
- *              nullable = true,
- *              unique   = true
- *          )
- *      )
- * })
- *
+* @ORM\Entity
+* @ORM\Table(name="users")
+*
+* @ORM\Entity
+* @ORM\Table(name="users")
+* @ORM\AttributeOverrides({
+*     @ORM\AttributeOverride(name="email",
+*          column=@ORM\Column(
+*              nullable = true
+*          )
+*      ),
+*     @ORM\AttributeOverride(name="emailCanonical",
+*          column=@ORM\Column(
+*              name = "email_canonical",
+*              nullable = true
+*          )
+*      )
+* })
 */
 class Users extends BaseUser
 {
