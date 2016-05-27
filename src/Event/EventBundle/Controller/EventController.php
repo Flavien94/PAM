@@ -55,8 +55,6 @@ class EventController extends Controller
     public function createAction(Request $request)
     {
         $event = new Event();
-        $file = new FileEvent();
-        $event->addFile($file);
         $form = $this->createCreateForm($event);
         $form->handleRequest($request);
 
@@ -102,8 +100,6 @@ class EventController extends Controller
     public function newAction()
     {
         $event = new Event();
-        $file = new FileEvent();
-        $event->addFile($file);
         $form   = $this->createCreateForm($event);
 
         return array(

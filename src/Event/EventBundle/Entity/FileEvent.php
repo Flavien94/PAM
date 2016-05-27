@@ -8,19 +8,12 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 
 /**
- * FileEvent
- *
- * @ORM\Table("file_event")
- * @ORM\Entity()
+ * @ORM\Table(name="files")
+ * @ORM\Entity
  * @ORM\HasLifecycleCallbacks
  */
 class FileEvent
 {
-    /**
-    * @ORM\ManyToOne(targetEntity="Event\EventBundle\Entity\Event", inversedBy="files",cascade={"persist"})
-    * @ORM\JoinColumn(nullable=true)
-    */
-    private $event;
     /**
      * @var integer
      *
@@ -29,188 +22,175 @@ class FileEvent
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
+
     /**
-     * @var \DateTime
+     * @var string
      *
-     * @ORM\COlumn(name="updated_at",type="datetime", nullable=true)
+     * @ORM\Column(name="path", type="string", length=255)
      */
-    private $updateAt;
+    private $path;
 
     /**
-     * @ORM\PostLoad()
-     */
-    public function postLoad()
-    {
-        $this->updateAt = new \DateTime();
-    }
-
-    /**
-     * @ORM\Column(type="string",length=255)
-     */
-    private $alt;
-
-    /**
-     * @ORM\Column(type="string",length=255, nullable=true)
-     */
-    private $url;
-
-    /**
-     * Image file
+     * @var string
      *
-     * @var File
+     * @ORM\Column(name="name", type="string", length=255)
+     */
+    private $name;
+
+    /**
+     * @var integer
      *
-     * @Assert\File(
-     *     maxSize = "1M",
-     *     mimeTypes = {"application/pdf"},
-     *     maxSizeMessage = "The maxmimum allowed file size is 1MB.",
-     *     mimeTypesMessage = "Only the filetypes image are allowed."
-     * )
+     * @ORM\Column(name="size", type="integer")
      */
-    public $file;
-
-    public function __construct()
-    {
-        $this->alt = 'document';
-        $this->url = '';
-    }
-
-
-    public function getUploadRootDir()
-    {
-        return __dir__.'/../../../../web/uploads/files';
-    }
-
-    public function getAbsolutePath()
-    {
-        return null === $this->url ? null : $this->getUploadRootDir().'/'.$this->url;
-    }
-
-    public function getAssetPath()
-    {
-        return 'uploads/'.$this->url;
-    }
+    private $size;
 
     /**
-     * @ORM\PrePersist()
-     * @ORM\PreUpdate()
+     * @var UploadedFile
      */
-    public function preUpload()
-    {
-        $this->tempFile = $this->getAbsolutePath();
-        $this->oldFile = $this->getUrl();
-        $this->updateAt = new \DateTime();
-
-        if (null !== $this->file)
-            $this->url= sha1(uniqid(mt_rand(),true)).'.'.$this->file->guessExtension();
-    }
+    private $file;
 
     /**
-     * @ORM\PostPersist()
-     * @ORM\PostUpdate()
-     */
-    public function upload()
-    {
-        if (null !== $this->file) {
-            $this->file->move($this->getUploadRootDir(),$this->url);
-            unset($this->file);
-
-            if ($this->oldFile != null) unlink($this->tempFile);
-        }
-    }
+     * @ORM\ManyToOne(targetEntity="Event\EventBundle\Entity\Event", inversedBy="files")
+     * @ORM\JoinColumn(name="event_id")
+     **/
+    private $event;
 
     /**
-     * @ORM\PreRemove()
+     * @ORM\Column(type="array")
      */
-    public function preRemoveUpload()
-    {
-        $this->tempFile = $this->getAbsolutePath();
-    }
+    private $paths;
+
 
     /**
-     * @ORM\PostRemove()
-     */
-    public function removeUpload()
-    {
-        if (file_exists($this->tempFile)) unlink($this->tempFile);
-    }
+    * @param UploadedFile $uploadedFile
+    */
+     function __construct(UploadedFile $uploadedFile)
+     {
+         $path = sha1(uniqid(mt_rand(), true)).'.'.$uploadedFile->guessExtension();
+         $this->setPath($path);
+         $this->setSize($uploadedFile->getClientSize());
+         $this->setName($uploadedFile->getClientOriginalName());
+         $uploadedFile->move($this->getUploadRootDir(), $path);
+     }
 
-    /**
-     * Get id
-     *
-     * @return integer
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    public function getUrl()
-    {
-        return $this->url;
-    }
-
-    public function getAlt()
-    {
-        return $this->alt;
-    }
-
-    /**
-     * Set updateAt
-     *
-     * @param \DateTime $updateAt
-     * @return FileEvent
-     */
-    public function setUpdateAt($updateAt)
-    {
-        $this->updateAt = $updateAt;
-
-        return $this;
-    }
-
-    /**
-     * Get updateAt
-     *
-     * @return \DateTime
-     */
-    public function getUpdateAt()
-    {
-        return $this->updateAt;
-    }
-
-    /**
-     * Set alt
-     *
-     * @param string $alt
-     * @return FileEvent
-     */
-    public function setAlt($alt)
-    {
-        $this->alt = $alt;
-
-        return $this;
-    }
-
-    /**
-     * Set url
-     *
-     * @param string $url
-     * @return FileEvent
-     */
-    public function setUrl($url)
-    {
-        $this->url = $url;
-
-        return $this;
-    }
-    public function setEvent(Event $event)
-    {
-      $this->event = $event;
-
-      return $this;
-    }
-
-    public function getEvent()
-    {
-      return $this->event;
-    }
-}
+     /**
+      * Get id
+      *
+      * @return integer
+      */
+     public function getId()
+     {
+         return $this->id;
+     }
+     /**
+      * Set path
+      *
+      * @param string $path
+      * @return File
+      */
+     public function setPath($path)
+     {
+         $this->path = $path;
+         return $this;
+     }
+     /**
+      * Get path
+      *
+      * @return string
+      */
+     public function getPath()
+     {
+         return $this->path;
+     }
+     /**
+      * Set name
+      *
+      * @param string $name
+      * @return File
+      */
+     public function setName($name)
+     {
+         $this->name = $name;
+         return $this;
+     }
+     /**
+      * Get name
+      *
+      * @return string
+      */
+     public function getName()
+     {
+         return $this->name;
+     }
+     /**
+      * Set size
+      *
+      * @param integer $size
+      * @return File
+      */
+     public function setSize($size)
+     {
+         $this->size = $size;
+         return $this;
+     }
+     /**
+      * Get size
+      *
+      * @return integer
+      */
+     public function getSize()
+     {
+         return $this->size;
+     }
+     /**
+      * @return mixed
+      */
+     public function getFile()
+     {
+         return $this->file;
+     }
+     /**
+      * @param mixed $file
+      */
+     public function setFile($file)
+     {
+         $this->file = $file;
+     }
+     /**
+      * @return mixed
+      */
+     public function getEvent()
+     {
+         return $this->event;
+     }
+     /**
+      * @param mixed $document
+      */
+     public function setEvent($event)
+     {
+         $this->event = $event;
+     }
+     /**
+      * @return string
+      */
+     protected function getUploadRootDir()
+     {
+         return __DIR__.'/../../../web/'.$this->getUploadDir();
+     }
+     /**
+      * @return string
+      */
+     protected function getUploadDir()
+     {
+         return 'uploads/documents';
+     }
+     /**
+      * @ORM\PostRemove()
+      */
+     public function removeFile()
+     {
+         if ($file = $this->getUploadRootDir().'/'.$this->path) {
+             unlink($file);
+         }
+     }
+ }

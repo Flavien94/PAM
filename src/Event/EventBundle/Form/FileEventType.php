@@ -15,11 +15,11 @@ class FileEventType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('file','file',array(
-              'label' => 'Importer des fichiers annexes',
-              'multiple' => false,
-              'required' => false
-            ))
+        ->add('files', 'file', array(
+                 'multiple' => true,
+                 'data_class' => null,
+                 'required' => false,
+             ))
         ;
     }
 

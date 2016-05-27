@@ -5,6 +5,8 @@ namespace Event\EventBundle\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+
 
 
 
@@ -13,6 +15,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *
  * @ORM\Table(name="event",options={"engine"="MyISAM"}, indexes={@ORM\Index(columns={"title", "description", "contact_name"}, flags={"fulltext"})})
  * @ORM\Entity()
+ * @ORM\HasLifecycleCallbacks
  */
 class Event
 {
@@ -35,11 +38,17 @@ class Event
     */
     private $images;
     /**
-    * @ORM\OneToMany(targetEntity="Event\EventBundle\Entity\FileEvent", mappedBy="event",cascade={"persist"})
-    * @ORM\JoinColumn(nullable=true)
-    * @Assert\Valid()
-    */
+     * @var FileEvent
+     *
+     * @ORM\OneToMany(targetEntity="Event\EventBundle\Entity\FileEvent", mappedBy="event", cascade={"persist"})
+     *
+     */
     private $files;
+
+    /**
+     * @var ArrayCollection
+     */
+    private $uploadedFiles;
 
     /**
      * @var integer
@@ -128,6 +137,7 @@ class Event
       $this->publics = new ArrayCollection();
       $this->type = new ArrayCollection();
       $this->files = new ArrayCollection();
+      $this->uploadedFiles = new ArrayCollection();
       $this->dateCreate = new \DateTime();
 
     }
@@ -468,35 +478,41 @@ class Event
       return $this->images;
     }
 
-    /**
-     * add files
-     *
-     * @param \Event\EventBundle\Entity\FileEvent $files
-     *
-     * @return Event
-     */
-    public function addFile(\Event\EventBundle\Entity\FileEvent $file)
-    {
-      $this->files[] = $file;
-      $file->setEvent($this);
-      return $this;
+    public function getFiles() {
+        return $this->files;
     }
-    public function removeFile(\Event\EventBundle\Entity\FileEvent $file)
-     {
-       $this->files->removeElement($file);
-       $file->setEvent(null);
+    public function setFiles(array $files) {
+        $this->files = $files;
+    }
+    /**
+     * @return ArrayCollection
+     */
+    public function getUploadedFiles()
+    {
+        return $this->uploadedFiles;
+    }
+    /**
+     * @param ArrayCollection $uploadedFiles
+     */
+    public function setUploadedFiles($uploadedFiles)
+    {
+        $this->uploadedFiles = $uploadedFiles;
+    }
+    /**
+     * @ORM\PreFlush()
+     */
+    public function upload()
+    {
+        foreach($this->uploadedFiles as $uploadedFile)
+        {
+            if ($uploadedFile) {
+                $file = new FileEvent($uploadedFile);
+                $this->getFiles()->add($file);
+                $file->setEvent($this);
+                unset($uploadedFile);
+            }
+        }
      }
-
-    /**
-     * Get files
-     *
-     * @return \Event\EventBundle\Entity\FileEvent
-     */
-    public function getFiles()
-    {
-      return $this->files;
-    }
-
 
     /**
      * Add sector

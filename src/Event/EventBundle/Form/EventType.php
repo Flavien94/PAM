@@ -67,7 +67,11 @@ class EventType extends AbstractType
               ->add('description')
               ->add('place')
               ->add('images',new ImagesType())
-              ->add('files', 'collection', array('type' => new FileEventType()));
+              ->add('uploadedFiles', 'file', array(
+                    'multiple' => true,
+                    'data_class' => null,
+                    'required' => false,
+                ))
               // ->add('save','submit')
               ;
 
