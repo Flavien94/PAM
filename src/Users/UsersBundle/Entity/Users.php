@@ -4,7 +4,11 @@ namespace Users\UsersBundle\Entity;
 
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
+
 /**
+* @ORM\Entity
+* @ORM\Table(name="users")
+*
 * @ORM\Entity
 * @ORM\Table(name="users")
 * @ORM\AttributeOverrides({
@@ -35,7 +39,6 @@ class Users extends BaseUser
        parent::setUsername($username);
        $this->setEmail(null);
    }
-
    public function __construct()
    {
        parent::__construct();
