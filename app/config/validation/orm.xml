@@ -15,7 +15,7 @@
             </option>
         </constraint>
 
-        <constraint name="Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity">
+        <!-- <constraint name="Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity">
             <option name="fields">emailCanonical</option>
             <option name="errorPath">email</option>
             <option name="message">fos_user.email.already_used</option>
@@ -23,7 +23,7 @@
                 <value>Registration</value>
                 <value>Profile</value>
             </option>
-        </constraint>
+        </constraint> -->
     </class>
 
 </constraint-mapping>
