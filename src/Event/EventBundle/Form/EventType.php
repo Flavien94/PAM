@@ -33,9 +33,9 @@ class EventType extends AbstractType
                   ))
             ->add('publics', 'entity', array(
                   'class'    => 'EventBundle:Publics',
-                  'property' => 'title',
+                  'choice_label' => 'title',
                   'multiple' => false,
-                  'empty_value' => 'Public'
+                  'placeholder' => 'Public'
                   ))
             ->add('type', 'collection', array(
                   'type'         => new TypeType(),
@@ -44,9 +44,9 @@ class EventType extends AbstractType
                   ))
             ->add('type', 'entity', array(
                    'class'    => 'EventBundle:Type',
-                   'property' => 'title',
+                   'choice_label' => 'title',
                    'multiple' => false,
-                   'empty_value' => 'Type d\'évenement'
+                   'placeholder' => 'Type d\'évenement'
                   ))
             ->add('sector', 'collection', array(
                   'type'         => new SectorType(),
@@ -55,9 +55,9 @@ class EventType extends AbstractType
                   ))
             ->add('sector', 'entity', array(
                    'class'    => 'EventBundle:Sector',
-                   'property' => 'caption',
+                   'choice_label' => 'caption',
                    'multiple' => false,
-                   'empty_value' => 'Type de Secteur'
+                   'placeholder' => 'Type de Secteur'
                   ))
               ->add('headlines','checkbox', array(
                     'required' => false
