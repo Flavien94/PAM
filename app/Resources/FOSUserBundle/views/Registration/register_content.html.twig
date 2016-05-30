@@ -1,5 +1,9 @@
 {% trans_default_domain 'FOSUserBundle' %}
-
+<style media="screen">
+  .fos_user_registration_register{
+    margin-top: 10%;
+  }
+</style>
 {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
     {{ form_widget(form) }}
     <div>
