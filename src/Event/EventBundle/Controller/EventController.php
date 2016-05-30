@@ -31,6 +31,11 @@ class EventController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
+        $q = $em->createQueryBuilder()
+                      ->select('b')
+                      ->from('EventBundle:Event',  'b');
+
+
         $entities = $em->createQueryBuilder()
                       ->select('b')
                       ->from('EventBundle:Event',  'b')
@@ -39,7 +44,6 @@ class EventController extends Controller
                       ->addOrderBy('b.dateStart', 'ASC')
                       ->getQuery()
                       ->getResult();
-
 
         return array(
             'entities' => $entities,
