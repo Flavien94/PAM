@@ -3,23 +3,38 @@
 namespace Event\EventBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Event\EventBundle\Entity\Event;
+use Event\EventBundle\Form\EventType;
+
 
 class SearchController extends Controller
 {
-    public function searchAction()
+  /**
+   * Lists all search entities.
+   *
+   * @Route("/search", name="search")
+   * @Method("GET")
+   * @Template()
+   */
+    public function searchAction(Request $request)
     {
+      $search = $request->query->get('query');
+         $em = $this->getDoctrine()->getManager();
 
-            $qb = $this ->getDoctrine()
-                         ->getManager();
+         $sql = 'SELECT id, date_start, date_end, title, description FROM event WHERE MATCH (title, description, contact_name) AGAINST ("'.$search.'" IN BOOLEAN MODE)';
 
-            $events = $qb ->createQueryBuilder()
-                            ->select("b")
-                            ->from('EventBundle:Event',  "b")
-                            ->andWhere('MATCH (b.title, b.description, b.contact_name, :textFilter "IN NATURAL LANGUAGE MODE WITH QUERY EXPANSION") AGAINST (b.titre, b.description, b.contact_name, :textFilter "IN NATURAL LANGUAGE MODE WITH QUERY EXPANSION") > 0.8')
-                            ->setParameter("textFilter", 'value')
-              ;
-                      return $this->render('EventBundle:Event:search.html.twig', array(
-                          'events' => $events,
-                            ));
+         $query = $em->getConnection()->prepare($sql);
+         $query->execute();
+
+         $events = $query->fetchAll();
+
+         //$posts = $query->getResult();
+
+
+         return $this->render('EventBundle:Event:search.html.twig', [ "events" => $events]);
     }
 }

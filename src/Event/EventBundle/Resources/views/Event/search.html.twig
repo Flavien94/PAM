@@ -21,23 +21,23 @@
         </thead>
         <div class="row">
           <tbody>
-            {% for entity in events %}
+            {% for event in events %}
               <td style="background-image:url('{{ asset('images/img1.jpg') }}')"></td>
               <td>
-                <h4>{{ entity.title }}</h4>
-                {{ entity.description[:290] }}
-                {% if entity.description > entity.description[: 290] %}
+                <h4>{{ event.title }}</h4>
+                {{ event.description[:290] }}
+                {% if event.description > event.description[: 290] %}
                   ...
                 {% endif %}
-                <a href="{{ path('event_show', { 'id': entity.id }) }}">En savoir plus</a>
+                <a href="{{ path('event_show', { 'id': event.id }) }}">En savoir plus</a>
                 <br>
-                <a href="{{ path('event_edit', { 'id': entity.id }) }}">Éditer</a>
+                <a href="{{ path('event_edit', { 'id': event.id }) }}">Éditer</a>
               </td>
               <td>
-                {% if entity.dateStart %}{{ entity.dateStart|date('Y-m-d H:i:s') }}{% endif %}
+                {% if event.date_start %}{{ event.date_start|date('Y-m-d H:i:s') }}{% endif %}
               </td>
               <td>
-                {% if entity.dateEnd %}{{ entity.dateEnd|date('Y-m-d H:i:s') }}{% endif %}
+                {% if event.date_end %}{{ event.date_end|date('Y-m-d H:i:s') }}{% endif %}
               </td>
             </tr>
           {% endfor %}

@@ -5,9 +5,9 @@
         <img alt="Logo Pôle Emploi" src="{{ asset('images/logo-pole-emploi_region.png') }}">
       </a>
     </div>
-    <form action="{{ path('search') }}" method="post" class="navbar-form navbar-right inline-form search-top" role="search">
+    <form action="{{ path('search') }}" method="GET" class="navbar-form navbar-right inline-form search-top" role="search">
       <div class="form-group">
-        <input type="search" class="input-sm form-control" placeholder="Recherche">
+        <input type="search" class="input-sm form-control" name="query" placeholder="Recherche">
       </div>
       <button type="submit" class="btn btn-primary btn-sm search-btn">
         <span class="glyphicon glyphicon-eye-open"></span>
@@ -70,7 +70,7 @@
       <div class="container-fluid container3">
         <div class="collapse navbar-collapse" id="bs-navbar-collapse-2">
           <div class="center">
-            <input type="search" class="input-sm form-control" placeholder="Recherche">
+            <input type="search" name="query" class="input-sm form-control" placeholder="Recherche">
           </div>
           <ul class="nav navbar-nav">
             <li>
