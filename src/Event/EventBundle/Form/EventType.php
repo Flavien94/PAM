@@ -72,7 +72,6 @@ class EventType extends AbstractType
                     'data_class' => null,
                     'required' => false,
                 ))
-              // ->add('save','submit')
               ;
 
     }
