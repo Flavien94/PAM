@@ -9,6 +9,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Event\EventBundle\Entity\Event;
 use Event\EventBundle\Form\EventType;
+use Event\EventBundle\Entity\FileEvent;
+
 
 /**
  * Event controller.

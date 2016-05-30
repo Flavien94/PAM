@@ -29,7 +29,11 @@
         </ul>
         <ul class="nav navbar-nav navbar-right connect-btn">
           <li class="dropdown">
+            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ app.user.username }}
+            {% else %}
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Connexion
+            {% endif %}
               <span class="caret"></span>
             </a>
               <ul class="dropdown-menu">

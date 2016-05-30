@@ -4,6 +4,8 @@ namespace Event\EventBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+
 
 /**
  * Images
@@ -70,7 +72,7 @@ class Images
 
     public function getUploadRootDir()
     {
-        return __dir__.'/../../../../web/uploads';
+        return __dir__.'/../../../../web/uploads/img';
     }
 
     public function getAbsolutePath()

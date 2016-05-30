@@ -32,6 +32,7 @@
 }
 .navbar-default .navbar-nav>li>a, .dropdown-menu>li>a {
   color: #fff;
+  text-transform: capitalize;
 }
 .navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-nav>li>a:focus, .navbar-default .navbar-nav>li>a:active,.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:focus, .navbar-default .navbar-nav>.open>a:hover, .dropdown-menu>li>a:hover {
   text-decoration: none;

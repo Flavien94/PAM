@@ -5,6 +5,7 @@ namespace Event\EventBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\HttpFoundation\File\File;
 
 class EventType extends AbstractType
 {
@@ -26,15 +27,15 @@ class EventType extends AbstractType
                   'time_widget' => "single_text"
             ))
             ->add('publics', 'collection', array(
-            'type'         => new PublicsType(),
-            'allow_add'    => true,
-            'allow_delete' => true
-            ))
+                  'type'         => new PublicsType(),
+                  'allow_add'    => true,
+                  'allow_delete' => true
+                  ))
             ->add('publics', 'entity', array(
                   'class'    => 'EventBundle:Publics',
-                  'property' => 'title',
+                  'choice_label' => 'title',
                   'multiple' => false,
-                  'empty_value' => 'Public'
+                  'placeholder' => 'Public'
                   ))
             ->add('type', 'collection', array(
                   'type'         => new TypeType(),
@@ -43,20 +44,20 @@ class EventType extends AbstractType
                   ))
             ->add('type', 'entity', array(
                    'class'    => 'EventBundle:Type',
-                   'property' => 'title',
+                   'choice_label' => 'title',
                    'multiple' => false,
-                   'empty_value' => 'Type d\'évenement'
+                   'placeholder' => 'Type d\'évenement'
                   ))
             ->add('sector', 'collection', array(
-                  'sector'         => new SectorType(),
+                  'type'         => new SectorType(),
                   'allow_add'    => true,
                   'allow_delete' => true
                   ))
             ->add('sector', 'entity', array(
                    'class'    => 'EventBundle:Sector',
-                   'property' => 'caption',
+                   'choice_label' => 'caption',
                    'multiple' => false,
-                   'empty_value' => 'Type de Secteur'
+                   'placeholder' => 'Type de Secteur'
                   ))
               ->add('headlines','checkbox', array(
                     'required' => false
@@ -66,6 +67,11 @@ class EventType extends AbstractType
               ->add('description')
               ->add('place')
               ->add('images',new ImagesType())
+              ->add('uploadedFiles', 'file', array(
+                    'multiple' => true,
+                    'data_class' => null,
+                    'required' => false,
+                ))
               // ->add('save','submit')
               ;
 

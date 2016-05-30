@@ -5,6 +5,8 @@ namespace Event\EventBundle\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+
 
 
 
@@ -13,6 +15,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *
  * @ORM\Table(name="event",options={"engine"="MyISAM"}, indexes={@ORM\Index(columns={"title", "description", "contact_name"}, flags={"fulltext"})})
  * @ORM\Entity()
+ * @ORM\HasLifecycleCallbacks
  */
 class Event
 {
@@ -34,6 +37,18 @@ class Event
     * @Assert\Valid()
     */
     private $images;
+    /**
+     * @var FileEvent
+     *
+     * @ORM\OneToMany(targetEntity="Event\EventBundle\Entity\FileEvent", mappedBy="event", cascade={"persist"})
+     *
+     */
+    private $files;
+
+    /**
+     * @var ArrayCollection
+     */
+    private $uploadedFiles;
 
     /**
      * @var integer
@@ -121,12 +136,15 @@ class Event
       $this->sector = new ArrayCollection();
       $this->publics = new ArrayCollection();
       $this->type = new ArrayCollection();
+      $this->files = new ArrayCollection();
+      $this->uploadedFiles = new ArrayCollection();
       $this->dateCreate = new \DateTime();
 
     }
 
     public function __toString(){
       return (string) $this->getPublics();
+      return (string) $this->getFile();
 
     }
 
@@ -458,5 +476,113 @@ class Event
     public function getImages()
     {
       return $this->images;
+    }
+
+    public function getFiles() {
+        return $this->files;
+    }
+    public function setFiles(array $files) {
+        $this->files = $files;
+    }
+    /**
+     * @return ArrayCollection
+     */
+    public function getUploadedFiles()
+    {
+        return $this->uploadedFiles;
+    }
+    /**
+     * @param ArrayCollection $uploadedFiles
+     */
+    public function setUploadedFiles($uploadedFiles)
+    {
+        $this->uploadedFiles = $uploadedFiles;
+    }
+    /**
+     * @ORM\PreFlush()
+     */
+    public function upload()
+    {
+        foreach($this->uploadedFiles as $uploadedFile)
+        {
+            if ($uploadedFile) {
+                $file = new FileEvent($uploadedFile);
+                $this->getFiles()->add($file);
+                $file->setEvent($this);
+                unset($uploadedFile);
+            }
+        }
+     }
+
+    /**
+     * Add sector
+     *
+     * @param \Event\EventBundle\Entity\Sector $sector
+     *
+     * @return Event
+     */
+    public function addSector(\Event\EventBundle\Entity\Sector $sector)
+    {
+        $this->sector[] = $sector;
+
+        return $this;
+    }
+
+    /**
+     * Remove sector
+     *
+     * @param \Event\EventBundle\Entity\Sector $sector
+     */
+    public function removeSector(\Event\EventBundle\Entity\Sector $sector)
+    {
+        $this->sector->removeElement($sector);
+    }
+
+    /**
+     * Add public
+     *
+     * @param \Event\EventBundle\Entity\Publics $public
+     *
+     * @return Event
+     */
+    public function addPublic(\Event\EventBundle\Entity\Publics $public)
+    {
+        $this->publics[] = $public;
+
+        return $this;
+    }
+
+    /**
+     * Remove public
+     *
+     * @param \Event\EventBundle\Entity\Publics $public
+     */
+    public function removePublic(\Event\EventBundle\Entity\Publics $public)
+    {
+        $this->publics->removeElement($public);
+    }
+
+    /**
+     * Add type
+     *
+     * @param \Event\EventBundle\Entity\Type $type
+     *
+     * @return Event
+     */
+    public function addType(\Event\EventBundle\Entity\Type $type)
+    {
+        $this->type[] = $type;
+
+        return $this;
+    }
+
+    /**
+     * Remove type
+     *
+     * @param \Event\EventBundle\Entity\Type $type
+     */
+    public function removeType(\Event\EventBundle\Entity\Type $type)
+    {
+        $this->type->removeElement($type);
     }
 }
