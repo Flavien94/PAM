@@ -31,7 +31,11 @@
                 {% endif %}
                 <a href="{{ path('event_show', { 'id': entity.id }) }}">En savoir plus</a>
                 <br>
+                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                {% if entity.author == app.user.username %}
                 <a href="{{ path('event_edit', { 'id': entity.id }) }}">Éditer</a>
+                {% endif %}
+                {% endif %}
               </td>
               <td>
                 {% if entity.dateStart %}{{ entity.dateStart|date('Y-m-d H:i:s') }}{% endif %}
