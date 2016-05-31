@@ -9,6 +9,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Event\EventBundle\Entity\Event;
 use Event\EventBundle\Form\EventType;
+use Event\EventBundle\Entity\Search;
+use Event\EventBundle\Form\SearchType;
 use Event\EventBundle\Entity\FileEvent;
 use Event\EventBundle\Entity\Links;
 
@@ -28,8 +30,9 @@ class EventController extends Controller
      * @Method("GET")
      * @Template()
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
+
         $em = $this->getDoctrine()->getManager();
 
         $q = $em->createQueryBuilder()
@@ -46,8 +49,23 @@ class EventController extends Controller
                       ->getQuery()
                       ->getResult();
 
+                      $search = new Search();
+                      $formSearch = $this->createSearchForm($search);
+                      $formSearch->handleRequest($request);
+
+                      if ($formSearch->isValid()) {
+                          $em = $this->getDoctrine()->getManager();
+                          $em->persist($search);
+                          $em->flush();
+
+                      }
+
+
+
         return array(
             'entities' => $entities,
+            'form'   => $formSearch->createView(),
+
         );
     }
     /**
@@ -96,7 +114,24 @@ class EventController extends Controller
 
         return $form;
     }
+    /**
+     * Creates a form to create a Search entity.
+     *
+     * @param Event $entity The entity
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
+    private function createSearchForm(Search $search)
+    {
+        $formSearch = $this->createForm(new SearchType(), $search, array(
+            'action' => $this->generateUrl('event_create'),
+            'method' => 'GET',
+        ));
 
+        $formSearch->add('submit', 'submit', array('label' => 'Chercher'));
+
+        return $formSearch;
+    }
     /**
      * Displays a form to create a new Event entity.
      *

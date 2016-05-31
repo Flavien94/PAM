@@ -12,3 +12,6 @@ user_bundle:
 search:
     path:     /search
     defaults: { _controller: EventBundle:Search:search }
+event_search:
+    path:    /
+    defaults: { _controller: EventBundle:Event:eventSearch }

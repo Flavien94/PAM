@@ -9,6 +9,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Event\EventBundle\Entity\Event;
 use Event\EventBundle\Form\EventType;
+use Event\EventBundle\Entity\Search;
+use Event\EventBundle\Form\SearchType;
 
 
 class SearchController extends Controller
@@ -16,7 +18,7 @@ class SearchController extends Controller
   /**
    * Lists all search entities.
    *
-   * @Route("/search", name="search")
+   * @Route("/", name="search")
    * @Method("GET")
    * @Template()
    */
@@ -40,34 +42,39 @@ class SearchController extends Controller
          $events = $query->fetchAll();
 
          //$posts = $query->getResult();
+         $search = new Search();
+         $formSearch = $this->createSearchForm($search);
+         $formSearch->handleRequest($request);
 
+         if ($formSearch->isValid()) {
+             $em = $this->getDoctrine()->getManager();
+             $em->persist($search);
+             $em->flush();
 
-         return $this->render('EventBundle:Event:search.html.twig', [ "events" => $events]);
+         }
+
+         return $this->render('EventBundle:Event:search.html.twig', [ "events" => $events,
+         'form'   => $formSearch->createView()
+       ]);
     }
-}
 
-/**
- * Creates a new Event entity.
- *
- * @Route("/", name="event_search")
- * @Method("GET")
- * @Template("app:Resources:views:modules:header.html.twig")
- */
-public function eventSearchAction(Request $request)
-{
-    $event = new Event();
-    $form = $this->createCreateForm($event);
-    $form->handleRequest($request);
+    /**
+     * Creates a form to create a Search entity.
+     *
+     * @param Event $entity The entity
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
+    private function createSearchForm(Search $search)
+    {
+        $formSearch = $this->createForm(new SearchType(), $search, array(
+            'action' => $this->generateUrl('event_create'),
+            'method' => 'GET',
+        ));
 
-    if ($form->isValid()) {
-        $em = $this->getDoctrine()->getManager();
-        $em->persist($event);
-        $em->flush();
+        $formSearch->add('submit', 'submit', array('label' => 'Chercher'));
 
-        return $this->redirect($this->generateUrl('event_show', array('id' => $event->getId())));
+        return $formSearch;
     }
-    return array(
-        'entity' => $event,
-        'form'   => $form->createView(),
-    );
-}
+
+  }

@@ -55,10 +55,10 @@
 label {
   margin:2%;
 }
-.research-btn {
+#event_eventbundle_search_submit {
   background-color: #1B2B66;
   border: none;
 }
-.research-btn:hover {
+#event_eventbundle_search_submit:hover {
   background-color: #63B688;
 }
