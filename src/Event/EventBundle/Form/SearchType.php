@@ -17,44 +17,52 @@ class SearchType extends AbstractType
         $builder
         ->add('dateStart', 'datetime', array(
               'date_widget' => "single_text",
-              'time_widget' => "single_text"
+              'time_widget' => "single_text",
+              'required' => false
         ))
         ->add('dateEnd', 'datetime', array(
               'date_widget' => "single_text",
-              'time_widget' => "single_text"
+              'time_widget' => "single_text",
+              'required' => false
         ))
         ->add('publics', 'collection', array(
               'type'         => new PublicsType(),
               'allow_add'    => true,
-              'allow_delete' => true
+              'allow_delete' => true,
+              'required' => false
               ))
         ->add('publics', 'entity', array(
               'class'    => 'EventBundle:Publics',
               'choice_label' => 'title',
               'multiple' => false,
-              'placeholder' => 'Public'
+              'placeholder' => 'Public',
+              'required' => false
               ))
         ->add('type', 'collection', array(
               'type'         => new TypeType(),
               'allow_add'    => true,
-              'allow_delete' => true
+              'allow_delete' => true,
+              'required' => false
               ))
         ->add('type', 'entity', array(
                'class'    => 'EventBundle:Type',
                'choice_label' => 'title',
                'multiple' => false,
-               'placeholder' => 'Type d\'évenement'
+               'placeholder' => 'Type d\'évenement',
+               'required' => false
               ))
         ->add('sector', 'collection', array(
               'type'         => new SectorType(),
               'allow_add'    => true,
-              'allow_delete' => true
+              'allow_delete' => true,
+              'required' => false
               ))
         ->add('sector', 'entity', array(
                'class'    => 'EventBundle:Sector',
                'choice_label' => 'title',
                'multiple' => false,
-               'placeholder' => 'Type de Secteur'
+               'placeholder' => 'Type de Secteur',
+               'required' => false
               ))
         ;
     }

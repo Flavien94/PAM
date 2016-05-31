@@ -27,8 +27,8 @@ class SearchController extends Controller
       $search = $request->query->get('query');
          $em = $this->getDoctrine()->getManager();
 
-         $sql = 'SELECT id, date_start, date_end, title, description FROM event WHERE MATCH (title, description, contact_name) AGAINST ("'.$search.'" IN NATURAL LANGUAGE MODE)';
-         //
+         $sql = 'SELECT id, date_start, date_end, title, description FROM event WHERE MATCH (title, description, contact_name) AGAINST ("'.$search.'* " IN BOOLEAN MODE)';
+
         //  if() {
         //    $sql = $sql . ' AND ';
          //

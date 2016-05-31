@@ -26,27 +26,27 @@ class Search
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="date_start", type="datetime")
+     * @ORM\Column(name="date_start", type="datetime", nullable=true)
      */
     private $dateStart;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="date_end", type="datetime")
+     * @ORM\Column(name="date_end", type="datetime", nullable=true)
      */
     private $dateEnd;
 
     /**
-    * @ORM\ManyToMany(targetEntity="Event\EventBundle\Entity\Sector", cascade={"persist"})
+    * @ORM\Column(nullable=true)
     */
     private $sector;
     /**
-    * @ORM\ManyToMany(targetEntity="Event\EventBundle\Entity\Publics", cascade={"persist"})
+    * @ORM\Column(nullable=true)
     */
     private $publics;
     /**
-    * @ORM\ManyToMany(targetEntity="Event\EventBundle\Entity\Type", cascade={"persist"})
+    * @ORM\Column(nullable=true)
     */
     private $type;
 
