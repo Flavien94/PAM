@@ -20,32 +20,54 @@ class SearchController extends Controller
    * @Method("GET")
    * @Template()
    */
-    // public function searchActionOld(Request $request)
-    // {
-    //   $search = $request->query->get('query');
-    //      $em = $this->getDoctrine()->getManager();
-    //
-    //      $sql = 'SELECT id, date_start, date_end, title, description FROM event WHERE MATCH (title, description, contact_name) AGAINST ("'.$search.'" IN NATURAL LANGUAGE MODE)';
-    //
-    //      $query = $em->getConnection()->prepare($sql);
-    //      $query->execute();
-    //
-    //      $events = $query->fetchAll();
-    //
-    //      //$posts = $query->getResult();
-    //
-    //
-    //      return $this->render('EventBundle:Event:search.html.twig', [ "events" => $events]);
-    // }
+    public function searchAction(Request $request)
+    {
+      $search = $request->query->get('query');
+         $em = $this->getDoctrine()->getManager();
 
-    public function searchAction($query) {
-    return $this->createQueryBuilder('p')
-        ->addSelect("MATCH_AGAINST (p.id, p.date_start, p.date_end, p.title, p.description, :query 'IN NATURAL MODE') as score")
-        ->add('where', 'MATCH_AGAINST(p.title, p.description, p.contact_name, :query) > 0.8')
-        ->setParameter('query', $query)
-        ->orderBy('score', 'desc')
-        ->setMaxResults(5)
-        ->getQuery()
-        ->getResult();
+         $sql = 'SELECT id, date_start, date_end, title, description FROM event WHERE MATCH (title, description, contact_name) AGAINST ("'.$search.'" IN NATURAL LANGUAGE MODE)';
+         //
+        //  if() {
+        //    $sql = $sql . ' AND ';
+         //
+        //  }
+         //
+        //  $sql = $sql . ';';
+
+         $query = $em->getConnection()->prepare($sql);
+         $query->execute();
+
+         $events = $query->fetchAll();
+
+         //$posts = $query->getResult();
+
+
+         return $this->render('EventBundle:Event:search.html.twig', [ "events" => $events]);
+    }
 }
+
+/**
+ * Creates a new Event entity.
+ *
+ * @Route("/", name="event_search")
+ * @Method("GET")
+ * @Template("app:Resources:views:modules:header.html.twig")
+ */
+public function eventSearchAction(Request $request)
+{
+    $event = new Event();
+    $form = $this->createCreateForm($event);
+    $form->handleRequest($request);
+
+    if ($form->isValid()) {
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($event);
+        $em->flush();
+
+        return $this->redirect($this->generateUrl('event_show', array('id' => $event->getId())));
+    }
+    return array(
+        'entity' => $event,
+        'form'   => $form->createView(),
+    );
 }

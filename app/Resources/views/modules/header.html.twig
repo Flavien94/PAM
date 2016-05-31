@@ -71,6 +71,8 @@
   {% if app.request.get('_route') == 'event' or app.request.get('_route') == 'search' %}
   <nav class="navbar navbar-lower navbar-left navbar3" role="navigation">
     <form class="navbar-form inline-form" role="search">
+      {{ form_start(form) }}
+      {{ form_errors(form) }}
       <div class="container-fluid container3">
         <div class="collapse navbar-collapse" id="bs-navbar-collapse-2">
           <div class="center">
@@ -78,57 +80,35 @@
           </div>
           <ul class="nav navbar-nav">
             <li>
-              <label for="beginning">Date de début</label>
-              <input type="date" name="beginning">
+              <label for="dateStart" class="small-label">Date de début</label>
+              {{ form_widget(form.dateStart, { 'attr': {'class': '', 'name' : 'beggining'} }) }}
             </a>
           </li>
           <li>
-            <label for="end">Date de fin</label>
-            <input type="date" name="end">
+            <label for="dateEnd" class="small-label">Date de fin</label>
+            {{ form_widget(form.dateEnd, { 'attr': {'class': '', 'name': 'end'} }) }}
           </li>
           <li>
-            <label for="end">Secteurs</label>
-            <select>
-              <option value="choix 1">choix 1</option>
-              <option value="choix 2">choix 2</option>
-              <option value="choix 3">choix 3</option>
-              <option value="choix 4">choix 4</option>
-            </select>
+            <label for="secteurs" id="secteurs" class="small-label">Secteurs</label>
+            {{ form_widget(form.sector) }}
           </li>
           <li>
-            <label for="end">Public</label>
-            <select>
-              <option value="choix 1">choix 1</option>
-              <option value="choix 2">choix 2</option>
-              <option value="choix 3">choix 3</option>
-              <option value="choix 4">choix 4</option>
-            </select>
+            <label for="publics" id="publics" class="small-label">Publics</label>
+            {{ form_widget(form.publics) }}
           </li>
           <li>
-            <label for="end">Type d'événement</label>
-            <select>
-              <option value="choix 1">choix 1</option>
-              <option value="choix 2">choix 2</option>
-              <option value="choix 3">choix 3</option>
-              <option value="choix 4">choix 4</option>
-            </select>
-          </li>
-          <li>
-            <label for="end">Code ROME</label>
-            <select>
-              <option value="choix 1">choix 1</option>
-              <option value="choix 2">choix 2</option>
-              <option value="choix 3">choix 3</option>
-              <option value="choix 4">choix 4</option>
-            </select>
+            <label for="type" id="types" class="small-label">Type d'événement</label>
+            {{ form_widget(form.type) }}
           </li>
         </ul>
         <div class="right">
           <ul class="nav navbar-nav navbar-right">
-            <button type="submit" class="btn btn-primary btn-sm research-btn">
+            {{ form_row(form.submit, { 'label': '', 'classe': 'btn btn-primary btn-sm research-btn' }) }}
               <span class="glyphicon glyphicon-eye-open"></span>
               Chercher</button>
           </ul>
+          {{ form_end(form) }}
+
         </div>
       </div>
     </form>
