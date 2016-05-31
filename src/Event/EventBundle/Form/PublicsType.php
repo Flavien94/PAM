@@ -18,7 +18,9 @@ class PublicsType extends AbstractType
         ->add('publics', 'entity', array('class' => 'Event\EventBundle\Entity\Publics',
         'property' => 'title',
         'multiple' => false,
-        'empty_value' => 'Public'))
+        'empty_value' => 'Public',
+        'required' => false
+        ))
         ;
     }
 

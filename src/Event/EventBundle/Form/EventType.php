@@ -16,62 +16,85 @@ class EventType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('contact_name', 'text')
-            ->add('contact_email', 'text')
+            ->add('contact_name', 'text',array(
+                  'required' => false
+            ))
+            ->add('contact_email', 'text',array(
+                  'required' => false
+            ))
             ->add('dateStart', 'datetime', array(
                   'date_widget' => "single_text",
-                  'time_widget' => "single_text"
+                  'time_widget' => "single_text",
+                  'required' => false
             ))
             ->add('dateEnd', 'datetime', array(
                   'date_widget' => "single_text",
-                  'time_widget' => "single_text"
+                  'time_widget' => "single_text",
+                  'required' => false
             ))
             ->add('publics', 'collection', array(
                   'type'         => new PublicsType(),
                   'allow_add'    => true,
-                  'allow_delete' => true
+                  'allow_delete' => true,
+                  'required' => false
                   ))
             ->add('publics', 'entity', array(
                   'class'    => 'EventBundle:Publics',
                   'choice_label' => 'title',
                   'multiple' => false,
-                  'placeholder' => 'Public'
+                  'placeholder' => 'Public',
+                  'required' => false
                   ))
             ->add('type', 'collection', array(
                   'type'         => new TypeType(),
                   'allow_add'    => true,
-                  'allow_delete' => true
+                  'allow_delete' => true,
+                  'required' => false
                   ))
             ->add('type', 'entity', array(
                    'class'    => 'EventBundle:Type',
                    'choice_label' => 'title',
                    'multiple' => false,
-                   'placeholder' => 'Type d\'évenement'
+                   'placeholder' => 'Type d\'évenement',
+                   'required' => false
                   ))
             ->add('sector', 'collection', array(
                   'type'         => new SectorType(),
                   'allow_add'    => true,
-                  'allow_delete' => true
+                  'allow_delete' => true,
+                  'required' => false
                   ))
             ->add('sector', 'entity', array(
                    'class'    => 'EventBundle:Sector',
-                   'choice_label' => 'caption',
+                   'choice_label' => 'title',
                    'multiple' => false,
-                   'placeholder' => 'Type de Secteur'
+                   'placeholder' => 'Type de Secteur',
+                   'required' => false
                   ))
               ->add('headlines','checkbox', array(
                     'required' => false
                   ))
-              ->add('author')
-              ->add('title')
-              ->add('description')
+              ->add('author','text',array(
+                    'required' => false
+              ))
+              ->add('title','text', array(
+                    'required' => false
+              ))
+              ->add('description','textarea', array(
+                    'required' => false
+              ))
               ->add('links', 'collection', array(
                    'type'         => new LinksType(),
                    'allow_add'    => true,
-                   'allow_delete' => true
+                   'allow_delete' => true,
+                   'required' => false
                  ))
-              ->add('place')
-              ->add('images',new ImagesType())
+              ->add('place', 'text', array(
+                    'required' => false
+              ))
+              ->add('images',new ImagesType(), array(
+                    'required' => false
+              ))
               ->add('uploadedFiles', 'file', array(
                     'multiple' => true,
                     'data_class' => null,
