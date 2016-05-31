@@ -20,15 +20,18 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 class Event
 {
     /**
-    * @ORM\ManyToMany(targetEntity="Event\EventBundle\Entity\Sector", cascade={"persist"})
+    * @ORM\ManyToOne(targetEntity="Event\EventBundle\Entity\Sector", cascade={"persist"})
+    * @ORM\JoinColumn(nullable=true)
     */
-    private $sector;
+   private $sector;
     /**
-    * @ORM\ManyToMany(targetEntity="Event\EventBundle\Entity\Publics", cascade={"persist"})
+    * @ORM\ManyToOne(targetEntity="Event\EventBundle\Entity\Publics", cascade={"persist"})
+    * @ORM\JoinColumn(nullable=true)
     */
     private $publics;
     /**
-    * @ORM\ManyToMany(targetEntity="Event\EventBundle\Entity\Type", cascade={"persist"})
+    * @ORM\ManyToOne(targetEntity="Event\EventBundle\Entity\Type", cascade={"persist"})
+    * @ORM\JoinColumn(nullable=true)
     */
     private $type;
     /**
@@ -41,6 +44,7 @@ class Event
      * @var Links
      *
      * @ORM\OneToMany(targetEntity="Event\EventBundle\Entity\Links", mappedBy="event", cascade={"persist"})
+     * @ORM\JoinColumn(nullable=true)
      *
      */
     private $links;
@@ -48,7 +52,7 @@ class Event
      * @var FileEvent
      *
      * @ORM\OneToMany(targetEntity="Event\EventBundle\Entity\FileEvent", mappedBy="event", cascade={"persist"})
-     *
+     * @ORM\JoinColumn(nullable=true)
      */
     private $files;
 
@@ -69,14 +73,14 @@ class Event
     /**
      * @var string
      *
-     * @ORM\Column(name="author", type="string", length=255)
+     * @ORM\Column(name="author", type="string", length=255, nullable=true)
      */
     private $author;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="title", type="string", length=255)
+     * @ORM\Column(name="title", type="string", length=255, nullable=false)
      * @Assert\Length(min=5)
      */
     private $title;
@@ -84,28 +88,28 @@ class Event
     /**
      * @var string
      *
-     * @ORM\Column(name="description", type="text")
+     * @ORM\Column(name="description", type="text", nullable=false)
      * @Assert\NotBlank()
      */
     private $description;
     /**
      * @var string
      *
-     * @ORM\Column(name="contact_name", type="string", length=255)
+     * @ORM\Column(name="contact_name", type="string", length=255, nullable=true)
      * @Assert\Length(min=2)
      */
     private $contact_name;
     /**
      * @var string
      *
-     * @ORM\Column(name="contact_email", type="string", length=255)
+     * @ORM\Column(name="contact_email", type="string", length=255, nullable=true)
      * @Assert\Email()
      */
     private $contact_email;
     /**
      * @var string
      *
-     * @ORM\Column(name="place", type="string", length=255)
+     * @ORM\Column(name="place", type="string", length=255, nullable=false)
      */
     private $place;
 
@@ -118,14 +122,14 @@ class Event
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="date_start", type="datetime")
+     * @ORM\Column(name="date_start", type="datetime", nullable=false)
      */
     private $dateStart;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="date_end", type="datetime")
+     * @ORM\Column(name="date_end", type="datetime", nullable=false)
      */
     private $dateEnd;
 
@@ -140,9 +144,9 @@ class Event
 
     public function __construct()
     {
-      $this->sector = new ArrayCollection();
-      $this->publics = new ArrayCollection();
-      $this->type = new ArrayCollection();
+      // $this->sector = new ArrayCollection();
+      // $this->publics = new ArrayCollection();
+      // $this->type = new ArrayCollection();
       $this->files = new ArrayCollection();
       $this->uploadedFiles = new ArrayCollection();
       $this->links = new ArrayCollection();
@@ -409,7 +413,7 @@ class Event
 
     public function setPublics($publics)
     {
-        $this->publics[] = $publics;
+        $this->publics = $publics;
 
         return $this;
     }
@@ -432,7 +436,7 @@ class Event
      */
     public function setType($type)
     {
-        $this->type[] = $type;
+        $this->type = $type;
 
         return $this;
     }
@@ -450,7 +454,7 @@ class Event
      */
     public function setSector($sector)
     {
-      $this->sector[] = $sector;
+      $this->sector = $sector;
 
       return $this;
     }
@@ -539,7 +543,7 @@ class Event
      */
     public function addSector(\Event\EventBundle\Entity\Sector $sector)
     {
-        $this->sector[] = $sector;
+        $this->sector = $sector;
 
         return $this;
     }
@@ -563,7 +567,7 @@ class Event
      */
     public function addPublic(\Event\EventBundle\Entity\Publics $public)
     {
-        $this->publics[] = $public;
+        $this->publics = $public;
 
         return $this;
     }
@@ -587,7 +591,7 @@ class Event
      */
     public function addType(\Event\EventBundle\Entity\Type $type)
     {
-        $this->type[] = $type;
+        $this->type = $type;
 
         return $this;
     }

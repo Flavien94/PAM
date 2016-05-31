@@ -15,7 +15,9 @@ class LinksType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('url','text')
+            ->add('url','text',array(
+                  'required' => false
+            ))
         ;
     }
 

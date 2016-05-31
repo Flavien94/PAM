@@ -16,7 +16,7 @@ class Links
      * @var Event
      *
      * @ORM\ManyToOne(targetEntity="Event\EventBundle\Entity\Event", inversedBy="links", cascade={"persist"})
-     * @ORM\JoinColumn(referencedColumnName="id",nullable=false)
+     * @ORM\JoinColumn(referencedColumnName="id",nullable=true)
      */
      private $event;
     /**
@@ -31,7 +31,7 @@ class Links
     /**
      * @var string
      *
-     * @ORM\Column(name="url", type="string", length=255)
+     * @ORM\Column(name="url", type="string", length=255, nullable=true)
      */
     private $url;
 

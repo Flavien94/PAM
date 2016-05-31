@@ -18,7 +18,9 @@ class TypeType extends AbstractType
         ->add('type', 'entity', array('class' => 'Event\EventBundle\Entity\Type',
         'property' => 'title',
         'multiple' => false,
-        'empty_value' => 'Type d\'évenement'))
+        'empty_value' => 'Type d\'évenement',
+        'required' => false
+        ))
         ;
     }
 

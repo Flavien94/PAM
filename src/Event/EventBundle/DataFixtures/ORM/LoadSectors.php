@@ -12,63 +12,63 @@ class LoadSector implements FixtureInterface
     $sectors = array(
       array(
         'caption' => 'A',
-        'titles' => 'Agriculture et pêche, espaces naturels et espaces verts, soins aux animaux'
+        'titles' => ' A - Agriculture et pêche, espaces naturels et espaces verts, soins aux animaux'
        ),
        array(
          'caption' => 'B',
-         'titles' => 'Arts et façonnage d\'œuvrages d\'arts'
+         'titles' => 'B - Arts et façonnage d\'œuvrages d\'arts'
        ),
        array(
          'caption' => 'C',
-         'titles' => 'Banque, Assurance, Immobilier'
+         'titles' => 'C - Banque, Assurance, Immobilier'
        ),
        array(
          'caption' => 'D',
-         'titles' => 'Commerce, Vente et Grande Distribution'
+         'titles' => 'D - Commerce, Vente et Grande Distribution'
        ),
        array(
          'caption' => 'E',
-         'titles' => 'Communication, Média et Multimédia'
+         'titles' => 'E - Communication, Média et Multimédia'
        ),
        array(
          'caption' => 'F',
-         'titles' => 'Construction, Bâtiment et Travaux Publics'
+         'titles' => 'F - Construction, Bâtiment et Travaux Publics'
        ),
        array(
          'caption' => 'G',
-         'titles' => 'Hôtellerie-Restauration Tourisme Loisirs et Animation'
+         'titles' => 'G - Hôtellerie-Restauration Tourisme Loisirs et Animation'
        ),
        array(
          'caption' => 'H',
-         'titles' => 'Industrie'
+         'titles' => 'H - Industrie'
        ),
        array(
          'caption' => 'I',
-         'titles' => 'Installation et Maintenance'
+         'titles' => 'I - Installation et Maintenance'
        ),
        array(
          'caption' => 'J',
-         'titles' => 'Santé'
+         'titles' => 'J - Santé'
        ),
        array(
          'caption' => 'K',
-         'titles' => 'Service à la personne et à la collectivité'
+         'titles' => 'K - Service à la personne et à la collectivité'
        ),
        array(
          'caption' => 'L',
-         'titles' => 'Spectacle'
+         'titles' => 'L - Spectacle'
        ),
        array(
          'caption' => 'M',
-         'titles' => 'Support à l\'entreprise'
+         'titles' => 'M - Support à l\'entreprise'
        ),
        array(
          'caption' => 'N',
-         'titles' => 'Transport et Logistique'
+         'titles' => 'N - Transport et Logistique'
        ),
        array(
-         'caption' => 'TOUT SECTEURS',
-         'titles' => 'Tout secteurs'
+         'caption' => 'TOUT SECTEUR',
+         'titles' => 'Tout secteur'
        )
     );
 
