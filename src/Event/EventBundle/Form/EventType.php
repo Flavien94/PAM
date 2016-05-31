@@ -65,6 +65,11 @@ class EventType extends AbstractType
               ->add('author')
               ->add('title')
               ->add('description')
+              ->add('links', 'collection', array(
+                   'type'         => new LinksType(),
+                   'allow_add'    => true,
+                   'allow_delete' => true
+                 ))
               ->add('place')
               ->add('images',new ImagesType())
               ->add('uploadedFiles', 'file', array(

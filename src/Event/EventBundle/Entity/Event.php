@@ -38,6 +38,13 @@ class Event
     */
     private $images;
     /**
+     * @var Links
+     *
+     * @ORM\OneToMany(targetEntity="Event\EventBundle\Entity\Links", mappedBy="event", cascade={"persist"})
+     *
+     */
+    private $links;
+    /**
      * @var FileEvent
      *
      * @ORM\OneToMany(targetEntity="Event\EventBundle\Entity\FileEvent", mappedBy="event", cascade={"persist"})
@@ -138,6 +145,7 @@ class Event
       $this->type = new ArrayCollection();
       $this->files = new ArrayCollection();
       $this->uploadedFiles = new ArrayCollection();
+      $this->links = new ArrayCollection();
       $this->dateCreate = new \DateTime();
 
     }
@@ -513,7 +521,15 @@ class Event
             }
         }
      }
-
+     public function getLinks() {
+         return $this->links;
+     }
+     public function setLinks(array $links) {
+         foreach ($this->$links as $link) {
+           $link->setEvent($this);
+          }
+         $this->links = $links;
+     }
     /**
      * Add sector
      *
@@ -584,5 +600,53 @@ class Event
     public function removeType(\Event\EventBundle\Entity\Type $type)
     {
         $this->type->removeElement($type);
+    }
+
+    /**
+     * Add link
+     *
+     * @param \Event\EventBundle\Entity\Links $link
+     *
+     * @return Event
+     */
+    public function addLink(\Event\EventBundle\Entity\Links $link)
+    {
+        $this->links[] = $link;
+
+        return $this;
+    }
+
+    /**
+     * Remove link
+     *
+     * @param \Event\EventBundle\Entity\Links $link
+     */
+    public function removeLink(\Event\EventBundle\Entity\Links $link)
+    {
+        $this->links->removeElement($link);
+    }
+
+    /**
+     * Add file
+     *
+     * @param \Event\EventBundle\Entity\FileEvent $file
+     *
+     * @return Event
+     */
+    public function addFile(\Event\EventBundle\Entity\FileEvent $file)
+    {
+        $this->files[] = $file;
+
+        return $this;
+    }
+
+    /**
+     * Remove file
+     *
+     * @param \Event\EventBundle\Entity\FileEvent $file
+     */
+    public function removeFile(\Event\EventBundle\Entity\FileEvent $file)
+    {
+        $this->files->removeElement($file);
     }
 }

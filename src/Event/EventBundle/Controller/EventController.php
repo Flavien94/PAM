@@ -10,6 +10,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Event\EventBundle\Entity\Event;
 use Event\EventBundle\Form\EventType;
 use Event\EventBundle\Entity\FileEvent;
+use Event\EventBundle\Entity\Links;
 
 
 /**
@@ -55,6 +56,8 @@ class EventController extends Controller
     public function createAction(Request $request)
     {
         $event = new Event();
+        $links = new Links();
+        $links->setEvent($event);
         $form = $this->createCreateForm($event);
         $form->handleRequest($request);
 
@@ -100,6 +103,7 @@ class EventController extends Controller
     public function newAction()
     {
         $event = new Event();
+
         $form   = $this->createCreateForm($event);
 
         return array(
