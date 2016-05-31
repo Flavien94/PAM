@@ -10,6 +10,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Event\EventBundle\Entity\Event;
 use Event\EventBundle\Form\EventType;
 use Event\EventBundle\Entity\FileEvent;
+use Event\EventBundle\Entity\Links;
 
 
 /**
@@ -59,6 +60,8 @@ class EventController extends Controller
     public function createAction(Request $request)
     {
         $event = new Event();
+        $links = new Links();
+        $links->setEvent($event);
         $form = $this->createCreateForm($event);
         $form->handleRequest($request);
 
@@ -104,6 +107,7 @@ class EventController extends Controller
     public function newAction()
     {
         $event = new Event();
+
         $form   = $this->createCreateForm($event);
 
         return array(
@@ -149,19 +153,25 @@ class EventController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('EventBundle:Event')->find($id);
-
+        mysql_connect("localhost", "root", ";");
+        $sql = "SELECT author FROM event WHERE id='$id' ";
+        $result = mysql_query($sql);
+        $value = mysql_fetch_object($result);
+        $authors = $value->author;
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Event entity.');
         }
 
         $editForm = $this->createEditForm($entity);
         $deleteForm = $this->createDeleteForm($id);
-
+        // if ($authors === 'flavien' ) {
         return array(
+            'authors'     => $authors,
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         );
+      // }
     }
 
     /**
