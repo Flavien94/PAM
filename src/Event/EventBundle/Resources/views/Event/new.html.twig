@@ -65,3 +65,7 @@
                           </ul>
 
                         {% endblock %}
+                        {% block javascripts %}
+                            {{ parent() }}
+                            <script src="{{ asset('js/addLinks.js')}}" type="text/javascript" ></script>
+                        {% endblock %}
