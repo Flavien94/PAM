@@ -62,3 +62,6 @@ label {
 #event_eventbundle_search_submit:hover {
   background-color: #63B688;
 }
+#event_eventbundle_search_sector{
+  width:150px;
+}

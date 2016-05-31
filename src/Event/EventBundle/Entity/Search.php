@@ -59,6 +59,7 @@ class Search
     public function __toString(){
       return (string) $this->getPublics();
       return (string) $this->getSector();
+      return (string) $this->getDateStart();
     }
     /**
      * Get id
