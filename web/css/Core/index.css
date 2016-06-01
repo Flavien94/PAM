@@ -19,25 +19,30 @@ h6 {
   font-weight: 500;
   font-size: 13px;
 }
-h6 .right{
+h6 .right {
   margin-top: 5%;
   text-align: right;
 }
 .img-une {
   height: 70%;
-  background-size: cover;
+  background-position: center;
+  background-size: contain;
   background-repeat: no-repeat;
+  border-top: 1px solid #cccccc;
+  border-right: 1px solid #cccccc;
+  border-left: 1px solid #cccccc;
+  box-sizing: border-box;
 }
 .titre-une, .date-une, .text-une {
   background-color: #2AA7CB;
 }
-.titre-une{
+.titre-une {
   height: 10%;
 }
-.date-une{
+.date-une {
   height: 5%;
 }
-.text-une{
+.text-une {
   height: 20%;
 }
 .titre-une h4 {
@@ -54,15 +59,26 @@ h6 .right{
 }
 .deux {
   color: white;
-  margin-bottom: 1%;
   height: 142px;
   width: 72%
 }
 .img-mini {
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: contain;
+  background-position: center;
   height: 142px;
   max-height: 142px;
+  margin: 0px;
+}
+.border {
+  margin-left: 0px;
+  margin-right: -23px;  
+  border-top: 1px solid #cccccc;
+  border-left: 1px solid #cccccc;
+  box-sizing: border-box;
+}
+.border:last-child{
+  border-bottom: 1px solid #cccccc;
 }
 .bleu {
   background-color: #2AA7CB;

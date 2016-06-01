@@ -13,7 +13,11 @@
 
         {% for event in events if event.headlines == 1 %}
 
-            <div class="row img-une" style="background-image:url('{{ asset('images/img1.jpg') }}')"></div>
+            {% if event.images == null %}
+            <div class="row img-une" style="background-image:url('{{ asset('images/logo-pole-emploi_region.png') }}')"></div>
+            {% else %}
+            <div class="row img-une" style="background-image:url('{{ asset(event.images.AssetPAth) }}"></div>
+            {% endif %}
             <div class="row titre-une">
               <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <h4>{{ event.title [:50] }}
@@ -41,8 +45,11 @@
             </div>
 
           {% else %}
-              <div class="row img-une" style="background-image:url('{{ asset('images/img1.jpg') }}')"></div>
-              <div class="row titre-une">
+          {% if event.images == null %}
+          <div class="row img-une" style="background-image:url('{{ asset('images/logo-pole-emploi_region.png') }}')"></div>
+          {% else %}
+          <div class="row img-une" style="background-image:url('{{ asset(event.images.AssetPAth) }}"></div>
+          {% endif %}              <div class="row titre-une">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                   <h4>{{ events[0].title[:50]  }}
                     {% if events[0].title > events[0].title[: 50] %}
@@ -77,8 +84,18 @@
       <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 scroll mCustomScrollbar">
         {% for event in events if event.headlines == 1 %}
         {% for event in events %}
-          <div class="row">
-            <div class="hidden-md-down col-md-3 col-lg-3 img-mini" style="background-image:url('{{ asset('images/img1.jpg') }}')"></div>
+          <div class="row border">
+            {% if event.images == null %}
+            <div class="hidden-md-down col-md-3 col-lg-3" >
+              <div class="row img-mini" style="background-image:url('{{ asset('images/logo-pole-emploi_region.png') }}')">
+              </div>
+            </div>
+            {% else %}
+            <div class="hidden-md-down col-md-3 col-lg-3" >
+              <div class="row img-mini" style="background-image:url('{{ asset(event.images.AssetPAth) }}">
+              </div>
+            </div>
+            {% endif %}
             {% if loop.index is odd %}
             <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 deux bleu">
               {% else %}
@@ -117,8 +134,18 @@
 
         {% else %}
         {% for event in events | slice(1) %}
-            <div class="row">
-              <div class="hidden-md-down col-md-3 col-lg-3 img-mini" style="background-image:url('{{ asset('images/img1.jpg') }}')"></div>
+            <div class="row border">
+              {% if event.images == null %}
+              <div class="hidden-md-down col-md-3 col-lg-3" >
+                <div class="row img-mini" style="background-image:url('{{ asset('images/logo-pole-emploi_region.png') }}')">
+                </div>
+              </div>
+              {% else %}
+              <div class="hidden-md-down col-md-3 col-lg-3" >
+                <div class="row img-mini" style="background-image:url('{{ asset(event.images.AssetPAth) }}">
+                </div>
+              </div>
+              {% endif %}
               {% if loop.index is odd %}
               <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 deux bleu">
                 {% else %}
