@@ -22,7 +22,12 @@
         <div class="row">
           <tbody>
             {% for entity in entities %}
-              <td style="background-image:url('{{ asset('images/img1.jpg') }}')"></td>
+              {% if entity.images == null %}
+              <td class="images" style="background-image:url('{{ asset('images/logo-pole-emploi_region.png') }}')"></td>
+              {% else %}
+              <td class="images" style="background-image:url('{{ asset(entity.images.AssetPAth) }}"></td>
+              {% endif %}
+
               <td>
                 <h4>{{ entity.title }}</h4>
                 {{ entity.description[:290] }}

@@ -82,7 +82,7 @@ class Images
 
     public function getAssetPath()
     {
-        return 'uploads/'.$this->url;
+        return 'uploads/img/'.$this->url;
     }
 
     /**

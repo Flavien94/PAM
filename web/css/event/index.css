@@ -30,3 +30,8 @@ li {
   height: 60vh;
   top:30%;
 }
+.images{
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
