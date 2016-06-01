@@ -30,12 +30,12 @@ class SearchController extends Controller
          $em = $this->getDoctrine()->getManager();
 
          $sql = 'SELECT id, date_start, date_end, title, description, image_id FROM event WHERE MATCH (title, description, contact_name) AGAINST ("'.$search.'* " IN BOOLEAN MODE)';
-
-         if($dateStart != null) {
-           $sql = $sql . ' AND date_start = '.$dateStart.' ';
-         }
-
-         $sql = $sql . ';';
+         //
+        //  if($dateStart != null) {
+        //    $sql = $sql . ' AND date_start = '.$dateStart.' ';
+        //  }
+         //
+        //  $sql = $sql . ';';
 
          $query = $em->getConnection()->prepare($sql);
          $query->execute();
