@@ -25,8 +25,8 @@ class SearchController extends Controller
     public function searchAction(Request $request)
     {
       $search = $request->query->get('query');
-      $dateStart = $request->query->get('beginning');
-      dump($dateStart);
+      // $dateStart = $request->query->get('beginning');
+      // dump($dateStart);
          $em = $this->getDoctrine()->getManager();
 
          $sql = 'SELECT id, date_start, date_end, title, description, image_id FROM event WHERE MATCH (title, description, contact_name) AGAINST ("'.$search.'* " IN BOOLEAN MODE)';
