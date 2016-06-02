@@ -81,7 +81,7 @@ class Event
      * @var string
      *
      * @ORM\Column(name="title", type="string", length=255, nullable=false)
-     * @Assert\Length(min=5)
+     * @Assert\Length(min=5, minMessage="Titre : Le titre doit contenir au moins 5 caractères")
      */
     private $title;
 
@@ -90,26 +90,28 @@ class Event
      *
      * @ORM\Column(name="description", type="text", nullable=false)
      * @Assert\NotBlank()
+     * @Assert\Length(min=20, minMessage="Description : Ce champs doit contenir au minimun 20 caractères")
      */
     private $description;
     /**
      * @var string
      *
      * @ORM\Column(name="contact_name", type="string", length=255, nullable=true)
-     * @Assert\Length(min=2)
+     * @Assert\Length(min=2, minMessage="Nom du Contact : Ce champs doit contenir au minimun 2 caractères")
      */
     private $contact_name;
     /**
      * @var string
      *
      * @ORM\Column(name="contact_email", type="string", length=255, nullable=true)
-     * @Assert\Email()
+     * @Assert\Email(message="Email du Contact :Ce n'est pas une adresse email valide")
      */
     private $contact_email;
     /**
      * @var string
      *
      * @ORM\Column(name="place", type="string", length=255, nullable=false)
+     * @Assert\Length(min=2, minMessage="Lieux : Ce champs doit contenir au minimun 2 caractères")
      */
     private $place;
 

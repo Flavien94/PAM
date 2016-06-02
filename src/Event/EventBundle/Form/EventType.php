@@ -25,12 +25,12 @@ class EventType extends AbstractType
             ->add('dateStart', 'datetime', array(
                   'date_widget' => "single_text",
                   'time_widget' => "single_text",
-                  'required' => false
+                  'required' => true
             ))
             ->add('dateEnd', 'datetime', array(
                   'date_widget' => "single_text",
                   'time_widget' => "single_text",
-                  'required' => false
+                  'required' => true
             ))
             ->add('publics', 'collection', array(
                   'type'         => new PublicsType(),
@@ -78,10 +78,10 @@ class EventType extends AbstractType
                     'required' => false
               ))
               ->add('title','text', array(
-                    'required' => false
+                    'required' => true
               ))
               ->add('description','textarea', array(
-                    'required' => false
+                    'required' => true
               ))
               ->add('links', 'collection', array(
                    'type'         => new LinksType(),
@@ -90,7 +90,7 @@ class EventType extends AbstractType
                    'required' => false
                  ))
               ->add('place', 'text', array(
-                    'required' => false
+                    'required' => true
               ))
               ->add('images',new ImagesType(), array(
                     'required' => false
@@ -110,7 +110,8 @@ class EventType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Event\EventBundle\Entity\Event'
+            'data_class' => 'Event\EventBundle\Entity\Event',
+            'error_bubbling' => true
         ));
     }
 

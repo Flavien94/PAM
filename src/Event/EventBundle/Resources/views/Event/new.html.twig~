@@ -1,0 +1,92 @@
+{% extends '::base.html.twig' %}
+{% block stylesheets %}
+  {{ parent() }}
+  <link href="{{ asset('css/event/new.css') }}" type="text/css" rel="stylesheet"/>
+{% endblock %}
+{% block body -%}
+
+  <div class="container-fluid event-container">
+
+    <h1>Publier un événement</h1>
+    {{ form_start(form) }}
+    <ul>
+      <label for="contact" class="big-label">Contact de l'événement</label>
+      <li>
+        {{ form_widget(form.author,{ 'attr': {'value': app.user.username, 'readonly':'readonly'}} ) }}
+        {{ form_widget(form.contact_name, { 'attr': {'class': 'inline', 'placeholder': 'Nom du contact'} })  }}
+        {{ form_widget(form.contact_email, { 'attr': {'class': 'inline', 'placeholder': 'Email du contact'} }) }}
+
+      </li>
+      <label for="Détails" class="big-label">Détails de l'événement</label>
+      <li>
+        <label for="dateStart" class="small-label">Date de début</label><br>
+        {{ form_widget(form.dateStart, { 'attr': {'class': ''} }) }}
+      </li>
+      <li>
+        <label for="dateEnd" class="small-label">Date de fin</label><br>
+        {{ form_widget(form.dateEnd, { 'attr': {'class': ''} }) }}
+      </li>
+      <li>
+        <label for="secteurs" id="secteurs" class="small-label">Secteurs</label>
+        {{ form_widget(form.sector) }}
+      </li>
+      <li>
+        <label for="publics" id="publics" class="small-label">Publics</label>
+        {{ form_widget(form.publics) }}
+      </li>
+      <li>
+        <label for="type" id="types" class="small-label">Type d'événement</label>
+        {{ form_widget(form.type) }}
+      </li><br>
+      <li>
+        <label for="contact" class="big-label">Description, Modalités</label>
+        <br>
+        {{ form_widget(form.title, { 'attr': {'id': 'title', 'placeholder': 'Titre'}}) }}
+        {{ form_widget(form.description, { 'attr': {'class': 'inline', 'placeholder': 'Description'}}) }}
+        {{ form_widget(form.links, { 'attr': {'class': 'inline', 'placeholder': 'Liens'}}) }}
+
+      </li>
+      <li>
+        <label for="place" class="big-label inline">Lieu de l'événement</label>
+        {{ form_widget(form.place) }}
+      </li>
+      <br>
+      <li class="big-label">
+        {{ form_widget(form.images, { 'attr': {'class': 'big-label'} }) }}
+      </li>
+      <li class="big-label">
+        <label for="headlines" class="big-label">Ajouter des fichiers annexes </label><br>
+        {{ form_widget(form.uploadedFiles, { 'attr': {'class': 'big-label'} }) }}
+      </li>
+      <li class="big-label">
+        <label for="headlines" class="small-label">À la une </label><br>
+        {{ form_widget(form.headlines, { 'attr': {'class': 'big-label', 'label':'À la une'} }) }}
+      </li>
+        {{ form_errors(form.contact_name, { 'attr': {'class':'inline'}}) }}
+        {{ form_errors(form.contact_email, { 'attr': {'class':'inline'}}) }}
+        {{ form_errors(form.dateStart, { 'attr': {'class':'inline'}}) }}
+        {{ form_errors(form.dateEnd, { 'attr': {'class':'inline'}}) }}
+        {{ form_errors(form.title, { 'attr': {'class':'required'}}) }}
+        {{ form_errors(form.description, { 'attr': {'class':'inline'}}) }}
+        {{ form_errors(form.place, { 'attr': {'class':'inline'}}) }}
+        {{ form_errors(form.links, { 'attr': {'class':'inline'}}) }}
+        {{ form_errors(form.images, { 'attr': {'class':'inline'}}) }}
+        {{ form_errors(form.uploadedFiles, { 'attr': {'class':'inline'}}) }}
+        {{ form_errors(form) }}
+
+        {{ form_row(form.submit, { 'label': 'Publier' }) }}
+    </ul>
+        {{ form_end(form) }}
+    <ul class="record_actions">
+      <li>
+        <a href="{{ path('event') }}">
+          Retour à la liste des événements
+        </a>
+      </li>
+    </ul>
+
+    {% endblock %}
+    {% block javascripts %}
+        {{ parent() }}
+        <script src="{{ asset('js/addLinks.js')}}" type="text/javascript" ></script>
+    {% endblock %}

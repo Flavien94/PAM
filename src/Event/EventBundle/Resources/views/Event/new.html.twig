@@ -5,72 +5,98 @@
 {% endblock %}
 {% block body -%}
 
-  <div class="container-fluid event-container">
-
-    <h1>Publier un événement</h1>
-    {{ form_start(form) }}
-    {{ form_errors(form) }}
-    <ul>
-      <label for="contact" class="big-label">Contact de l'événement</label>
-      <li>
-        {{ form_widget(form.author,{ 'attr': {'value': app.user.username, 'readonly':'readonly'}} ) }}
-        {{ form_widget(form.contact_name, { 'attr': {'class': 'inline', 'placeholder': 'Nom du contact'} })  }}
-        {{ form_widget(form.contact_email, { 'attr': {'class': 'inline', 'placeholder': 'Email du contact'} }) }}
-      </li>
-      <label for="Détails" class="big-label">Détails de l'événement</label>
-      <li>
-        <label for="dateStart" class="small-label">Date de début</label><br>
-        {{ form_widget(form.dateStart, { 'attr': {'class': ''} }) }}
-      </li>
-      <li>
-        <label for="dateEnd" class="small-label">Date de fin</label><br>
-        {{ form_widget(form.dateEnd, { 'attr': {'class': ''} }) }}
-      </li>
-      <li>
-        <label for="secteurs" id="secteurs" class="small-label">Secteurs</label>
-        {{ form_widget(form.sector) }}
-      </li>
-      <li>
-        <label for="publics" id="publics" class="small-label">Publics</label>
-        {{ form_widget(form.publics) }}
-      </li>
-      <li>
-        <label for="type" id="types" class="small-label">Type d'événement</label>
-        {{ form_widget(form.type) }}
-      </li><br>
-      <li>
-        <label for="contact" class="big-label">Description, Modalités</label>
-        <br>
-        {{ form_widget(form.title, { 'attr': {'id': 'title', 'placeholder': 'Titre'}}) }}
-        {{ form_widget(form.description, { 'attr': {'class': 'inline', 'placeholder': 'Description'}}) }}
-        {{ form_widget(form.links, { 'attr': {'class': 'inline', 'placeholder': 'Liens'}}) }}
-      </li>
-      <li>
-        <label for="place" class="big-label inline">Lieu de l'événement</label>
-        {{ form_widget(form.place) }}
-      </li>
-      <br>
-      <li class="big-label">
-        {{ form_widget(form.images, { 'attr': {'class': 'big-label'} }) }}
-      </li>
-      <li class="big-label">
-        <label for="headlines" class="big-label">Ajouter des fichiers annexes </label><br>
-        {{ form_widget(form.uploadedFiles, { 'attr': {'class': 'big-label'} }) }}
-      </li>
-      <li class="big-label">
-        <label for="headlines" class="small-label">À la une </label><br>
-        {{ form_widget(form.headlines, { 'attr': {'class': 'big-label', 'label':'À la une'} }) }}
-      </li>
-        {{ form_row(form.submit, { 'label': 'Publier' }) }}
-    </ul>
-        {{ form_end(form) }}
-    <ul class="record_actions">
-      <li>
+  <div class="container event-container">
+    <div class="row">
+      <h1>Publier un événement</h1>
+    </div>
+    <div class="row">
+      {{ form_start(form) }}
+      <div class="col-md-12">
+        <h4>Contact de l'évènement</h4>
+        <div class="row">
+          <div class="col-md-1">
+            {{ form_widget(form.contact_name, { 'attr': {'class': 'inline contact_name', 'placeholder': 'Nom du contact'} })  }}
+          </div>
+          <div class="col-md-1 col-md-push-1">
+            {{ form_widget(form.contact_email, { 'attr': {'class': 'inline contact_email', 'placeholder': 'Email du contact'} }) }}
+          </div>
+          <div class="col-md-1 col-md-push-8">
+            {{ form_widget(form.author,{ 'attr': {'value': app.user.username, 'readonly':'readonly'}} ) }}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 description">
+        <h4>Description</h4>
+        <div class="row">
+          <div class="col-md-4">
+            {{ form_widget(form.sector, { 'attr': {'class': 'btn btn-default col-md-12'}}) }}
+          </div>
+          <div class="col-md-4">
+            {{ form_widget(form.publics, { 'attr': {'class': 'btn btn-default col-md-12'}}) }}
+          </div>
+          <div class="col-md-4">
+            {{ form_widget(form.type, { 'attr': {'class': 'btn btn-default col-md-12'}}) }}
+          </div>
+          <div class="col-md-12">
+            {{ form_widget(form.title, { 'attr': {'id': 'title','class':'col-md-12 title', 'placeholder': 'Titre*'}}) }}
+          </div>
+          <div class="col-md-12">
+            {{ form_widget(form.description, { 'attr': {'class': 'inline col-md-12', 'placeholder': 'Description*'}}) }}
+          </div>
+          <div class="col-md-12">
+            {{ form_errors(form.contact_name, { 'attr': {'class':'list-group-item list-group-item-danger'}}) }}
+            {{ form_errors(form.contact_email, { 'attr': {'class':'list-group-item list-group-item-danger'}}) }}
+            {{ form_errors(form.dateStart, { 'attr': {'class':'list-group-item list-group-item-danger'}}) }}
+            {{ form_errors(form.dateEnd, { 'attr': {'class':'list-group-item list-group-item-danger'}}) }}
+            {{ form_errors(form.title, { 'attr': {'class':'list-group-item list-group-item-danger'}}) }}
+            {{ form_errors(form.description, { 'attr': {'class':'list-group-item list-group-item-danger'}}) }}
+            {{ form_errors(form.place, { 'attr': {'class':'list-group-item list-group-item-danger'}}) }}
+            {{ form_errors(form.links, { 'attr': {'class':'list-group-item list-group-item-danger'}}) }}
+            {{ form_errors(form.images, { 'attr': {'class':'list-group-item list-group-item-danger'}}) }}
+            {{ form_errors(form.uploadedFiles, { 'attr': {'class':'list-group-item list-group-item-danger'}}) }}
+          </div>
+          <div class="col-md-3">
+            <span class="big-label"> À la une </span>
+            {{ form_widget(form.headlines, { 'attr': {'label':'À la une'} }) }}
+          </div>
+          <div class="col-md-2 col-md-push-7">
+            {{ form_row(form.submit,{ 'attr':  { 'class':'btn btn-default','label': 'Publier' }}) }}
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 col-md-push-1 detail">
+        <div class="row">
+          <div class="col-md-12">
+            <h4 class="col-md-12">Détails</h4>
+            <div class="col-md-12">
+              {{ form_widget(form.place, { 'attr': {'class': 'col-md-8', 'placeholder': 'Lieux*'}}) }}
+            </div>
+            <h6 class="col-md-12">Date de début*</h6>
+            {{ form_widget(form.dateStart, { 'attr': {'class': 'col-md-12'} }) }}
+            <h6 class="col-md-12">Date de fin*</h6>
+            {{ form_widget(form.dateEnd, { 'attr': {'class': 'col-md-12'} }) }}
+          </div>
+          <div class="col-md-12">
+            {{ form_widget(form.images, { 'attr': {'class': 'col-md-12'} }) }}
+            <h5 class="col-md-12">Ajouter des fichiers annexes</h5>
+            {{ form_widget(form.uploadedFiles, { 'attr': {'class': 'col-md-12'} }) }}
+            {{ form_widget(form.links, { 'attr': {'class': 'col-md-12 links', 'placeholder': 'Liens'}}) }}
+          </div>
+        </div>
+      </div>
+    </div>
+    {{ form_end(form) }}
+    <div class="row">
+      <div class="col-md-12">
         <a href="{{ path('event') }}">
           Retour à la liste des événements
         </a>
-      </li>
-    </ul>
+
+      </div>
+    </div>
+
 
     {% endblock %}
     {% block javascripts %}
