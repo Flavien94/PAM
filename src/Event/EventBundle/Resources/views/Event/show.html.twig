@@ -50,15 +50,11 @@
             Retourner à la liste
         </a>
     </li>
-    <li>
-      {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-      {% if entity.author == app.user.username %}
+      {% if (is_granted("IS_AUTHENTICATED_REMEMBERED") and entity.author == app.user.username or is_granted("ROLE_SUPER_ADMIN") ) %}
+      <li>
       <a href="{{ path('event_edit', { 'id': entity.id }) }}">Éditer</a>
-      {% elseif is_granted("ROLE_SUPER_ADMIN") %}
-      <a href="{{ path('event_edit', { 'id': entity.id }) }}">Éditer</a>
-      {% endif %}
-      {% endif %}
     </li>
+      {% endif %}
     <li>{{ form(delete_form) }}</li>
 </ul>
 {% endblock %}
