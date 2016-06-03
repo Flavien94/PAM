@@ -18,6 +18,17 @@
 .detail{
   margin-top: 3vh;
 }
+.col-md-12 ul{
+  border-radius: 5px;
+  padding: 10px;
+  background-color: rgba(255, 89 , 80, 0.8);
+}
+.col-md-12 ul li{
+  margin-left: 5%;
+}
+.col-md-12 ul:first-child{
+  margin-top: 3vh;
+}
 textarea, input, select {
   margin-right: 20px;
 }
