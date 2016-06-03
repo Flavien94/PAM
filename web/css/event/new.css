@@ -18,7 +18,7 @@
 .detail{
   margin-top: 3vh;
 }
-.col-md-12 ul{
+.col-md-12>ul{
   border-radius: 5px;
   padding: 10px;
   background-color: rgba(255, 89 , 80, 0.8);
@@ -33,7 +33,7 @@ textarea, input, select {
   margin-right: 20px;
 }
 textarea {
-  height: 300px;
+  height: 30vh;
   margin-top: 3vh;
 }
 .links{
