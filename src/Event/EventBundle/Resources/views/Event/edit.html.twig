@@ -1,8 +1,9 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-    <h1>Event edit</h1>
 
+    <h1 style="margin-top:10%">Event edit</h1>
+    {% if (entity.author == app.user.username or is_granted("ROLE_SUPER_ADMIN")) %}
     {{ form_start(edit_form) }}
     {{ form_label(edit_form.author) }}
     {{ form_widget(edit_form.author,{ 'attr': {'value': app.user.username, 'readonly':'readonly'}} ) }}
@@ -11,10 +12,13 @@
         <ul class="record_actions">
     <li>
         <a href="{{ path('event') }}">
-            Back to the list
+            {#{{authors}}#}
         </a>
     </li>
     <li>{{ form(delete_form) }}</li>
 
 </ul>
+{% else %}
+Vous ne pouvez pas modifier cette évenement.
+{% endif %}
 {% endblock %}
