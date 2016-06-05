@@ -38,24 +38,27 @@ class Search
     private $dateEnd;
 
     /**
-    * @ORM\Column(nullable=true)
+    * @ORM\ManyToOne(targetEntity="Event\EventBundle\Entity\Sector", cascade={"persist"})
+    * @ORM\JoinColumn(nullable=true)
     */
     private $sector;
     /**
-    * @ORM\Column(nullable=true)
+    * @ORM\ManyToOne(targetEntity="Event\EventBundle\Entity\Publics", cascade={"persist"})
+    * @ORM\JoinColumn(nullable=true)
     */
     private $publics;
     /**
-    * @ORM\Column(nullable=true)
+    * @ORM\ManyToOne(targetEntity="Event\EventBundle\Entity\Type", cascade={"persist"})
+    * @ORM\JoinColumn(nullable=true)
     */
     private $type;
 
-    public function __construct()
-    {
-      $this->sector = new ArrayCollection();
-      $this->publics = new ArrayCollection();
-      $this->type = new ArrayCollection();
-    }
+    // public function __construct()
+    // {
+    //   // $this->sector = new ArrayCollection();
+    //   // $this->publics = new ArrayCollection();
+    //   // $this->type = new ArrayCollection();
+    // }
     public function __toString(){
       return (string) $this->getPublics();
       return (string) $this->getSector();
