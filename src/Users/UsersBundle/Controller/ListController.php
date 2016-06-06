@@ -20,7 +20,8 @@ class ListController extends Controller {
     public function indexAction() {
       $userManager = $this->get('fos_user.user_manager');
       $user = $userManager->findUsers();
-      return $this->render('UsersBundle:Default:list.html.twig', array('users' =>   $user));
+      $users = array_slice($user,1);
+      return $this->render('UsersBundle:Default:list.html.twig', array('users' =>   $users));
     }
 
     /**
