@@ -54,7 +54,7 @@
       <li>
       <a href="{{ path('event_edit', { 'id': entity.id }) }}">Éditer</a>
     </li>
-      {% endif %}
     <li>{{ form(delete_form) }}</li>
+    {% endif %}
 </ul>
 {% endblock %}
