@@ -1,1 +1,31 @@
-{{form(form)}}
+{% extends '::base.html.twig' %}
+{% block stylesheets %}
+  {{ parent() }}
+  <link href="{{ asset('css/Core/contact.css') }}" type="text/css" rel="stylesheet"/>
+{% endblock %}
+{% block body %}
+<div class="container contact">
+  <div class="row">
+    <h3 class="col-md-12">Contact</h3>
+  </div>
+  <div class="row">
+    <div class="col-md-10 col-md-push-1">
+      {{form_start(form)}}
+      <div class="row">
+        <div class="col-md-6">{{ form_widget(form.firstname, { 'attr': {'class': 'col-md-12 margin heigth-one','placeholder':'Prénom'}})}}</div>
+        <div class="col-md-6">{{ form_widget(form.lastname,{ 'attr': {'class': 'col-md-12 margin heigth-one','placeholder':'Nom'}}) }}</div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">{{ form_widget(form.email,{ 'attr': {'class': 'col-md-12 margin heigth-one','placeholder':'Adresse email'}}) }}</div>
+        <div class="col-md-12">{{ form_widget(form.object,{ 'attr': {'class': 'col-md-12 margin heigth-one','placeholder':'Objet'}}) }}</div>
+        <div class="col-md-12">{{ form_widget(form.message,{ 'attr': {'class': 'col-md-12 margin','placeholder':'Message'}}) }}</div>
+      </div>
+      <div class="row">
+        <div class="col-md-2 col-md-push-10">{{ form_widget(form.submit,{ 'attr': {'class': 'col-md-12 margin btn-submit'}}) }}</div>
+      </div>
+      {{form_end(form)}}
+    </div>
+  </div>
+
+</div>
+{% endblock %}
