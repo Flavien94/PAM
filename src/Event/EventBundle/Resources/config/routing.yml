@@ -14,7 +14,7 @@ event_edit:
     path:     admin/{id}/edit
     defaults: { _controller: EventBundle:Event:edit }
 event_update:
-    path:     /{id}
+    path:     admin/{id}/update
     defaults: { _controller: EventBundle:Event:update }
 event_delete:
     path:     admin/{id}/delete

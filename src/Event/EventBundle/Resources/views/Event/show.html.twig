@@ -34,6 +34,10 @@
                 <td>{{ entity.place }}</td>
             </tr>
             <tr>
+                <th>Datecreate</th>
+                <td>{{ entity.dateCreate|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
                 <th>Datestart</th>
                 <td>{{ entity.dateStart|date('Y-m-d H:i:s') }}</td>
             </tr>
@@ -41,20 +45,73 @@
                 <th>Dateend</th>
                 <td>{{ entity.dateEnd|date('Y-m-d H:i:s') }}</td>
             </tr>
+            <tr>
+                <th>Headlines</th>
+                <td>{{ entity.headlines }}</td>
+            </tr>
+            {% if entity.links != null %}
+            <tr>
+                <th>Publics</th>
+                <td>{{ entity.publics.title }}</td>
+            </tr>
+            {% endif %}
+            {% if entity.links != null %}
+            <tr>
+                <th>type</th>
+                <td>{{ entity.type.title }}</td>
+            </tr>
+            {% endif %}
+            {% if entity.links != null %}
+            <tr>
+                <th>Secteur</th>
+                <td>{{ entity.sector.title }}</td>
+            </tr>
+            {% endif %}
+
+            <tr>
+                <th>images</th>
+                <td>  {% if entity.images == null %}
+                  <img class="row img-une" src="{{asset('images/logo-pole-emploi_region.png')}}" />
+                  {% else %}
+                  <img class="row img-une" src="{{ asset(entity.images.AssetPAth) }}"/>
+                  {% endif %}
+                </td>
+            </tr>
+            <tr>
+                 {% if entity.links != null %}
+                <th>Liens</th>
+                <td>
+                  {% for links in entity.links %}
+                  {{ links.url }}
+                  {% endfor %}
+                  {% endif %}
+                </td>
+            </tr>
+            <tr>
+                {% if entity.files != null %}
+
+                <th>files</th>
+                <td>
+                {% for file in entity.files %}
+                {{ files.url }}
+                {% endfor %}
+                  {% endif %}
+                </td>
+            </tr>
         </tbody>
     </table>
 
         <ul class="record_actions">
     <li>
         <a href="{{ path('event') }}">
-            Retourner à la liste
+            Back to the list
         </a>
     </li>
-      {% if (is_granted("IS_AUTHENTICATED_REMEMBERED") and entity.author == app.user.username or is_granted("ROLE_SUPER_ADMIN") ) %}
-      <li>
-      <a href="{{ path('event_edit', { 'id': entity.id }) }}">Éditer</a>
+    <li>
+        <a href="{{ path('event_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
     </li>
-      {% endif %}
     <li>{{ form(delete_form) }}</li>
 </ul>
 {% endblock %}

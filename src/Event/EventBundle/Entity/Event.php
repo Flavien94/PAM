@@ -157,7 +157,7 @@ class Event
     }
 
     public function __toString(){
-      return (string) $this->getPublics();
+      // return (string) $this->getPublics();
       return (string) $this->getFile();
 
     }
