@@ -28,9 +28,9 @@
                   {% endif %}
                 </h4>
                 <h6>
-                  {% if event.dateStart %}{{ event.dateStart|date('Y-m-d H:i') }}{% endif %}
+                  {% if event.dateStart %}{{ event.dateStart|date('d-m-Y') }}{% endif %}
                   -
-                  {% if event.dateEnd %}{{ event.dateEnd|date('Y-m-d H:i') }}{% endif %}
+                  {% if event.dateEnd %}{{ event.dateEnd|date('d-m-Y') }}{% endif %}
                 </h6>
               </div>
             </div>

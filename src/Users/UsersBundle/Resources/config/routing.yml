@@ -21,6 +21,10 @@ list:
     path: /list
     defaults: { _controller: UsersBundle:List:index }
 
+list_update:
+    path: /list/update/{id}
+    defaults: { _controller: UsersBundle:List:update }
+
 delete:
     path: /delete/{id}
     defaults: { _controller: UsersBundle:Delete:delete }

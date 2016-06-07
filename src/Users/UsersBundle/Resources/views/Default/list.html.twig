@@ -3,7 +3,7 @@
 <h1 style="margin-top:10%;">Contributeurs</h1>
 <ol>
 {% for user in users | slice(1) %}
-  <li>{{ user.username }} <a href="{{ path('delete', {'id': user.id}) }}">X</a></li>
+  <li>{{ user.username }} <a href="{{ path('list_update', {'id': user.id}) }}">Edit</a><a href="{{ path('delete', {'id': user.id}) }}">X</a></li>
 {% endfor %}
 </ol>
 <a href="{{ path('fos_user_registration_register') }}">Créer un contributeur</a>

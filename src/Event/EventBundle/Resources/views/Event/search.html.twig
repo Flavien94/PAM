@@ -25,7 +25,7 @@
             {% if event.image_id == null %}
             <td class="images" style="background-image:url('{{ asset('images/logo-pole-emploi_region.png') }}')"></td>
             {% else %}
-            <td class="images" style="background-image:url('{{ asset(event.image°id.AssetPAth) }}"></td>
+            <td class="images" style="background-image:url('{{ asset(event.image_id.AssetPAth) }}"></td>
             {% endif %}
               <td>
                 <h4>{{ event.title }}</h4>
@@ -38,10 +38,10 @@
                 <a href="{{ path('event_edit', { 'id': event.id }) }}">Éditer</a>
               </td>
               <td>
-                {% if event.date_start %}{{ event.date_start|date('Y-m-d H:i:s') }}{% endif %}
+                {% if event.date_start %}{{ event.date_start|date('d-m-Y') }}{% endif %}
               </td>
               <td>
-                {% if event.date_end %}{{ event.date_end|date('Y-m-d H:i:s') }}{% endif %}
+                {% if event.date_end %}{{ event.date_end|date('d-m-Y') }}{% endif %}
               </td>
             </tr>
           {% endfor %}
