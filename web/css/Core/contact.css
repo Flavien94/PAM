@@ -1,0 +1,33 @@
+.contact{
+  margin-top: 20vh;
+  background: #63B688;
+}
+h3{
+  text-align: center;
+  font-size: 2.5em;
+  color: #FFFFFF;
+}
+.margin{
+  margin-top: 1vh;
+  margin-bottom: 1vh;
+}
+.heigth-one{
+  height: 5vh;
+}
+input{
+  border-radius: 5px;
+  border: 1px solid #AAAAAA;
+}
+textarea{
+  height: 20vh;
+  border-radius: 5px;
+  border: 1px solid #AAAAAA;
+}
+.btn-submit{
+  height: 4vh;
+  border-radius: 5px;
+  border: 1px solid #AAAAAA;
+  background-color: #FFFFFF;
+  color: #63B688;
+  margin-bottom: 2vh;
+}

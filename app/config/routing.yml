@@ -1,6 +1,6 @@
-core_homepage:
-    path: /
-    defaults: { _controller: CoreBundle:Default:index }
+core:
+    resource: "@CoreBundle/Resources/config/routing.yml"
+    prefix:   /
 
 event:
     resource: "@EventBundle/Resources/config/routing.yml"

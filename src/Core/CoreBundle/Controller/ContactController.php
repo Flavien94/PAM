@@ -67,7 +67,7 @@ class ContactController extends Controller
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Create'));
+        $form->add('submit', 'submit', array('label' => 'Envoyer'));
 
         return $form;
     }
