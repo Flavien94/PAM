@@ -11,11 +11,24 @@ class RegistrationType extends AbstractType
     {
         $builder
         ->remove('email', LegacyFormHelper::getType('Symfony\Component\Form\Extension\Core\Type\EmailType'), array('label' => 'form.email', 'translation_domain' => 'FOSUserBundle'))
+        ->add('username', null, array('label' => ' ', 'translation_domain' => 'FOSUserBundle',
+                                      'attr' => array('placeholder' => 'form.username',
+                                                      'class' => 'fosuser-input'
+                                    ),
+                                ))
         ->add('plainPassword', LegacyFormHelper::getType('Symfony\Component\Form\Extension\Core\Type\RepeatedType'), array(
             'type' => LegacyFormHelper::getType('Symfony\Component\Form\Extension\Core\Type\PasswordType'),
             'options' => array('translation_domain' => 'FOSUserBundle'),
-            'first_options' => array('label' => 'form.password'),
-            'second_options' => array('label' => 'Confirmer le mot de passe'),
+            'first_options' => array('label' => ' ',
+                                    'attr' => array('placeholder' => 'form.password',
+                                                    'class' => 'fosuser-input'
+                                  ),
+                                ),
+            'second_options' => array('label' => ' ',
+                                      'attr' => array('placeholder' => 'Confirmer le mot de passe',
+                                                      'class' => 'fosuser-input'
+                                    ),
+                                  ),
             'invalid_message' => 'fos_user.password.mismatch',
         ));
     }
