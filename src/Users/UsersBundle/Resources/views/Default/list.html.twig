@@ -8,7 +8,7 @@
             <div class="container-fluid">
                 <div class="row">
                       <h1>Contributeurs</h1>
-                      {% if users == null %}
+                        {% if users == null %}
                     <h3 style="text-align:center">Il n'y as aucun contributeurs. Cliquez <a href="{{ path('fos_user_registration_register') }}">ici</a> pour en créer.</h3>
                       {% else %}
                       <table class="col-md-12">
@@ -25,8 +25,19 @@
                                   <h4>{{ user.username }}</h4>
                                 </td>
                                 <td>
-                                  <a class="btn btn-default" href="{{ path('delete', {'id': user.id}) }}">Supprimer</a>
                                   <a class="btn btn-default" href="{{ path('list_update', {'id': user.id}) }}">Modifier le mot de passe</a>
+                                  <a class="btn btn-danger" data-toggle="modal" data-target="#myModal{{ user.id }}">Supprimer</a>
+                                  <div id="myModal{{ user.id }}" class="modal fade" role="dialog">
+                                    <div class="modal-dialog">
+                                      <div class="modal-content">
+                                        <div class="modal-body">
+                                          <p>Etes vous-sur de vouloir supprimer l'utilisateur : {{ user.username }} ?</p>
+                                          <a class="btn btn-danger" href="{{ path('delete', {'id': user.id}) }}">Supprimer</a>
+                                          <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
                                 </td>
                               </tr>
                             {% endfor %}
