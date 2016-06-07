@@ -37,21 +37,24 @@
               <span class="caret"></span>
             </a>
               <ul class="dropdown-menu">
+                {% if is_granted("ROLE_SUPER_ADMIN") %}
+                <li>
+                  <a href="{{ path('list') }}">Contributeurs</a>
+                </li>
+                <li>
+                  <a href="{{ path('fos_user_registration_register') }}">
+                    Créer un contributeur
+                  </a>
+                </li>
+                {% endif %}
+                <li>
+                  <a href="{{ path("event_new") }}">Publier un événement</a>
+                </li>
                   <li>
                     <a href="{{ path('fos_user_security_logout') }}">
                       {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
                     </a>
                   </li>
-                  {% if is_granted("ROLE_SUPER_ADMIN") %}
-                  <li>
-                    <a href="{{ path('list') }}">
-                      Contributeurs
-                    </a>
-                  </li>
-                  {% endif %}
-                <li>
-                  <a href="{{ path("event_new") }}">Publier un événement</a>
-                </li>
               </ul>
             </li>
             {% else %}
