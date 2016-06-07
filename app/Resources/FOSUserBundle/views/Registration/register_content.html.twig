@@ -1,12 +1,14 @@
 {% trans_default_domain 'FOSUserBundle' %}
-<style media="screen">
-  .fos_user_registration_register{
-    margin-top: 10%;
-  }
-</style>
+<div class="carre">
+<div class="form" id="form-register">
 {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
     {{ form_widget(form) }}
-    <div>
-        <input type="submit" value="{{ 'registration.submit'|trans }}" />
+    <div class="fosuser-submit">
+        <input type="submit" value="{{ 'registration.submit'|trans }}" /><br>
+        <div class="fosuser-liens">
+          <a href="{{ path('list') }}">Retour à la liste</a>
+        </div>
     </div>
 {{ form_end(form) }}
+</div>
+</div>

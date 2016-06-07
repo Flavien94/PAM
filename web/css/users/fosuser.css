@@ -1,0 +1,51 @@
+.titre{
+  text-align: center;
+font-size: x-large;
+}
+.carre{
+  background-color: #63B688;
+  width: 50vw;
+  margin: 0 auto;
+  height: 50vh;
+}
+.form{
+  width: 300px;
+  margin: 0 auto;
+}
+#form-login{
+  padding-top: 12%;
+}
+#remember{
+  padding-top: 8px;
+  width: 152px;
+  margin: 0 auto;
+}
+#form-register{
+  padding-top: 5%;
+}
+#form-changepassword{
+  padding-top: 9%;
+}
+.fosuser-input{
+  width: 300px;
+  text-align: center;
+  height: 45px;
+  font-size: large;
+}
+#input-login{
+  margin-bottom: 20px;
+}
+.fosuser-submit{
+  width: 170px;
+margin: 0 auto;
+padding-top: 10px;
+}
+.fosuser-submit input{
+  width:170px;
+}
+.fosuser-liens{
+  width: 140px;
+  margin: 0 auto;
+  padding-top: 8px;
+  font-size: 20px;
+}
