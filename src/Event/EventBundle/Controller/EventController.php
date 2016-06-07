@@ -10,7 +10,11 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Event\EventBundle\Entity\Event;
 use Event\EventBundle\Form\EventType;
-
+use Event\EventBundle\Entity\Search;
+use Event\EventBundle\Form\SearchType;
+use Event\EventBundle\Entity\FileEvent;
+use Event\EventBundle\Entity\Links;
+use Event\EventBundle\Entity\Images;
 /**
  * Event controller.
  *
@@ -26,7 +30,7 @@ class EventController extends Controller
      * @Method("GET")
      * @Template()
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
 
@@ -61,6 +65,7 @@ class EventController extends Controller
 
         return array(
             'entities' => $entities,
+            'form'   => $formSearch->createView(),
         );
     }
     /**
@@ -158,7 +163,7 @@ class EventController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('EventBundle:Event')->find($id);
-        
+
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Event entity.');
         }
