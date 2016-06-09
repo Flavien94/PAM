@@ -25,18 +25,33 @@ class SearchController extends Controller
     public function searchAction(Request $request)
     {
       $search = $request->query->get('query');
-      // $dateStart = $request->query->get('beginning');
-      // dump($dateStart);
+      $dateStart = $request->query->get('event_eventbundle_search')['dateStart']['date'];
+      $dateEnd = $request->query->get('event_eventbundle_search')['dateEnd']['date'];
+      $sectors = $request->query->get('event_eventbundle_search')['sector'];
          $em = $this->getDoctrine()->getManager();
 
-         $sql = 'SELECT id, date_start, date_end, title, description, image_id FROM event
-         WHERE MATCH (title, description, contact_name) AGAINST ("'.$search.'* " IN BOOLEAN MODE)';
-         //
-        //  if($dateStart != null) {
-        //    $sql = $sql . ' AND date_start = '.$dateStart.' ';
+
+           $sql = 'SELECT id, date_start, date_end, title, description, image_id FROM event ';
+
+         if($search != null) {
+           $sql = $sql . ' WHERE MATCH (title, description, contact_name) AGAINST ("'.$search.'*" IN BOOLEAN MODE)';
+         }
+
+         if($dateStart != null) {
+           $sql = $sql . ' date_start >= "'.$dateStart.'"';
+         }
+
+         if($dateEnd != null) {
+           $sql = $sql . ' date_end >= "'.$dateEnd.'"';
+         }
+
+        //  if($sectors != null) {
+        //    $sql = $sql . ' AND sector = "'.$sectors.'"';
+        //    dump($sectors);
         //  }
-         //
-        //  $sql = $sql . ';';
+
+         $sql = $sql . ' LIMIT 10;';
+
 
          $query = $em->getConnection()->prepare($sql);
          $query->execute();
@@ -55,7 +70,7 @@ class SearchController extends Controller
          }
 
          return $this->render('EventBundle:Event:search.html.twig', [ "events" => $events,
-         'form'   => $formSearch->createView()
+         'formSearch'   => $formSearch->createView()
        ]);
     }
 

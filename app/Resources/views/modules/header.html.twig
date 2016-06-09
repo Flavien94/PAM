@@ -7,7 +7,7 @@
     </div>
     <form action="{{ path('search') }}" method="GET" class="navbar-form navbar-right inline-form search-top" role="search">
       <div class="form-group">
-        <input type="search" class="input-sm form-control" name="query" placeholder="Recherche">
+        <input type="search" class="input-sm form-control" name="query" placeholder="Recherche" value="">
       </div>
       <button type="submit" class="btn btn-primary btn-sm search-btn">
         <span class="glyphicon glyphicon-eye-open"></span>
@@ -69,44 +69,44 @@
 
   {% if app.request.get('_route') == 'event' or app.request.get('_route') == 'search' %}
   <nav class="navbar navbar-lower navbar-left navbar3" role="navigation">
-    <form class="navbar-form inline-form" role="search">
-      {{ form_start(form) }}
-      {{ form_errors(form) }}
+    <form method="GET" action="{{ path('search') }}" class="navbar-form inline-form" role="search">
+      {{ form_start(formSearch) }}
+      {{ form_errors(formSearch) }}
       <div class="container-fluid container3">
         <div class="collapse navbar-collapse" id="bs-navbar-collapse-2">
           <div class="center">
-            <input type="search" name="query" class="input-sm form-control" placeholder="Recherche">
+            <input type="search" name="query" class="input-sm form-control" placeholder="Recherche" value="">
           </div>
           <ul class="nav navbar-nav">
             <li>
               <label for="dateStart" class="small-label">Date de début</label>
-              {{ form_widget(form.dateStart, { 'attr': {'class': '', 'name' : 'beginning'} }) }}
+              {{ form_widget(formSearch.dateStart, { 'attr': {'class': '', 'name' : 'beginning'} }) }}
             </a>
           </li>
           <li>
             <label for="dateEnd" class="small-label">Date de fin</label>
-            {{ form_widget(form.dateEnd, { 'attr': {'class': '', 'name': 'end'} }) }}
+            {{ form_widget(formSearch.dateEnd, { 'attr': {'class': '', 'name': 'end'} }) }}
           </li>
           <li>
             <label for="secteurs" id="secteurs" class="small-label">Secteurs</label>
-            {{ form_widget(form.sector) }}
+            {{ form_widget(formSearch.sector) }}
           </li>
           <li>
             <label for="publics" id="publics" class="small-label">Publics</label>
-            {{ form_widget(form.publics) }}
+            {{ form_widget(formSearch.publics) }}
           </li>
           <li>
             <label for="type" id="types" class="small-label">Type d'événement</label>
-            {{ form_widget(form.type) }}
+            {{ form_widget(formSearch.type) }}
           </li>
         </ul>
         <div class="right">
           <ul class="nav navbar-nav navbar-right">
-            {{ form_row(form.submit, { 'label': '', 'classe': 'btn btn-primary btn-sm research-btn' }) }}
+            {{ form_row(formSearch.submit, { 'label': '', 'classe': 'btn btn-primary btn-sm research-btn' }) }}
               <span class="glyphicon glyphicon-eye-open"></span>
               Chercher</button>
           </ul>
-          {{ form_end(form) }}
+          {{ form_end(formSearch) }}
 
         </div>
       </div>

@@ -517,6 +517,8 @@ class Event
      */
     public function upload()
     {
+      if(is_array($this) || is_object($this))
+      {
         foreach($this->uploadedFiles as $uploadedFile)
         {
             if ($uploadedFile) {
@@ -526,6 +528,7 @@ class Event
                 unset($uploadedFile);
             }
         }
+      }
      }
      public function getLinks() {
          return $this->links;
