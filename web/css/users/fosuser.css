@@ -1,47 +1,42 @@
 .carre{
-  background-color: #63B688;
-  width: 50vw;
-  margin: 0 auto;
+  background-color: #FF5950;
   height: 50vh;
 }
-.form{
-  width: 300px;
-  margin: 0 auto;
-}
-#form-login{
-  padding-top: 12%;
-}
-#remember{
-  padding-top: 8px;
-  width: 152px;
-  margin: 0 auto;
-}
-#form-register{
+.fosuser-form{
   padding-top: 5%;
 }
-#form-changepassword{
-  padding-top: 9%;
+input{
+  margin-bottom: 3%;
 }
-.fosuser-input{
-  width: 300px;
-  text-align: center;
-  height: 45px;
-  font-size: large;
+ /*LOGIN*/
+ #password{
+   margin-top: 20px;
+   margin-bottom:10px;
+ }
+ #remember{
+   text-align: center;
+ }
+#_submit{
+  margin-top: 10px;
 }
-#input-login{
-  margin-bottom: 20px;
-}
-.fosuser-submit{
-  width: 170px;
-margin: 0 auto;
-padding-top: 10px;
-}
-.fosuser-submit input{
-  width:170px;
-}
-.fosuser-liens{
-  width: 140px;
-  margin: 0 auto;
-  padding-top: 8px;
+/*END-LOGIN*/
+
+/*REGISTER*/
+#link{
   font-size: 20px;
+  text-align: center;
+  margin-top: 8%;
 }
+#link a{
+  color: #004077;
+}
+/*END-REGISTER*/
+
+/*CHANGE_PASSWORD*/
+#form-changepassword{
+  padding-top: 11%;
+}
+.input-changepassword{
+  margin-bottom: 8%;
+}
+/*END-CHANGE_PASSWORD*/
