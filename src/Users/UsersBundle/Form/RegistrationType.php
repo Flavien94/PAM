@@ -20,7 +20,8 @@ class RegistrationType extends AbstractType
             'type' => LegacyFormHelper::getType('Symfony\Component\Form\Extension\Core\Type\PasswordType'),
             'options' => array('translation_domain' => 'FOSUserBundle'),
             'first_options' => array('label' => ' ',
-                                    'attr' => array('placeholder' => 'form.password',
+                                    'attr' => array(
+                                      'placeholder' => 'form.password',
                                                     'class' => 'fosuser-input'
                                   ),
                                 ),
