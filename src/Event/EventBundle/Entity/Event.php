@@ -35,6 +35,12 @@ class Event
     */
     private $type;
     /**
+    * @ORM\OneToOne(targetEntity="Event\EventBundle\Entity\Place", cascade={"persist", "remove"})
+    * @ORM\JoinColumn(name="place_id", referencedColumnName="id", nullable=true)
+    * @Assert\Valid()
+    */
+    private $place;
+    /**
     * @ORM\OneToOne(targetEntity="Event\EventBundle\Entity\Images", cascade={"persist", "remove"})
     * @ORM\JoinColumn(name="image_id", referencedColumnName="id", nullable=true)
     * @Assert\Valid()
@@ -107,13 +113,6 @@ class Event
      * @Assert\Email(message="Email du Contact :Ce n'est pas une adresse email valide")
      */
     private $contact_email;
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="place", type="string", length=255, nullable=false)
-     * @Assert\Length(min=2, minMessage="Lieux : Ce champs doit contenir au minimun 2 caractères")
-     */
-    private $place;
 
     /**
      * @var \DateTime
@@ -291,31 +290,7 @@ class Event
     {
         return $this->contact_email;
     }
-
-    /**
-     * Set place
-     *
-     * @param string $place
-     *
-     * @return Event
-     */
-    public function setPlace($place)
-    {
-        $this->place = $place;
-
-        return $this;
-    }
-
-    /**
-     * Get place
-     *
-     * @return string
-     */
-    public function getPlace()
-    {
-        return $this->place;
-    }
-
+    
     /**
      * Set dateStart
      *
@@ -468,6 +443,28 @@ class Event
     public function getSector()
     {
         return $this->sector;
+    }
+    /**
+     * set place
+     *
+     * @param \Event\EventBundle\Entity\Place $place
+     *
+     * @return Event
+     */
+    public function setPlace(\Event\EventBundle\Entity\Place $place = null)
+    {
+      $this->place = $place;
+
+      return $this;
+    }
+    /**
+     * Get place
+     *
+     * @return \Event\EventBundle\Entity\Place
+     */
+    public function getPlace()
+    {
+      return $this->place;
     }
     /**
      * set images

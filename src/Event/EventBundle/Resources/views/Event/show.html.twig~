@@ -1,0 +1,117 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Event</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Author</th>
+                <td>{{ entity.author }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ entity.title }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ entity.description }}</td>
+            </tr>
+            <tr>
+                <th>Contact_name</th>
+                <td>{{ entity.contactname }}</td>
+            </tr>
+            <tr>
+                <th>Contact_email</th>
+                <td>{{ entity.contactemail }}</td>
+            </tr>
+            <tr>
+                <th>Place</th>
+                <td>{{ entity.place }}</td>
+            </tr>
+            <tr>
+                <th>Datecreate</th>
+                <td>{{ entity.dateCreate|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Datestart</th>
+                <td>{{ entity.dateStart|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Dateend</th>
+                <td>{{ entity.dateEnd|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Headlines</th>
+                <td>{{ entity.headlines }}</td>
+            </tr>
+            {% if entity.links != null %}
+            <tr>
+                <th>Publics</th>
+                <td>{{ entity.publics.title }}</td>
+            </tr>
+            {% endif %}
+            {% if entity.links != null %}
+            <tr>
+                <th>type</th>
+                <td>{{ entity.type.title }}</td>
+            </tr>
+            {% endif %}
+            {% if entity.links != null %}
+            <tr>
+                <th>Secteur</th>
+                <td>{{ entity.sector.title }}</td>
+            </tr>
+            {% endif %}
+
+            <tr>
+                <th>images</th>
+                <td>  {% if entity.images == null %}
+                  <img class="row img-une" src="{{asset('images/logo-pole-emploi_region.png')}}" />
+                  {% else %}
+                  <img class="row img-une" src="{{ asset(entity.images.AssetPAth) }}"/>
+                  {% endif %}
+                </td>
+            </tr>
+            <tr>
+                 {% if entity.links != null %}
+                <th>Liens</th>
+                <td>
+                  {% for links in entity.links %}
+                  {{ links.url }}
+                  {% endfor %}
+                  {% endif %}
+                </td>
+            </tr>
+            <tr>
+                {% if entity.files != null %}
+
+                <th>files</th>
+                <td>
+                {% for file in entity.files %}
+                {{ file.path }}
+                {% endfor %}
+                  {% endif %}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('event') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('event_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}
