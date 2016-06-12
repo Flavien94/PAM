@@ -16,7 +16,7 @@ class SectorType extends AbstractType
     {
         $builder
         ->add('sector', 'entity', array('class' => 'Event\EventBundle\Entity\Sector',
-        'property' => 'caption',
+        'property' => 'title',
         'multiple' => false,
         'empty_value' => 'Secteurs',
         'required' => false

@@ -131,7 +131,7 @@ class Search
      */
     public function setSector($sector)
     {
-        $this->sector[] = $sector;
+        $this->sector= $sector;
 
         return $this;
     }
