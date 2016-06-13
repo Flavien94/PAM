@@ -29,12 +29,6 @@ class Search
      * @ORM\Column(name="date_start", type="date", nullable=true)
      */
     private $dateStart;
-    /**
-     * @var \Time
-     *
-     * @ORM\Column(name="time_start", type="time", nullable=true)
-     */
-    private $timeStart;
 
     /**
      * @var \Date
@@ -42,12 +36,7 @@ class Search
      * @ORM\Column(name="date_end", type="date", nullable=true)
      */
     private $dateEnd;
-    /**
-     * @var \Time
-     *
-     * @ORM\Column(name="time_end", type="time", nullable=true)
-     */
-    private $timeEnd;
+
     /**
     * @ORM\ManyToOne(targetEntity="Event\EventBundle\Entity\Sector", cascade={"persist"})
     * @ORM\JoinColumn(nullable=true)

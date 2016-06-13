@@ -19,15 +19,7 @@ class SearchType extends AbstractType
               'widget' => "single_text",
               'required' => false
         ))
-        ->add('timeStart', 'time', array(
-              'widget' => "single_text",
-              'required' => false
-        ))
         ->add('dateEnd', 'date', array(
-              'widget' => "single_text",
-              'required' => false
-        ))
-        ->add('timeEnd', 'time', array(
               'widget' => "single_text",
               'required' => false
         ))
