@@ -1,3 +1,6 @@
+#h1_contact{
+  margin-top: 0;
+}
 .search-top{
   visibility: hidden;
 }
@@ -24,6 +27,9 @@ th {
 }
 li {
   list-style: none;
+}
+#scroll_contact{
+  margin-top: 0;
 }
 .scroll, .error {
   margin-top: 15%;

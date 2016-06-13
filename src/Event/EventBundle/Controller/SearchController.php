@@ -25,7 +25,7 @@ class SearchController extends Controller
     public function searchAction(Request $request)
     {
       $search = $request->query->get('query');
-      $dateStart = $request->query->get('event_eventbundle_search')['dateStart']['date'];
+      $dateStart = $request->query->get('event_eventbundle_search')['dateStart'];
       $dateEnd = $request->query->get('event_eventbundle_search')['dateEnd'];
       $sectors = $request->query->get('event_eventbundle_search')['sector'];
       $publics = $request->query->get('event_eventbundle_search')['publics'];

@@ -30,3 +30,17 @@ delete:
     defaults: { _controller: UsersBundle:Delete:delete }
     requirements:
     methods: GET
+
+contact_admin:
+    path: /contact
+    defaults: { _controller: UsersBundle:Contact:contact }
+
+contact_show:
+    path: /contact_show/{id}
+    defaults: { _controller: UsersBundle:Contact:show }
+
+contact_delete:
+    path: /contact_delete/{id}
+    defaults: { _controller: UsersBundle:Contact:delete }
+    requirements:
+    methods: GET
