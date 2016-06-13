@@ -15,14 +15,12 @@ class SearchType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-        ->add('dateStart', 'datetime', array(
-              'date_widget' => "single_text",
-              'time_widget' => "single_text",
+        ->add('dateStart', 'date', array(
+              'widget' => "single_text",
               'required' => false
         ))
-        ->add('dateEnd', 'datetime', array(
-              'date_widget' => "single_text",
-              'time_widget' => "single_text",
+        ->add('dateEnd', 'date', array(
+              'widget' => "single_text",
               'required' => false
         ))
         ->add('publics', 'collection', array(
