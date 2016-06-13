@@ -74,4 +74,22 @@ class ListController extends Controller {
           'form' => $form->createView()
       ));
     }
+    /**
+    * @Route(
+    *    path          = "/delete/{id}",
+    *    name          = "delete",
+    *    methods       = { "GET" },
+    * )
+    */
+   public function deleteAction($id) {
+     $em = $this->getDoctrine()->getManager();
+
+     /** @var \Star9988\ModelBundle\Entity\User $user */
+     $user = $this->getDoctrine()->getRepository('UsersBundle:Users')->find($id);
+
+     $em->remove($user);
+     $em->flush();
+
+     return new RedirectResponse($this->generateUrl('list'));
+   }
 }
