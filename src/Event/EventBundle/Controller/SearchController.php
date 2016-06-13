@@ -30,6 +30,7 @@ class SearchController extends Controller
       $sectors = $request->query->get('event_eventbundle_search')['sector'];
       $publics = $request->query->get('event_eventbundle_search')['publics'];
       $types = $request->query->get('event_eventbundle_search')['type'];
+      $errorMessage = "Aucun événement ne correspond à votre recherche.";
          $em = $this->getDoctrine()->getManager();
 
 
@@ -90,6 +91,8 @@ class SearchController extends Controller
          }
 
 
+
+
          $sql = $sql . ' LIMIT 10;';
 
 
@@ -110,9 +113,12 @@ class SearchController extends Controller
 
          }
 
-         return $this->render('EventBundle:Event:search.html.twig', [ "events" => $events,
+         return $this->render('EventBundle:Event:search.html.twig', [
+          "events" => $events,
          'queryvalue' => $queryvalue,
+         'errorMessage' => $errorMessage,
          'formSearch'   => $formSearch->createView(),
+         dump($events),
        ]);
     }
 
