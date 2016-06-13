@@ -76,5 +76,7 @@
     </div>
   </div>
 </div>
+{% if (entity.author == app.user.username or is_granted("ROLE_SUPER_ADMIN")) %}
 <li>{{ form(delete_form) }}</li>
+{% endif %}
 {% endblock %}
