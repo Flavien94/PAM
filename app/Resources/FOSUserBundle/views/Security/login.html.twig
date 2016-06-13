@@ -11,13 +11,13 @@
         <div class="carre col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
             <form action="{{ path("fos_user_security_check") }}" class="fosuser-form col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3" method="post">
                 <input type="hidden" name="_csrf_token" value="{{ csrf_token }}"/>
-                <input class="form-control fosuser-input" placeholder="Nom d'utilisateur" type="text" id="username" name="_username" value="{{ last_username }}" required="required"/>
-                <input class="form-control fosuser-input" placeholder="Mot de passe" type="password" id="password" name="_password" required="required"/>
+                <input class="col-sm-12 fosuser-input" placeholder="Nom d'utilisateur" type="text" id="username" name="_username" value="{{ last_username }}" required="required"/>
+                <input class="col-sm-12 fosuser-input" placeholder="Mot de passe" type="password" id="password" name="_password" required="required"/>
                 <div id="remember">
                     <input type="checkbox" id="remember_me" name="_remember_me" value="on"/>
                     <label for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
                 </div>
-                <input class="col-xs-12 col-sm-12 col-md-12 col-lg-12 btn btn-success" type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}"/>
+                <input class="col-sm-12 btn btn-success" type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}"/>
             </form>
         </div>
     </div>
