@@ -29,7 +29,8 @@
             {{ form_widget(form.contact_email, { 'attr': {'class': 'inline contact_email', 'placeholder': 'Email du contact'} }) }}
           </div>
           <div class="col-md-1 col-md-push-8">
-            {{ form_widget(form.author,{ 'attr': {'value': app.user.username, 'readonly':'readonly'}} ) }}
+            {{ form_widget(form.author,{ 'attr': {'value': app.user.username, 'readonly':'readonly'}}
+            ) }}
           </div>
         </div>
       </div>
@@ -66,7 +67,9 @@
             {{ form_errors(form.uploadedFiles, { 'attr': {'class':'list-group-item list-group-item-danger'}}) }}
           </div>
           <div class="col-md-4 headlines">
-            <div class="big-label col-md-6"> À la une : </div>
+            <div class="big-label col-md-6">
+              À la une :
+            </div>
             {{ form_widget(form.headlines, { 'attr': {'class':'headlines-check col-md-2','label':'À la une'} }) }}
           </div>
           <div class="col-md-2 col-md-push-6">
@@ -86,9 +89,22 @@
               {{ form_widget(form.place.country, { 'attr': {'class': 'col-md-4'}}) }}
             </div>
             <h6 class="col-md-12">Date de début*</h6>
-            {{ form_widget(form.dateStart, { 'attr': {'class': 'col-md-12'} }) }}
+              <div class="col-md-6">
+                {{ form_widget(form.dateStart) }}
+                </div>
+              <div class="col-md-6">
+                {{ form_widget(form.timeStart) }}
+              </div>
             <h6 class="col-md-12">Date de fin*</h6>
-            {{ form_widget(form.dateEnd, { 'attr': {'class': 'col-md-12'} }) }}
+              <div class="col-md-6">
+                {{ form_widget(form.dateEnd) }}
+                </div>
+              <div class="col-md-6">
+                {{ form_widget(form.timeEnd) }}
+              </div>
+
+
+
           </div>
           <div class="col-md-12">
             {{ form_widget(form.images, { 'attr': {'class': 'col-md-12'} }) }}
@@ -101,9 +117,8 @@
     </div>
     {{ form_end(form) }}
 
-
-    {% endblock %}
-    {% block javascripts %}
-        {{ parent() }}
-        <script src="{{ asset('js/addLinks.js')}}" type="text/javascript" ></script>
-    {% endblock %}
+  {% endblock %}
+  {% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('js/addLinks.js')}}" type="text/javascript"></script>
+  {% endblock %}

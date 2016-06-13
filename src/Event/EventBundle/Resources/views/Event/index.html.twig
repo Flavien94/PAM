@@ -38,19 +38,17 @@
                 <br>
               </td>
               <td>
-                {% if entity.dateStart %}{{ entity.dateStart|date('Y-m-d H:i:s') }}{% endif %}
+                {% if entity.dateStart %}{{ entity.dateStart|date('d-m-Y H:i') }}{% endif %}
               </td>
               <td>
-                {% if entity.dateEnd %}{{ entity.dateEnd|date('Y-m-d H:i:s') }}{% endif %}
+                {% if entity.dateEnd %}{{ entity.dateEnd|date('d-m-Y H:i') }}{% endif %}
               </td>
             </tr>
           {% endfor %}
         </div>
+      </table>
       </div>
   </div>
 
-</table>
-</div>
-</div>
 
 {% endblock %}

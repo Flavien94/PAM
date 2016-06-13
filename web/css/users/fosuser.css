@@ -1,14 +1,22 @@
 .carre{
   background-color: #FF5950;
-  height: 50vh;
+  /*height: 50vh;*/
 }
 .fosuser-form{
   padding-top: 5%;
 }
-input{
+.carre input{
   margin-bottom: 3%;
 }
+.carre .btn{
+  height: 45px;
+}
  /*LOGIN*/
+ .fosuser-input{
+   text-align: center;
+   height: 45px;
+   font-size: large;
+}
  #password{
    margin-top: 20px;
    margin-bottom:10px;
@@ -26,7 +34,10 @@ input{
   font-size: 20px;
   text-align: center;
   margin-top: 8%;
+  margin-top: 2%;
+  margin-bottom: 3%;
 }
+
 #link a{
   color: #004077;
 }
@@ -34,7 +45,7 @@ input{
 
 /*CHANGE_PASSWORD*/
 #form-changepassword{
-  padding-top: 11%;
+  padding-top: 3%;
 }
 .input-changepassword{
   margin-bottom: 8%;

@@ -24,16 +24,16 @@ class Search
     private $id;
 
     /**
-     * @var \DateTime
+     * @var \Date
      *
-     * @ORM\Column(name="date_start", type="datetime", nullable=true)
+     * @ORM\Column(name="date_start", type="date", nullable=true)
      */
     private $dateStart;
 
     /**
-     * @var \DateTime
+     * @var \Date
      *
-     * @ORM\Column(name="date_end", type="datetime", nullable=true)
+     * @ORM\Column(name="date_end", type="date", nullable=true)
      */
     private $dateEnd;
 
@@ -77,7 +77,7 @@ class Search
     /**
      * Set dateStart
      *
-     * @param \DateTime $dateStart
+     * @param \Date $dateStart
      *
      * @return Search
      */
@@ -91,17 +91,40 @@ class Search
     /**
      * Get dateStart
      *
-     * @return \DateTime
+     * @return \Date
      */
     public function getDateStart()
     {
         return $this->dateStart;
     }
+    /**
+     * Set timeStart
+     *
+     * @param \Time $timeStart
+     *
+     * @return Search
+     */
+    public function setTimeStart($timeStart)
+    {
+        $this->timeStart = $timeStart;
+
+        return $this;
+    }
+
+    /**
+     * Get timeStart
+     *
+     * @return \Time
+     */
+    public function getTimeStart()
+    {
+        return $this->timeStart;
+    }
 
     /**
      * Set dateEnd
      *
-     * @param \DateTime $dateEnd
+     * @param \Date $dateEnd
      *
      * @return Search
      */
@@ -115,11 +138,34 @@ class Search
     /**
      * Get dateEnd
      *
-     * @return \DateTime
+     * @return \Date
      */
     public function getDateEnd()
     {
         return $this->dateEnd;
+    }
+    /**
+     * Set timeEnd
+     *
+     * @param \Time $timeEnd
+     *
+     * @return Search
+     */
+    public function setTimeEnd($timeEnd)
+    {
+        $this->timeEnd = $timeEnd;
+
+        return $this;
+    }
+
+    /**
+     * Get timeEnd
+     *
+     * @return \Time
+     */
+    public function getTimeEnd()
+    {
+        return $this->timeEnd;
     }
 
     /**
@@ -131,7 +177,7 @@ class Search
      */
     public function setSector($sector)
     {
-        $this->sector[] = $sector;
+        $this->sector= $sector;
 
         return $this;
     }

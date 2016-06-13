@@ -25,10 +25,15 @@ th {
 li {
   list-style: none;
 }
-.scroll {
-  margin-top: 10%;
+.scroll, .error {
+  margin-top: 15%;
   height: 60vh;
   top:30%;
+}
+.error {
+  font-weight: bolder;
+  font-size: 20px;
+  text-align: center
 }
 .images{
   background-size: contain;

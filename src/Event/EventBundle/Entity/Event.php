@@ -121,18 +121,31 @@ class Event
      */
     private $dateCreate;
     /**
-     * @var \DateTime
+     * @var \Date
      *
-     * @ORM\Column(name="date_start", type="datetime", nullable=false)
+     * @ORM\Column(name="date_start", type="date", nullable=false)
      */
     private $dateStart;
+    /**
+     * @var \Time
+     *
+     * @ORM\Column(name="time_start", type="time", nullable=true)
+     */
+    private $timeStart;
 
     /**
-     * @var \DateTime
+     * @var \Date
      *
-     * @ORM\Column(name="date_end", type="datetime", nullable=false)
+     * @ORM\Column(name="date_end", type="date", nullable=false)
      */
     private $dateEnd;
+    /**
+     * @var \Time
+     *
+     * @ORM\Column(name="time_end", type="time", nullable=true)
+     */
+    private $timeEnd;
+
 
     /**
      * @var \headlines
@@ -290,11 +303,11 @@ class Event
     {
         return $this->contact_email;
     }
-    
+
     /**
      * Set dateStart
      *
-     * @param \DateTime $dateStart
+     * @param \Date $dateStart
      *
      * @return Event
      */
@@ -308,7 +321,7 @@ class Event
     /**
      * Get dateStart
      *
-     * @return \DateTime
+     * @return \Date
      */
     public function getDateStart()
     {
@@ -316,9 +329,33 @@ class Event
     }
 
     /**
+     * Set timeStart
+     *
+     * @param \Time $timeStart
+     *
+     * @return Event
+     */
+    public function setTimeStart($timeStart)
+    {
+        $this->timeStart = $timeStart;
+
+        return $this;
+    }
+
+    /**
+     * Get timeStart
+     *
+     * @return \Time
+     */
+    public function getTimeStart()
+    {
+        return $this->timeStart;
+    }
+
+    /**
      * Set dateEnd
      *
-     * @param \DateTime $dateEnd
+     * @param \Date $dateEnd
      *
      * @return Event
      */
@@ -332,11 +369,34 @@ class Event
     /**
      * Get dateEnd
      *
-     * @return \DateTime
+     * @return \Date
      */
     public function getDateEnd()
     {
         return $this->dateEnd;
+    }
+    /**
+     * Set timeEnd
+     *
+     * @param \Time $timeEnd
+     *
+     * @return Event
+     */
+    public function setTimeEnd($timeEnd)
+    {
+        $this->timeEnd = $timeEnd;
+
+        return $this;
+    }
+
+    /**
+     * Get timeEnd
+     *
+     * @return \Time
+     */
+    public function getTimeEnd()
+    {
+        return $this->timeEnd;
     }
     /**
      * Set dateCreate

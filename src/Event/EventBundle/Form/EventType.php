@@ -22,15 +22,21 @@ class EventType extends AbstractType
             ->add('contact_email', 'text',array(
                   'required' => false
             ))
-            ->add('dateStart', 'datetime', array(
-                  'date_widget' => "single_text",
-                  'time_widget' => "single_text",
+            ->add('dateStart', 'date', array(
+                  'widget' => "single_text",
                   'required' => true
             ))
-            ->add('dateEnd', 'datetime', array(
-                  'date_widget' => "single_text",
-                  'time_widget' => "single_text",
+            ->add('timeStart', 'time', array(
+                  'widget' => "single_text",
+                  'required' => false
+            ))
+            ->add('dateEnd', 'date', array(
+                  'widget' => "single_text",
                   'required' => true
+            ))
+            ->add('timeEnd', 'time', array(
+                  'widget' => "single_text",
+                  'required' => false
             ))
             ->add('publics', 'collection', array(
                   'type'         => new PublicsType(),

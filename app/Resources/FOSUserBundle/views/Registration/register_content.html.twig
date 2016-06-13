@@ -3,11 +3,11 @@
 <div class="row">
   <div class="carre col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
 {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register fosuser-form col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3'} }) }}
-    {{ form_widget(form.username,{'attr': {'class': 'form-control fosuser-input'}}) }}
-    {{ form_widget(form.plainPassword.first,{'attr': {'class': 'form-control fosuser-input'}}) }}
-    {{ form_widget(form.plainPassword.second,{'attr': {'class': 'form-control fosuser-input'}}) }}
-    <input class="col-xs-12 col-sm-12 col-md-12 col-lg-12 btn btn-default" type="submit" value="{{ 'registration.submit'|trans }}" /><br>
-    <div id="link">
+    {{ form_widget(form.username,{'attr': {'class': 'col-sm-12 fosuser-input'}}) }}
+    {{ form_widget(form.plainPassword.first,{'attr': {'class': 'col-sm-12 fosuser-input'}}) }}
+    {{ form_widget(form.plainPassword.second,{'attr': {'class': 'col-sm-12 fosuser-input'}}) }}
+    <input class="col-sm-12 submit btn btn-success" type="submit" value="{{ 'registration.submit'|trans }}" /><br>
+    <div class="col-sm-12 " id="link">
       <a href="{{ path('list') }}">Retour à la liste</a>
     </div>
 {{ form_end(form) }}
