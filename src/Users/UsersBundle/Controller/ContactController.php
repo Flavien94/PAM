@@ -23,7 +23,6 @@ class ContactController extends Controller {
       $statement = $connection->prepare("SELECT id, firstname, lastname, email, object, message FROM contact");
       $statement->execute();
       $results = $statement->fetchAll();
-      dump($results);
       return $this->render('UsersBundle:Default:contact.html.twig', array('contacts' => $results ));
     }
     /**
@@ -35,13 +34,11 @@ class ContactController extends Controller {
      */
     public function showAction($id)
     {
-      dump('bonjour');
       $em = $this->getDoctrine()->getEntityManager();
       $connection = $em->getConnection();
       $statement = $connection->prepare("SELECT id, firstname, lastname, email, object, message FROM contact WHERE id = $id");
       $statement->execute();
       $results = $statement->fetchAll();
-      dump($results);
       return $this->render('UsersBundle:Default:show.html.twig', array('contacts' => $results ));
     }
     /**
