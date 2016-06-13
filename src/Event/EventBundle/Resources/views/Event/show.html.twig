@@ -47,7 +47,7 @@
       {% endif %}
       <div class="row">
         <div class="col-md-5">
-          <h4>Lieux</h4> {% if entity.place != null %} {% if entity.place.adress1 != null %} {{ entity.place.adress1 }}
+          <h4>Lieu</h4> {% if entity.place != null %} {% if entity.place.adress1 != null %} {{ entity.place.adress1 }}
           <br /> {% endif %} {% if entity.place.adress2 != null %} {{ entity.place.adress2 }}
           <br /> {% endif %} {% if entity.place.city != null %} {{ entity.place.city }} {% endif %} {% if entity.place.cp != null %} {{ entity.place.cp }}
           <br /> {% endif %} {% if entity.place.country != null %} {{ entity.place.country }} {% endif %} {% endif %}
@@ -60,7 +60,7 @@
               <label>Nom :</label>
               {{ entity.contactname }} {% endif %} {% if entity.contactemail != null %}
               <label>Email :</label>
-              {{ entity.contactemail }} {% endif %}
+              <a href="mailto:{{ entity.contactemail }}">{{ entity.contactemail }}</a> {% endif %}
             </div>
             {% endif %}
             <div class="col-md-12">
@@ -77,7 +77,7 @@
   </div>
 </div>
 
-        <ul class="record_actions">
+    <ul class="record_actions">
     <li>
         <a href="{{ path('event') }}">
             Retourner à la liste
@@ -90,4 +90,5 @@
     <li>{{ form(delete_form) }}</li>
       {% endif %}
 </ul>
+
 {% endblock %}
