@@ -26,7 +26,7 @@ class SearchController extends Controller
     {
       $search = $request->query->get('query');
       $dateStart = $request->query->get('event_eventbundle_search')['dateStart']['date'];
-      $dateEnd = $request->query->get('event_eventbundle_search')['dateEnd']['date'];
+      $dateEnd = $request->query->get('event_eventbundle_search')['dateEnd'];
       $sectors = $request->query->get('event_eventbundle_search')['sector'];
       $publics = $request->query->get('event_eventbundle_search')['publics'];
       $types = $request->query->get('event_eventbundle_search')['type'];
@@ -118,7 +118,6 @@ class SearchController extends Controller
          'queryvalue' => $queryvalue,
          'errorMessage' => $errorMessage,
          'formSearch'   => $formSearch->createView(),
-         dump($events),
        ]);
     }
 
