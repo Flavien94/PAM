@@ -89,8 +89,8 @@ class EventType extends AbstractType
                    'allow_delete' => true,
                    'required' => false
                  ))
-              ->add('place', 'text', array(
-                    'required' => true
+              ->add('place', new PlaceType(), array(
+                    'required' => false
               ))
               ->add('images',new ImagesType(), array(
                     'required' => false

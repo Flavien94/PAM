@@ -1,118 +1,100 @@
 {% extends '::base.html.twig' %}
-
+{% block stylesheets %}
+  {{ parent() }}
+  <link href="{{ asset('css/event/show.css') }}" type="text/css" rel="stylesheet"/>
+{% endblock %}
 {% block body -%}
-    <h1>Event</h1>
-
-    <table class="record_properties">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ entity.id }}</td>
-            </tr>
-            <tr>
-                <th>Author</th>
-                <td>{{ entity.author }}</td>
-            </tr>
-            <tr>
-                <th>Title</th>
-                <td>{{ entity.title }}</td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>{{ entity.description }}</td>
-            </tr>
-            <tr>
-                <th>Contact_name</th>
-                <td>{{ entity.contactname }}</td>
-            </tr>
-            <tr>
-                <th>Contact_email</th>
-                <td>{{ entity.contactemail }}</td>
-            </tr>
-            <tr>
-                <th>Place</th>
-                <td>{{ entity.place }}</td>
-            </tr>
-            <tr>
-                <th>Datecreate</th>
-                <td>{{ entity.dateCreate|date('Y-m-d H:i:s') }}</td>
-            </tr>
-            <tr>
-                <th>Datestart</th>
-                <td>{{ entity.dateStart|date('Y-m-d H:i:s') }}</td>
-            </tr>
-            <tr>
-                <th>Dateend</th>
-                <td>{{ entity.dateEnd|date('Y-m-d H:i:s') }}</td>
-            </tr>
-            <tr>
-                <th>Headlines</th>
-                <td>{{ entity.headlines }}</td>
-            </tr>
-            {% if entity.links != null %}
-            <tr>
-                <th>Publics</th>
-                <td>{{ entity.publics.title }}</td>
-            </tr>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h1>{{ entity.title }}</h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-5">
+          {% if entity.images == null %}
+            <img class="row img-une" src="{{asset('images/logo-pole-emploi_region.png')}}" />
+          {% else %}
+            <img class="row img-une" src="{{ asset(entity.images.AssetPAth) }}"/>
+          {% endif %}
+        </div>
+        <div class="col-md-7">
+          <div class="row">
+            <div class="col-md-12">
+              <span>Date de création : {{ entity.dateCreate|date('d-m-Y') }}</span>
+            </div>
+            {% if entity.sector != null %}
+              <div class="col-md-4">
+                <h4>Secteur</h4>
+                  {{ entity.sector.title }}
+              </div>
             {% endif %}
-            {% if entity.links != null %}
-            <tr>
-                <th>type</th>
-                <td>{{ entity.type.title }}</td>
-            </tr>
+            {% if entity.publics != null %}
+              <div class="col-md-4">
+                <h4>Public</h4>
+                  {{ entity.publics.title }}
+              </div>
             {% endif %}
-            {% if entity.links != null %}
-            <tr>
-                <th>Secteur</th>
-                <td>{{ entity.sector.title }}</td>
-            </tr>
+            {% if entity.type != null %}
+              <div class="col-md-4">
+                <h4>Type</h4>
+                  {{ entity.type.title }}
+              </div>
             {% endif %}
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <h3>Description</h3>
+              {{ entity.description }}
+            </div>
+          </div>
+          {% if entity.links != null %}
+          <div class="row">
+            <div class="col-md-12">
+              <h4>Liens utiles</h4>
+              {% for links in entity.links %}
+                <a href="{{ links.url }}">{{ links.url }}</a>
+              {% endfor %}
+            </div>
+          </div>
+          {% endif %}
+          <div class="row">
+            <div class="col-md-5">
+              <h4>Lieux</h4>
+              {{ entity.place.adress1 }}
+              {{ entity.place.adress2 }}
+              {{ entity.place.city }}
+              {{ entity.place.cp }}
+              {{ entity.place.country }}
+            </div>
+            <div class="col-md-7">
+              <div class="row">
+                {% if entity.contactname != null or entity.contactemail != null%}
+                  <div class="col-md-12">
+                    <h4>Contact</h4>
+                    {% if entity.contactname != null %}
+                      <label>Nom :</label>
+                      {{ entity.contactname }}
+                    {% endif %}
+                    {% if entity.contactemail != null %}
+                      <label>Email :</label>
+                      {{ entity.contactemail }}
+                    {% endif %}
+                  </div>
+                {% endif %}
+                <div class="col-md-12">
+                  <h4>Date</h4>
+                    {{ entity.dateStart|date('d/m/Y H:i') }} - {{ entity.dateEnd|date('d/m/Y H:i') }}
+                </div>
+                <div class="col-md-12">
 
-            <tr>
-                <th>images</th>
-                <td>  {% if entity.images == null %}
-                  <img class="row img-une" src="{{asset('images/logo-pole-emploi_region.png')}}" />
-                  {% else %}
-                  <img class="row img-une" src="{{ asset(entity.images.AssetPAth) }}"/>
-                  {% endif %}
-                </td>
-            </tr>
-            <tr>
-                 {% if entity.links != null %}
-                <th>Liens</th>
-                <td>
-                  {% for links in entity.links %}
-                  {{ links.url }}
-                  {% endfor %}
-                  {% endif %}
-                </td>
-            </tr>
-            <tr>
-                {% if entity.files != null %}
+                </div>
+              </div>
 
-                <th>files</th>
-                <td>
-                {% for file in entity.files %}
-                {{ files.url }}
-                {% endfor %}
-                  {% endif %}
-                </td>
-            </tr>
-        </tbody>
-    </table>
-
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('event') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>
-        <a href="{{ path('event_edit', { 'id': entity.id }) }}">
-            Edit
-        </a>
-    </li>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <li>{{ form(delete_form) }}</li>
-    {% endif %}
-</ul>
 {% endblock %}

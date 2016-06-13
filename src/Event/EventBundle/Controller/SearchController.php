@@ -25,25 +25,81 @@ class SearchController extends Controller
     public function searchAction(Request $request)
     {
       $search = $request->query->get('query');
-      // $dateStart = $request->query->get('beginning');
-      // dump($dateStart);
+      $dateStart = $request->query->get('event_eventbundle_search')['dateStart']['date'];
+      $dateEnd = $request->query->get('event_eventbundle_search')['dateEnd']['date'];
+      $sectors = $request->query->get('event_eventbundle_search')['sector'];
+      $publics = $request->query->get('event_eventbundle_search')['publics'];
+      $types = $request->query->get('event_eventbundle_search')['type'];
          $em = $this->getDoctrine()->getManager();
 
-         $sql = 'SELECT id, date_start, date_end, title, description, image_id FROM event
-         WHERE MATCH (title, description, contact_name) AGAINST ("'.$search.'* " IN BOOLEAN MODE)';
-         //
-        //  if($dateStart != null) {
-        //    $sql = $sql . ' AND date_start = '.$dateStart.' ';
-        //  }
-         //
-        //  $sql = $sql . ';';
+
+           $sql = 'SELECT id, date_start, date_end, title, description, image_id, sector_id, publics_id, type_id FROM event ';
+
+           $whereIsSet = false;
+
+         if($search != null) {
+           if(!$whereIsSet) {
+            $sql = $sql .' WHERE MATCH (title, description, contact_name) AGAINST ("'.$search.'*" IN BOOLEAN MODE)';
+             $whereIsSet = true;
+           } else {
+             $sql = $sql . ' AND MATCH (title, description, contact_name) AGAINST ("'.$search.'*" IN BOOLEAN MODE)';
+           }
+         }
+
+         if($dateStart != null) {
+           if(!$whereIsSet) {
+            $sql = $sql .' WHERE date_start >= "'.$dateStart.'"';
+             $whereIsSet = true;
+           } else {
+             $sql = $sql . ' AND date_start >= "'.$dateStart.'"';
+           }
+         }
+
+         if($dateEnd != null) {
+           if(!$whereIsSet) {
+            $sql = $sql .' WHERE date_end <= "'.$dateEnd.'"';
+             $whereIsSet = true;
+           } else {
+             $sql = $sql . ' AND date_end <= "'.$dateEnd.'"';
+           }
+         }
+
+         if($sectors != null) {
+           if(!$whereIsSet) {
+            $sql = $sql .' WHERE sector_id = "'.$sectors.'"';
+             $whereIsSet = true;
+           } else {
+             $sql = $sql . ' AND sector_id = "'.$sectors.'"';
+           }
+         }
+         if($publics != null) {
+           if(!$whereIsSet) {
+            $sql = $sql .' WHERE publics_id = "'.$publics.'"';
+             $whereIsSet = true;
+           } else {
+             $sql = $sql . ' AND publics_id = "'.$publics.'"';
+           }
+         }
+         if($types != null) {
+           if(!$whereIsSet) {
+            $sql = $sql .' WHERE type_id = "'.$types.'"';
+             $whereIsSet = true;
+           } else {
+             $sql = $sql . ' AND type_id = "'.$types.'"';
+           }
+         }
+
+
+         $sql = $sql . ' LIMIT 10;';
+
 
          $query = $em->getConnection()->prepare($sql);
          $query->execute();
 
          $events = $query->fetchAll();
-
+         $queryvalue = $search;
          $search = new Search();
+
          $formSearch = $this->createSearchForm($search);
          $formSearch->handleRequest($request);
 
@@ -55,7 +111,8 @@ class SearchController extends Controller
          }
 
          return $this->render('EventBundle:Event:search.html.twig', [ "events" => $events,
-         'form'   => $formSearch->createView()
+         'queryvalue' => $queryvalue,
+         'formSearch'   => $formSearch->createView(),
        ]);
     }
 

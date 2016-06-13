@@ -1,12 +1,15 @@
 {% extends '::base.html.twig' %}
+{% block stylesheets %}
+  {{ parent() }}
+  <link href="{{ asset('css/event/new.css') }}" type="text/css" rel="stylesheet"/>
+{% endblock %}
+{% block body %}
 
-{% block body -%}
-
-    <h1 style="margin-top:10%">Event edit</h1>
-    {% if (entity.author == app.user.username or is_granted("ROLE_SUPER_ADMIN")) %}
+  <div class="container event-container">
     <div class="row">
-      <h1>Publier un événement</h1>
+      <h1>Édité un événement</h1>
     </div>
+    {% if (entity.author == app.user.username or is_granted("ROLE_SUPER_ADMIN")) %}
     <div class="row">
       {{ form_start(edit_form) }}
       <div class="col-md-12">
@@ -55,12 +58,12 @@
             {{ form_errors(edit_form.images, { 'attr': {'class':'list-group-item list-group-item-danger'}}) }}
             {{ form_errors(edit_form.uploadedFiles, { 'attr': {'class':'list-group-item list-group-item-danger'}}) }}
           </div>
-          <div class="col-md-3">
-            <span class="big-label"> À la une </span>
-            {{ form_widget(edit_form.headlines, { 'attr': {'label':'À la une'} }) }}
+          <div class="col-md-4 Édité un événement">
+            <span class="big-label col-md-6"> À la une </span>
+            {{ form_widget(edit_form.headlines, { 'attr': {'class':'headlines-check col-md-2','label':'À la une'} }) }}
           </div>
-          <div class="col-md-2 col-md-push-7">
-            {{ form_row(edit_form.submit,{ 'attr':  { 'class':'btn btn-default','label': 'Publier' }}) }}
+          <div class="col-md-2 col-md-push-6">
+            {{ form_row(edit_form.submit,{ 'attr':  { 'class':'btn-submit col-md-12','label': 'Publier' }}) }}
           </div>
         </div>
       </div>
@@ -98,4 +101,9 @@
 {% else %}
 Vous ne pouvez pas modifier cette évenement.
 {% endif %}
+</div>
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('js/addLinks.js')}}" type="text/javascript" ></script>
 {% endblock %}

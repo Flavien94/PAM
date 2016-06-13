@@ -59,13 +59,13 @@ class EventController extends Controller
                           $em = $this->getDoctrine()->getManager();
                           $em->persist($search);
                           $em->flush();
-
+                          return $this->redirect($this->generateUrl('search', array('id' => $entity->getId())));
                       }
 
 
         return array(
             'entities' => $entities,
-            'form'   => $formSearch->createView(),
+            'formSearch'   => $formSearch->createView(),
         );
     }
     /**
@@ -79,7 +79,7 @@ class EventController extends Controller
     {
         $entity = new Event();
         $links = new Links();
-        $links->setEvent($event);
+        $links->setEvent($entity);
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
 
