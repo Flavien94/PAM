@@ -1,100 +1,80 @@
-{% extends '::base.html.twig' %}
-{% block stylesheets %}
-  {{ parent() }}
-  <link href="{{ asset('css/event/show.css') }}" type="text/css" rel="stylesheet"/>
-{% endblock %}
-{% block body -%}
-    <div class="container">
+{% extends '::base.html.twig' %} {% block stylesheets %} {{ parent() }}
+<link href="{{ asset('css/event/show.css') }}" type="text/css" rel="stylesheet" /> {% endblock %} {% block body -%}
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h1>{{ entity.title }}</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-5 img-desc">
+      {% if entity.images == null %}
+      <img class="row img-une col-md-12" src="{{asset('images/logo-pole-emploi_region.png')}}" /> {% else %}
+      <img class="row img-une col-md-12" src="{{ asset(entity.images.AssetPAth) }}" /> {% endif %}
+    </div>
+    <div class="col-md-7">
       <div class="row">
         <div class="col-md-12">
-          <h1>{{ entity.title }}</h1>
+          <span>Date de création : {{ entity.dateCreate|date('d-m-Y') }}</span>
         </div>
+        {% if entity.sector != null %}
+        <div class="col-md-4">
+          <h4>Secteur</h4> {{ entity.sector.title }}
+        </div>
+        {% endif %} {% if entity.publics != null %}
+        <div class="col-md-4">
+          <h4>Public</h4> {{ entity.publics.title }}
+        </div>
+        {% endif %} {% if entity.type != null %}
+        <div class="col-md-4">
+          <h4>Type</h4> {{ entity.type.title }}
+        </div>
+        {% endif %}
       </div>
       <div class="row">
+        <div class="col-md-12">
+          <h3>Description</h3>
+          <p>{{ entity.description }}</p>
+        </div>
+      </div>
+      {% if entity.links != null %}
+      <div class="row">
+        <div class="col-md-12">
+          <h4>Liens utiles</h4> {% for links in entity.links %}
+          <a href="{{ links.url }}">{{ links.url }}</a> {% endfor %}
+        </div>
+      </div>
+      {% endif %}
+      <div class="row">
         <div class="col-md-5">
-          {% if entity.images == null %}
-            <img class="row img-une" src="{{asset('images/logo-pole-emploi_region.png')}}" />
-          {% else %}
-            <img class="row img-une" src="{{ asset(entity.images.AssetPAth) }}"/>
-          {% endif %}
+          <h4>Lieux</h4> {% if entity.place != null %} {% if entity.place.adress1 != null %} {{ entity.place.adress1 }}
+          <br /> {% endif %} {% if entity.place.adress2 != null %} {{ entity.place.adress2 }}
+          <br /> {% endif %} {% if entity.place.city != null %} {{ entity.place.city }} {% endif %} {% if entity.place.cp != null %} {{ entity.place.cp }}
+          <br /> {% endif %} {% if entity.place.country != null %} {{ entity.place.country }} {% endif %} {% endif %}
         </div>
         <div class="col-md-7">
           <div class="row">
+            {% if entity.contactname != null or entity.contactemail != null%}
             <div class="col-md-12">
-              <span>Date de création : {{ entity.dateCreate|date('d-m-Y') }}</span>
+              <h4>Contact</h4> {% if entity.contactname != null %}
+              <label>Nom :</label>
+              {{ entity.contactname }} {% endif %} {% if entity.contactemail != null %}
+              <label>Email :</label>
+              {{ entity.contactemail }} {% endif %}
             </div>
-            {% if entity.sector != null %}
-              <div class="col-md-4">
-                <h4>Secteur</h4>
-                  {{ entity.sector.title }}
-              </div>
             {% endif %}
-            {% if entity.publics != null %}
-              <div class="col-md-4">
-                <h4>Public</h4>
-                  {{ entity.publics.title }}
-              </div>
-            {% endif %}
-            {% if entity.type != null %}
-              <div class="col-md-4">
-                <h4>Type</h4>
-                  {{ entity.type.title }}
-              </div>
-            {% endif %}
-          </div>
-          <div class="row">
             <div class="col-md-12">
-              <h3>Description</h3>
-              {{ entity.description }}
+              <h4>Date</h4> {{ entity.dateStart|date('d/m/Y H:i') }} - {{ entity.dateEnd|date('d/m/Y H:i') }}
             </div>
-          </div>
-          {% if entity.links != null %}
-          <div class="row">
             <div class="col-md-12">
-              <h4>Liens utiles</h4>
-              {% for links in entity.links %}
-                <a href="{{ links.url }}">{{ links.url }}</a>
-              {% endfor %}
-            </div>
-          </div>
-          {% endif %}
-          <div class="row">
-            <div class="col-md-5">
-              <h4>Lieux</h4>
-              {{ entity.place.adress1 }}
-              {{ entity.place.adress2 }}
-              {{ entity.place.city }}
-              {{ entity.place.cp }}
-              {{ entity.place.country }}
-            </div>
-            <div class="col-md-7">
-              <div class="row">
-                {% if entity.contactname != null or entity.contactemail != null%}
-                  <div class="col-md-12">
-                    <h4>Contact</h4>
-                    {% if entity.contactname != null %}
-                      <label>Nom :</label>
-                      {{ entity.contactname }}
-                    {% endif %}
-                    {% if entity.contactemail != null %}
-                      <label>Email :</label>
-                      {{ entity.contactemail }}
-                    {% endif %}
-                  </div>
-                {% endif %}
-                <div class="col-md-12">
-                  <h4>Date</h4>
-                    {{ entity.dateStart|date('d/m/Y H:i') }} - {{ entity.dateEnd|date('d/m/Y H:i') }}
-                </div>
-                <div class="col-md-12">
-
-                </div>
-              </div>
 
             </div>
           </div>
+
         </div>
       </div>
     </div>
-    <li>{{ form(delete_form) }}</li>
+  </div>
+</div>
+<li>{{ form(delete_form) }}</li>
 {% endblock %}
