@@ -34,16 +34,16 @@ class SearchController extends Controller
          $em = $this->getDoctrine()->getManager();
 
 
-           $sql = 'SELECT event.id, date_start, date_end, title, description, image_id, sector_id, publics_id, type_id, city, cp FROM event LEFT JOIN place ON event.place_id = place.id';
+           $sql = 'SELECT event.id, date_start, date_end, title, description, image_id, sector_id, publics_id, type_id, city, cp FROM event JOIN place ON (event.place_id = place.id) ';
 
            $whereIsSet = false;
 
          if($search != null) {
            if(!$whereIsSet) {
-            $sql = $sql .' WHERE MATCH (title, description, contact_name, city, cp ) AGAINST ("'.$search.'*" IN BOOLEAN MODE)';
+            $sql = $sql .' WHERE MATCH (city, cp, title, description, contact_name ) AGAINST ("'.$search.'*" IN BOOLEAN MODE)';
              $whereIsSet = true;
            } else {
-             $sql = $sql . ' AND MATCH (title, description, contact_name, city, cp) AGAINST ("'.$search.'*" IN BOOLEAN MODE)';
+             $sql = $sql . ' AND MATCH (city, cp, title, description, contact_name ) AGAINST ("'.$search.'*" IN BOOLEAN MODE)';
            }
          }
 
