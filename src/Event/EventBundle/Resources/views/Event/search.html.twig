@@ -6,28 +6,24 @@
 {% block body -%}
 
   <div class="container-fluid event-container">
-    {% if events is empty  %}
-    <div class="col-md-12 error">{{ errorMessage }}</div>
+    {% if events is empty %}
+      <div class="col-md-12 error">{{ errorMessage }}</div>
     {% else %}
       <div class="col-md-12 scroll mCustomScrollbar">
+        {% if events|length > 1 %}
         <h1>Événements correspondants</h1>
+        {% else %}
+        <h1>Événement correspondant</h1>
+        {% endif %}
 
         <table class="col-xs-12 col-md-12 col-sm-12 col-lg-12 records_list result">
-          <thead>
-            <tr>
-              <th class="col-md-2"></th>
-              <th class="col-md-6">Événement</th>
-              <th class="col-md-2">Date de début</th>
-              <th class="col-md-2">Date de fin</th>
-            </tr>
-          </thead>
           <div class="row">
             <tbody>
               {% for event in events %}
                 {% if event.image_id == null %}
-                  <td class="images" style="background-image:url('{{ asset('images/logo-pole-emploi_region.png') }}')"></td>
+                  <td class="col-md-2 images" style="background-image:url('{{ asset('images/logo-pole-emploi_region.png') }}')"></td>
                 {% else %}
-                  <td class="images" style="background-image:url('{{ asset(event.image_id.AssetPAth) }}"></td>
+                  <td class="col-md-2 images" style="background-image:url('{{ asset(event.image_id.AssetPath) }}"></td>
                 {% endif %}
                 <td>
                   <h4>{{ event.title }}</h4>
@@ -39,10 +35,10 @@
                   <br>
                   <a href="{{ path('event_edit', { 'id': event.id }) }}">Éditer</a>
                 </td>
-                <td>
+                <td class="col-md-2 date">
                   {% if event.date_start %}{{ event.date_start|date('d-m-Y') }}{% endif %}
                 </td>
-                <td>
+                <td class="col-md-2 date">
                   {% if event.date_end %}{{ event.date_end|date('d-m-Y') }}{% endif %}
                 </td>
               </tr>
