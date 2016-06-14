@@ -7,7 +7,7 @@
 
   <div class="container event-container">
     <div class="row">
-      <h1>Édité un événement</h1>
+      <h1>Éditer un événement</h1>
     </div>
     {% if (entity.author == app.user.username or is_granted("ROLE_SUPER_ADMIN")) %}
       {{ form_start(edit_form) }}
@@ -16,10 +16,10 @@
           <h4>Contact de l'évènement</h4>
           <div class="row">
             <div class="col-md-1">
-              {{ form_widget(edit_form.contact_name, { 'attr': {'class': 'inline contact_name', 'placeholder': 'Nom du contact'} })  }}
+              {{ form_widget(edit_form.contact_name, { 'attr': {'class': 'inline contact_name', 'placeholder': 'Nom du contact','tabindex':'1'} })  }}
             </div>
             <div class="col-md-1 col-md-push-1">
-              {{ form_widget(edit_form.contact_email, { 'attr': {'class': 'inline contact_email', 'placeholder': 'Email du contact'} }) }}
+              {{ form_widget(edit_form.contact_email, { 'attr': {'class': 'inline contact_email', 'placeholder': 'Email du contact','tabindex':'2'} }) }}
             </div>
             <div class="col-md-1 col-md-push-8">
               {{ form_widget(edit_form.author,{ 'attr': {'value': app.user.username, 'readonly':'readonly'}}
@@ -33,19 +33,19 @@
           <h4>Description</h4>
           <div class="row">
             <div class="col-md-4">
-              {{ form_widget(edit_form.sector, { 'attr': {'class': 'btn btn-default col-md-12'}}) }}
+              {{ form_widget(edit_form.sector, { 'attr': {'class': 'btn btn-default col-md-12','tabindex':'3'}}) }}
             </div>
             <div class="col-md-4">
-              {{ form_widget(edit_form.publics, { 'attr': {'class': 'btn btn-default col-md-12'}}) }}
+              {{ form_widget(edit_form.publics, { 'attr': {'class': 'btn btn-default col-md-12','tabindex':'4'}}) }}
             </div>
             <div class="col-md-4">
-              {{ form_widget(edit_form.type, { 'attr': {'class': 'btn btn-default col-md-12'}}) }}
+              {{ form_widget(edit_form.type, { 'attr': {'class': 'btn btn-default col-md-12','tabindex':'5'}}) }}
             </div>
             <div class="col-md-12">
-              {{ form_widget(edit_form.title, { 'attr': {'id': 'title','class':'col-md-12 title', 'placeholder': 'Titre*'}}) }}
+              {{ form_widget(edit_form.title, { 'attr': {'id': 'title','class':'col-md-12 title', 'placeholder': 'Titre*','tabindex':'6'}}) }}
             </div>
             <div class="col-md-12">
-              {{ form_widget(edit_form.description, { 'attr': {'class': 'inline col-md-12', 'placeholder': 'Description*'}}) }}
+              {{ form_widget(edit_form.description, { 'attr': {'class': 'inline col-md-12', 'placeholder': 'Description*','tabindex':'7'}}) }}
             </div>
             <div class="col-md-12">
               {{ form_errors(edit_form.contact_name, { 'attr': {'class':'list-group-item list-group-item-danger'}}) }}
@@ -63,10 +63,10 @@
               <div class="big-label col-md-6">
                 À la une :
               </div>
-              {{ form_widget(edit_form.headlines, { 'attr': {'class':'headlines-check col-md-2','label':'À la une'} }) }}
+              {{ form_widget(edit_form.headlines, { 'attr': {'class':'headlines-check col-md-2','label':'À la une','tabindex':'23'} }) }}
             </div>
             <div class="col-md-2 col-md-push-6">
-              {{ form_row(edit_form.submit,{ 'attr':  { 'class':'btn-submit col-md-12','label': 'Publier' }}) }}
+              {{ form_row(edit_form.submit,{ 'attr':  { 'class':'btn-submit col-md-12','label': 'Publier','tabindex':'22' }}) }}
             </div>
           </div>
         </div>
@@ -75,35 +75,35 @@
             <div class="col-md-12  detail-top">
               <h4 class="col-md-12">Détails</h4>
               <div class="col-md-12 place">
-                {{ form_widget(edit_form.place.adress1, { 'attr': {'class': 'col-md-9'}}) }}
-                {{ form_widget(edit_form.place.adress2, { 'attr': {'class': 'col-md-9'}}) }}
-                {{ form_widget(edit_form.place.city, { 'attr': {'class': 'col-md-4'}}) }}
-                {{ form_widget(edit_form.place.cp, { 'attr': {'class': 'col-md-4 '}}) }}
-                {{ form_widget(edit_form.place.country, { 'attr': {'class': 'col-md-4'}}) }}
+                {{ form_widget(edit_form.place.adress1, { 'attr': {'class': 'col-md-9','tabindex':'8'}}) }}
+                {{ form_widget(edit_form.place.adress2, { 'attr': {'class': 'col-md-9','tabindex':'9'}}) }}
+                {{ form_widget(edit_form.place.city, { 'attr': {'class': 'col-md-4','tabindex':'10'}}) }}
+                {{ form_widget(edit_form.place.cp, { 'attr': {'class': 'col-md-4 ','tabindex':'11'}}) }}
+                {{ form_widget(edit_form.place.country, { 'attr': {'class': 'col-md-4','tabindex':'12'}}) }}
               </div>
               <h6 class="col-md-12">Date de début*</h6>
                 <div class="col-md-6">
-                  {{ form_widget(edit_form.dateStart) }}
+                  {{ form_widget(edit_form.dateStart,{'attr':{'tabindex':'13'}}) }}
                   </div>
                 <div class="col-md-6">
-                  {{ form_widget(edit_form.timeStart) }}
+                  {{ form_widget(edit_form.timeStart,{'attr':{'tabindex':'14'}} )}}
                 </div>
               <h6 class="col-md-12">Date de fin*</h6>
                 <div class="col-md-6">
-                  {{ form_widget(edit_form.dateEnd) }}
+                  {{ form_widget(edit_form.dateEnd,{'attr':{'tabindex':'15'}} )}}
                   </div>
                 <div class="col-md-6">
-                  {{ form_widget(edit_form.timeEnd) }}
+                  {{ form_widget(edit_form.timeEnd,{'attr':{'tabindex':'16'}} )}}
                 </div>
 
 
 
             </div>
             <div class="col-md-12">
-              {{ form_widget(edit_form.images, { 'attr': {'class': 'col-md-12'} }) }}
+              {{ form_widget(edit_form.images, { 'attr': {'class': 'col-md-12','tabindex':'17'} }) }}
               <h5 class="col-md-12">Ajouter des fichiers annexes</h5>
-              {{ form_widget(edit_form.uploadedFiles, { 'attr': {'class': 'col-md-12'} }) }}
-              {{ form_widget(edit_form.links, { 'attr': {'class': 'col-md-12 links'}}) }}
+              {{ form_widget(edit_form.uploadedFiles, { 'attr': {'class': 'col-md-12','tabindex':'18'} }) }}
+              {{ form_widget(edit_form.links, { 'attr': {'class': 'col-md-12 links','tabindex':'19'}}) }}
             </div>
           </div>
         </div>
@@ -112,10 +112,10 @@
         <ul class="record_actions">
     <li>
         <a href="{{ path('event') }}">
-            {#{{authors}}#}
+            Retour à la liste des événements.
         </a>
     </li>
-    <li>{{ form(delete_form) }}</li>
+    <li>{{ form(delete_form,{'attr':{'tabindex':'25'}} ) }}</li>
 
 </ul>
 {% else %}
