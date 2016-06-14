@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+  {{ parent() }}
+  <link href="{{ asset('css/event/index.css') }}" type="text/css" rel="stylesheet"/>
+{% endblock %}
+{% block body -%}
+<div class="container-fluid event-container">
+
+  <div id="scroll_contact" class="col-md-12 scroll mCustomScrollbar">
+    <h1 id="h1_contact" >Événements</h1>
+
+    <table class="col-xs-12 col-md-12 col-sm-12 col-lg-12 records_list result">
+      <thead>
+        <tr>
+          <th class="col-md-6">Message</th>
+          <th class="col-md-2">Prénom</th>
+          <th class="col-md-2">Nom</th>
+          <th class="col-md-2">Email</th>
+          <th class="col-md-2">Action</th>
+        </tr>
+      </thead>
+      <div class="row">
+        <tbody>
+          {% for contact in contacts %}
+
+            <td>
+              <h4>{{ contact.object }}</h4>
+              {{ contact.message[:290] }}
+              {% if contact.message > contact.message[: 290] %}
+                ...
+              {% endif %}
+              <br>
+            </td>
+            <td>
+              {% if contact.firstname %}{{ contact.firstname }}{% endif %}
+            </td>
+            <td>
+              {% if contact.lastname %}{{ contact.lastname }}{% endif %}
+            </td>
+            <td>
+              {% if contact.email %}{{ contact.email }}{% endif %}
+            </td>
+            <td>
+              <a class="btn btn-default" href="{{ path('contact_show', { 'id': contact.id }) }}">Voir le mail</a>
+              <a class="btn btn-danger" data-toggle="modal" data-target="#myModal">Supprimer</a>
+              <div id="myModal" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-body">
+                      <p>Etes vous-sur de vouloir supprimer ce message ?</p>
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </td>
+          </tr>
+        {% endfor %}
+      </div>
+    </table>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends '::base.html.twig' %}
+{% block stylesheets %}
+  {{ parent() }}
+  <link href="{{ asset('css/event/show.css') }}" type="text/css" rel="stylesheet"/>
+{% endblock %}
+{% block body -%}
+{% for contact in contacts %}
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h1>{{ contact.object }}</h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-7">
+          <div class="row">
+            <div class="col-md-12">
+              <span>Prénom du contact : {{ contact.firstname }}</span>
+              <span>Nom du contact : {{ contact.lastname }}</span>
+              <span>Email du contact : {{ contact.email }}</span>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <h3>Description</h3>
+              {{ contact.message }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+{% endblock %}

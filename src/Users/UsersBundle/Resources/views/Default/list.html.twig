@@ -8,6 +8,7 @@
             <div class="container-fluid">
                 <div class="row">
                       <h1>Contributeurs</h1>
+                      {% if users is defined %}
                         {% if users == null %}
                     <h3 style="text-align:center">Il n'y as aucun contributeurs. Cliquez <a href="{{ path('fos_user_registration_register') }}">ici</a> pour en créer.</h3>
                       {% else %}
@@ -43,6 +44,7 @@
                             {% endfor %}
                           </div>
                         </table>
+                        {% endif %}
                         {% endif %}
                 </div>
             </div>

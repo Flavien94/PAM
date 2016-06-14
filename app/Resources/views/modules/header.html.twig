@@ -46,6 +46,9 @@
                     Créer un contributeur
                   </a>
                 </li>
+                <li>
+                  <a href="{{ path('contact_admin') }}">Mail de contact{% if notif is defined %}({{notif }}) {% endif %}</a>
+                </li>
                 {% endif %}
                 <li>
                   <a href="{{ path("event_new") }}">Publier un événement</a>
