@@ -1,6 +1,6 @@
 {% extends '::base.html.twig' %} {% block stylesheets %} {{ parent() }}
 <link href="{{ asset('css/event/show.css') }}" type="text/css" rel="stylesheet" /> {% endblock %} {% block body -%}
-<div class="container">
+<div class="container-fluid event-container">
   <div class="row">
     <div class="col-md-12">
       <h1>{{ entity.title }}</h1>
@@ -14,9 +14,9 @@
     </div>
     <div class="col-md-7">
       <div class="row">
-        <div class="col-md-12">
+        <!-- <div class="col-md-12">
           <span>Date de création : {{ entity.dateCreate|date('d-m-Y') }}</span>
-        </div>
+        </div> -->
         {% if entity.sector != null %}
         <div class="col-md-4">
           <h4>Secteur</h4> {{ entity.sector.title }}
@@ -37,7 +37,7 @@
           <p>{{ entity.description }}</p>
         </div>
       </div>
-      {% if entity.links != null %}
+      {% if entity.links|length > 1 %}
       <div class="row">
         <div class="col-md-12">
           <h4>Liens utiles</h4> {% for links in entity.links %}
@@ -45,9 +45,17 @@
         </div>
       </div>
       {% endif %}
+      {% if entity.links|length == 1 %}
+      <div class="row">
+        <div class="col-md-12">
+          <h4>Lien utile</h4> {% for links in entity.links %}
+          <a href="{{ links.url }}">{{ links.url }}</a> {% endfor %}
+        </div>
+      </div>
+      {% endif %}
       <div class="row">
         <div class="col-md-5">
-          <h4>Lieux</h4> {% if entity.place != null %} {% if entity.place.adress1 != null %} {{ entity.place.adress1 }}
+          <h4>Adresse</h4> {% if entity.place != null %} {% if entity.place.adress1 != null %} {{ entity.place.adress1 }}
           <br /> {% endif %} {% if entity.place.adress2 != null %} {{ entity.place.adress2 }}
           <br /> {% endif %} {% if entity.place.city != null %} {{ entity.place.city }} {% endif %} {% if entity.place.cp != null %} {{ entity.place.cp }}
           <br /> {% endif %} {% if entity.place.country != null %} {{ entity.place.country }} {% endif %} {% endif %}

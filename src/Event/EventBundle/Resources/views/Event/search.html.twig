@@ -10,7 +10,11 @@
       <div class="col-md-12 error">{{ errorMessage }}</div>
     {% else %}
       <div class="col-md-12 scroll mCustomScrollbar">
+        {% if events|length > 1 %}
         <h1>Événements correspondants</h1>
+        {% else %}
+        <h1>Événement correspondant</h1>
+        {% endif %}
 
         <table class="col-xs-12 col-md-12 col-sm-12 col-lg-12 records_list result">
           <div class="row">
@@ -31,10 +35,10 @@
                   <br>
                   <a href="{{ path('event_edit', { 'id': event.id }) }}">Éditer</a>
                 </td>
-                <td>
+                <td class="col-md-2 date">
                   {% if event.date_start %}{{ event.date_start|date('d-m-Y') }}{% endif %}
                 </td>
-                <td>
+                <td class="col-md-2 date">
                   {% if event.date_end %}{{ event.date_end|date('d-m-Y') }}{% endif %}
                 </td>
               </tr>

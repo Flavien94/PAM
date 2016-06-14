@@ -11,7 +11,7 @@
       <h1>Événements</h1>
 
       <table class="col-xs-12 col-md-12 col-sm-12 col-lg-12 records_list result">
-  
+
         <div class="row">
           <tbody>
             {% for entity in entities %}
@@ -30,10 +30,10 @@
                 <a href="{{ path('event_show', { 'id': entity.id }) }}">En savoir plus</a>
                 <br>
               </td>
-              <td>
+              <td class="col-md-2 date">
                 {% if entity.dateStart %}{{ entity.dateStart|date('d-m-Y H:i') }}{% endif %}
               </td>
-              <td>
+              <td class="col-md-2 date">
                 {% if entity.dateEnd %}{{ entity.dateEnd|date('d-m-Y H:i') }}{% endif %}
               </td>
             </tr>
