@@ -84,10 +84,8 @@
         </a>
     </li>
       {% if (is_granted("IS_AUTHENTICATED_REMEMBERED") and entity.author == app.user.username or is_granted("ROLE_SUPER_ADMIN") ) %}
-      <li>
-      <a href="{{ path('event_edit', { 'id': entity.id }) }}">Éditer</a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
+        <a class="btn btn-primary" href="{{ path('event_edit', {'id': entity.id}) }}">Éditer</a>
+        {{ form(delete_form) }}</li>
       {% endif %}
 </ul>
 
