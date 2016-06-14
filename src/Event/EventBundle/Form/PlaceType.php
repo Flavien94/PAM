@@ -35,7 +35,7 @@ class PlaceType extends AbstractType
             ->add('cp','number',array(
                 'attr' => array(
                 'label' => ' ',
-                'placeholder' => 'Code Postal'
+                'placeholder' => 'Code Postal*'
             )))
             ->add('country','text',array(
                 'attr' => array(

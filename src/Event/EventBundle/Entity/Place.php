@@ -49,7 +49,7 @@ class Place
     /**
      * @var string
      *
-     * @ORM\Column(name="cp", type="string", length=255, nullable=true)
+     * @ORM\Column(name="cp", type="string", length=255, nullable=false)
      * @Assert\Length(min=2, minMessage="CP : Ce champs doit contenir au minimun 2 caractères")
      */
     private $cp;
@@ -57,7 +57,7 @@ class Place
     /**
      * @var string
      *
-     * @ORM\Column(name="country", type="string", length=255, nullable=true)
+     * @ORM\Column(name="country", type="string", length=255, nullable=false)
      * @Assert\Length(min=2, minMessage="Lieux : Ce champs doit contenir au minimun 2 caractères")
      */
     private $country;
