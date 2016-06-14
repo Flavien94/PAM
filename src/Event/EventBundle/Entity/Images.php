@@ -57,8 +57,8 @@ class Images
      * @Assert\File(
      *     maxSize = "1M",
      *     mimeTypes = {"image/jpeg", "image/gif", "image/png", "image/tiff"},
-     *     maxSizeMessage = "The maxmimum allowed file size is 1MB.",
-     *     mimeTypesMessage = "Only the filetypes image are allowed."
+     *     maxSizeMessage = "La taille maximal de l'image de couverture est de 1MB.",
+     *     mimeTypesMessage = "Ce type de fichier n'est pas authoriser"
      * )
      */
     public $file;

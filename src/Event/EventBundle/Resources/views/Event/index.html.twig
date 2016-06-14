@@ -11,21 +11,14 @@
       <h1>Événements</h1>
 
       <table class="col-xs-12 col-md-12 col-sm-12 col-lg-12 records_list result">
-        <thead>
-          <tr>
-            <th class="col-md-2"></th>
-            <th class="col-md-6">Événement</th>
-            <th class="col-md-2">Date de début</th>
-            <th class="col-md-2">Date de fin</th>
-          </tr>
-        </thead>
+
         <div class="row">
           <tbody>
             {% for entity in entities %}
               {% if entity.images == null %}
-              <td class="images" style="background-image:url('{{ asset('images/logo-pole-emploi_region.png') }}')"></td>
+              <td class="col-md-2 images" style="background-image:url('{{ asset('images/logo-pole-emploi_region.png') }}')"></td>
               {% else %}
-              <td class="images" style="background-image:url('{{ asset(entity.images.AssetPAth) }}"></td>
+              <td class="col-md-2 images" style="background-image:url('{{ asset(entity.images.AssetPAth) }}"></td>
               {% endif %}
 
               <td>
@@ -37,10 +30,10 @@
                 <a href="{{ path('event_show', { 'id': entity.id }) }}">En savoir plus</a>
                 <br>
               </td>
-              <td>
+              <td class="col-md-2 date">
                 {% if entity.dateStart %}{{ entity.dateStart|date('d-m-Y H:i') }}{% endif %}
               </td>
-              <td>
+              <td class="col-md-2 date">
                 {% if entity.dateEnd %}{{ entity.dateEnd|date('d-m-Y H:i') }}{% endif %}
               </td>
             </tr>
