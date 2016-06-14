@@ -95,7 +95,22 @@
       <li>
       <a href="{{ path('event_edit', { 'id': entity.id }) }}">Éditer</a>
     </li>
-    <li>{{ form(delete_form) }}</li>
+    <li>
+      <a class="btn btn-danger" data-toggle="modal" data-target="#myModal{{ entity.id }}">Supprimer</a>
+      <div id="myModal{{ entity.id }}" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-body">
+              <p>Etes vous-sur de vouloir supprimer l'événement : {{ entity.title }} ?</p>
+              {{ form_start(delete_form) }}
+              {{ form_widget(delete_form.submit, {"attr":{"class":"btn btn-danger"}})}}
+              {{ form_end(delete_form) }}
+              <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </li>
       {% endif %}
 </ul>
 
