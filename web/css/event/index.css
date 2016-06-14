@@ -9,6 +9,9 @@ td, th {
   padding: 2%;
   border-bottom: 1px solid grey;
 }
+tr:first-child {
+  border-top: 1px solid grey;
+}
 td {
   text-align: justify;
   background-repeat: no-repeat;
