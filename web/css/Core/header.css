@@ -33,6 +33,12 @@
 .navbar-default .navbar-nav>li>a, .dropdown-menu>li>a {
   color: #fff;
 }
+.searchbar {
+  display:inline-flex;
+}
+.searchbar>li{
+  width : 20%;
+}
 .navbar-nav>li>a{
   text-transform: capitalize;
 }

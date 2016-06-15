@@ -54,6 +54,7 @@ class EventController extends Controller
                       $search = new Search();
                       $formSearch = $this->createSearchForm($search);
                       $formSearch->handleRequest($request);
+                      dump($entities);
 
                       if ($formSearch->isValid()) {
                           $em = $this->getDoctrine()->getManager();
@@ -218,7 +219,7 @@ class EventController extends Controller
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Mettre à jour'));
+        $form->add('submit', 'submit', array('label' => 'Update'));
 
         return $form;
     }
@@ -295,7 +296,7 @@ class EventController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('event_delete', array('id' => $id)))
             ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Supprimer'))
+            ->add('submit', 'submit', array('label' => 'Delete'))
             ->getForm()
         ;
     }
