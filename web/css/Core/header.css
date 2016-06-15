@@ -9,9 +9,13 @@
   margin-bottom: 0px;
   border: none;
 }
+.input-sm {
+  border-radius: 0;
+}
 .search-btn {
   background-color: #FF5950;
   border: none;
+  border-radius: 0;
 }
 .search-btn:hover {
   background-color: #FF372C;

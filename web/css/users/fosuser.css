@@ -11,6 +11,13 @@
 .carre .btn{
   height: 45px;
 }
+.btn-success {
+  background-color: #63B688;
+  border-radius: 0;
+}
+.btn-success:hover {
+  background-color: #599D78;
+}
  /*LOGIN*/
  .fosuser-input{
    text-align: center;
