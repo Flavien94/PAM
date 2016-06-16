@@ -21,9 +21,17 @@ class DefaultController extends Controller
                     ->getQuery()
                     ->getResult();
 
+        $sql = ' SELECT COUNT(id) FROM contact ' ;
+        $query = $em->getConnection()->prepare($sql);
+        $query->execute();
+        $notif = $query->fetchAll();
+        for ($i=0; $i < count($notif); $i++) {
+          $notifs = $notif[$i];
+        }
 
         return $this->render('CoreBundle:Default:index.html.twig', array(
             'events' => $events,
+            'notif' => $notifs,
         ));
     }
 }
