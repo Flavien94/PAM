@@ -118,9 +118,9 @@ a:hover, #right a:hover {
 }
 @media screen and (max-width: 769px) {
   .title {
-    padding-top:60%;
+    padding-top:45%;
   }
   .event-container {
-    padding-top : 25%;
+    padding-top : 45%%;
   }
 }
