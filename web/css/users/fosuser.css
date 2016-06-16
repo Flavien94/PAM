@@ -16,6 +16,7 @@ h3{
   padding-top: 7%;
 }
 .btn-success {
+  height: 35px;
   background-color: #63B688;
   border-radius: 0;
   margin-bottom: 7vh;
@@ -47,8 +48,8 @@ h3{
  }
 
  @media screen and (max-width: 769px) {
-     .connect {
-     margin-top : 31vh;
+   .connect-container {
+     padding-top : 30%;
    }
  }
 
