@@ -47,11 +47,18 @@
                   </a>
                 </li>
                 <li>
-                  <a href="{{ path('contact_admin') }}">Mail de contact{% if notif is defined %}({{notif }}) {% endif %}</a>
+                  <a href="{{ path('contact_admin') }}">Mail de contact
+                {% if notif is defined %}
+                 ({{ notif|join }})
+              {% endif %}
+            </a>
                 </li>
                 {% endif %}
                 <li>
                   <a href="{{ path("event_new") }}">Publier un événement</a>
+                </li>
+                <li>
+                  <a href="{{ path('myevent') }}">Mes évènements</a>
                 </li>
                   <li>
                     <a href="{{ path('fos_user_security_logout') }}">
