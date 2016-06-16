@@ -18,12 +18,13 @@
 
           {% for event in events if event.headlines == 1 %}
             {% if event.images == null %}
-              <a href="{{ path('event_show', { 'id': event.id }) }}">
+              <a href="{{ path('event_show', { 'id': events[0].id }) }}">
                 <div class="row img-une" style="background-image:url('{{ asset('images/logo-pole-emploi_region.png') }}')"></div>
               </a>
             {% else %}
-              <a href="{{ path('event_show', { 'id': event.id }) }}">
-                <div class="row img-une" style="background-image:url('{{ asset(event.images.AssetPadth) }}"></div>
+              <a href="{{ path('event_show', { 'id': events[0].id }) }}">
+                <div class="row img-une" style="background-image:url('{{ asset(event.images.AssetPAth) }}"></div>
+
               </a>
             {% endif %}
             <div class="row titre-une">
@@ -56,12 +57,14 @@
 
           {% else %}
             {% if events[0].images == null %}
+
               <a href="{{ path('event_show', { 'id': events[0].id }) }}">
                 <div class="row img-une" style="background-image:url('{{ asset('images/logo-pole-emploi_region.png') }}')"></div>
               </a>
             {% else %}
               <a href="{{ path('event_show', { 'id': events[0].id }) }}">
                 <div class="row img-une" style="background-image:url('{{ asset(events[0].images.AssetPath) }}"></div>
+
               </a>
             {% endif %}
             <div class="row titre-une">
