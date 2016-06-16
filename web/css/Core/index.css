@@ -120,4 +120,7 @@ a:hover, #right a:hover {
   .title {
     padding-top:60%;
   }
+  .event-container {
+    padding-top : 25%;
+  }
 }

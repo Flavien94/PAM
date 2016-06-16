@@ -15,24 +15,28 @@
     </form>
   </div>
 
-
-
   <nav class="navbar navbar-lower navbar-left navbar2" role="navigation">
     <div class="container-fluid container2">
       <div class="navbar-header">
-      <button type="button" id="hamb" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu" aria-expanded="false">
-       <span class="sr-only">Toggle navigation</span>
-       <span class="icon-bar"></span>
-       <span class="icon-bar"></span>
-       <span class="icon-bar"></span>
-     </button>
-    </div>
+        <button type="button" id="hamb" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
 
       <div class="collapse navbar-collapse" id="menu">
         <ul class="nav navbar-nav">
-          <li><a href="{{ path('core_homepage') }}">Accueil <span class="sr-only"></span></a></li>
-        <li><a href="{{ path('event') }}">Événements</a></li>
-        <li>
+          <li>
+            <a href="{{ path('core_homepage') }}">Accueil
+              <span class="sr-only"></span>
+            </a>
+          </li>
+          <li>
+            <a href="{{ path('event') }}">Événements</a>
+          </li>
+          <li>
             <a href="{{ path('core_contact') }}">Contact</a>
           </li>
         </ul>
@@ -76,51 +80,65 @@
           {% endif %}
         </ul>
       </div>
-  </div>
+    </div>
   </nav>
 
   {% if app.request.get('_route') == 'event' or app.request.get('_route') == 'search' %}
     <nav class="navbar navbar-lower navbar-left navbar3" role="navigation">
       <div class="container-full container3">
-      <form method="GET" action="{{ path('search') }}" class="row navbar-form inline-form" role="search">
-        {{ form_start(formSearch) }}
-        {{ form_errors(formSearch) }}
-          <div class="collapse navbar-collapse" id="bs-navbar-collapse-2">
+        <div class="navbar-header">
+
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu2" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+
+        <div class="collapse navbar-collapse" id="menu2">
+        <form method="GET" action="{{ path('search') }}" class="row navbar-form inline-form" role="search">
+          {{ form_start(formSearch) }}
+          {{ form_errors(formSearch) }}
             <div class="center">
               <input type="search" name="query" class="input-sm form-control" placeholder="Recherche" value="{% if queryvalue is defined %}{{ queryvalue }} {% endif %}">
             </div>
-              <ul class="col-md-12 nav navbar-nav searchbar">
-                <li class="col-xs-12 col-md-2">
-                  <label for="dateStart" class="small-label">Date de début</label>
-                  {{ form_widget(formSearch.dateStart, { 'attr': {'class': '', 'name' : 'beginning'} }) }}
-                </a>
-              </li>
+            <ul class="col-md-12 nav navbar-nav searchbar">
               <li class="col-xs-12 col-md-2">
-                <label for="dateEnd" class="small-label">Date de fin</label>
-                {{ form_widget(formSearch.dateEnd, { 'attr': {'class': '', 'name': 'end'} }) }}
-              </li>
-              <li class="col-xs-12 col-md-2">
-                <label for="secteurs" id="secteurs" class="small-label">Secteurs</label>
-                {{ form_widget(formSearch.sector) }}
-              </li>
-              <li class="col-xs-12 col-md-2">
-                <label for="publics" id="publics" class="small-label">Publics</label>
-                {{ form_widget(formSearch.publics) }}
-              </li>
-              <li class="col-xs-12 col-md-2">
-                <label for="type" id="types" class="small-label">Type d'événement</label>
-                {{ form_widget(formSearch.type) }}
-              </li>
-              <li class="col-xs-12 col-md-2">
-                <label class="glyphicon-lab glyphicon glyphicon-eye-open"><span style="font-family:Helvetica"> Chercher</span> </label>
-                </button>{{ form_row(formSearch.submit, { 'label': '', 'classe': 'btn btn-primary btn-sm research-btn' }) }}
+                <label for="dateStart" class="small-label">Date de début</label>
+                {{ form_widget(formSearch.dateStart, { 'attr': {'class': '', 'name' : 'beginning'} }) }}
+              </a>
             </li>
-          </ul>
-          {{ form_end(formSearch) }}
+            <li class="col-xs-12 col-md-2">
+              <label for="dateEnd" class="small-label">Date de fin</label>
+              {{ form_widget(formSearch.dateEnd, { 'attr': {'class': '', 'name': 'end'} }) }}
+            </li>
+            <li class="col-xs-12 col-md-2">
+              <label for="secteurs" id="secteurs" class="small-label">Secteurs</label>
+              {{ form_widget(formSearch.sector) }}
+            </li>
+            <li class="col-xs-12 col-md-2">
+              <label for="publics" id="publics" class="small-label">Publics</label>
+              {{ form_widget(formSearch.publics) }}
+            </li>
+            <li class="col-xs-12 col-md-2">
+              <label for="type" id="types" class="small-label">Type d'événement</label>
+              {{ form_widget(formSearch.type) }}
+            </li>
+            <li class="col-xs-12 col-md-2">
+              <label class="glyphicon-lab glyphicon glyphicon-eye-open">
+                <span style="font-family:Helvetica">
+                  Chercher</span>
+              </label>
+            </button>{{ form_row(formSearch.submit, { 'label': '', 'classe': 'btn btn-primary btn-sm research-btn' }) }}
+          </li>
+        </ul>
+        {{ form_end(formSearch) }}
 
       </div>
     </div>
   </form>
+</div>
 </nav>
 {% endif %}
 </nav>
