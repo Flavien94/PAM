@@ -299,4 +299,20 @@ class EventController extends Controller
             ->getForm()
         ;
     }
+    /**
+     * @Route("/myevent", name="myevent")
+     * @Method("GET")
+     * @Template()
+     */
+    public function myeventAction(Request $request)
+    {
+      $em = $this->getDoctrine()->getEntityManager();
+      $user = $this->container->get('security.context')->getToken()->getUser()->getUsername();
+      $sql = $em->getConnection()->prepare('SELECT * FROM event WHERE author = "'.$user.'"');
+      $sql->execute();
+      $entities = $sql->fetchAll();
+        return array(
+            'entities' => $entities
+        );
+    }
 }
