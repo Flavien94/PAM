@@ -130,13 +130,12 @@
         <div class="col-md-4 center">
           <h4>Contact</h4>
           {% if entity.contactname != null %}
-            <strong>Nom :</strong>
-            {{ entity.contactname }}
+            <strong class="col-xs-12 col-md-2">Nom :</strong>
+            <span class="col-xs-12 col-md-4"> {{ entity.contactname }} </span>
           {% endif %}
           {% if entity.contactemail != null %}
-            <strong>-</strong>
-            <strong>Email :</strong>
-            <a href="mailto:{{ entity.contactemail }}">{{ entity.contactemail }}</a>
+            <strong class="col-xs-12 col-md-2">Email :</strong>
+            <span class="col-xs-12 col-md-4"><a href="mailto:{{ entity.contactemail }}">{{ entity.contactemail }}</a></span>
           {% endif %}
         </div>
       </div>
@@ -170,13 +169,12 @@
     <div class="col-md-6 center">
       <h4>Contact</h4>
       {% if entity.contactname != null %}
-        <strong>Nom :</strong>
-        {{ entity.contactname }}
+        <strong class="col-xs-12 col-md-2">Nom :</strong>
+        <span class="col-xs-12 col-md-4"> {{ entity.contactname }} </span>
       {% endif %}
       {% if entity.contactemail != null %}
-        <strong>-</strong>
-        <strong>Email :</strong>
-        <a href="mailto:{{ entity.contactemail }}">{{ entity.contactemail }}</a>
+        <strong class="col-xs-12 col-md-2">Email :</strong>
+        <span class="col-xs-12 col-md-4"><a href="mailto:{{ entity.contactemail }}">{{ entity.contactemail }}</a></span>
       {% endif %}
     </div>
   </div>
