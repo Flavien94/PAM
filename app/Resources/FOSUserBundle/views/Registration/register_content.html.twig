@@ -1,17 +1,27 @@
 {% trans_default_domain 'FOSUserBundle' %}
-<div class="container-fluid register-container">
-  <h1> Créer un contributeur </h1>
-<div class="row">
-  <div class="carre col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
-{{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register fosuser-form col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3'} }) }}
-    {{ form_widget(form.username,{'attr': {'class': 'col-sm-12 fosuser-input'}}) }}
-    {{ form_widget(form.plainPassword.first,{'attr': {'class': 'col-sm-12 fosuser-input'}}) }}
-    {{ form_widget(form.plainPassword.second,{'attr': {'class': 'col-sm-12 fosuser-input'}}) }}
-    <input class="col-sm-12 submit btn btn-success btn-edit fosuser-btn" type="submit" value="{{ 'registration.submit'|trans }}" /><br>
-    <div class="col-sm-12 " id="link">
-      <a class="btn btn-default btn-edit" href="{{ path('list') }}">Retour à la liste des contributeurs</a>
+
+<div class="container-fluid connect-container">
+  <div class="col-md-push-3 col-md-6 col-md-push-3 connect">
+    <div class="row">
+      <h3 class="col-md-12">Créer un contributeur</h3>
     </div>
-{{ form_end(form) }}
-</div>
-</div>
+
+    <div class="col-md-12">
+      <div class="col-md-10 col-md-push-1">
+        {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register fosuser-form col-md-12'} }) }}
+        <div class="row">
+          {{ form_widget(form.username,{'attr': {'class': 'col-xs-12 fosuser-input'}}) }}
+          {{ form_widget(form.plainPassword.first,{'attr': {'class': 'col-xs-12 fosuser-input '}}) }}
+          {{ form_widget(form.plainPassword.second,{'attr': {'class': 'col-xs-12 fosuser-input '}}) }}
+        </div>
+        <div class="row">
+        <input class="col-xs-12 col-md-8 col-md-push-2 btn btn-success" type="submit" value="{{ 'registration.submit'|trans }}" />
+        </div>
+        <div class="row" style="text-align:center">
+          <a class="btn btn-default btn-edit" href="{{ path('list') }}">Retour à la liste des contributeurs</a>
+        </div>
+        {{ form_end(form) }}
+      </div>
+    </div>
+  </div>
 </div>
