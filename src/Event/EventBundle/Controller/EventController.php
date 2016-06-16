@@ -54,7 +54,6 @@ class EventController extends Controller
                       $search = new Search();
                       $formSearch = $this->createSearchForm($search);
                       $formSearch->handleRequest($request);
-                      dump($entities);
 
                       if ($formSearch->isValid()) {
                           $em = $this->getDoctrine()->getManager();
