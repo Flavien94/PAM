@@ -57,6 +57,11 @@
                     </a>
                   </li>
                   <li>
+                    <a href="{{ path('admin_changepassword') }}">
+                      Modifier mon mot de passe
+                    </a>
+                  </li>
+                  <li>
                     <a href="{{ path('contact_admin') }}">Mail de contact
                     {% if notif is defined %}
                     ({{ notif|join }})
