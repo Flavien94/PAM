@@ -123,4 +123,8 @@ a:hover, #right a:hover {
   .event-container {
     padding-top : 45%;
   }
+  .search-top {
+    margin-top :45px;
+    border: none;
+  }
 }
