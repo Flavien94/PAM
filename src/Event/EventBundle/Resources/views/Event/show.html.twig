@@ -1,5 +1,9 @@
-{% extends '::base.html.twig' %} {% block stylesheets %} {{ parent() }}
-<link href="{{ asset('css/event/show.css') }}" type="text/css" rel="stylesheet" /> {% endblock %} {% block body -%}
+{% extends '::base.html.twig' %}
+{% block stylesheets %} {{ parent() }}
+<link href="{{ asset('css/event/show.css') }}" type="text/css" rel="stylesheet" />
+<link rel="stylesheet" href="{{ asset('css/event/print.css') }}" type="text/css" media="print" />
+{% endblock %}
+{% block body -%}
 <div class="container-fluid event2-container">
   <div class="row">
     <div class="col-md-12">
@@ -110,6 +114,12 @@
           </div>
         </div>
       </div>
+  <input id="impression" name="impression" type="button" onclick="imprimer_page()" value="Imprimer cette page" />
+  <script type="text/javascript">
+  function imprimer_page(){
+    window.print();
+  }
+  </script>
     </li>
       {% endif %}
 </ul>
