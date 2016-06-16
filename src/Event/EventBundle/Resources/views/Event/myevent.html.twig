@@ -3,12 +3,11 @@
   {{ parent() }}
   <link href="{{ asset('css/event/index.css') }}" type="text/css" rel="stylesheet"/>
 {% endblock %}
-{% block body -%}
-
+{% block body %}
   <div class="container-fluid event-container">
 
     <div class="col-md-12 scroll mCustomScrollbar">
-      <h1>Mes Événements</h1>
+      <h1>Mes événements</h1>
 
       <table class="col-xs-12 col-md-12 col-sm-12 col-lg-12 records_list result">
 
@@ -18,7 +17,7 @@
               {% if entity.image_id == null %}
               <td class="col-md-2 images" style="background-image:url('{{ asset('images/logo-pole-emploi_region.png') }}')"></td>
               {% else %}
-              <td class="col-md-2 images" style="background-image:url('{{ asset(entity.images.AssetPAth) }}"></td>
+              <td class="col-md-2 images" style="background-image:url('{{ asset(entity.image_id.AssetPath) }}"></td>
               {% endif %}
 
               <td>
@@ -36,12 +35,26 @@
               <td class="col-md-2 date">
                 {% if entity.date_end %}{{ entity.date_end|date('d-m-Y H:i') }}{% endif %}
               </td>
+              <td>
+                <a class="btn btn-default" href="{{ path('event_edit', { 'id': entity.id }) }}">Éditer</a>
+                <a class="btn btn-danger" data-toggle="modal" data-target="#myModal{{ entity.id }}">Supprimer</a>
+                <div id="myModal{{ entity.id }}" class="modal fade" role="dialog">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-body">
+                        <p>Etes vous-sur de vouloir cette évement ?</p>
+                        <a class="btn btn-danger" href="{{ path('delete', {'id': entity.id}) }}">Supprimer</a>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </td>
             </tr>
           {% endfor %}
         </div>
       </table>
       </div>
   </div>
-
 
 {% endblock %}
