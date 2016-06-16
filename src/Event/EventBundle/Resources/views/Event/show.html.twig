@@ -25,7 +25,8 @@
             <div class="row">
               <div class="col-xs-12 center date">
                 <strong class="col-xs-12 col-md-3">Date de début :</strong>
-                <span class="col-xs-12 col-md-3"> {{ entity.dateStart|date('d/m/Y H:i') }}</span>
+                <span class="col-xs-12 col-md-3">
+                  {{ entity.dateStart|date('d/m/Y H:i') }}</span>
                 <strong class="col-xs-12 col-md-3">Date de fin :</strong>
                 <span class="col-xs-12 col-md-3">{{ entity.dateEnd|date('d/m/Y H:i') }}</span>
               </div>
@@ -67,82 +68,88 @@
         <hr>
 
         <div class="row bas">
-          {% if entity.links == null and entity.files == null %}
-            <div class="col-md-4 center">
-              <h4>Annexes</h4>
-              {% if entity.links | length > 1 %}
-                <div class="row">
-                  <div class="col-md-12">
-                    <strong>Liens utiles :</strong>
-                    {% for links in entity.links %}
-                      <ul>
-                        <li>
-                          <a href="{{ links.url }}">{{ links.url }}</a>
-                        </li>
-                      </ul>
+          {% if entity.links is empty and entity.files is empty %}
 
-                    {% endfor %}
-                  </div>
-                </div>
+            <div class="col-md-6 center">
+              <h4>Adresse</h4>
+
+              {% if entity.place != null %}
+                {% if entity.place.adress1 != null %}
+                  {{ entity.place.adress1 }}
+                  <br/>
+                {% endif %}
+                {% if entity.place.adress2 != null %}
+                  {{ entity.place.adress2 }}
+                  <br/>
+                {% endif %}
+                {% if entity.place.city != null %}
+                  {{ entity.place.city }}
+                {% endif %}
+                {% if entity.place.cp != null %}
+                  {{ entity.place.cp }}
+                  <br/>
+                {% endif %}
+                {% if entity.place.country != null %}
+                  {{ entity.place.country }}
+                {% endif %}
               {% endif %}
-              {% if entity.links | length == 1 %}
-                <div class="row">
-                  <div class="col-md-12">
-                    <strong>Lien utile :</strong>
-                    {% for links in entity.links %}
+            </div>
+            <div class="col-md-6 center">
+              <h4>Contact</h4>
+              {% if entity.contactname != null %}
+                <strong class="col-xs-12 col-md-2">Nom :</strong>
+                <span class="col-xs-12 col-md-4">
+                  {{ entity.contactname }}
+                </span>
+              {% endif %}
+              {% if entity.contactemail != null %}
+                <strong class="col-xs-12 col-md-2">Email :</strong>
+                <span class="col-xs-12 col-md-4">
+                  <a href="mailto:{{ entity.contactemail }}">{{ entity.contactemail }}</a>
+                </span>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+
+      {% else %}
+
+        <div class="col-md-4 center">
+          <h4>Annexes</h4>
+          {% if entity.links | length > 1 %}
+            <div class="row">
+              <div class="col-md-12">
+                <strong>Liens utiles :</strong>
+                {% for links in entity.links %}
+                  <ul>
+                    <li>
                       <a href="{{ links.url }}">{{ links.url }}</a>
+                    </li>
                   </ul>
+
                 {% endfor %}
               </div>
             </div>
           {% endif %}
-          <div class="row">
-            {% for file in entity.files %}
-              <a href="{{ asset(file.AssetPath) }}">{{ file.name }}</a>
+          {% if entity.links | length == 1 %}
+            <div class="row">
+              <div class="col-md-12">
+                <strong>Lien utile :</strong>
+                {% for links in entity.links %}
+                  <a href="{{ links.url }}">{{ links.url }}</a>
+              </ul>
             {% endfor %}
           </div>
         </div>
-
-        <div class="col-md-4 center">
-          <h4>Adresse</h4>
-
-          {% if entity.place != null %}
-            {% if entity.place.adress1 != null %}
-              {{ entity.place.adress1 }}
-              <br/>
-            {% endif %}
-            {% if entity.place.adress2 != null %}
-              {{ entity.place.adress2 }}
-              <br/>
-            {% endif %}
-            {% if entity.place.city != null %}
-              {{ entity.place.city }}
-            {% endif %}
-            {% if entity.place.cp != null %}
-              {{ entity.place.cp }}
-              <br/>
-            {% endif %}
-            {% if entity.place.country != null %}
-              {{ entity.place.country }}
-            {% endif %}
-          {% endif %}
-        </div>
-        <div class="col-md-4 center">
-          <h4>Contact</h4>
-          {% if entity.contactname != null %}
-            <strong class="col-xs-12 col-md-2">Nom :</strong>
-            <span class="col-xs-12 col-md-4"> {{ entity.contactname }} </span>
-          {% endif %}
-          {% if entity.contactemail != null %}
-            <strong class="col-xs-12 col-md-2">Email :</strong>
-            <span class="col-xs-12 col-md-4"><a href="mailto:{{ entity.contactemail }}">{{ entity.contactemail }}</a></span>
-          {% endif %}
-        </div>
+      {% endif %}
+      <div class="row">
+        {% for file in entity.files %}
+          <a href="{{ asset(file.AssetPath) }}">{{ file.name }}</a>
+        {% endfor %}
       </div>
     </div>
-  {% else %}
 
-    <div class="col-md-6 center">
+    <div class="col-md-4 center">
       <h4>Adresse</h4>
 
       {% if entity.place != null %}
@@ -166,15 +173,19 @@
         {% endif %}
       {% endif %}
     </div>
-    <div class="col-md-6 center">
+    <div class="col-md-4 center">
       <h4>Contact</h4>
       {% if entity.contactname != null %}
-        <strong class="col-xs-12 col-md-2">Nom :</strong>
-        <span class="col-xs-12 col-md-4"> {{ entity.contactname }} </span>
+        <strong class="col-xs-12">Nom :</strong>
+        <span class="col-xs-12">
+          {{ entity.contactname }}
+        </span>
       {% endif %}
       {% if entity.contactemail != null %}
-        <strong class="col-xs-12 col-md-2">Email :</strong>
-        <span class="col-xs-12 col-md-4"><a href="mailto:{{ entity.contactemail }}">{{ entity.contactemail }}</a></span>
+        <strong class="col-xs-12">Email :</strong>
+        <span class="col-xs-12">
+          <a href="mailto:{{ entity.contactemail }}">{{ entity.contactemail }}</a>
+        </span>
       {% endif %}
     </div>
   </div>
