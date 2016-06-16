@@ -46,8 +46,8 @@
             <div class="row text-une">
               <div class="col-xs-12">
                 <p>
-                  {{ event.description [:150] }}
-                  {% if event.description > event.description[: 150] %}
+                  {{ event.description [:140] }}
+                  {% if event.description > event.description[: 140] %}
                     ...
                   {% endif %}
                   <a class="visible-md visible-lg white" href="{{ path('event_show', { 'id': event.id }) }}">En savoir plus</a>
@@ -87,8 +87,8 @@
             <div class="row text-une">
               <div class="col-xs-12">
                 <p>
-                  {{ events[0].description[:150] }}
-                  {% if events[0].description > events[0].description[: 150] %}
+                  {{ events[0].description[:140] }}
+                  {% if events[0].description > events[0].description[: 140] %}
                     ...
                   {% endif %}
                   <a class=" visible-md visible-lg white" href="{{ path('event_show', { 'id': events[0].id }) }}">En savoir plus</a>
