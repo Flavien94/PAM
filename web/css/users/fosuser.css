@@ -30,6 +30,7 @@ h3{
    height: 5vh;
    font-size: large;
    margin-bottom: 5%;
+   width: 100%;
 }
  #password{
    margin-top: 20px;
@@ -76,6 +77,11 @@ h3{
 .input-changepassword{
   margin-bottom: 8%;
 }
+@media screen and (max-width: 769px) {
+  .connect-container,.changepassword-container {
+    padding-top : 50%;
+  }
+}
 /*END-CHANGE_PASSWORD*/
 .btn-delete {
   background-color: #FF5950;
@@ -87,4 +93,7 @@ h3{
   border-radius: 0;
   height: 5vh;
   margin-bottom: 5%;
+}
+.fosuser-btn{
+  width: 100%;
 }
