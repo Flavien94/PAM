@@ -49,15 +49,14 @@ class Event
     /**
      * @var Links
      *
-     * @ORM\OneToMany(targetEntity="Event\EventBundle\Entity\Links", mappedBy="event", cascade={"persist","remove"})
+     * @ORM\OneToMany(targetEntity="Event\EventBundle\Entity\Links", mappedBy="event", cascade={"persist"})
      * @ORM\JoinColumn(nullable=true)
-     *
      */
     private $links;
     /**
      * @var FileEvent
      *
-     * @ORM\OneToMany(targetEntity="Event\EventBundle\Entity\FileEvent", mappedBy="event", cascade={"persist","remove"})
+     * @ORM\OneToMany(targetEntity="Event\EventBundle\Entity\FileEvent", mappedBy="event", cascade={"persist"})
      * @ORM\JoinColumn(nullable=true)
      */
     private $files;
@@ -121,31 +120,18 @@ class Event
      */
     private $dateCreate;
     /**
-     * @var \Date
+     * @var \DateTime
      *
-     * @ORM\Column(name="date_start", type="date", nullable=false)
+     * @ORM\Column(name="date_start", type="datetime", nullable=false)
      */
     private $dateStart;
-    /**
-     * @var \Time
-     *
-     * @ORM\Column(name="time_start", type="time", nullable=true)
-     */
-    private $timeStart;
 
     /**
-     * @var \Date
+     * @var \DateTime
      *
-     * @ORM\Column(name="date_end", type="date", nullable=false)
+     * @ORM\Column(name="date_end", type="datetime", nullable=false)
      */
     private $dateEnd;
-    /**
-     * @var \Time
-     *
-     * @ORM\Column(name="time_end", type="time", nullable=true)
-     */
-    private $timeEnd;
-
 
     /**
      * @var \headlines
@@ -158,14 +144,11 @@ class Event
 
     public function __construct()
     {
-      // $this->sector = new ArrayCollection();
-      // $this->publics = new ArrayCollection();
-      // $this->type = new ArrayCollection();
       $this->files = new ArrayCollection();
       $this->uploadedFiles = new ArrayCollection();
-      $this->links = new ArrayCollection();
+      $this->links = new \Doctrine\Common\Collections\ArrayCollection();
       $this->dateCreate = new \DateTime();
-      $this->dateStart = new \DateTime();
+
     }
 
     public function __toString(){
@@ -307,7 +290,7 @@ class Event
     /**
      * Set dateStart
      *
-     * @param \Date $dateStart
+     * @param \DateTime $dateStart
      *
      * @return Event
      */
@@ -321,7 +304,7 @@ class Event
     /**
      * Get dateStart
      *
-     * @return \Date
+     * @return \DateTime
      */
     public function getDateStart()
     {
@@ -329,33 +312,9 @@ class Event
     }
 
     /**
-     * Set timeStart
-     *
-     * @param \Time $timeStart
-     *
-     * @return Event
-     */
-    public function setTimeStart($timeStart)
-    {
-        $this->timeStart = $timeStart;
-
-        return $this;
-    }
-
-    /**
-     * Get timeStart
-     *
-     * @return \Time
-     */
-    public function getTimeStart()
-    {
-        return $this->timeStart;
-    }
-
-    /**
      * Set dateEnd
      *
-     * @param \Date $dateEnd
+     * @param \DateTime $dateEnd
      *
      * @return Event
      */
@@ -369,34 +328,11 @@ class Event
     /**
      * Get dateEnd
      *
-     * @return \Date
+     * @return \DateTime
      */
     public function getDateEnd()
     {
         return $this->dateEnd;
-    }
-    /**
-     * Set timeEnd
-     *
-     * @param \Time $timeEnd
-     *
-     * @return Event
-     */
-    public function setTimeEnd($timeEnd)
-    {
-        $this->timeEnd = $timeEnd;
-
-        return $this;
-    }
-
-    /**
-     * Get timeEnd
-     *
-     * @return \Time
-     */
-    public function getTimeEnd()
-    {
-        return $this->timeEnd;
     }
     /**
      * Set dateCreate
@@ -587,15 +523,7 @@ class Event
         }
       }
      }
-     public function getLinks() {
-         return $this->links;
-     }
-     public function setLinks(array $links) {
-         foreach ($this->$links as $link) {
-           $link->setEvent($this);
-          }
-         $this->links = $links;
-     }
+
     /**
      * Add sector
      *
@@ -666,30 +594,6 @@ class Event
     public function removeType(\Event\EventBundle\Entity\Type $type)
     {
         $this->type->removeElement($type);
-    }
-
-    /**
-     * Add link
-     *
-     * @param \Event\EventBundle\Entity\Links $link
-     *
-     * @return Event
-     */
-    public function addLink(\Event\EventBundle\Entity\Links $link)
-    {
-        $this->links[] = $link;
-
-        return $this;
-    }
-
-    /**
-     * Remove link
-     *
-     * @param \Event\EventBundle\Entity\Links $link
-     */
-    public function removeLink(\Event\EventBundle\Entity\Links $link)
-    {
-        $this->links->removeElement($link);
     }
 
     /**

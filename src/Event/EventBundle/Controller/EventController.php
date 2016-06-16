@@ -218,7 +218,7 @@ class EventController extends Controller
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Update'));
+        $form->add('submit', 'submit', array('label' => 'Mettre à jour'));
 
         return $form;
     }
@@ -295,7 +295,7 @@ class EventController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('event_delete', array('id' => $id)))
             ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Delete'))
+            ->add('submit', 'submit', array('label' => 'Supprimer'))
             ->getForm()
         ;
     }

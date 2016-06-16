@@ -10,4 +10,8 @@ class DefaultController extends Controller
     {
         return $this->render('UsersBundle:Default:index.html.twig', array('name' => $name));
     }
+    public function changepasswordAction()
+    {
+        return $this->render('UsersBundle:Default:changepassword.html.twig');
+    }
 }
