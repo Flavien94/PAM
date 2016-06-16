@@ -1,52 +1,53 @@
 {% extends 'base.html.twig' %}
 {% block stylesheets %}
   {{ parent() }}
-  <link href="{{ asset('css/users/list.css') }}" type="text/css" rel="stylesheet"/>
+  <link href="{{ asset('css/event/index.css') }}" type="text/css" rel="stylesheet"/>
 {% endblock %}
-{% block body -%}
-<div class="container-fluid event-container">
-            <div class="container-fluid">
-                <div class="row">
-                      <h1>Contributeurs</h1>
-                      {% if users is defined %}
-                        {% if users == null %}
-                    <h3 style="text-align:center">Il n'y as aucun contributeurs. Cliquez <a href="{{ path('fos_user_registration_register') }}">ici</a> pour en créer.</h3>
-                      {% else %}
-                      <table class="col-md-12">
-                          <thead>
-                            <tr>
-                              <th>Nom d'utilisateurs</th>
-                              <th>Actions</th>
-                            </tr>
-                          </thead>
-                          <div class="row">
-                            <tbody>
-                              {% for user in users %}
-                                <td>
-                                  <h4>{{ user.username }}</h4>
-                                </td>
-                                <td>
-                                  <a class="btn btn-default" href="{{ path('list_update', {'id': user.id}) }}">Modifier le mot de passe</a>
-                                  <a class="btn btn-danger" data-toggle="modal" data-target="#myModal{{ user.id }}">Supprimer</a>
-                                  <div id="myModal{{ user.id }}" class="modal fade" role="dialog">
-                                    <div class="modal-dialog">
-                                      <div class="modal-content">
-                                        <div class="modal-body">
-                                          <p>Etes vous-sur de vouloir supprimer l'utilisateur : {{ user.username }} ?</p>
-                                          <a class="btn btn-danger" href="{{ path('delete', {'id': user.id}) }}">Supprimer</a>
-                                          <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </td>
-                              </tr>
-                            {% endfor %}
-                          </div>
-                        </table>
-                        {% endif %}
-                        {% endif %}
+{% block body %}
+<div class="container-fluid list-container">
+
+  <div class="col-md-12 scroll mCustomScrollbar">
+    <h1>Contributeurs</h1>
+    {% if users is defined %}
+      {% if users == null %}
+  <h3 style="text-align:center">Il n'y as aucun contributeurs. Cliquez <a href="{{ path('fos_user_registration_register') }}">ici</a> pour en créer.</h3>
+    {% else %}
+    <table class="col-xs-12 col-md-12 col-sm-12 col-lg-12 records_list result">
+
+      <div class="row">
+        <thead>
+          <tr>
+            <th>Nom d'utilisateurs</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for user in users %}
+            <td>
+              <h4>{{ user.username }}</h4>
+            </td>
+            <td>
+              <a class="btn btn-default btn-edit" href="{{ path('list_update', {'id': user.id}) }}">Modifier le mot de passe</a>
+              <a class="btn btn-danger btn-delete" data-toggle="modal" data-target="#myModal{{ user.id }}">Supprimer</a>
+              <div id="myModal{{ user.id }}" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-body">
+                      <p>Etes vous-sur de vouloir supprimer l'utilisateur : {{ user.username }} ?</p>
+                      <a class="btn btn-danger" href="{{ path('delete', {'id': user.id}) }}">Supprimer</a>
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                    </div>
+                  </div>
                 </div>
-            </div>
+              </div>
+            </td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </div>
+    </table>
+    </div>
 </div>
+{% endif %}
+{% endif %}
 {% endblock %}

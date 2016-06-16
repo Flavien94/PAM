@@ -85,3 +85,15 @@ td a:hover {
     padding-top : 30%;
   }
 }
+/*LIST CONTRIBUTEURS*/
+.list-container {
+  margin-top: -5%;
+}
+.list-container td{
+  text-align: center;
+}
+.list-container .btn-edit{
+  width: 175px;
+  margin: 0;
+}
+/*LIST CONTRIBUTEURS*/
