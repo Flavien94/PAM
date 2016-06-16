@@ -1,7 +1,7 @@
 .event-container {
   padding-top: 5%;
 }
-.home-container {
+.home-container, .event2-container {
   padding-top: 10%;
 }
 h1 {

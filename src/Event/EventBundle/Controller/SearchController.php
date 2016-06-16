@@ -100,7 +100,6 @@ class SearchController extends Controller
          $query->execute();
 
          $events = $query->fetchAll();
-         dump($events);
          $queryvalue = $search;
          $search = new Search();
          $formSearch = $this->createSearchForm($search);
