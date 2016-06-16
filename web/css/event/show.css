@@ -1,7 +1,56 @@
-.img-une{
+.img-une {
   border: 1px solid #EEEEEE;
   background-size: cover;
 }
 .event2-container {
   padding-top: 10%;
+}
+.img-une {
+  height: 70%;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  border-top: 1px solid #cccccc;
+  border-right: 1px solid #cccccc;
+  border-left: 1px solid #cccccc;
+  box-sizing: border-box;
+}
+h4 {
+  color : #FF5950;
+}
+.center {
+  text-align: center;
+}
+.date {
+  margin-bottom: 2%;
+}
+.col {
+  height: calc(100vh - 390px);
+}
+.padding {
+  text-align: justify;
+  padding-left: 2%;
+  padding-right: 2%;
+}
+.horizontal-list {
+  display: inline;
+  list-style: none;
+}
+a {
+  color: black;
+  text-decoration: underline;
+}
+a:hover {
+  color:#FF5950;
+}
+.btn-delete {
+  background-color: #FF5950;
+}
+.btn-delete:hover {
+  background-color: #FF372C;
+}
+.btn-edit, .btn-delete {
+  width:200px;
+  border-radius: 0;
+  height: 35px;
 }

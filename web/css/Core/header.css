@@ -32,8 +32,9 @@ input, select, #event_eventbundle_search_submit {
   width:150px;
   height: 25px;
 }
-select {
+select, #event_eventbundle_search_dateEnd, #event_eventbundle_search_dateStart {
   background-color: #63B688;
+  border: 0.5px solid #599D78;
 }
 select:active, select:focus {
   outline:none;

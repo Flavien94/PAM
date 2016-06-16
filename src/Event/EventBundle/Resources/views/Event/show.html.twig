@@ -1,131 +1,229 @@
 {% extends '::base.html.twig' %}
-{% block stylesheets %} {{ parent() }}
-<link href="{{ asset('css/event/show.css') }}" type="text/css" rel="stylesheet" />
-<link rel="stylesheet" href="{{ asset('css/event/print.css') }}" type="text/css" media="print" />
+{% block stylesheets %}
+  {{ parent() }}
+  <link href="{{ asset('css/event/show.css') }}" type="text/css" rel="stylesheet"/>
+  <link rel="stylesheet" href="{{ asset('css/event/print.css') }}" type="text/css" media="print"/>
 {% endblock %}
 {% block body -%}
-<div class="container event2-container">
+  <div class="container event2-container">
 
-  <div class="row">
-    <div class="col-md-12">
-      <h1>{{ entity.title }}</h1>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-5 img-desc">
-      {% if entity.images == null %}
-      <img class="row img-une col-md-12" src="{{asset('images/logo-pole-emploi_region.png')}}" /> {% else %}
-      <img class="row img-une col-md-12" src="{{ asset(entity.images.AssetPath) }}" /> {% endif %}
-    </div>
-    <div class="col-md-7">
-      <div class="row">
-        <!-- <div class="col-md-12">
-          <span>Date de création : {{ entity.dateCreate|date('d-m-Y') }}</span>
-        </div> -->
-        {% if entity.sector != null %}
-        <div class="col-md-4">
-          <h4>Secteur</h4> {{ entity.sector.title }}
-        </div>
-        {% endif %} {% if entity.publics != null %}
-        <div class="col-md-4">
-          <h4>Public</h4> {{ entity.publics.title }}
-        </div>
-        {% endif %} {% if entity.type != null %}
-        <div class="col-md-4">
-          <h4>Type</h4> {{ entity.type.title }}
-        </div>
-        {% endif %}
+    <div class="row">
+
+      <div class="col-xs-12">
+        <h1>{{ entity.title }}</h1>
+        <hr>
       </div>
-      <div class="row">
-        <div class="col-md-12">
-          <h3>Description</h3>
-          <p>{{ entity.description | nl2br }}</p>
-        </div>
-      </div>
-      {% if entity.links|length > 1 %}
-      <div class="row">
-        <div class="col-md-12">
-          <h4>Liens utiles</h4> {% for links in entity.links %}
-          <a href="{{ links.url }}">{{ links.url }}</a> {% endfor %}
-        </div>
-      </div>
-      {% endif %}
-      {% if entity.links|length == 1 %}
-      <div class="row">
-        <div class="col-md-12">
-          <h4>Lien utile</h4> {% for links in entity.links %}
-          <a href="{{ links.url }}">{{ links.url }}</a> {% endfor %}
-        </div>
-      </div>
-      {% endif %}
-      <div class="row">
-        <div class="col-md-5">
-          <h4>Adresse</h4> {% if entity.place != null %} {% if entity.place.adress1 != null %} {{ entity.place.adress1 }}
-          <br /> {% endif %} {% if entity.place.adress2 != null %} {{ entity.place.adress2 }}
-          <br /> {% endif %} {% if entity.place.city != null %} {{ entity.place.city }} {% endif %} {% if entity.place.cp != null %} {{ entity.place.cp }}
-          <br /> {% endif %} {% if entity.place.country != null %} {{ entity.place.country }} {% endif %} {% endif %}
-        </div>
-        <div class="col-md-7">
-          <div class="row">
-            {% if entity.contactname != null or entity.contactemail != null%}
-            <div class="col-md-12">
-              <h4>Contact</h4> {% if entity.contactname != null %}
-              <label>Nom :</label>
-              {{ entity.contactname }} {% endif %} {% if entity.contactemail != null %}
-              <label>Email :</label>
-              <a href="mailto:{{ entity.contactemail }}">{{ entity.contactemail }}</a> {% endif %}
-            </div>
-            {% endif %}
-            <div class="col-md-12">
-              <h4>Date</h4> {{ entity.dateStart|date('d/m/Y H:i') }} - {{ entity.dateEnd|date('d/m/Y H:i') }}
-            </div>
-            <div class="col-md-12">
-              <h4>Fichiers annexes</h4>
-              {% for file in entity.files %}
-                <a href="{{ asset(file.AssetPath) }}">{{ file.name }}</a>
-              {% endfor %}
+      <div class="col-xs-12">
+        <div class="row">
+          {% if entity.images == null %}
+            <div class="col-xs-12 col-md-5 col img-une" style="background-image:url('{{ asset('images/logo-pole-emploi_region.png') }}')"></div>
+          {% else %}
+            <div class="col-xs-12 col-md-5 col img-une" style="background-image:url('{{ asset(entity.images.AssetPath) }}')"></div>
+          {% endif %}
+
+          <div class=" col-xs-12 col-md-7">
+            <div class="row">
+              <div class="col-xs-12 center date">
+                <strong>Date de début :</strong>
+                {{ entity.dateStart|date('d/m/Y H:i') }}
+                <strong>-</strong>
+                <strong>Date de fin :</strong>
+                {{ entity.dateEnd|date('d/m/Y H:i') }}
+              </div>
+              <div class="row">
+
+                {% if entity.sector != null %}
+                  <div class="col-xs-4 center">
+                    <h4>Secteur</h4>
+                    {{ entity.sector.title }}
+                  </div>
+                {% endif %}
+                {% if entity.publics != null %}
+                  <div class="col-xs-4 center">
+                    <h4>Public</h4>
+                    {{ entity.publics.title }}
+                  </div>
+                {% endif %}
+                {% if entity.type != null %}
+                  <div class="col-xs-4 center">
+                    <h4>Type</h4>
+                    {{ entity.type.title }}
+                  </div>
+                {% endif %}
+              </div>
+
+              <div class="row">
+                <div class="col-xs-12">
+                  <div class="col-xs-12 center">
+                    <h4>Description</h4>
+                  </div>
+                </div>
+                <div class="col-xs-12">
+                  <p class="padding">{{ entity.description | nl2br }}</p>
+                </div>
+              </div>
             </div>
           </div>
+        </div>
+        <hr>
 
+        <div class="row">
+          {% if entity.links == null and entity.files == null %}
+            <div class="col-md-4 center">
+              <h4>Annexes</h4>
+              {% if entity.links | length > 1 %}
+                <div class="row">
+                  <div class="col-md-12">
+                    <strong>Liens utiles :</strong>
+                    {% for links in entity.links %}
+                      <ul>
+                        <li>
+                          <a href="{{ links.url }}">{{ links.url }}</a>
+                        </li>
+                      </ul>
+
+                    {% endfor %}
+                  </div>
+                </div>
+              {% endif %}
+              {% if entity.links | length == 1 %}
+                <div class="row">
+                  <div class="col-md-12">
+                    <strong>Lien utile :</strong>
+                    {% for links in entity.links %}
+                      <a href="{{ links.url }}">{{ links.url }}</a>
+                  </ul>
+                {% endfor %}
+              </div>
+            </div>
+          {% endif %}
+          <div class="row">
+            {% for file in entity.files %}
+              <a href="{{ asset(file.AssetPath) }}">{{ file.name }}</a>
+            {% endfor %}
+          </div>
+        </div>
+
+        <div class="col-md-4 center">
+          <h4>Adresse</h4>
+
+          {% if entity.place != null %}
+            {% if entity.place.adress1 != null %}
+              {{ entity.place.adress1 }}
+              <br/>
+            {% endif %}
+            {% if entity.place.adress2 != null %}
+              {{ entity.place.adress2 }}
+              <br/>
+            {% endif %}
+            {% if entity.place.city != null %}
+              {{ entity.place.city }}
+            {% endif %}
+            {% if entity.place.cp != null %}
+              {{ entity.place.cp }}
+              <br/>
+            {% endif %}
+            {% if entity.place.country != null %}
+              {{ entity.place.country }}
+            {% endif %}
+          {% endif %}
+        </div>
+        <div class="col-md-4 center">
+          <h4>Contact</h4>
+          {% if entity.contactname != null %}
+            <strong>Nom :</strong>
+            {{ entity.contactname }}
+          {% endif %}
+          {% if entity.contactemail != null %}
+            <strong>-</strong>
+            <strong>Email :</strong>
+            <a href="mailto:{{ entity.contactemail }}">{{ entity.contactemail }}</a>
+          {% endif %}
         </div>
       </div>
+    </div>
+  {% else %}
+
+    <div class="col-md-6 center">
+      <h4>Adresse</h4>
+
+      {% if entity.place != null %}
+        {% if entity.place.adress1 != null %}
+          {{ entity.place.adress1 }}
+          <br/>
+        {% endif %}
+        {% if entity.place.adress2 != null %}
+          {{ entity.place.adress2 }}
+          <br/>
+        {% endif %}
+        {% if entity.place.city != null %}
+          {{ entity.place.city }}
+        {% endif %}
+        {% if entity.place.cp != null %}
+          {{ entity.place.cp }}
+          <br/>
+        {% endif %}
+        {% if entity.place.country != null %}
+          {{ entity.place.country }}
+        {% endif %}
+      {% endif %}
+    </div>
+    <div class="col-md-6 center">
+      <h4>Contact</h4>
+      {% if entity.contactname != null %}
+        <strong>Nom :</strong>
+        {{ entity.contactname }}
+      {% endif %}
+      {% if entity.contactemail != null %}
+        <strong>-</strong>
+        <strong>Email :</strong>
+        <a href="mailto:{{ entity.contactemail }}">{{ entity.contactemail }}</a>
+      {% endif %}
     </div>
   </div>
 </div>
 
-    <ul class="record_actions">
-    <li>
-        <a href="{{ path('event') }}">
-            Retourner à la liste
-        </a>
-    </li>
-      {% if (is_granted("IS_AUTHENTICATED_REMEMBERED") and entity.author == app.user.username or is_granted("ROLE_SUPER_ADMIN") ) %}
-      <li>
-      <a href="{{ path('event_edit', { 'id': entity.id }) }}">Éditer</a>
-    </li>
-    <li>
-      <a class="btn btn-danger" data-toggle="modal" data-target="#myModal{{ entity.id }}">Supprimer</a>
-      <div id="myModal{{ entity.id }}" class="modal fade" role="dialog">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-body">
-              <p>Etes vous-sur de vouloir supprimer l'événement : {{ entity.title }} ?</p>
-              {{ form_start(delete_form) }}
-              {{ form_widget(delete_form.submit, {"attr":{"class":"btn btn-danger"}})}}
-              {{ form_end(delete_form) }}
-              <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
-            </div>
-          </div>
+{% endif %}
+
+<div class="col-md-12 center record_actions">
+<li class="horizontal-list">
+<a class="btn btn-default btn-edit" href="{{ path('event') }}">
+  Retourner à la liste
+</a>
+</li>
+{% if (is_granted("IS_AUTHENTICATED_REMEMBERED")and entity.author == app.user.username or is_granted("ROLE_SUPER_ADMIN")) %}
+<li class="horizontal-list">
+  <a class="btn btn-default btn-edit" href="{{ path('event_edit', { 'id': entity.id }) }}">Éditer</a>
+</li>
+<li class="horizontal-list">
+  <a class="btn btn-danger btn-delete" data-toggle="modal" data-target="#myModal{{ entity.id }}">Supprimer</a>
+  <div id="myModal{{ entity.id }}" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-body">
+          <p>Etes vous-sur de vouloir supprimer l'événement :
+            {{ entity.title }}
+            ?</p>
+          {{ form_start(delete_form) }}
+          {{ form_widget(delete_form.submit, {"attr":{"class":"btn btn-danger"}})}}
+          {{ form_end(delete_form) }}
+          <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
         </div>
       </div>
-  <input id="impression" name="impression" type="button" onclick="imprimer_page()" value="Imprimer cette page" />
-  <script type="text/javascript">
-  function imprimer_page(){
+    </div>
+  </div>
+</li>
+{% endif %}
+<li class="horizontal-list">
+<input id="impression" class="btn btn-default btn-edit" name="impression" type="button" onclick="imprimer_page()" value="Imprimer cette page"/>
+<script type="text/javascript">
+  function imprimer_page() {
     window.print();
   }
-  </script>
-    </li>
-      {% endif %}
-</ul>
+</script>
+</li>
+</div>
+</div>
+</div>
 
 {% endblock %}

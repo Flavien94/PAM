@@ -23,7 +23,7 @@
               </a>
             {% else %}
               <a href="{{ path('event_show', { 'id': event.id }) }}">
-                <div class="row img-une" style="background-image:url('{{ asset(event.images.AssetPAth) }}"></div>
+                <div class="row img-une" style="background-image:url('{{ asset(event.images.AssetPadth) }}"></div>
               </a>
             {% endif %}
             <div class="row titre-une">
@@ -55,18 +55,18 @@
             </div>
 
           {% else %}
-            {% if event.images == null %}
-              <a href="{{ path('event_show', { 'id': event.id }) }}">
+            {% if events[0].images == null %}
+              <a href="{{ path('event_show', { 'id': events[0].id }) }}">
                 <div class="row img-une" style="background-image:url('{{ asset('images/logo-pole-emploi_region.png') }}')"></div>
               </a>
             {% else %}
-              <a href="{{ path('event_show', { 'id': event.id }) }}">
-                <div class="row img-une" style="background-image:url('{{ asset(event.images.AssetPAth) }}"></div>
+              <a href="{{ path('event_show', { 'id': events[0].id }) }}">
+                <div class="row img-une" style="background-image:url('{{ asset(events[0].images.AssetPath) }}"></div>
               </a>
             {% endif %}
             <div class="row titre-une">
               <div class="col-xs-12">
-                <a href="{{ path('event_show', { 'id': event.id }) }}">
+                <a href="{{ path('event_show', { 'id': events[0].id }) }}">
 
                   <h4>{{ events[0].title[:50]  }}
                     {% if events[0].title > events[0].title[: 50] %}
