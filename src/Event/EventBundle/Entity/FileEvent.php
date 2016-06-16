@@ -59,18 +59,26 @@ class FileEvent
      * @ORM\Column(type="array")
      */
     private $paths;
-
+    /**
+     * @var \DateTime
+     *
+     * @ORM\COlumn(name="updated_at",type="datetime", nullable=true)
+     */
+    private $updateAt;
 
     /**
     * @param UploadedFile $uploadedFile
     */
      function __construct(UploadedFile $uploadedFile)
      {
-         $path = sha1(uniqid(mt_rand(), true)).'.'.$uploadedFile->guessExtension();
+         $date = date('Y-m-d',strtotime('now'));
+         $path = $date.'-'.$uploadedFile->getClientOriginalName().'.'.$uploadedFile->guessExtension();
          $this->setPath($path);
          $this->setSize($uploadedFile->getClientSize());
          $this->setName($uploadedFile->getClientOriginalName());
          $uploadedFile->move($this->getUploadRootDir(), $path);
+         $this->updateAt = new \DateTime();
+
      }
 
      /**
@@ -169,6 +177,28 @@ class FileEvent
      public function setEvent($event)
      {
          $this->event = $event;
+     }
+     /**
+      * Set updateAt
+      *
+      * @param \DateTime $updateAt
+      * @return Images
+      */
+     public function setUpdateAt($updateAt)
+     {
+         $this->updateAt = $updateAt;
+
+         return $this;
+     }
+
+     /**
+      * Get updateAt
+      *
+      * @return \DateTime
+      */
+     public function getUpdateAt()
+     {
+         return $this->updateAt;
      }
      /**
       * @return string
