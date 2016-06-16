@@ -154,6 +154,13 @@ class Event
      */
     private $headlines;
 
+    /**
+     * @var \scratch
+     *
+     * @ORM\Column(name="scratch", type="boolean", nullable=true)
+     */
+    private $scratch;
+
     private $SearchIndexEvents;
 
     public function __construct()
@@ -424,7 +431,7 @@ class Event
     /**
      * Set headlines
      *
-     * @param \Boolean $dateEnd
+     * @param \Boolean $headlines
      *
      * @return Event
      */
@@ -445,7 +452,29 @@ class Event
         return $this->headlines;
     }
 
+    /**
+     * Set scratch
+     *
+     * @param \Boolean $scratch
+     *
+     * @return Event
+     */
+    public function setScratch($scratch)
+    {
+        $this->scratch = $scratch;
 
+        return $this;
+    }
+
+    /**
+     * Get scratch
+     *
+     * @return \Boolean
+     */
+    public function getScratch()
+    {
+        return $this->scratch;
+    }
 
 
     public function setPublics($publics)
