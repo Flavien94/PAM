@@ -4,21 +4,12 @@
   <link href="{{ asset('css/event/index.css') }}" type="text/css" rel="stylesheet"/>
 {% endblock %}
 {% block body -%}
-<div class="container-fluid event-container">
+<div class="container-fluid list-container">
 
-  <div id="scroll_contact" class="col-md-12 scroll mCustomScrollbar">
-    <h1 id="h1_contact" >Événements</h1>
+  <div class="col-md-12 scroll mCustomScrollbar">
+    <h1>Messages</h1>
 
     <table class="col-xs-12 col-md-12 col-sm-12 col-lg-12 records_list result">
-      <thead>
-        <tr>
-          <th class="col-md-6">Message</th>
-          <th class="col-md-2">Prénom</th>
-          <th class="col-md-2">Nom</th>
-          <th class="col-md-2">Email</th>
-          <th class="col-md-2">Action</th>
-        </tr>
-      </thead>
       <div class="row">
         <tbody>
           {% for contact in contacts %}
@@ -41,14 +32,15 @@
               {% if contact.email %}{{ contact.email }}{% endif %}
             </td>
             <td>
-              <a class="btn btn-default" href="{{ path('contact_show', { 'id': contact.id }) }}">Voir le mail</a>
-              <a class="btn btn-danger" data-toggle="modal" data-target="#myModal">Supprimer</a>
+              <a class="btn btn-default btn-edit" href="{{ path('contact_show', { 'id': contact.id }) }}">Voir le mail</a>
+              <a class="btn btn-danger btn-delete " data-toggle="modal" data-target="#myModal">Supprimer</a>
               <div id="myModal" class="modal fade" role="dialog">
                 <div class="modal-dialog">
                   <div class="modal-content">
                     <div class="modal-body">
                       <p>Etes vous-sur de vouloir supprimer ce message ?</p>
-                      <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                      <a class="btn btn-danger btn-delete" href="{{ path('delete', {'id': contact.id}) }}">Supprimer</a>
+                      <button type="button" class="btn btn-default btn-edit" data-dismiss="modal">Fermer</button>
                     </div>
                   </div>
                 </div>
