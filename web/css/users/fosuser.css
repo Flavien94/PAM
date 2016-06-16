@@ -60,13 +60,16 @@ h3{
 #link{
   font-size: 20px;
   text-align: center;
-  margin-top: 8%;
-  margin-top: 2%;
-  margin-bottom: 3%;
+  padding-bottom: 5%;
 }
 
 #link a{
   color: #004077;
+}
+@media screen and (max-width: 769px) {
+  .register-container {
+    padding-top : 50%;
+  }
 }
 /*END-REGISTER*/
 
@@ -91,7 +94,7 @@ h3{
 }
 .btn-edit, .btn-delete {
   border-radius: 0;
-  height: 5vh;
+  height: 6vh;
   margin-bottom: 5%;
 }
 .fosuser-btn{
