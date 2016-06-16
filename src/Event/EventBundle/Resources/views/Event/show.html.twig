@@ -24,11 +24,10 @@
           <div class=" col-xs-12 col-md-7">
             <div class="row">
               <div class="col-xs-12 center date">
-                <strong>Date de début :</strong>
-                {{ entity.dateStart|date('d/m/Y H:i') }}
-                <strong>-</strong>
-                <strong>Date de fin :</strong>
-                {{ entity.dateEnd|date('d/m/Y H:i') }}
+                <strong class="col-xs-12 col-md-3">Date de début :</strong>
+                <span class="col-xs-12 col-md-3"> {{ entity.dateStart|date('d/m/Y H:i') }}</span>
+                <strong class="col-xs-12 col-md-3">Date de fin :</strong>
+                <span class="col-xs-12 col-md-3">{{ entity.dateEnd|date('d/m/Y H:i') }}</span>
               </div>
               <div class="row">
 
@@ -67,7 +66,7 @@
         </div>
         <hr>
 
-        <div class="row">
+        <div class="row bas">
           {% if entity.links == null and entity.files == null %}
             <div class="col-md-4 center">
               <h4>Annexes</h4>

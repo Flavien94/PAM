@@ -36,7 +36,7 @@ h4 {
   display: inline;
   list-style: none;
 }
-a {
+.bas a {
   color: black;
   text-decoration: underline;
 }
@@ -53,4 +53,9 @@ a:hover {
   width:200px;
   border-radius: 0;
   height: 35px;
+}
+@media screen and (max-width: 769px) {
+  .event2-container {
+    padding-top : 50%;
+  }
 }
