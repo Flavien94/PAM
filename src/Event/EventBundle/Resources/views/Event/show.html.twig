@@ -14,7 +14,7 @@
     <div class="col-md-5 img-desc">
       {% if entity.images == null %}
       <img class="row img-une col-md-12" src="{{asset('images/logo-pole-emploi_region.png')}}" /> {% else %}
-      <img class="row img-une col-md-12" src="{{ asset(entity.images.AssetPAth) }}" /> {% endif %}
+      <img class="row img-une col-md-12" src="{{ asset(entity.images.AssetPath) }}" /> {% endif %}
     </div>
     <div class="col-md-7">
       <div class="row">
@@ -79,7 +79,10 @@
               <h4>Date</h4> {{ entity.dateStart|date('d/m/Y H:i') }} - {{ entity.dateEnd|date('d/m/Y H:i') }}
             </div>
             <div class="col-md-12">
-
+              <h4>Fichiers annexes</h4>
+              {% for file in entity.files %}
+                <a href="{{ asset(file.AssetPath) }}">{{ file.name }}</a>
+              {% endfor %}
             </div>
           </div>
 

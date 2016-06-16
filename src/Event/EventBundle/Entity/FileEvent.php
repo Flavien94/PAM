@@ -214,6 +214,11 @@ class FileEvent
      {
          return 'uploads/documents';
      }
+     public function getAssetPath()
+     {
+         return 'uploads/documents/'.$this->path;
+     }
+
      /**
       * @ORM\PostRemove()
       */
