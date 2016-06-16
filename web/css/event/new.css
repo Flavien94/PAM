@@ -9,7 +9,9 @@
   margin-bottom: 1%;
   font-weight: bolder;
 }
-
+#event_eventbundle_event_sector, #event_eventbundle_event_publics, #event_eventbundle_event_type {
+  border-radius: 0;
+}
 .description,.contact{
   margin-top: 3vh;
 }
@@ -18,32 +20,27 @@
 }
 .contact input{
   border: 1px solid #AAAAAA;
-  border-radius: 5px;
   height: 3vh;
   padding: 10px;
 }
 .description input{
   border: 1px solid #AAAAAA;
-  border-radius: 5px;
   height: 5vh;
   font-size: 1.3em;
   padding: 10px;
 }
 .description textarea{
   border: 1px solid #AAAAAA;
-  border-radius: 5px;
   font-size: 1.1em;
   padding: 10px;
 }
 .detail-top input{
   border: 1px solid #AAAAAA;
-  border-radius: 5px;
   height: 3vh;
   padding: 10px;
 }
 .btn-submit{
   height: 4vh;
-  border-radius: 5px;
   border: 1px solid #AAAAAA;
   background-color: #63B688;
   font-weight: bold;
@@ -59,7 +56,6 @@
   width: 23px;
 }
 .col-md-12>ul{
-  border-radius: 5px;
   padding: 10px;
   background-color: rgba(255, 89 , 80, 0.8);
 }

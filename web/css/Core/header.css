@@ -28,8 +28,15 @@
 .container3{
   width:100vw;
 }
-input, select {
+input, select, #event_eventbundle_search_submit {
   width:150px;
+  height: 25px;
+}
+select {
+  background-color: #63B688;
+}
+select:active, select:focus {
+  outline:none;
 }
 #hamb{
   border-color: #599D78;
@@ -47,7 +54,7 @@ input, select {
   padding-right: 3%;
   background-color: #63B688;
 }
-.navbar-default .navbar-nav>li>a, .dropdown-menu>li>a,  .navbar-default .navbar-nav .open .dropdown-menu>li>a  {
+.navbar-default .navbar-nav>li>a, .dropdown-menu>li>a,  .navbar-default .navbar-nav .open .dropdown-menu>li>a {
   color: #fff;
 }
 .searchbar>li{

@@ -8,7 +8,7 @@
   <div class="container-fluid event-container">
 
     <div class="col-md-12 scroll mCustomScrollbar">
-      <h1>Événements</h1>
+      <h1>Evénements</h1>
 
       <table class="col-xs-12 col-md-12 col-sm-12 col-lg-12 records_list result">
 
@@ -31,10 +31,12 @@
                 <br>
               </td>
               <td class="col-md-2 date">
-                {% if entity.dateStart %}{{ entity.dateStart|date('d-m-Y H:i') }}{% endif %}
+                <label for="dateStart">Date de début</label>
+                {% if entity.dateStart %}{{ entity.dateStart|date('d-m-Y') }}{% endif %}
               </td>
               <td class="col-md-2 date">
-                {% if entity.dateEnd %}{{ entity.dateEnd|date('d-m-Y H:i') }}{% endif %}
+                <label for="dateEnd">Date de fin</label>
+                {% if entity.dateEnd %}{{ entity.dateEnd|date('d-m-Y') }}{% endif %}
               </td>
             </tr>
           {% endfor %}

@@ -30,9 +30,12 @@ textarea{
   height: 4vh;
   border: 1px solid #AAAAAA;
   background-color: #63B688;
-  font-weight: bold;
   color: #FFFFFF;
   margin-bottom: 3vh;
+}
+.btn-submit:hover {
+  background-color: #599D78;
+  border: 1px solid #599D78;
 }
 @media screen and (max-width: 769px) {
     .contact {

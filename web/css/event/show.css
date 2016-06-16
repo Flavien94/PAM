@@ -1,9 +1,7 @@
-.container{
-  width:80%;
-  margin-top: 12vh;
-  height: 76vh;
-}
 .img-une{
   border: 1px solid #EEEEEE;
   background-size: cover;
+}
+.event2-container {
+  padding-top: 10%;
 }

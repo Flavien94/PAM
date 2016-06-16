@@ -36,9 +36,11 @@
                   <a href="{{ path('event_edit', { 'id': event.id }) }}">Éditer</a>
                 </td>
                 <td class="col-md-2 date">
+                  <label for="dateStart">Date de début</label>
                   {% if event.date_start %}{{ event.date_start|date('d-m-Y') }}{% endif %}
                 </td>
                 <td class="col-md-2 date">
+                  <label for="dateStart">Date de début</label>
                   {% if event.date_end %}{{ event.date_end|date('d-m-Y') }}{% endif %}
                 </td>
               </tr>

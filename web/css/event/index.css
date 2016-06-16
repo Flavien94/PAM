@@ -1,3 +1,6 @@
+.event-container {
+  padding-top: 5%;
+}
 #h1_contact{
   margin-top: 0;
 }
@@ -39,6 +42,10 @@ li {
   height: 60vh;
   top:30%;
 }
+.event-scroll{
+  margin-top: 10%;
+  height: 80vh;
+}
 .error {
   font-weight: bolder;
   font-size: 20px;
@@ -51,4 +58,31 @@ li {
 }
 .date {
   text-align: center;
+}
+td a {
+  color : #FF5950;
+  text-decoration: underline;
+}
+td a:hover {
+  color : black;
+
+}
+.btn-edit {
+  margin-bottom: 5%;
+}
+.btn-delete {
+  background-color: #FF5950;
+}
+.btn-delete:hover {
+  background-color: #FF372C;
+}
+.btn-edit, .btn-delete {
+  width:100px;
+  border-radius: 0;
+}
+@media screen and (max-width: 769px) {
+  .event2-container {
+    padding-top : 30%;
+  }
+
 }
