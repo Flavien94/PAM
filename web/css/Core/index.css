@@ -59,9 +59,16 @@ h6 .right {
   height: 150px;
   width: 72%
 }
+a:hover, #right a:hover {
+  color : black;
+}
 #right a{
   float: right;
   margin-right: 15px;
+  color: white;
+  text-decoration: underline;
+}
+.white {
   color: white;
   text-decoration: underline;
 }

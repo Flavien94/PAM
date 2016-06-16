@@ -49,7 +49,7 @@
                   {% if event.description > event.description[: 200] %}
                     ...
                   {% endif %}
-                  <a href="{{ path('event_show', { 'id': event.id }) }}">En savoir plus</a>
+                  <a class="visible-md visible-lg white" href="{{ path('event_show', { 'id': event.id }) }}">En savoir plus</a>
                 </p>
               </div>
             </div>
@@ -88,7 +88,7 @@
                   {% if events[0].description > events[0].description[: 200] %}
                     ...
                   {% endif %}
-                  <a href="{{ path('event_show', { 'id': events[0].id }) }}">En savoir plus</a>
+                  <a class=" visible-md visible-lg white" href="{{ path('event_show', { 'id': events[0].id }) }}">En savoir plus</a>
                 </p>
               </div>
             </div>
@@ -144,7 +144,7 @@
                         ...
                       {% endif %}
                     </p>
-                    <div class="hidden-xs hidden-sm" id="right">
+                    <div class="visible-md visible-lg" id="right">
                       <a href="{{ path('event_show', { 'id': event.id }) }}">En savoir plus</a>
                     </div>
                   </div>
@@ -200,7 +200,7 @@
                           ...
                         {% endif %}
                       </p>
-                      <div class="hidden-xs hidden-sm" id="right">
+                      <div class="visible-md visible-lg" id="right">
                         <a href="{{ path('event_show', { 'id': event.id }) }}">En savoir plus</a>
                       </div>
 
