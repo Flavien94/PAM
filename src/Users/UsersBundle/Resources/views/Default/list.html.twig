@@ -28,8 +28,8 @@
                   <div class="modal-content">
                     <div class="modal-body">
                       <p>Etes vous-sur de vouloir supprimer l'utilisateur : {{ user.username }} ?</p>
-                      <a class="btn btn-danger" href="{{ path('delete', {'id': user.id}) }}">Supprimer</a>
-                      <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                      <a class="btn btn-danger btn-delete" href="{{ path('delete', {'id': user.id}) }}">Supprimer</a>
+                      <button type="button" class="btn btn-default btn-edit" data-dismiss="modal">Fermer</button>
                     </div>
                   </div>
                 </div>
