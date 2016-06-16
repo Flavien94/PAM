@@ -308,7 +308,7 @@ class EventController extends Controller
     {
       $em = $this->getDoctrine()->getEntityManager();
       $user = $this->container->get('security.context')->getToken()->getUser()->getUsername();
-      $sql = $em->getConnection()->prepare('SELECT * FROM event WHERE author = "'.$user.'"');
+      $sql = $em->getConnection()->prepare('SELECT event.id, date_start, date_end, title, description, url FROM event JOIN images ON (event.image_id = images.id) WHERE author = "'.$user.'"');
       $sql->execute();
       $entities = $sql->fetchAll();
         return array(

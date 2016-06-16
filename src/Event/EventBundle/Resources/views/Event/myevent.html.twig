@@ -14,10 +14,10 @@
         <div class="row">
           <tbody>
             {% for entity in entities %}
-              {% if entity.image_id == null %}
+              {% if entity.url == null %}
               <td class="col-md-2 images" style="background-image:url('{{ asset('images/logo-pole-emploi_region.png') }}')"></td>
               {% else %}
-              <td class="col-md-2 images" style="background-image:url('{{ asset(entity.image_id.AssetPath) }}"></td>
+              <td class="col-md-2 images" style="background-image:url('{{ asset('uploads/img/'~ entity.url) }}"></td>
               {% endif %}
 
               <td>

@@ -31,7 +31,7 @@ class DefaultController extends Controller
 
         return $this->render('CoreBundle:Default:index.html.twig', array(
             'events' => $events,
-            'notif' => $notifs,
+            'notif' => $notifs
         ));
     }
 }
