@@ -22,12 +22,6 @@ td {
   text-align: justify;
   background-repeat: no-repeat;
 }
-th {
-  font-size: 17px;
-  text-align: center;
-  background-color:#63B688 ;
-  color:white
-}
 .titles {
   background-color:#1B2B66 ;
 }
@@ -95,5 +89,8 @@ td a:hover {
 .list-container .btn-edit{
   width: 175px;
   margin: 0;
+}
+.list-container .btn-edit,.btn-delete{
+text-decoration: none;
 }
 /*LIST CONTRIBUTEURS*/
