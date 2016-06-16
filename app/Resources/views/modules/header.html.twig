@@ -14,13 +14,23 @@
         Chercher</button>
     </form>
   </div>
+
   <nav class="navbar navbar-lower navbar-left navbar2" role="navigation">
     <div class="container-fluid container2">
-      <div class="collapse navbar-collapse" id="bs-navbar-collapse-1">
+      <div class="navbar-header">
+        <button type="button" id="hamb" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+
+      <div class="collapse navbar-collapse" id="menu">
         <ul class="nav navbar-nav">
           <li>
             <a href="{{ path('core_homepage') }}">Accueil
-              <span class="sr-only">(current)</span>
+              <span class="sr-only"></span>
             </a>
           </li>
           <li>
@@ -31,96 +41,107 @@
           </li>
         </ul>
         <ul class="nav navbar-nav navbar-right connect-btn">
-            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+          {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
             <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ app.user.username }}
-              <span class="caret"></span>
-            </a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ app.user.username }}
+                <span class="caret"></span>
+              </a>
               <ul class="dropdown-menu">
                 {% if is_granted("ROLE_SUPER_ADMIN") %}
-                <li>
-                  <a href="{{ path('list') }}">Contributeurs</a>
-                </li>
-                <li>
-                  <a href="{{ path('fos_user_registration_register') }}">
-                    Créer un contributeur
-                  </a>
-                </li>
-                <li>
-                  <a href="{{ path('contact_admin') }}">Mail de contact
-                {% if notif is defined %}
-                 ({{ notif|join }})
-              {% endif %}
-            </a>
-                </li>
-                {% endif %}
-                <li>
-                  <a href="{{ path("event_new") }}">Publier un événement</a>
-                </li>
-                <li>
-                  <a href="{{ path('myevent') }}">Mes évènements</a>
-                </li>
                   <li>
-                    <a href="{{ path('fos_user_security_logout') }}">
-                      {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                    <a href="{{ path('list') }}">Contributeurs</a>
+                  </li>
+                  <li>
+                    <a href="{{ path('fos_user_registration_register') }}">
+                      Créer un contributeur
                     </a>
                   </li>
+                  <li>
+                    <a href="{{ path('contact_admin') }}">Mail de contact{% if notif is defined %}({{notif }})
+                      {% endif %}
+                    </a>
+                  </li>
+                {% endif %}
+                <li>
+                  <a href="{{ path('event_new') }}">Publier un événement</a>
+                </li>
+                <li>
+                  <a href="{{ path('myevent') }}">Mes événements</a>
+                </li>
+                <li>
+                  <a href="{{ path('fos_user_security_logout') }}">
+                    {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                  </a>
+                </li>
               </ul>
             </li>
-            {% else %}
+          {% else %}
             <li>
-              <a href="{{ path('fos_user_security_login') }}">Connexion </a>
+              <a href="{{ path('fos_user_security_login') }}">Connexion
+              </a>
             </li>
-            {% endif %}
+          {% endif %}
         </ul>
       </div>
     </div>
   </nav>
 
   {% if app.request.get('_route') == 'event' or app.request.get('_route') == 'search' %}
-  <nav class="navbar navbar-lower navbar-left navbar3" role="navigation">
-    <form method="GET" action="{{ path('search') }}" class="navbar-form inline-form" role="search">
-      {{ form_start(formSearch) }}
-      {{ form_errors(formSearch) }}
-      <div class="container-fluid container3">
-        <div class="collapse navbar-collapse" id="bs-navbar-collapse-2">
-          <div class="center">
-            <input type="search" name="query" class="input-sm form-control" placeholder="Recherche" value="{% if queryvalue is defined %}{{ queryvalue }} {% endif %}">
-          </div>
-          <ul class="nav navbar-nav">
-            <li>
-              <label for="dateStart" class="small-label">Date de début</label>
-              {{ form_widget(formSearch.dateStart, { 'attr': {'class': '', 'name' : 'beginning'} }) }}
-            </a>
-          </li>
-          <li>
-            <label for="dateEnd" class="small-label">Date de fin</label>
-            {{ form_widget(formSearch.dateEnd, { 'attr': {'class': '', 'name': 'end'} }) }}
-          </li>
-          <li>
-            <label for="secteurs" id="secteurs" class="small-label">Secteurs</label>
-            {{ form_widget(formSearch.sector) }}
-          </li>
-          <li>
-            <label for="publics" id="publics" class="small-label">Publics</label>
-            {{ form_widget(formSearch.publics) }}
-          </li>
-          <li>
-            <label for="type" id="types" class="small-label">Type d'événement</label>
-            {{ form_widget(formSearch.type) }}
+    <nav class="navbar navbar-lower navbar-left navbar3" role="navigation">
+      <div class="container-full container3">
+        <div class="navbar-header">
+
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu2" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+
+        <div class="collapse navbar-collapse" id="menu2">
+        <form method="GET" action="{{ path('search') }}" class="row navbar-form inline-form" role="search">
+          {{ form_start(formSearch) }}
+          {{ form_errors(formSearch) }}
+            <div class="center">
+              <input type="search" name="query" class="input-sm form-control" placeholder="Recherche" value="{% if queryvalue is defined %}{{ queryvalue }} {% endif %}">
+            </div>
+            <ul class="col-md-12 nav navbar-nav searchbar">
+              <li class="col-xs-12 col-md-2">
+                <label for="dateStart" class="small-label">Date de début</label>
+                {{ form_widget(formSearch.dateStart, { 'attr': {'class': '', 'name' : 'beginning'} }) }}
+              </a>
+            </li>
+            <li class="col-xs-12 col-md-2">
+              <label for="dateEnd" class="small-label">Date de fin</label>
+              {{ form_widget(formSearch.dateEnd, { 'attr': {'class': '', 'name': 'end'} }) }}
+            </li>
+            <li class="col-xs-12 col-md-2">
+              <label for="secteurs" id="secteurs" class="small-label">Secteurs</label>
+              {{ form_widget(formSearch.sector) }}
+            </li>
+            <li class="col-xs-12 col-md-2">
+              <label for="publics" id="publics" class="small-label">Publics</label>
+              {{ form_widget(formSearch.publics) }}
+            </li>
+            <li class="col-xs-12 col-md-2">
+              <label for="type" id="types" class="small-label">Type d'événement</label>
+              {{ form_widget(formSearch.type) }}
+            </li>
+            <li class="col-xs-12 col-md-2">
+              <label class="glyphicon-lab glyphicon glyphicon-eye-open">
+                <span style="font-family:Helvetica">
+                  Chercher</span>
+              </label>
+            </button>{{ form_row(formSearch.submit, { 'label': '', 'classe': 'btn btn-primary btn-sm research-btn' }) }}
           </li>
         </ul>
-        <div class="right">
-          <ul class="nav navbar-nav navbar-right">
-            {{ form_row(formSearch.submit, { 'label': '', 'classe': 'btn btn-primary btn-sm research-btn' }) }}
-              <span class="glyphicon glyphicon-eye-open"></span>
-              Chercher</button>
-          </ul>
-          {{ form_end(formSearch) }}
+        {{ form_end(formSearch) }}
 
-        </div>
       </div>
-    </form>
-  </nav>
-  {% endif %}
+    </div>
+  </form>
+</div>
+</nav>
+{% endif %}
 </nav>

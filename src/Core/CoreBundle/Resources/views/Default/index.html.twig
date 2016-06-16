@@ -4,29 +4,37 @@
   <link href="{{ asset('css/Core/media.css') }}" type="text/css" rel="stylesheet"/>
 {% endblock %}
 {% block body %}
-  <div class="container-fluid home-container">
-    <div class="row" id="centrale">
-      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 title">
+  <div class="container home-container">
+    <div class="row">
+      <div class="col-xs-12 title">
         <h1>À la Une</h1>
       </div>
       {% if events == null %}
-<h3 style="text-align:center">Il n'y as aucun évements. Cliquez <a href="{{ path('event_create') }}">ici</a> pour en créer.</h3>
+        <h3 style="text-align:center">Il n'y as aucun évements. Cliquez
+          <a href="{{ path('event_create') }}">ici</a>
+          pour en créer.</h3>
       {% else %}
-      <div class="col-xs-12 col-sm-12 col-md-5 col-lg5 une">
-        {% for event in events if event.headlines == 1 %}
+        <div class="col-xs-12 col-md-5 une">
 
+          {% for event in events if event.headlines == 1 %}
             {% if event.images == null %}
-            <div class="row img-une" style="background-image:url('{{ asset('images/logo-pole-emploi_region.png') }}')"></div>
+              <a href="{{ path('event_show', { 'id': event.id }) }}">
+                <div class="row img-une" style="background-image:url('{{ asset('images/logo-pole-emploi_region.png') }}')"></div>
+              </a>
             {% else %}
-            <div class="row img-une" style="background-image:url('{{ asset(event.images.AssetPAth) }}"></div>
+              <a href="{{ path('event_show', { 'id': event.id }) }}">
+                <div class="row img-une" style="background-image:url('{{ asset(event.images.AssetPAth) }}"></div>
+              </a>
             {% endif %}
             <div class="row titre-une">
-              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <h4>{{ event.title [:50] }}
-                  {% if event.title [: 50] %}
-                    ...
-                  {% endif %}
-                </h4>
+              <div class="col-xs-12">
+                <a href="{{ path('event_show', { 'id': event.id }) }}">
+                  <h4>{{ event.title [:50] }}
+                    {% if event.title[: 50] %}
+                      ...
+                    {% endif %}
+                  </h4>
+                </a>
                 <h6>
                   {% if event.dateStart %}{{ event.dateStart|date('d-m-Y') }}{% endif %}
                   -
@@ -35,158 +43,178 @@
               </div>
             </div>
             <div class="row text-une">
-              <div class="col-md-12">
+              <div class="col-xs-12">
                 <p>
                   {{ event.description [:200] }}
-                  {% if event.description > event.description  [: 200] %}
+                  {% if event.description > event.description[: 200] %}
                     ...
                   {% endif %}
-                  <a href="{{ path('event_show', { 'id': event.id }) }}">En savoir plus</a>
+                  <a class="visible-md visible-lg white" href="{{ path('event_show', { 'id': event.id }) }}">En savoir plus</a>
                 </p>
               </div>
             </div>
 
           {% else %}
-          {% if event.images == null %}
-          <div class="row img-une" style="background-image:url('{{ asset('images/logo-pole-emploi_region.png') }}')"></div>
-          {% else %}
-          <div class="row img-une" style="background-image:url('{{ asset(event.images.AssetPAth) }}"></div>
-          {% endif %}              <div class="row titre-une">
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            {% if event.images == null %}
+              <a href="{{ path('event_show', { 'id': event.id }) }}">
+                <div class="row img-une" style="background-image:url('{{ asset('images/logo-pole-emploi_region.png') }}')"></div>
+              </a>
+            {% else %}
+              <a href="{{ path('event_show', { 'id': event.id }) }}">
+                <div class="row img-une" style="background-image:url('{{ asset(event.images.AssetPAth) }}"></div>
+              </a>
+            {% endif %}
+            <div class="row titre-une">
+              <div class="col-xs-12">
+                <a href="{{ path('event_show', { 'id': event.id }) }}">
+
                   <h4>{{ events[0].title[:50]  }}
                     {% if events[0].title > events[0].title[: 50] %}
                       ...
                     {% endif %}
                   </h4>
-                  <h6>
-                    {% if events[0].dateStart %}{{ events[0].dateStart|date('d-m-Y') }}{% endif %}
-                    -
-                    {% if events[0].dateEnd %}{{ events[0].dateEnd|date('d-m-Y') }}{% endif %}
-                  </h6>
-                </div>
-              </div>
-              <div class="row text-une">
-                <div class="col-md-12">
-                  <p>
-                    {{ events[0].description[:200] }}
-                    {% if events[0].description > events[0].description[: 200] %}
-                      ...
-                    {% endif %}
-                    <a href="{{ path('event_show', { 'id': events[0].id }) }}">En savoir plus</a>
-                  </p>
-                </div>
-              </div>
-
-          {% endfor %}
-          {% endif %}
-
-
-
-
-      </div>
-      <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 scroll mCustomScrollbar">
-        {% for event in events if event.headlines == 1 %}
-        {% for event in events %}
-          <div class="row border">
-            {% if event.images == null %}
-            <div class="hidden-md-down col-md-3 col-lg-3" >
-              <div class="row img-mini" style="background-image:url('{{ asset('images/logo-pole-emploi_region.png') }}')">
+                </a>
+                <h6>
+                  {% if events[0].dateStart %}{{ events[0].dateStart|date('d-m-Y') }}{% endif %}
+                  -
+                  {% if events[0].dateEnd %}{{ events[0].dateEnd|date('d-m-Y') }}{% endif %}
+                </h6>
               </div>
             </div>
-            {% else %}
-            <div class="hidden-md-down col-md-3 col-lg-3" >
-              <div class="row img-mini" style="background-image:url('{{ asset(event.images.AssetPAth) }}">
-              </div>
-            </div>
-            {% endif %}
-            {% if loop.index is odd %}
-            <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 deux bleu">
-              {% else %}
-              <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 deux orange">
-            {% endif %}
-
-              <div class="row titre-deux">
-                <div class="col-md-6 col-lg-6">
-                  <h4>{{ event.title[:55] }}
-                    {% if event.title > event.title[: 55] %}
-                      ...
-                    {% endif %}
-                  </h4>
-                </div>
-                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                  <h6 class="right">
-                    {% if event.dateStart %}{{ event.dateStart|date('d-m-Y') }}{% endif %}
-                    -
-                    {% if event.dateEnd %}{{ event.dateEnd|date('d-m-Y') }}{% endif %}
-                  </h6>
-                </div>
-              </div>
-              <div class="row text-deux">
+            <div class="row text-une">
+              <div class="col-xs-12">
                 <p>
-                  {{ event.description[:170] }}
-                  {% if event.description > event.description[: 170] %}
+                  {{ events[0].description[:200] }}
+                  {% if events[0].description > events[0].description[: 200] %}
                     ...
                   {% endif %}
-                  <a href="{{ path('event_show', { 'id': event.id }) }}">En savoir plus</a>
+                  <a class=" visible-md visible-lg white" href="{{ path('event_show', { 'id': events[0].id }) }}">En savoir plus</a>
                 </p>
               </div>
             </div>
-          </div>
+          {% endfor %}
+        {% endif %}
+      </div>
 
-        {% endfor %}
-
-        {% else %}
-        {% for event in events | slice(1) %}
+      <div class="col-xs-12 col-md-7 scroll mCustomScrollbar">
+        {% for event in events if event.headlines == 1 %}
+          {% for event in events %}
             <div class="row border">
               {% if event.images == null %}
-              <div class="hidden-md-down col-md-3 col-lg-3" >
-                <div class="row img-mini" style="background-image:url('{{ asset('images/logo-pole-emploi_region.png') }}')">
+                <div class="col-xs-3">
+                  <a href="{{ path('event_show', { 'id': event.id }) }}">
+                    <div class="row img-mini" style="background-image:url('{{ asset('images/logo-pole-emploi_region.png') }}')"></div>
+                  </a>
                 </div>
-              </div>
               {% else %}
-              <div class="hidden-md-down col-md-3 col-lg-3" >
-                <div class="row img-mini" style="background-image:url('{{ asset(event.images.AssetPAth) }}">
+                <div class="col-xs-3">
+                  <a href="{{ path('event_show', { 'id': event.id }) }}">
+                    <div class="row img-mini" style="background-image:url('{{ asset(event.images.AssetPAth) }}"></div>
+                  </a>
                 </div>
-              </div>
               {% endif %}
               {% if loop.index is odd %}
-              <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 deux bleu">
+                <div class="col-xs-12 col-md-9  deux bleu">
                 {% else %}
-                <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 deux orange">
-              {% endif %}
+                  <div class="col-xs-12 col-md-9 deux orange">
+                  {% endif %}
 
-                <div class="row titre-deux">
-                  <div class="col-md-6 col-lg-6">
-                    <h4>{{ event.title[:55] }}
-                      {% if event.title > event.title[: 55] %}
+                  <div class="row titre-deux">
+                    <div class="col-md-6">
+                      <a href="{{ path('event_show', { 'id': event.id }) }}">
+                        <h4 class="black">{{ event.title[:55] }}
+                          {% if event.title > event.title[: 55] %}
+                            ...
+                          {% endif %}
+                        </h4>
+                      </a>
+                    </div>
+                    <div class="col-xs-12 col-md-6">
+                      <h6 class="right">
+                        {% if event.dateStart %}{{ event.dateStart|date('d-m-Y') }}{% endif %}
+                        -
+                        {% if event.dateEnd %}{{ event.dateEnd|date('d-m-Y') }}{% endif %}
+                      </h6>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <p class="col-xs-12">
+                      {{ event.description[:170] }}
+                      {% if event.description > event.description[: 170] %}
                         ...
                       {% endif %}
-                    </h4>
+                    </p>
+                    <div class="visible-md visible-lg" id="right">
+                      <a href="{{ path('event_show', { 'id': event.id }) }}">En savoir plus</a>
+                    </div>
                   </div>
-                  <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                    <h6 class="right">
-                      {% if event.dateStart %}{{ event.dateStart|date('d-m-Y') }}{% endif %}
-                      -
-                      {% if event.dateEnd %}{{ event.dateEnd|date('d-m-Y') }}{% endif %}
-                    </h6>
-                  </div>
-                </div>
-                <div class="row text-deux">
-                  <p>
-                    {{ event.description[:170] }}
-                    {% if event.description > event.description[: 170] %}
-                      ...
-                    {% endif %}
-                    <a href="{{ path('event_show', { 'id': event.id }) }}">En savoir plus</a>
-                  </p>
                 </div>
               </div>
-            </div>
 
-        {% endfor %}
-        {% endfor %}
+            {% endfor %}
 
+          {% else %}
+            {% for event in events | slice(1) %}
+              <div class="row border">
+                {% if event.images == null %}
+                  <div class="col-xs-3">
+                    <a href="{{ path('event_show', { 'id': event.id }) }}">
+                      <div class="row img-mini" style="background-image:url('{{ asset('images/logo-pole-emploi_region.png') }}')"></div>
+                    </a>
+                  </div>
+                {% else %}
+                  <div class="col-xs-3">
+                    <a href="{{ path('event_show', { 'id': event.id }) }}">
+                      <div class="row img-mini" style="background-image:url('{{ asset(event.images.AssetPAth) }}"></div>
+                    </a>
+                  </div>
+                {% endif %}
+                {% if loop.index is odd %}
+                  <div class="col-xs-12 col-md-9 deux bleu">
+                  {% else %}
+                    <div class="col-xs-12 col-md-9 deux orange">
+                    {% endif %}
+
+                    <div class="row titre-deux">
+                      <div class="col-md-6">
+                        <a href="{{ path('event_show', { 'id': event.id }) }}">
+                          <h4 class="black">{{ event.title[:55] }}
+                            {% if event.title > event.title[: 55] %}
+                              ...
+                            {% endif %}
+                          </h4>
+                        </a>
+                      </div>
+                      <div class="col-xs-12 col-md-6">
+                        <h6 class="right">
+                          {% if event.dateStart %}{{ event.dateStart|date('d-m-Y') }}{% endif %}
+                          -
+                          {% if event.dateEnd %}{{ event.dateEnd|date('d-m-Y') }}{% endif %}
+                        </h6>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <p class="col-xs-12">
+                        {{ event.description[:170] }}
+                        {% if event.description > event.description[: 170] %}
+                          ...
+                        {% endif %}
+                      </p>
+                      <div class="visible-md visible-lg" id="right">
+                        <a href="{{ path('event_show', { 'id': event.id }) }}">En savoir plus</a>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+
+              {% endfor %}
+            {% endfor %}
+
+          </div>
+        </div>
       </div>
     </div>
   </div>
+
 {% endblock %}

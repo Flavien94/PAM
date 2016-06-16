@@ -1,32 +1,57 @@
+.connect {
+  margin-top: 10vh;
+  background: #FF5950;
+}
+h3{
+  margin-top: 3vh;
+  text-align: center;
+  font-size: 2.5em;
+  color: #FFFFFF;
+}
 .carre{
   background-color: #FF5950;
   /*height: 50vh;*/
 }
 .fosuser-form{
-  padding-top: 5%;
+  padding-top: 7%;
 }
-.carre input{
-  margin-bottom: 3%;
+.btn-success {
+  background-color: #63B688;
+  border-radius: 0;
+  margin-bottom: 7vh;
 }
-.carre .btn{
-  height: 45px;
+.btn-success:hover {
+  background-color: #599D78;
 }
  /*LOGIN*/
  .fosuser-input{
    text-align: center;
-   height: 45px;
+   height: 5vh;
    font-size: large;
+   margin-bottom: 3%;
 }
  #password{
    margin-top: 20px;
    margin-bottom:10px;
  }
  #remember{
+   margin-top: 5vh;
+   margin-bottom: 5vh;
    text-align: center;
  }
-#_submit{
-  margin-top: 10px;
-}
+ .rememberlab {
+   display: inline;
+ }
+ #remember_me {
+   width:auto;
+ }
+
+ @media screen and (max-width: 769px) {
+     .connect {
+     margin-top : 31vh;
+   }
+ }
+
 /*END-LOGIN*/
 
 /*REGISTER*/

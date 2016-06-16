@@ -64,12 +64,6 @@ class Event
 
     /**
      * @var ArrayCollection
-     * @Assert\File(
-     *     maxSize = "5M",
-     *     mimeTypes = {"image/jpeg", "image/gif", "image/png", "image/tiff","application/pdf","application/doc","application/docx","application/odt"},
-     *     maxSizeMessage = "La taille maximum d'un fichier est de 5MB.",
-     *     mimeTypesMessage = "Ce type de fichier n'est pas authoriser"
-     * )
      */
     private $uploadedFiles;
 

@@ -7,7 +7,9 @@ use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Event\EventBundle\Entity\Event;
+use Event\EventBundle\Entity\Images;
 use Event\EventBundle\Form\EventType;
 use Event\EventBundle\Entity\Search;
 use Event\EventBundle\Form\SearchType;
@@ -34,16 +36,17 @@ class SearchController extends Controller
          $em = $this->getDoctrine()->getManager();
 
 
-           $sql = 'SELECT event.id, date_start, date_end, title, description, image_id, sector_id, publics_id, type_id, city, cp FROM event LEFT JOIN place ON event.place_id = place.id';
+
+           $sql = 'SELECT event.id, date_start, date_end, title, description, contact_name, city, cp, url FROM event JOIN place ON (event.place_id = place.id) LEFT JOIN images ON (event.image_id = images.id) ';
 
            $whereIsSet = false;
 
          if($search != null) {
            if(!$whereIsSet) {
-            $sql = $sql .' WHERE MATCH (title, description, contact_name, city, cp ) AGAINST ("'.$search.'*" IN BOOLEAN MODE)';
+            $sql = $sql .' WHERE MATCH (city, cp, title, description, contact_name ) AGAINST ("'.$search.'*" IN BOOLEAN MODE)';
              $whereIsSet = true;
            } else {
-             $sql = $sql . ' AND MATCH (title, description, contact_name, city, cp) AGAINST ("'.$search.'*" IN BOOLEAN MODE)';
+             $sql = $sql . ' AND MATCH (city, cp, title, description, contact_name ) AGAINST ("'.$search.'*" IN BOOLEAN MODE)';
            }
          }
 
@@ -93,14 +96,13 @@ class SearchController extends Controller
 
          $sql = $sql . ' ORDER BY date_start ASC LIMIT 10;';
 
-
          $query = $em->getConnection()->prepare($sql);
          $query->execute();
 
          $events = $query->fetchAll();
+         dump($events);
          $queryvalue = $search;
          $search = new Search();
-
          $formSearch = $this->createSearchForm($search);
          $formSearch->handleRequest($request);
 
@@ -108,9 +110,7 @@ class SearchController extends Controller
              $em = $this->getDoctrine()->getManager();
              $em->persist($search);
              $em->flush();
-
          }
-
          return $this->render('EventBundle:Event:search.html.twig', [
           "events" => $events,
          'queryvalue' => $queryvalue,
