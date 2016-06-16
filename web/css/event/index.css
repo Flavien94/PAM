@@ -21,6 +21,7 @@ tr:first-child {
 td {
   text-align: justify;
   background-repeat: no-repeat;
+  border-bottom: 1px solid grey;
 }
 .titles {
   background-color:#1B2B66 ;
@@ -39,6 +40,11 @@ li {
 .event-scroll{
   margin-top: 10%;
   height: 80vh;
+}
+.message-scroll{
+  margin-top: 15%;
+  height: 80vh;
+  top:30%;
 }
 .error {
   font-weight: bolder;
@@ -88,6 +94,7 @@ td a:hover {
 }
 .list-container td{
   text-align: center;
+  border: none;
 }
 .list-container .btn-edit{
   width: 175px;
@@ -96,4 +103,3 @@ td a:hover {
 .list-container .btn-edit,.btn-delete{
 text-decoration: none;
 }
-/*LIST CONTRIBUTEURS*/

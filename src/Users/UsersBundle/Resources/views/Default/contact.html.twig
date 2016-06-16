@@ -6,14 +6,14 @@
 {% block body -%}
 <div class="container-fluid list-container">
 
-  <div class="col-md-12 scroll mCustomScrollbar">
+  <div class="col-md-12 message-scroll mCustomScrollbar">
     <h1>Messages</h1>
 
-    <table class="col-xs-12 col-md-12 col-sm-12 col-lg-12 records_list result">
-      <div class="row">
-        <tbody>
-          {% for contact in contacts %}
 
+          {% for contact in contacts %}
+          <div class="row" style="border-bottom: 0.5px solid grey">
+            <table class="col-xs-12 col-md-12 col-sm-12 col-lg-12 records_list result">
+                <tbody>
             <td>
               <h4>{{ contact.object }}</h4>
               {{ contact.message[:290] }}
@@ -22,14 +22,10 @@
               {% endif %}
               <br>
             </td>
-            <td>
+            <td class="hidden-xs">
               {% if contact.firstname %}{{ contact.firstname }}{% endif %}
-            </td>
-            <td>
-              {% if contact.lastname %}{{ contact.lastname }}{% endif %}
-            </td>
-            <td>
-              {% if contact.email %}{{ contact.email }}{% endif %}
+                {% if contact.lastname %}{{ contact.lastname }}{% endif %}
+                {% if contact.email %}{{ contact.email }}{% endif %}
             </td>
             <td>
               <a class="btn btn-default btn-edit" href="{{ path('contact_show', { 'id': contact.id }) }}">Voir le mail</a>
