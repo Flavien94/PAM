@@ -116,3 +116,8 @@ a:hover, #right a:hover {
   background-color: #63B688 !important;
   z-index: 1000;
 }
+@media screen and (max-width: 769px) {
+  .title {
+    padding-top:60%;
+  }
+}
