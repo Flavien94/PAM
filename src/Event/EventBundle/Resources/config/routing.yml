@@ -1,6 +1,9 @@
 event:
     path:     /
     defaults: { _controller: EventBundle:Event:index }
+myevent:
+    path:     /myevent
+    defaults: { _controller: EventBundle:Event:myevent }
 event_create:
     path:     admin/create
     defaults: { _controller: EventBundle:Event:create }

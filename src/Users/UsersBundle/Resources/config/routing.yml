@@ -25,6 +25,10 @@ list_update:
     path: /list/update/{id}
     defaults: { _controller: UsersBundle:List:update }
 
+admin_changepassword:
+    path: /admin/help/admin_changepassword
+    defaults: { _controller: UsersBundle:Default:changepassword }
+
 delete:
     path: /delete/{id}
     defaults: { _controller: UsersBundle:Delete:delete }

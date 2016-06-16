@@ -218,7 +218,7 @@ class EventController extends Controller
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Mettre à jour'));
+        $form->add('submit', 'submit', array('label' => 'Update'));
 
         return $form;
     }
@@ -295,8 +295,24 @@ class EventController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('event_delete', array('id' => $id)))
             ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Supprimer'))
+            ->add('submit', 'submit', array('label' => 'Delete'))
             ->getForm()
         ;
+    }
+    /**
+     * @Route("/myevent", name="myevent")
+     * @Method("GET")
+     * @Template()
+     */
+    public function myeventAction(Request $request)
+    {
+      $em = $this->getDoctrine()->getEntityManager();
+      $user = $this->container->get('security.context')->getToken()->getUser()->getUsername();
+      $sql = $em->getConnection()->prepare('SELECT event.id, date_start, date_end, title, description, url FROM event JOIN images ON (event.image_id = images.id) WHERE author = "'.$user.'"');
+      $sql->execute();
+      $entities = $sql->fetchAll();
+        return array(
+            'entities' => $entities
+        );
     }
 }

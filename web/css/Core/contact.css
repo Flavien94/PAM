@@ -19,20 +19,23 @@ h3{
   height: 5vh;
 }
 input{
-  border-radius: 5px;
   border: 1px solid #AAAAAA;
 }
 textarea{
   height: 20vh;
-  border-radius: 5px;
+  /*border-radius: 5px;*/
   border: 1px solid #AAAAAA;
 }
 .btn-submit{
   height: 4vh;
-  border-radius: 5px;
   border: 1px solid #AAAAAA;
   background-color: #63B688;
   font-weight: bold;
   color: #FFFFFF;
   margin-bottom: 3vh;
+}
+@media screen and (max-width: 769px) {
+    .contact {
+    margin-top : 31vh;
+  }
 }

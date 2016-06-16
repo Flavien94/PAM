@@ -3,7 +3,7 @@
   {{ parent() }}
   <link href="{{ asset('css/event/index.css') }}" type="text/css" rel="stylesheet"/>
 {% endblock %}
-{% block body -%}
+{% block body %}
 
   <div class="container-fluid event-container">
     {% if events is empty %}
@@ -20,10 +20,10 @@
           <div class="row">
             <tbody>
               {% for event in events %}
-                {% if event.image_id == null %}
+                {% if event.url == null %}
                   <td class="col-md-2 images" style="background-image:url('{{ asset('images/logo-pole-emploi_region.png') }}')"></td>
                 {% else %}
-                  <td class="images" style="background-image:url('{{ asset(event.image_id.AssetPath) }}"></td>
+                <td class="col-md-2 images" style="background-image:url('{{ asset('uploads/img/'~ event.url) }}"></td>
                 {% endif %}
                 <td>
                   <h4>{{ event.title }}</h4>

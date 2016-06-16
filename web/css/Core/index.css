@@ -1,4 +1,7 @@
-.home-container, .event-container {
+.event-container {
+  padding-top: 5%;
+}
+.home-container, .event2-container {
   padding-top: 10%;
 }
 h1 {
@@ -11,8 +14,6 @@ h1 {
 }
 .une {
   height: calc(100vh - 210px);
-  margin-left: 40px;
-  margin-right: 40px;
 }
 h6 {
   color: #000;
@@ -53,14 +54,23 @@ h6 .right {
   color: white;
   text-align: justify;
 }
-.text-une a, .deux a {
+.deux {
+  color: white;
+  height: 150px;
+  width: 72%
+}
+a:hover, #right a:hover {
+  color : black;
+}
+#right a{
+  float: right;
+  margin-right: 15px;
   color: white;
   text-decoration: underline;
 }
-.deux {
+.white {
   color: white;
-  height: 142px;
-  width: 72%
+  text-decoration: underline;
 }
 .img-mini {
   background-repeat: no-repeat;
@@ -72,7 +82,7 @@ h6 .right {
 }
 .border {
   margin-left: 0px;
-  margin-right: -23px;  
+  margin-right: -23px;
   border-top: 1px solid #cccccc;
   border-left: 1px solid #cccccc;
   box-sizing: border-box;
@@ -87,11 +97,14 @@ h6 .right {
   background-color: #FF5950;
 }
 .deux p {
-  margin: 0px 10px 10px;
   text-align: justify;
 }
 .orange h4, .orange h5 {
   color: #000;
+}
+.black:hover {
+  text-decoration:underline;
+  color:black;
 }
 .bleu h4, .bleu h5 {
   color: #000;
@@ -102,4 +115,19 @@ h6 .right {
 .mCSB_dragger_bar {
   background-color: #63B688 !important;
   z-index: 1000;
+}
+@media screen and (max-width: 769px) {
+  .title {
+    padding-top:45%;
+  }
+  .event-container {
+    padding-top : 45%;
+  }
+  .search-top {
+    margin-top :45px;
+    border: none;
+  }
+  .contact {
+    margin-top : 30vh;
+  }
 }

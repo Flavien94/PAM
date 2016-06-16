@@ -9,9 +9,13 @@
   margin-bottom: 0px;
   border: none;
 }
+.input-sm {
+  border-radius: 0;
+}
 .search-btn {
   background-color: #FF5950;
   border: none;
+  border-radius: 0;
 }
 .search-btn:hover {
   background-color: #FF372C;
@@ -19,8 +23,21 @@
 .container1 {
   background-color: #fff;
   width: 100vw;
+  height: 50px;
 }
-#bs-navbar-collapse-1, .container2 {
+.container3{
+  width:100vw;
+}
+input, select {
+  width:150px;
+}
+#hamb{
+  border-color: #599D78;
+}
+#hamb:hover{
+  background-color: #599D78;
+}
+#menu, .container2 {
   width: 100vw;
   background-color: #63B688;
   margin-bottom: 0px;
@@ -30,13 +47,16 @@
   padding-right: 3%;
   background-color: #63B688;
 }
-.navbar-default .navbar-nav>li>a, .dropdown-menu>li>a {
+.navbar-default .navbar-nav>li>a, .dropdown-menu>li>a,  .navbar-default .navbar-nav .open .dropdown-menu>li>a  {
   color: #fff;
+}
+.searchbar>li{
+  height:55px;
 }
 .navbar-nav>li>a{
   text-transform: capitalize;
 }
-.navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-nav>li>a:focus, .navbar-default .navbar-nav>li>a:active,.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:focus, .navbar-default .navbar-nav>.open>a:hover, .dropdown-menu>li>a:hover {
+.navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-nav>li>a:focus, .navbar-default .navbar-nav>li>a:active,.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:focus, .navbar-default .navbar-nav>.open>a:hover, .dropdown-menu>li>a:hover, .navbar-default .navbar-nav .open .dropdown-menu>li>a:focus, .navbar-default .navbar-nav .open .dropdown-menu>li>a:hover {
   text-decoration: none;
   background-color: #599D78;
   color: #1B2B66;
@@ -46,23 +66,30 @@
 }
 .navbar3 {
   background-color: #FF5950;
-  width:100vw;
   border:none;
   border-radius: 0;
 }
-.center {
+.center, .center2 {
   text-align: center;
   margin-bottom: 1%;
 }
+.center2{
+  padding: 1%;
+}
 label {
   margin:2%;
+  display: block;
+}
+.glyphicon-lab {
+  margin-bottom: 5%;
+  font-weight: 700;
 }
 #event_eventbundle_search_submit {
-  background-color: #1B2B66;
+  background-color: #63B688;
   border: none;
 }
 #event_eventbundle_search_submit:hover {
-  background-color: #63B688;
+  background-color: #508E6C;
 }
 #event_eventbundle_search_sector{
   width:150px;
