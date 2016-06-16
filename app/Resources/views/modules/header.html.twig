@@ -14,19 +14,25 @@
         Chercher</button>
     </form>
   </div>
+
+
+
   <nav class="navbar navbar-lower navbar-left navbar2" role="navigation">
     <div class="container-fluid container2">
-      <div class="collapse navbar-collapse" id="bs-navbar-collapse-1">
+      <div class="navbar-header">
+      <button type="button" id="hamb" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu" aria-expanded="false">
+       <span class="sr-only">Toggle navigation</span>
+       <span class="icon-bar"></span>
+       <span class="icon-bar"></span>
+       <span class="icon-bar"></span>
+     </button>
+    </div>
+
+      <div class="collapse navbar-collapse" id="menu">
         <ul class="nav navbar-nav">
-          <li>
-            <a href="{{ path('core_homepage') }}">Accueil
-              <span class="sr-only">(current)</span>
-            </a>
-          </li>
-          <li>
-            <a href="{{ path('event') }}">Événements</a>
-          </li>
-          <li>
+          <li><a href="{{ path('core_homepage') }}">Accueil <span class="sr-only"></span></a></li>
+        <li><a href="{{ path('event') }}">Événements</a></li>
+        <li>
             <a href="{{ path('core_contact') }}">Contact</a>
           </li>
         </ul>
@@ -70,7 +76,7 @@
           {% endif %}
         </ul>
       </div>
-    </div>
+  </div>
   </nav>
 
   {% if app.request.get('_route') == 'event' or app.request.get('_route') == 'search' %}
