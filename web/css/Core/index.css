@@ -127,4 +127,7 @@ a:hover, #right a:hover {
     margin-top :45px;
     border: none;
   }
+  .contact {
+    margin-top : 30vh;
+  }
 }

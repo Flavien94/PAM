@@ -34,3 +34,8 @@ textarea{
   color: #FFFFFF;
   margin-bottom: 3vh;
 }
+@media screen and (max-width: 769px) {
+    .contact {
+    margin-top : 30vh;
+  }
+}
