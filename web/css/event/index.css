@@ -1,13 +1,13 @@
 .event-container {
   padding-top: 5%;
 }
-#h1_contact{
+#h1_contact {
   margin-top: 0;
 }
-.search-top{
+.search-top {
   visibility: hidden;
 }
-.result {
+.result {
   margin-left: 0px;
   margin-right: 0px;
 }
@@ -24,34 +24,34 @@ td {
   border-bottom: 1px solid grey;
 }
 .titles {
-  background-color:#1B2B66 ;
+  background-color: #1B2B66;
 }
 li {
   list-style: none;
 }
-#scroll_contact{
+#scroll_contact {
   margin-top: 0;
 }
 .scroll, .error {
   margin-top: 15%;
   height: 60vh;
-  top:30%;
+  top: 30%;
 }
-.event-scroll{
+.event-scroll {
   margin-top: 10%;
   height: 80vh;
 }
-.message-scroll{
+.message-scroll {
   margin-top: 15%;
   height: 80vh;
-  top:30%;
+  top: 30%;
 }
 .error {
   font-weight: bolder;
   font-size: 20px;
   text-align: center
 }
-.images{
+.images {
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
@@ -60,12 +60,11 @@ li {
   text-align: center;
 }
 td a {
-  color : #FF5950;
+  color: #FF5950;
   text-decoration: underline;
 }
 td a:hover {
-  color : black;
-
+  color: black;
 }
 .btn-edit {
   margin-bottom: 5%;
@@ -77,29 +76,51 @@ td a:hover {
   background-color: #FF372C;
 }
 .btn-edit, .btn-delete {
-  width:100px;
+  width: 100px;
   border-radius: 0;
 }
-@media screen and (max-width: 769px) {
-  .event2-container {
-    padding-top : 30%;
-  }
-  .list-container {
-    padding-top : 30%;
-  }
-}
-/*LIST CONTRIBUTEURS*/
 .list-container {
   margin-top: -5%;
 }
-.list-container td{
+.message-container {
+  margin-top: 10%;
+  width: 100vw;
+}
+.list-container td {
   text-align: center;
   border: none;
 }
-.list-container .btn-edit{
+.list-container .btn-edit {
   width: 175px;
   margin: 0;
 }
-.list-container .btn-edit,.btn-delete{
-text-decoration: none;
+.list-container .btn-edit, .btn-delete {
+  text-decoration: none;
+}
+.col-md-12 p {
+  text-align: justify;
+  padding-top: 2%;
+  padding-left: 5%;
+  padding-right: 5%;
+}
+#list-message{
+  width:auto;
+}
+#list-message:hover {
+  text-decoration: underline;
+}
+.message-lab, .message-title {
+  color : #FF5950;
+}
+@media screen and (max-width: 769px) {
+  .event2-container {
+    padding-top: 30%;
+  }
+  .list-container {
+    padding-top: 30%;
+  }
+  .message-container {
+    padding-top: 30%;
+  }
+
 }

@@ -1,32 +1,43 @@
 {% extends '::base.html.twig' %}
 {% block stylesheets %}
   {{ parent() }}
-  <link href="{{ asset('css/event/show.css') }}" type="text/css" rel="stylesheet"/>
+  <link href="{{ asset('css/event/index.css') }}" type="text/css" rel="stylesheet"/>
 {% endblock %}
 {% block body -%}
-{% for contact in contacts %}
-    <div class="container">
+  {% for contact in contacts %}
+    <div class="container-fluid message-container">
       <div class="row">
         <div class="col-md-12">
           <h1>{{ contact.object }}</h1>
         </div>
       </div>
       <div class="row">
-        <div class="col-md-7">
+        <hr>
           <div class="row">
-            <div class="col-md-12">
-              <span>Prénom du contact : {{ contact.firstname }}</span>
-              <span>Nom du contact : {{ contact.lastname }}</span>
-              <span>Email du contact : {{ contact.email }}</span>
+            <div class="col-md-12" style="text-align:center">
+              <div class="col-md-6">
+                <label class="message-lab">Contact :</label>
+                {{ contact.firstname }}
+                {{ contact.lastname }}
+              </div>
+              <div class="col-md-6">
+                <label class="message-lab">Email du contact :</label>
+                {{ contact.email }}
+              </div>
             </div>
           </div>
           <div class="row">
-            <div class="col-md-12">
-              <h3>Description</h3>
-              {{ contact.message }}
+            <hr class="visible-xs">
+            <div class="col-md-12" style="text-align:center">
+              <h3 class="message-title">Message</h3>
+              <p> {{ contact.message }}</p>
             </div>
           </div>
-        </div>
+          <div class="row">
+            <div class="col-xs-push-2 col-xs-10 col-md-push-8 col-md-4">
+              <a id="list-message" class="btn btn-default btn-edit" href="{{ path("contact_admin") }}">Retourner à la liste des messages</a>
+            </div>
+          </div>
       </div>
     </div>
   {% endfor %}
