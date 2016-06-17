@@ -9,6 +9,14 @@
     <div class="row">
       <h1>Publier un événement</h1>
     </div>
+    <div class="row">
+      <div class="col-md-12">
+        <a href="{{ path('event') }}">
+          Retour à la liste des événements
+        </a>
+
+      </div>
+    </div>
       {{ form_start(form) }}
     <div class="row">
       <div class="col-md-12 contact">
@@ -108,10 +116,6 @@
       </div>
     </div>
     {{ form_end(form) }}
-
-    <a class="btn btn-default btn-edit" href="{{ path('event') }}">
-      Retour à la liste des événements
-    </a>
 
   {% endblock %}
   {% block javascripts %}
