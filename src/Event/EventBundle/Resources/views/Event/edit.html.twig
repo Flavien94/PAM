@@ -55,7 +55,7 @@
               {{ form_errors(edit_form.title, { 'attr': {'class':'list-group-item list-group-item-danger'}}) }}
               {{ form_errors(edit_form.description, { 'attr': {'class':'list-group-item list-group-item-danger'}}) }}
               {{ form_errors(edit_form.place, { 'attr': {'class':'list-group-item list-group-item-danger'}}) }}
-              {{ form_errors(edit_form.links, { 'attr': {'class':'list-group-item list-group-item-danger'}}) }}
+              {{ form_errors(edit_form.uploadedLinks, { 'attr': {'class':'list-group-item list-group-item-danger'}}) }}
               {{ form_errors(edit_form.images, { 'attr': {'class':'list-group-item list-group-item-danger'}}) }}
               {{ form_errors(edit_form.uploadedFiles, { 'attr': {'class':'list-group-item list-group-item-danger'}}) }}
             </div>
@@ -103,7 +103,7 @@
               {{ form_widget(edit_form.images, { 'attr': {'class': 'col-md-12','tabindex':'17'} }) }}
               <h5 class="col-md-12">Ajouter des fichiers annexes</h5>
               {{ form_widget(edit_form.uploadedFiles, { 'attr': {'class': 'col-md-12','tabindex':'18'} }) }}
-              {{ form_widget(edit_form.links, { 'attr': {'class': 'col-md-12 links','tabindex':'19'}}) }}
+              {{ form_widget(edit_form.uploadedLinks, { 'attr': {'class': 'col-md-12 links','tabindex':'19'}}) }}
             </div>
           </div>
         </div>
