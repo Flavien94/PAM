@@ -2,7 +2,14 @@
   padding-top: 10%;
 }
 select {
-  height: 30px
+  height: 30px;
+  width:180px;;
+}
+strong {
+  color : #FF5950;
+}
+.strong {
+  color : #FF5950;
 }
 .inline {
   display: inline;
@@ -15,35 +22,48 @@ select {
 #event_eventbundle_event_sector, #event_eventbundle_event_publics, #event_eventbundle_event_type {
   border-radius: 0;
 }
-.description,.contact{
+.description, .contact {
   margin-top: 3vh;
 }
-.detail{
+.description {
+  border-right: 1px solid #eee;
+}
+.btn-return, .btn-add-link {
+  border-radius: 0;
+}
+.btn-return {
   margin-top: 3vh;
 }
-.contact input{
+.add {
+  margin-top: 2vh;
+}
+.detail {
+  margin-top: 3vh;
+}
+.contact input {
   border: 1px solid #AAAAAA;
   height: 3vh;
   padding: 10px;
 }
-.description input{
+.description input {
   border: 1px solid #AAAAAA;
   height: 5vh;
   font-size: 1.3em;
   padding: 10px;
 }
-.description textarea{
+.description textarea {
   border: 1px solid #AAAAAA;
   font-size: 1.1em;
   padding: 10px;
 }
-.detail-top input{
+.detail-top input {
   border: 1px solid #AAAAAA;
   height: 3vh;
   padding: 10px;
 }
-.btn-submit{
-  height: 4vh;
+.btn-submit {
+  height: 5vh;
+  width:100px;
   border: 1px solid #AAAAAA;
   background-color: #63B688;
   font-weight: bold;
@@ -51,32 +71,38 @@ select {
   margin-top: 3vh;
   margin-bottom: 3vh;
 }
-.headlines>.big-label{
+.btn-submit:hover{
+  background-color: #599D78;
+
+}
+.headlines>.big-label {
   display: inline-block;
   padding-top: 15px;
 }
-.headlines-check{
+.margin {
+  margin-top: 15px;
+  ;
+}
+.btn-add-link {
+  margin-top: 1.5vh;
+}
+.headlines-check {
   width: 23px;
+  border-radius: 0;
 }
-.col-md-12>ul{
+.col-md-12>ul {
   padding: 10px;
-  background-color: rgba(255, 89 , 80, 0.8);
+  background-color: rgba(255, 89, 80, 0.8);
 }
-.col-md-12 ul li{
+.col-md-12 ul li {
   margin-left: 5%;
 }
-.col-md-12 ul:first-child{
+.col-md-12 ul:first-child {
   margin-top: 3vh;
-}
-textarea, input, select {
-  margin-right: 20px;
 }
 textarea {
   height: 30vh;
   margin-top: 3vh;
-}
-.links{
-  margin-top: 2vh;
 }
 #secteurs {
   margin-bottom: 4%;
@@ -93,6 +119,34 @@ textarea {
 button {
   margin-top: 1%;
 }
-.place input{
-  margin: 0.6vh;
+.btn-delete {
+  display: inline-block;
+  margin: 1vh;
+  border-radius: 0;
+  background-color: #FF5950;
+}
+.btn-delete:hover {
+  background-color: #FF372C;
+}
+.place input {
+  margin-bottom: 0.6vh;
+}
+#event_eventbundle_event_images_file {
+  padding-left: 6vw;
+  width: 100%;
+}
+#event_eventbundle_event_uploadedFiles {
+  padding-left: 8vw;
+  width: 100%;
+}
+.hidden {
+  visibility: hidden;
+}
+.inline {
+  display: inline;
+}
+@media screen and (max-width: 769px) {
+  .event3-container {
+    padding-top : 55%;
+  }
 }

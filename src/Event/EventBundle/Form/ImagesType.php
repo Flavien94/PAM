@@ -18,9 +18,11 @@ class ImagesType extends AbstractType
             ->add('file', 'file', array(
               'label' => 'Importer une image de couverture',
               'required' => false,
+              'label_attr' => array(
+          'class' => 'strong',
 
-            ))
-        ;
+        )));
+
     }
 
     /**

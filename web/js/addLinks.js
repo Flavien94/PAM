@@ -3,7 +3,7 @@ $(document).ready(function() {
    var $container = $('div#event_eventbundle_event_links');
 
    // On ajoute un lien pour ajouter une nouvelle catégorie
-   var $addLink = $('<a href="#" id="add_links" class="btn btn-default">Ajouter un lien</a>');
+   var $addLink = $('<a href="#" id="add_links" class="btn btn-default btn-add-link">Ajouter un lien</a>');
    $container.append($addLink);
 
    // On ajoute un nouveau champ à chaque clic sur le lien d'ajout.
@@ -47,7 +47,7 @@ $(document).ready(function() {
    // La fonction qui ajoute un lien de suppression d'une catégorie
    function addDeleteLink($prototype) {
      // Création du lien
-     $deleteLink = $('<a href="#" class="btn btn-danger">Supprimer</a>');
+     $deleteLink = $('<a href="#" class="btn btn-danger btn-delete">Supprimer</a>');
 
      // Ajout du lien
      $prototype.append($deleteLink);

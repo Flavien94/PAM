@@ -71,7 +71,7 @@ class FileEvent
     */
      function __construct(UploadedFile $uploadedFile)
      {
-         $date = date('Y-m-d',strtotime('now'));
+         $date = date('d-m-Y',strtotime('now'));
          $path = $date.'-'.$uploadedFile->getClientOriginalName().'.'.$uploadedFile->guessExtension();
          $this->setPath($path);
          $this->setSize($uploadedFile->getClientSize());
