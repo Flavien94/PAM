@@ -122,5 +122,11 @@ td a:hover {
   .message-container {
     padding-top: 30%;
   }
+  .event-container {
+    padding-top: 40%;
+  }
+  .scroll {
+    height: 70vh;
+  }
 
 }
