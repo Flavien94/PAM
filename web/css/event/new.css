@@ -145,6 +145,15 @@ button {
 .inline {
   display: inline;
 }
+/*info-bulle*/
+
+.date .picto-item:hover:after, .date .picto-item:focus:after {
+  	transform: translateX(0%); /* on centre horizontalement  */
+
+}
+
+
+
 @media screen and (max-width: 769px) {
   .event3-container {
     padding-top : 55%;

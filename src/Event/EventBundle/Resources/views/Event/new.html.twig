@@ -16,7 +16,7 @@
       <div class="col-md-12">
         <hr>
         <STRONG>Contact de l'évènement :
-        </STRONG>
+        </STRONG><a class="hidden-xs hidden-sm picto-item" href="#" aria-label="Personne à contacter en cas de besoin de renseignements supplémentaires"><span class="glyphicon glyphicon-info-sign"></a>
         <br class="visible-xs visible-sm">
         {{ form_widget(form.contact_name, { 'attr': {'class': 'inline contact_name', 'placeholder': 'Nom du contact','tabindex':'1'} })  }}
         {{ form_widget(form.contact_email, { 'attr': {'class': 'inline contact_email', 'placeholder': 'Email du contact','tabindex':'2'} }) }}
@@ -29,8 +29,8 @@
     </div>
 
     <div class="row date center">
-      <strong class="col-xs-12 col-md-2">
-        Date de début* :
+      <strong class="col-xs-12 col-md-2 date">
+      <a class="hidden-xs hidden-sm picto-item" href="#" aria-label="Les dates de début et de fin de l'événement sont obligatoires. Les heures ne le sont pas."><span class="glyphicon glyphicon-info-sign"></a>  Date de début* :
       </strong>
       {{ form_widget(form.dateStart,{'attr':{'class': 'col xs-12 col-md-2 center','tabindex':'13'}}) }}
       {{ form_widget(form.timeStart,{'attr':{'class': 'col xs-12 col-md-2 center','tabindex':'14'}}) }}
@@ -64,7 +64,7 @@
 
 
     <div class="col-md-7 description center">
-      <h4 class="center">Description</h4>
+      <a class="hidden-xs hidden-sm picto-item" href="#" aria-label='Les champs "Titre" et "Description" doivent être rempli.'><span class="glyphicon glyphicon-info-sign"></a><h4 class="center">Description</h4>
 
       <div class="row">
 
@@ -89,10 +89,13 @@
           {{ form_errors(form.uploadedFiles, { 'attr': {'class':'list-group-item list-group-item-danger'}}) }}
         </div>
         <div class="col-md-12 add">
-          <div class="col-md-6">
+          <div class="col-md-4">
             {{ form_widget(form.uploadedLinks, { 'attr': {'class': 'btn-add-link inline','tabindex':'19'}}) }}
           </div>
-          <div class="col-md-6">
+          <div class="col-md-4">
+            {{ form_widget(form.scratc , { 'attr': {'class': 'btn-add-link inline','tabindex':'19'}}) }}
+          </div>
+          <div class="col-md-4">
             <strong>À la une</strong>
             <br>
             {{ form_widget(form.headlines, { 'attr': {'class':'headlines-check','label':'À la une','tabindex':'23'} }) }}
@@ -104,7 +107,7 @@
     <div class="col-md-5 detail center">
       <div class="row">
         <div class="col-md-12  detail-top">
-          <h4 class="col-md-12 center">Adresse</h4>
+          <a class="hidden-xs hidden-sm picto-item" href="#" aria-label='Seuls les champs "Villes" et "Code Postal" sont obligatoires.'><span class="glyphicon glyphicon-info-sign"></a><h4 class="col-md-12 center">Adresse</h4>
           <div class="col-md-12 place center">
             {{ form_widget(form.place.adress1, { 'attr': {'class': 'col-md-12 center title','tabindex':'8'}}) }}
             {{ form_widget(form.place.adress2, { 'attr': {'class': 'col-md-12 center','tabindex':'9'}}) }}

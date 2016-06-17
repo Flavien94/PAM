@@ -94,7 +94,7 @@ class SearchController extends Controller
          }
 
 
-         $sql = $sql . ' ORDER BY date_start ASC LIMIT 10;';
+         $sql = $sql . ' ORDER BY date_start ASC LIMIT 10 OFFSET 200;';
 
          $query = $em->getConnection()->prepare($sql);
          $query->execute();
