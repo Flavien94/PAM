@@ -10,7 +10,7 @@
         <input type="search" class="input-sm form-control" name="query" placeholder="Recherche" value="">
       </div>
       <button type="submit" class="btn btn-primary btn-sm search-btn">
-        <span class="glyphicon glyphicon-eye-open"></span>
+        <p class="glyphicon glyphicon-eye-open"></p>
         Chercher</button>
     </form>
   </div>
@@ -111,7 +111,8 @@
           {{ form_start(formSearch) }}
           {{ form_errors(formSearch) }}
             <div class="center">
-              <input type="search" name="query" class="input-sm form-control" placeholder="Recherche" value="{% if queryvalue is defined %}{{ queryvalue }} {% endif %}">
+              <input type="search" name="query" class="input-sm form-control" placeholder="Recherche" value="{% if queryvalue is defined %}{{ queryvalue }} {% endif %}"><a class="picto-item" href="#" aria-label="Faites votre recherche en entrant un ou plusieurs mots-clés. Exemples : 'AFC', 'Forum jeunes', 'MARSEILLE', '13003' "><span class="glyphicon glyphicon-info-sign"></a>
+
             </div>
             <ul class="col-md-12 nav navbar-nav searchbar">
               <li class="col-xs-12 col-md-2">
