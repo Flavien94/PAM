@@ -89,11 +89,11 @@ class EventType extends AbstractType
               ->add('description','textarea', array(
                     'required' => true
               ))
-              ->add('links', 'collection', array(
+              ->add('uploadedLinks', 'collection', array(
                    'type'         => new LinksType(),
                    'allow_add'    => true,
                    'allow_delete' => true,
-                   'required' => false
+
                  ))
               ->add('place', new PlaceType(), array(
                     'required' => false

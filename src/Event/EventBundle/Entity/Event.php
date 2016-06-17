@@ -53,7 +53,7 @@ class Event
      * @ORM\JoinColumn(nullable=true)
      *
      */
-    private $links;
+    public $links;
     /**
      * @var FileEvent
      *
@@ -66,6 +66,10 @@ class Event
      * @var ArrayCollection
      */
     private $uploadedFiles;
+    /**
+     * @var ArrayCollection
+     */
+    private $uploadedLinks;
 
     /**
      * @var integer
@@ -177,7 +181,8 @@ class Event
 
     public function __toString(){
       // return (string) $this->getPublics();
-      return (string) $this->getFile();
+      return (string) $this->getFiles();
+      return (string) $this->getLinks();
 
     }
 
@@ -620,11 +625,42 @@ class Event
          return $this->links;
      }
      public function setLinks(array $links) {
-         foreach ($this->$links as $link) {
-           $link->setEvent($this);
-          }
          $this->links = $links;
      }
+     /**
+      * @return ArrayCollection
+      */
+     public function getUploadedLinks()
+     {
+         return $this->uploadedLinks;
+     }
+     /**
+      * @param ArrayCollection $uploadedLinks
+      */
+     public function setUploadedLinks($uploadedLinks)
+     {
+         $this->uploadedLinks = $uploadedLinks;
+     }
+     /**
+      * @ORM\PreFlush()
+      */
+     public function uploadLink()
+     {
+       if(is_array($this) || is_object($this))
+       {
+         foreach($this->uploadedLinks as $uploadedLink)
+         {
+             if ($uploadedLink) {
+                 $link = new Links($uploadedLink);
+                 $this->getLinks()->add($link);
+                 $link->setEvent($this);
+                 $link->setUrl($uploadedLink->url);
+                 dump($link);
+                 unset($uploadedLink);
+             }
+         }
+       }
+      }
     /**
      * Add sector
      *
@@ -697,29 +733,6 @@ class Event
         $this->type->removeElement($type);
     }
 
-    /**
-     * Add link
-     *
-     * @param \Event\EventBundle\Entity\Links $link
-     *
-     * @return Event
-     */
-    public function addLink(\Event\EventBundle\Entity\Links $link)
-    {
-        $this->links[] = $link;
-
-        return $this;
-    }
-
-    /**
-     * Remove link
-     *
-     * @param \Event\EventBundle\Entity\Links $link
-     */
-    public function removeLink(\Event\EventBundle\Entity\Links $link)
-    {
-        $this->links->removeElement($link);
-    }
 
     /**
      * Add file
@@ -743,5 +756,27 @@ class Event
     public function removeFile(\Event\EventBundle\Entity\FileEvent $file)
     {
         $this->files->removeElement($file);
+    }
+    /**
+     * Add link
+     *
+     * @param \Event\EventBundle\Entity\Links $link
+     *
+     * @return Event
+     */
+    public function addLink(\Event\EventBundle\Entity\Links $link)
+    {
+        $this->links[] = $link;
+        return $this;
+    }
+
+    /**
+     * Remove link
+     *
+     * @param \Event\EventBundle\Entity\Links $link
+     */
+    public function removeLink(\Event\EventBundle\Entity\Links $link)
+    {
+        $this->links->removeElement($link);
     }
 }

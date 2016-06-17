@@ -1,6 +1,6 @@
 $(document).ready(function() {
    // On récupère la balise <div> en question qui contient l'attribut « data-prototype » qui nous intéresse.
-   var $container = $('div#event_eventbundle_event_links');
+   var $container = $('div#event_eventbundle_event_uploadedLinks');
 
    // On ajoute un lien pour ajouter une nouvelle catégorie
    var $addLink = $('<a href="#" id="add_links" class="btn btn-default btn-add-link">Ajouter un lien</a>');

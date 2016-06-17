@@ -78,15 +78,14 @@ class EventController extends Controller
     public function createAction(Request $request)
     {
         $entity = new Event();
-        $links = new Links();
-        $links->setEvent($entity);
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
-
+        dump($entity);
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
             $em->flush();
+
 
             return $this->redirect($this->generateUrl('event_show', array('id' => $entity->getId())));
         }
