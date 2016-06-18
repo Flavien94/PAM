@@ -582,7 +582,7 @@ class Event
     {
       return $this->images;
     }
-
+    
     public function getFiles() {
         return $this->files;
     }

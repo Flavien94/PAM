@@ -85,8 +85,6 @@ class EventController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
             $em->flush();
-
-
             return $this->redirect($this->generateUrl('event_show', array('id' => $entity->getId())));
         }
 
