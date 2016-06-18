@@ -37,64 +37,39 @@ class SearchController extends Controller
 
 
 
-           $sql = 'SELECT event.id, date_start, date_end, title, description, contact_name, city, cp, url FROM event JOIN place ON (event.place_id = place.id) LEFT JOIN images ON (event.image_id = images.id) ';
+           $sql = 'SELECT event.id, date_start, date_end, title, description, contact_name, scratch, city, cp, url FROM event JOIN place ON (event.place_id = place.id) LEFT JOIN images ON (event.image_id = images.id) WHERE scratch = 0 ';
 
            $whereIsSet = false;
 
          if($search != null) {
-           if(!$whereIsSet) {
-            $sql = $sql .' WHERE MATCH (city, cp, title, description, contact_name ) AGAINST ("'.$search.'*" IN BOOLEAN MODE)';
-             $whereIsSet = true;
-           } else {
-             $sql = $sql . ' AND MATCH (city, cp, title, description, contact_name ) AGAINST ("'.$search.'*" IN BOOLEAN MODE)';
+           $sql = $sql . ' AND MATCH (city, cp, title, description, contact_name ) AGAINST ("'.$search.'*" IN BOOLEAN MODE)';
            }
-         }
 
          if($dateStart != null) {
-           if(!$whereIsSet) {
-            $sql = $sql .' WHERE date_start >= "'.$dateStart.'"';
-             $whereIsSet = true;
-           } else {
              $sql = $sql . ' AND date_start >= "'.$dateStart.'"';
            }
-         }
+
 
          if($dateEnd != null) {
-           if(!$whereIsSet) {
-            $sql = $sql .' WHERE date_end <= "'.$dateEnd.'"';
-             $whereIsSet = true;
-           } else {
              $sql = $sql . ' AND date_end <= "'.$dateEnd.'"';
            }
-         }
+
 
          if($sectors != null) {
-           if(!$whereIsSet) {
-            $sql = $sql .' WHERE sector_id = "'.$sectors.'"';
-             $whereIsSet = true;
-           } else {
              $sql = $sql . ' AND sector_id = "'.$sectors.'"';
            }
-         }
+
          if($publics != null) {
-           if(!$whereIsSet) {
-            $sql = $sql .' WHERE publics_id = "'.$publics.'"';
-             $whereIsSet = true;
-           } else {
              $sql = $sql . ' AND publics_id = "'.$publics.'"';
            }
-         }
+
          if($types != null) {
-           if(!$whereIsSet) {
-            $sql = $sql .' WHERE type_id = "'.$types.'"';
-             $whereIsSet = true;
-           } else {
              $sql = $sql . ' AND type_id = "'.$types.'"';
            }
-         }
+         
 
          if( $search == "" && $dateStart == "" && $dateEnd == "" && $sectors == "" && $publics == "" && $types == "" ) {
-           $sql = ' SELECT event.id, date_start, date_end, title, description, contact_name, city, cp, url FROM event JOIN place ON (event.place_id = place.id) LEFT JOIN images ON (event.image_id = images.id)  WHERE  date_start > CURDATE()' ;
+           $sql = ' SELECT event.id, date_start, date_end, title, description, contact_name, scratch, city, cp, url FROM event JOIN place ON (event.place_id = place.id) LEFT JOIN images ON (event.image_id = images.id)  WHERE  date_start > CURDATE() AND scratch = 0' ;
              }
 
          $sql = $sql . ' ORDER BY date_start ASC LIMIT 10 ;';
