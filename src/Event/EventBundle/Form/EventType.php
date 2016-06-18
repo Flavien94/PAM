@@ -110,17 +110,10 @@ class EventType extends AbstractType
                     'multiple' => true,
                     'data_class' => null,
                     'required' => false,
-                    'constraints' => array(
-                      new NotBlank(),
-                      new All(array( // Validates each an every entry in the array that is uploaded with the given constraints.
-                        'constraints' => array(
-                            new File(array(
-                              'maxSize' => '5M',
-                              'mimeTypes' => "{'application/pdf'}",
-                              'mimeTypesMessage' => "Ceci n'est pas un PDF"
-                            )),
-                    ),
-                )))))
+                    'attr' => array(
+                      'accept' => 'application/pdf',
+                    )
+                  ))
               ;
 
     }
