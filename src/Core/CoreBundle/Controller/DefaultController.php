@@ -22,17 +22,26 @@ class DefaultController extends Controller
                     ->getQuery()
                     ->getResult();
 
+        return $this->render('CoreBundle:Default:index.html.twig', array(
+            'events' => $events
+        ));
+    }
+
+    public function notifAction($notification)
+    {
+      $em = $this ->getDoctrine()
+                  ->getManager();
+
         $sql = ' SELECT COUNT(id) FROM contact ' ;
         $query = $em->getConnection()->prepare($sql);
         $query->execute();
         $notif = $query->fetchAll();
         for ($i=0; $i < count($notif); $i++) {
-          $notifs = $notif[$i];
+           $notification = $notif[$i];
         }
-
-        return $this->render('CoreBundle:Default:index.html.twig', array(
-            'events' => $events,
-            'notif' => $notifs
-        ));
+        return new $notification;
+        // return $this->render('CoreBundle:Default:index.html.twig', array(
+        //     'notif' => $notifs
+        // ));
     }
 }

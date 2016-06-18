@@ -63,9 +63,7 @@
                   </li>
                   <li>
                     <a href="{{ path('contact_admin') }}">Message(s)
-                    {% if notif is defined %}
-                    ({{ notif|join }})
-                      {% endif %}
+                      ({{ ga_tracking|join }})
                     </a>
                   </li>
                 {% endif %}

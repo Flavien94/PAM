@@ -37,7 +37,8 @@ framework:
 twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
-
+    globals:
+        ga_tracking: '@app.notif'
 # Assetic Configuration
 assetic:
     debug:          "%kernel.debug%"
