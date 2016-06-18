@@ -6,6 +6,8 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\Validator\Constraints\All;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 class EventType extends AbstractType
 {
@@ -108,7 +110,17 @@ class EventType extends AbstractType
                     'multiple' => true,
                     'data_class' => null,
                     'required' => false,
-                ))
+                    'constraints' => array(
+                      new NotBlank(),
+                      new All(array( // Validates each an every entry in the array that is uploaded with the given constraints.
+                        'constraints' => array(
+                            new File(array(
+                              'maxSize' => '5M',
+                              'mimeTypes' => "{'application/pdf'}",
+                              'mimeTypesMessage' => "Ceci n'est pas un PDF"
+                            )),
+                    ),
+                )))))
               ;
 
     }
