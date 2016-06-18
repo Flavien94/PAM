@@ -59,3 +59,9 @@ a:hover {
     padding-top : 55%;
   }
 }
+.scratch{
+  background: grey;
+font-size: medium;
+padding: 2px;
+border-radius: 4px;
+}
