@@ -14,10 +14,10 @@
         <div class="row">
           <tbody>
             {% for entity in entities %}
-              {% if entity.url == null %}
+              {% if entity.images == null %}
               <td class="col-md-2 images" style="background-image:url('{{ asset('images/logo-pole-emploi_region.png') }}')"></td>
               {% else %}
-              <td class="col-md-2 images" style="background-image:url('{{ asset('uploads/img/'~ entity.url) }}"></td>
+              <td class="col-md-2 images" style="background-image:url('{{ asset(entity.images.AssetPath) }}"></td>
               {% endif %}
 
               <td>
@@ -31,11 +31,11 @@
               </td>
               <td class="col-md-2 date">
                 <label for="dateStart">Date de début</label>
-                {% if entity.date_start %}{{ entity.date_start|date('d-m-Y H:i') }}{% endif %}
+                {% if entity.dateStart %}{{ entity.dateStart|date('d-m-Y H:i') }}{% endif %}
               </td>
               <td class="col-md-2 date">
                 <label for="dateStart">Date de début</label>
-                {% if entity.date_end %}{{ entity.date_end|date('d-m-Y H:i') }}{% endif %}
+                {% if entity.dateEnd %}{{ entity.dateEnd|date('d-m-Y H:i') }}{% endif %}
               </td>
               <td>
                 <a class="btn btn-default btn-edit" href="{{ path('event_edit', { 'id': entity.id }) }}">Éditer</a>
