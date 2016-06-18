@@ -45,6 +45,7 @@ class EventController extends Controller
                       ->select('b')
                       ->from('EventBundle:Event',  'b')
                       ->where('b.dateEnd > :now')
+                      ->andwhere('b.scratch = 0')
                       ->setParameter('now', new \DateTime('now'))
                       ->addOrderBy('b.dateStart', 'ASC')
                       ->getQuery()
@@ -85,8 +86,6 @@ class EventController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
             $em->flush();
-
-
             return $this->redirect($this->generateUrl('event_show', array('id' => $entity->getId())));
         }
 
@@ -305,11 +304,26 @@ class EventController extends Controller
      */
     public function myeventAction(Request $request)
     {
-      $em = $this->getDoctrine()->getEntityManager();
       $user = $this->container->get('security.context')->getToken()->getUser()->getUsername();
-      $sql = $em->getConnection()->prepare('SELECT event.id, date_start, date_end, title, description, url FROM event JOIN images ON (event.image_id = images.id) WHERE author = "'.$user.'"');
-      $sql->execute();
-      $entities = $sql->fetchAll();
+      $em = $this->getDoctrine()->getManager();
+
+      $entities = $em->getRepository('EventBundle:Event')->findAll();
+
+      $q = $em->createQueryBuilder()
+                    ->select('b')
+                    ->from('EventBundle:Event',  'b');
+
+
+      $entities = $em->createQueryBuilder()
+                    ->select('b')
+                    ->from('EventBundle:Event',  'b')
+                    ->where('b.dateEnd > :now')
+                    ->andwhere('b.author = :user ')
+                    ->setParameter('user', $user)
+                    ->setParameter('now', new \DateTime('now'))
+                    ->addOrderBy('b.dateStart', 'ASC')
+                    ->getQuery()
+                    ->getResult();
         return array(
             'entities' => $entities
         );

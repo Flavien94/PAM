@@ -6,6 +6,8 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\Validator\Constraints\All;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 class EventType extends AbstractType
 {
@@ -80,6 +82,9 @@ class EventType extends AbstractType
               ->add('headlines','checkbox', array(
                     'required' => false
                   ))
+              ->add('scratch','checkbox', array(
+                    'required' => false
+                  ))
               ->add('author','text',array(
                     'required' => false
               ))
@@ -99,13 +104,19 @@ class EventType extends AbstractType
                     'required' => false
               ))
               ->add('images',new ImagesType(), array(
-                    'required' => false
+                    'required' => false,
+                    'attr' => array(
+                      'accept' => 'image/*',
+                    )
               ))
               ->add('uploadedFiles', 'file', array(
                     'multiple' => true,
                     'data_class' => null,
                     'required' => false,
-                ))
+                    'attr' => array(
+                      'accept' => 'application/pdf,image/*',
+                    )
+                  ))
               ;
 
     }

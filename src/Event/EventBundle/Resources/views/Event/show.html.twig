@@ -5,6 +5,9 @@
   <link rel="stylesheet" href="{{ asset('css/event/print.css') }}" type="text/css" media="print"/>
 {% endblock %}
 {% block body -%}
+{% if entity.scratch == 1 and entity.author != app.user.username %}
+<meta http-equiv="refresh" content="0; url={{ path('event') }}" />
+{% else %}
   <div class="container event2-container">
 
     <div class="row">
@@ -233,5 +236,5 @@
 </div>
 </div>
 </div>
-
+{% endif %}
 {% endblock %}

@@ -130,3 +130,9 @@ td a:hover {
   }
 
 }
+.scratch{
+  background: grey;
+font-size: medium;
+padding: 2px;
+border-radius: 4px;
+}

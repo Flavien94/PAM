@@ -93,7 +93,9 @@
             {{ form_widget(form.uploadedLinks, { 'attr': {'class': 'btn-add-link inline','tabindex':'19'}}) }}
           </div>
           <div class="col-md-4">
-            SCRATCH
+            <strong>Brouillon</strong>
+            <br>
+            {{ form_widget(form.scratch, { 'attr': {'class':'headlines-check','label':'À la une','tabindex':'23'} }) }}
           </div>
           <div class="col-md-4">
             <strong>À la une</strong>

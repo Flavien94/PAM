@@ -3,156 +3,133 @@
   {{ parent() }}
   <link href="{{ asset('css/event/new.css') }}" type="text/css" rel="stylesheet"/>
 {% endblock %}
-{% block body -%}
+{% block body %}
 
-  <div class="container event3-container">
+  <div class="container event-container">
     <div class="row">
       <h1>Éditer un événement</h1>
     </div>
     {% if (entity.author == app.user.username or is_granted("ROLE_SUPER_ADMIN")) %}
-
-    {{ form_start(edit_form) }}
-
-    <div class="row contact center">
-      <div class="col-md-12">
-        <hr>
-        <STRONG>Contact de l'évènement :
-        </STRONG><a class="hidden-xs hidden-sm picto-item" href="#" aria-label="Personne à contacter en cas de besoin de renseignements supplémentaires"><span class="glyphicon glyphicon-info-sign"></a>
-        <br class="visible-xs visible-sm">
-        {{ form_widget(edit_form.contact_name, { 'attr': {'class': 'inline contact_name', 'placeholder': 'Nom du contact','tabindex':'1'} })  }}
-        {{ form_widget(edit_form.contact_email, { 'attr': {'class': 'inline contact_email', 'placeholder': 'Email du contact','tabindex':'2'} }) }}
-        <span class="hidden">
-          {{ form_widget(edit_form.author,{ 'attr': {'value': app.user.username, 'readonly':'readonly'}}
-          ) }}
-        </span>
-        <hr>
-      </div>
-    </div>
-
-    <div class="row date center">
-      <strong class="col-xs-12 col-md-2 date">
-      <a class="hidden-xs hidden-sm picto-item" href="#" aria-label="Les dates de début et de fin de l'événement sont obligatoires. Les heures ne le sont pas."><span class="glyphicon glyphicon-info-sign"></a>  Date de début* :
-      </strong>
-      {{ form_widget(edit_form.dateStart,{'attr':{'class': 'col xs-12 col-md-2 center','tabindex':'13'}}) }}
-      {{ form_widget(edit_form.timeStart,{'attr':{'class': 'col xs-12 col-md-2 center','tabindex':'14'}}) }}
-      <strong class="col-xs-12 col-md-2">
-        Date de fin* :
-      </strong>
-      {{ form_widget(edit_form.dateEnd,{'attr':{'class': 'col xs-12 col-md-2 center','tabindex':'15'}}) }}
-      {{ form_widget(edit_form.timeEnd,{'attr':{'class': 'col xs-12 col-md-2 center','tabindex':'16'}}) }}
-    </div>
-
-    <div class="row center">
-      <div class="col-md-12 selection">
-        <div class="row">
-          <strong class="hidden-xs hidden-sm strong">Sélectionnez le</strong>
-          <strong class="visible-xs visible-sm">Sélectionnez :</strong>
-          {{ form_widget(edit_form.sector, { 'attr': {'class': 'btn btn-default center','tabindex':'3'}}) }}
-          <strong class="hidden-xs hidden-sm strong">le</strong>
-          {{ form_widget(edit_form.publics, { 'attr': {'class': 'btn btn-default center','tabindex':'4'}}) }}
-          <strong class="hidden-xs hidden-sm strong">
-            et le
-          </strong>
-          {{ form_widget(edit_form.type, { 'attr': {'class': 'btn btn-default center','tabindex':'5'}}) }}
-        </div>
-      </div>
-    </div>
-
-    <div class="row">
-      <hr>
-    </div>
-    <div class="row">
-
-
-    <div class="col-md-7 description center">
-      <a class="hidden-xs hidden-sm picto-item" href="#" aria-label='Les champs "Titre" et "Description" doivent être rempli.'><span class="glyphicon glyphicon-info-sign"></a><h4 class="center">Description</h4>
-
+      {{ form_start(edit_form) }}
       <div class="row">
-
-        <div class="col-md-12">
-          {{ form_widget(edit_form.title, { 'attr': {'id': 'title','class':'col-md-12 title', 'placeholder': 'Titre*','tabindex':'6'}}) }}
-        </div>
-
-        <div class="col-md-12">
-          {{ form_widget(edit_form.description, { 'attr': {'class': 'inline col-md-12', 'placeholder': 'Description*','tabindex':'7'}}) }}
-        </div>
-
-        <div class="col-md-12">
-          {{ form_errors(edit_form.contact_name, { 'attr': {'class':'list-group-item list-group-item-danger'}}) }}
-          {{ form_errors(edit_form.contact_email, { 'attr': {'class':'list-group-item list-group-item-danger'}}) }}
-          {{ form_errors(edit_form.dateStart, { 'attr': {'class':'list-group-item list-group-item-danger'}}) }}
-          {{ form_errors(edit_form.dateEnd, { 'attr': {'class':'list-group-item list-group-item-danger'}}) }}
-          {{ form_errors(edit_form.title, { 'attr': {'class':'list-group-item list-group-item-danger'}}) }}
-          {{ form_errors(edit_form.description, { 'attr': {'class':'list-group-item list-group-item-danger'}}) }}
-          {{ form_errors(edit_form.place, { 'attr': {'class':'list-group-item list-group-item-danger'}}) }}
-          {{ form_errors(edit_form.uploadedLinks, { 'attr': {'class':'list-group-item list-group-item-danger'}}) }}
-          {{ form_errors(edit_form.images, { 'attr': {'class':'list-group-item list-group-item-danger'}}) }}
-          {{ form_errors(edit_form.uploadedFiles, { 'attr': {'class':'list-group-item list-group-item-danger'}}) }}
-        </div>
-        <div class="col-md-12 add">
-          <div class="col-md-4">
-            {{ form_widget(edit_form.uploadedLinks, { 'attr': {'class': 'btn-add-link inline','tabindex':'19'}}) }}
-          </div>
-          <div class="col-md-4">
-            SCRATCH
-          </div>
-          <div class="col-md-4">
-            <strong>À la une</strong>
-            <br>
-            {{ form_widget(edit_form.headlines, { 'attr': {'class':'headlines-check','label':'À la une','tabindex':'23'} }) }}
+        <div class="col-md-12 contact">
+          <h4>Contact de l'évènement</h4>
+          <div class="row">
+            <div class="col-md-1">
+              {{ form_widget(edit_form.contact_name, { 'attr': {'class': 'inline contact_name', 'placeholder': 'Nom du contact','tabindex':'1'} })  }}
+            </div>
+            <div class="col-md-1 col-md-push-1">
+              {{ form_widget(edit_form.contact_email, { 'attr': {'class': 'inline contact_email', 'placeholder': 'Email du contact','tabindex':'2'} }) }}
+            </div>
+            <div class="col-md-1 col-md-push-8">
+              {{ form_widget(edit_form.author,{ 'attr': {'value': app.user.username, 'readonly':'readonly'}}
+              ) }}
+            </div>
           </div>
         </div>
       </div>
-    </div>
-
-    <div class="col-md-5 detail center">
       <div class="row">
-        <div class="col-md-12  detail-top">
-          <a class="hidden-xs hidden-sm picto-item" href="#" aria-label='Seuls les champs "Villes" et "Code Postal" sont obligatoires.'><span class="glyphicon glyphicon-info-sign"></a><h4 class="col-md-12 center">Adresse</h4>
-          <div class="col-md-12 place center">
-            {{ form_widget(edit_form.place.adress1, { 'attr': {'class': 'col-md-12 center title','tabindex':'8'}}) }}
-            {{ form_widget(edit_form.place.adress2, { 'attr': {'class': 'col-md-12 center','tabindex':'9'}}) }}
-            {{ form_widget(edit_form.place.city, { 'attr': {'class': 'col-md-6 center','tabindex':'10'}}) }}
-            {{ form_widget(edit_form.place.cp, { 'attr': {'class': 'col-md-push-1 col-md-5 center','tabindex':'11'}}) }}
-            {{ form_widget(edit_form.place.country, { 'attr': {'class': 'col-md-push-3 col-md-6 center','tabindex':'12'}}) }}
+        <div class="col-md-7 description">
+          <h4>Description</h4>
+          <div class="row">
+            <div class="col-md-4">
+              {{ form_widget(edit_form.sector, { 'attr': {'class': 'btn btn-default col-md-12','tabindex':'3'}}) }}
+            </div>
+            <div class="col-md-4">
+              {{ form_widget(edit_form.publics, { 'attr': {'class': 'btn btn-default col-md-12','tabindex':'4'}}) }}
+            </div>
+            <div class="col-md-4">
+              {{ form_widget(edit_form.type, { 'attr': {'class': 'btn btn-default col-md-12','tabindex':'5'}}) }}
+            </div>
+            <div class="col-md-12">
+              {{ form_widget(edit_form.title, { 'attr': {'id': 'title','class':'col-md-12 title', 'placeholder': 'Titre*','tabindex':'6'}}) }}
+            </div>
+            <div class="col-md-12">
+              {{ form_widget(edit_form.description, { 'attr': {'class': 'inline col-md-12', 'placeholder': 'Description*','tabindex':'7'}}) }}
+            </div>
+            <div class="col-md-12">
+              {{ form_errors(edit_form.contact_name, { 'attr': {'class':'list-group-item list-group-item-danger'}}) }}
+              {{ form_errors(edit_form.contact_email, { 'attr': {'class':'list-group-item list-group-item-danger'}}) }}
+              {{ form_errors(edit_form.dateStart, { 'attr': {'class':'list-group-item list-group-item-danger'}}) }}
+              {{ form_errors(edit_form.dateEnd, { 'attr': {'class':'list-group-item list-group-item-danger'}}) }}
+              {{ form_errors(edit_form.title, { 'attr': {'class':'list-group-item list-group-item-danger'}}) }}
+              {{ form_errors(edit_form.description, { 'attr': {'class':'list-group-item list-group-item-danger'}}) }}
+              {{ form_errors(edit_form.place, { 'attr': {'class':'list-group-item list-group-item-danger'}}) }}
+              {{ form_errors(edit_form.uploadedLinks, { 'attr': {'class':'list-group-item list-group-item-danger'}}) }}
+              {{ form_errors(edit_form.images, { 'attr': {'class':'list-group-item list-group-item-danger'}}) }}
+              {{ form_errors(edit_form.uploadedFiles, { 'attr': {'class':'list-group-item list-group-item-danger'}}) }}
+            </div>
+            <div class="col-md-4 headlines">
+              <div class="big-label col-md-6">
+                Brouillon :
+              </div>
+              {{ form_widget(edit_form.scratch, { 'attr': {'class':'headlines-check col-md-2','label':'À la une','tabindex':'23'} }) }}
+            </div>
+            <div class="col-md-4 headlines">
+              <div class="big-label col-md-6">
+                À la une :
+              </div>
+              {{ form_widget(edit_form.headlines, { 'attr': {'class':'headlines-check col-md-2','label':'À la une','tabindex':'23'} }) }}
+            </div>
+            <div class="col-md-2 col-md-push-6">
+              {{ form_row(edit_form.submit,{ 'attr':  { 'class':'btn-submit col-md-12','label': 'Publier','tabindex':'22' }}) }}
+            </div>
           </div>
         </div>
-        <div class="col-md-12 center links">
-          <hr>
-          <h4>Fichiers</h4>
-          {{ form_widget(edit_form.images, { 'attr': {'class': 'col-md-12','tabindex':'17'} }) }}
-          <strong class="col-md-12">Ajouter des fichiers annexes</strong>
-          {{ form_widget(edit_form.uploadedFiles, { 'attr': {'class': 'col-md-12','tabindex':'18'} }) }}
+        <div class="col-md-5 detail">
+          <div class="row">
+            <div class="col-md-12  detail-top">
+              <h4 class="col-md-12">Détails</h4>
+              <div class="col-md-12 place">
+                {{ form_widget(edit_form.place.adress1, { 'attr': {'class': 'col-md-9','tabindex':'8'}}) }}
+                {{ form_widget(edit_form.place.adress2, { 'attr': {'class': 'col-md-9','tabindex':'9'}}) }}
+                {{ form_widget(edit_form.place.city, { 'attr': {'class': 'col-md-4','tabindex':'10'}}) }}
+                {{ form_widget(edit_form.place.cp, { 'attr': {'class': 'col-md-4 ','tabindex':'11'}}) }}
+                {{ form_widget(edit_form.place.country, { 'attr': {'class': 'col-md-4','tabindex':'12'}}) }}
+              </div>
+              <h6 class="col-md-12">Date de début*</h6>
+                <div class="col-md-6">
+                  {{ form_widget(edit_form.dateStart,{'attr':{'tabindex':'13'}}) }}
+                  </div>
+                <div class="col-md-6">
+                  {{ form_widget(edit_form.timeStart,{'attr':{'tabindex':'14'}} )}}
+                </div>
+              <h6 class="col-md-12">Date de fin*</h6>
+                <div class="col-md-6">
+                  {{ form_widget(edit_form.dateEnd,{'attr':{'tabindex':'15'}} )}}
+                  </div>
+                <div class="col-md-6">
+                  {{ form_widget(edit_form.timeEnd,{'attr':{'tabindex':'16'}} )}}
+                </div>
+
+
+
+            </div>
+            <div class="col-md-12">
+              {{ form_widget(edit_form.images, { 'attr': {'class': 'col-md-12','tabindex':'17'} }) }}
+              <h5 class="col-md-12">Ajouter des fichiers annexes</h5>
+              {{ form_widget(edit_form.uploadedFiles, { 'attr': {'class': 'col-md-12','tabindex':'18'} }) }}
+              {{ form_widget(edit_form.uploadedLinks, { 'attr': {'class': 'col-md-12 links','tabindex':'19'}}) }}
+            </div>
+          </div>
         </div>
       </div>
-
-    </div>
-
-  </div>
-
-  <div class="row">
-    <hr>
-
-    <div class="col-md-push-3 col-md-6 center">
-      <div class="col-md-6">
-        <a class="btn btn-default btn-return" href="{{ path('event') }}">
-          Retour à la liste des événements
+      {{ form_end(edit_form) }}
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('event') }}">
+            Retour à la liste des événements.
         </a>
-      </div>
-      <div class="col-md-6">
-        {{ form_row(edit_form.submit,{ 'attr':  { 'class':'btn-submit center','label': 'Publier','tabindex':'22' }}) }}</div>
-    </div>
-  </div>
+    </li>
+    <li>{{ form(delete_form,{'attr':{'tabindex':'25'}} ) }}</li>
 
-  {{ form_end(edit_form) }}
-</div>
-</div>
-
+</ul>
 {% else %}
-Vous ne pouvez pas modifier cet événement. Veuillez-vous connecter à votre compte si vous êtes l'auteur de cet événement ou si vous avez le rôle de modérateur.
+Vous ne pouvez pas modifier cette évenement.
 {% endif %}
+</div>
 {% endblock %}
 {% block javascripts %}
-{{ parent() }}
-<script src="{{ asset('js/addLinks.js')}}" type="text/javascript"></script>
+    {{ parent() }}
+    <script src="{{ asset('js/addLinks.js')}}" type="text/javascript" ></script>
 {% endblock %}
