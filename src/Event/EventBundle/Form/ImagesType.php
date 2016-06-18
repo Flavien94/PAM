@@ -19,9 +19,12 @@ class ImagesType extends AbstractType
               'label' => 'Importer une image de couverture',
               'required' => false,
               'label_attr' => array(
-          'class' => 'strong',
-
-        )));
+                  'class' => 'strong',
+              ),
+              'attr' => array(
+                'accept' => 'image/*',
+              )
+      ));
 
     }
 

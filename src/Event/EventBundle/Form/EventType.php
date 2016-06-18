@@ -104,14 +104,17 @@ class EventType extends AbstractType
                     'required' => false
               ))
               ->add('images',new ImagesType(), array(
-                    'required' => false
+                    'required' => false,
+                    'attr' => array(
+                      'accept' => 'image/*',
+                    )
               ))
               ->add('uploadedFiles', 'file', array(
                     'multiple' => true,
                     'data_class' => null,
                     'required' => false,
                     'attr' => array(
-                      'accept' => 'application/pdf',
+                      'accept' => 'application/pdf,image/*',
                     )
                   ))
               ;
