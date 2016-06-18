@@ -61,6 +61,12 @@
             </div>
             <div class="col-md-4 headlines">
               <div class="big-label col-md-6">
+                Brouillon :
+              </div>
+              {{ form_widget(edit_form.scratch, { 'attr': {'class':'headlines-check col-md-2','label':'À la une','tabindex':'23'} }) }}
+            </div>
+            <div class="col-md-4 headlines">
+              <div class="big-label col-md-6">
                 À la une :
               </div>
               {{ form_widget(edit_form.headlines, { 'attr': {'class':'headlines-check col-md-2','label':'À la une','tabindex':'23'} }) }}

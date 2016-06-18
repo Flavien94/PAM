@@ -80,6 +80,9 @@ class EventType extends AbstractType
               ->add('headlines','checkbox', array(
                     'required' => false
                   ))
+              ->add('scratch','checkbox', array(
+                    'required' => false
+                  ))
               ->add('author','text',array(
                     'required' => false
               ))
