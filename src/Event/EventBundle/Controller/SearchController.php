@@ -66,10 +66,10 @@ class SearchController extends Controller
          if($types != null) {
              $sql = $sql . ' AND type_id = "'.$types.'"';
            }
-         
+
 
          if( $search == "" && $dateStart == "" && $dateEnd == "" && $sectors == "" && $publics == "" && $types == "" ) {
-           $sql = ' SELECT event.id, date_start, date_end, title, description, contact_name, scratch, city, cp, url FROM event JOIN place ON (event.place_id = place.id) LEFT JOIN images ON (event.image_id = images.id)  WHERE  date_start > CURDATE() AND scratch = 0' ;
+           $sql = ' SELECT event.id, date_start, date_end, title, description, contact_name, scratch, city, cp, url FROM event JOIN place ON (event.place_id = place.id) LEFT JOIN images ON (event.image_id = images.id)  WHERE  date_end > CURDATE() AND scratch = 0' ;
              }
 
          $sql = $sql . ' ORDER BY date_start ASC LIMIT 10 ;';
