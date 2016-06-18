@@ -109,8 +109,7 @@
           {{ form_start(formSearch) }}
           {{ form_errors(formSearch) }}
             <div class="center">
-              <input type="search" name="query" class="input-sm form-control" placeholder="Recherche" value="{% if queryvalue is defined %}{{ queryvalue }} {% endif %}"><a class="hidden-xs hidden-sm picto-item" href="#" aria-label="Faites votre recherche en entrant un ou plusieurs mots-clés. Exemples : 'AFC', 'Forum jeunes', 'MARSEILLE', '13003' "><span class="glyphicon glyphicon-info-sign"></a>
-
+              <input type="search" name="query" class="input-sm form-control" placeholder="Recherche" value="{% if queryvalue is defined %}{{ queryvalue }}{% endif %}"><a class="hidden-xs hidden-sm picto-item" href="#" aria-label="Faites votre recherche en entrant un ou plusieurs mots-clés. Exemples : 'AFC', 'Forum jeunes', 'MARSEILLE', '13003' "><span class="glyphicon glyphicon-info-sign"></a>
             </div>
             <ul class="col-md-12 nav navbar-nav searchbar">
               <li class="col-xs-12 col-md-2">

@@ -93,8 +93,11 @@ class SearchController extends Controller
            }
          }
 
+         if( $search == "" && $dateStart == "" && $dateEnd == "" && $sectors == "" && $publics == "" && $types == "" ) {
+           $sql = ' SELECT event.id, date_start, date_end, title, description, contact_name, city, cp, url FROM event JOIN place ON (event.place_id = place.id) LEFT JOIN images ON (event.image_id = images.id)  WHERE  date_start > CURDATE()' ;
+             }
 
-         $sql = $sql . ' ORDER BY date_start ASC LIMIT 10 OFFSET 200;';
+         $sql = $sql . ' ORDER BY date_start ASC LIMIT 10 ;';
 
          $query = $em->getConnection()->prepare($sql);
          $query->execute();
