@@ -59,7 +59,7 @@ class Contact
     /**
      * @var /seen
      *
-     * @ORM\Column(name="seen", type="boolean", nullable=true)
+     * @ORM\Column(name="seen", type="boolean", nullable=false)
      */
     private $seen;
 
