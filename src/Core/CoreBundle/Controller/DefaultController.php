@@ -22,26 +22,38 @@ class DefaultController extends Controller
                     ->getQuery()
                     ->getResult();
 
+                    $sql = ' SELECT COUNT(id) FROM contact ' ;
+                    $query = $em->getConnection()->prepare($sql);
+                    $query->execute();
+                    $notif = $query->fetchAll();
+                    for ($i=0; $i < count($notif); $i++) {
+                       $notification = $notif[$i];
+                    }
+
         return $this->render('CoreBundle:Default:index.html.twig', array(
-            'events' => $events
+            'events' => $events,
+            'notif' => $notification
         ));
     }
 
-    public function notifAction($notification)
+    public function notificationAction($max = 3)
     {
-      $em = $this ->getDoctrine()
-                  ->getManager();
+        // make a database call or other logic
+        // to get the "$max" most recent articles
+        $em = $this ->getDoctrine()
+                    ->getManager();
 
-        $sql = ' SELECT COUNT(id) FROM contact ' ;
-        $query = $em->getConnection()->prepare($sql);
-        $query->execute();
-        $notif = $query->fetchAll();
-        for ($i=0; $i < count($notif); $i++) {
-           $notification = $notif[$i];
-        }
-        return new $notification;
-        // return $this->render('CoreBundle:Default:index.html.twig', array(
-        //     'notif' => $notifs
-        // ));
+                    $sql = ' SELECT COUNT(id) FROM contact ' ;
+                    $query = $em->getConnection()->prepare($sql);
+                    $query->execute();
+                    $notif = $query->fetchAll();
+                    for ($i=0; $i < count($notif); $i++) {
+                       $notification = $notif[$i];
+                    }
+
+        return $this->render(
+            'CoreBundle:Default:notification.html.twig',
+            array('notifs' => $notification)
+        );
     }
 }
