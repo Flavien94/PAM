@@ -19,11 +19,16 @@ class ContactController extends Controller {
 
     public function contactAction(Request $request) {
       $em = $this->getDoctrine()->getEntityManager();
-      $connection = $em->getConnection();
-      $statement = $connection->prepare("SELECT id, firstname, lastname, email, object, message FROM contact");
-      $statement->execute();
-      $results = $statement->fetchAll();
-      return $this->render('UsersBundle:Default:contact.html.twig', array('contacts' => $results ));
+
+      $entities = $em->getRepository('CoreBundle:Contact')->findAll();
+
+      $entities = $em->createQueryBuilder()
+                    ->select('c')
+                    ->from('CoreBundle:Contact',  'c')
+                    ->getQuery()
+                    ->getResult();
+      dump($entities);
+      return $this->render('UsersBundle:Default:contact.html.twig', array('contacts' => $entities ));
     }
     /**
      * Finds and displays a Event entity.
@@ -36,9 +41,14 @@ class ContactController extends Controller {
     {
       $em = $this->getDoctrine()->getEntityManager();
       $connection = $em->getConnection();
-      $statement = $connection->prepare("SELECT id, firstname, lastname, email, object, message FROM contact WHERE id = $id");
+      $statement = $connection->prepare("SELECT id, firstname, lastname, email, object, message, seen FROM contact WHERE id = $id");
       $statement->execute();
       $results = $statement->fetchAll();
+      if ($results) {
+        $sql = "UPDATE contact SET seen = '1'WHERE id = $id ";
+        $q = $connection->prepare($sql);
+        $q->execute();
+      }
       return $this->render('UsersBundle:Default:show.html.twig', array('contacts' => $results ));
     }
     /**

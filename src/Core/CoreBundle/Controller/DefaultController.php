@@ -43,14 +43,13 @@ class DefaultController extends Controller
         $em = $this ->getDoctrine()
                     ->getManager();
 
-                    $sql = ' SELECT COUNT(id) FROM contact ' ;
+                    $sql = ' SELECT COUNT(id) FROM contact WHERE seen = 0 ';
                     $query = $em->getConnection()->prepare($sql);
                     $query->execute();
                     $notif = $query->fetchAll();
                     for ($i=0; $i < count($notif); $i++) {
                        $notification = $notif[$i];
                     }
-
         return $this->render(
             'CoreBundle:Default:notification.html.twig',
             array('notifs' => $notification)

@@ -56,6 +56,12 @@ class Contact
      */
     private $message;
 
+    /**
+     * @var /seen
+     *
+     * @ORM\Column(name="seen", type="boolean", nullable=true)
+     */
+    private $seen;
 
     /**
      * Get id
@@ -186,5 +192,29 @@ class Contact
     {
         return $this->message;
     }
-}
 
+
+    /**
+     * Set seen
+     *
+     * @param \Boolean $seen
+     *
+     * @return Contact
+     */
+    public function setSeen($seen)
+    {
+        $this->seen = $seen;
+
+        return $this;
+    }
+
+    /**
+     * Get seen
+     *
+     * @return \Boolean
+     */
+    public function getSeen()
+    {
+        return $this->seen;
+    }
+}

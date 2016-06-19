@@ -15,7 +15,11 @@
             <table class="col-xs-12 col-md-12 col-sm-12 col-lg-12 records_list result">
                 <tbody>
             <td>
-              <h4>{{ contact.object }}</h4>
+              <h4>{{ contact.object }}
+                {% if contact.seen == 0 %}
+                <span class="badge">Pas lu</span>
+                {% endif %}
+              </h4>
               {{ contact.message[:290] }}
               {% if contact.message > contact.message[: 290] %}
                 ...
