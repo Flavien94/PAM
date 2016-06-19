@@ -4,7 +4,7 @@
   <link href="{{ asset('css/event/index.css') }}" type="text/css" rel="stylesheet"/>
 {% endblock %}
 {% block body -%}
-<div class="container-fluid list-container">
+<div id="contact_list" class="container-fluid list-container">
 
   <div class="col-md-12 message-scroll mCustomScrollbar">
     <h1>Messages</h1>
@@ -27,8 +27,10 @@
               <br>
             </td>
             <td class="hidden-xs">
+              <label>Nom et Prénom du contact :</label>
+              {% if contact.lastname %}{{ contact.lastname }}{% endif %}
               {% if contact.firstname %}{{ contact.firstname }}{% endif %}
-                {% if contact.lastname %}{{ contact.lastname }}{% endif %}
+                <label>Email du contact :</label>
                 {% if contact.email %}{{ contact.email }}{% endif %}
             </td>
             <td>
