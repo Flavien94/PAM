@@ -37,7 +37,6 @@ class DefaultController extends Controller
                     $query->execute();
                     $notif = $query->fetch();
                     $notification = $notif['COUNT(id)'];
-                    dump($notification);
         return $this->render(
             'CoreBundle:Default:notification.html.twig',
             array('notifs' => $notification)

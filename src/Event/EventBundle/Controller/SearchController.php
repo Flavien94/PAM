@@ -95,7 +95,6 @@ class SearchController extends Controller
          $events = $query->fetchAll();
          $queryvalue = $search;
          $search = new Search();
-         dump($nbPage);
          $formSearch = $this->createSearchForm($search);
          $formSearch->handleRequest($request);
          if ($formSearch->isValid()) {
