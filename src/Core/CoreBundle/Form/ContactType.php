@@ -20,7 +20,9 @@ class ContactType extends AbstractType
             ->add('email','text')
             ->add('object','text')
             ->add('message','textarea')
-            ->add('seen','checkbox')
+            ->add('seen','checkbox',array(
+              'required' => false
+            ))
         ;
     }
 
