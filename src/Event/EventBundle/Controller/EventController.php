@@ -302,11 +302,17 @@ class EventController extends Controller
      */
     public function myeventAction(Request $request)
     {
-      $em = $this->getDoctrine()->getEntityManager();
       $user = $this->container->get('security.context')->getToken()->getUser()->getUsername();
-      $sql = $em->getConnection()->prepare('SELECT event.id, date_start, date_end, title, description, url FROM event JOIN images ON (event.image_id = images.id) WHERE author = "'.$user.'"');
-      $sql->execute();
-      $entities = $sql->fetchAll();
+      $em = $this->getDoctrine()->getManager();
+      $entities = $em->getRepository('EventBundle:Event')->findAll();
+      $entities = $em->createQueryBuilder()
+                    ->select('b')
+                    ->from('EventBundle:Event',  'b')
+                    ->where('b.author = :user ')
+                    ->setParameter('user', $user)
+                    ->addOrderBy('b.dateStart', 'ASC')
+                    ->getQuery()
+                    ->getResult();
         return array(
             'entities' => $entities
         );

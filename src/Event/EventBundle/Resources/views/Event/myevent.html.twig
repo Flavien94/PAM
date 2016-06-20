@@ -42,7 +42,11 @@
                 {% if entity.dateEnd %}{{ entity.dateEnd|date('d-m-Y H:i') }}{% endif %}
               </td>
               <td>
+                {% if entity.scratch == 1 %}
+                <a class="btn btn-default btn-edit" href="{{ path('event_edit', { 'id': entity.id }) }}">Continuer</a>
+                {% else %}
                 <a class="btn btn-default btn-edit" href="{{ path('event_edit', { 'id': entity.id }) }}">Éditer</a>
+                {% endif %}
                 <a class="btn btn-danger btn-delete" data-toggle="modal" data-target="#myModal{{ entity.id }}">Supprimer</a>
                 <div id="myModal{{ entity.id }}" class="modal fade" role="dialog">
                   <div class="modal-dialog">
