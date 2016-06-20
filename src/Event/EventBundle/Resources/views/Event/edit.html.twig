@@ -32,13 +32,13 @@
       <strong class="col-xs-12 col-md-2 date">
       <a class="hidden-xs hidden-sm picto-item" href="#" aria-label="Les dates de début et de fin de l'événement sont obligatoires. Les heures ne le sont pas."><span class="glyphicon glyphicon-info-sign"></a>  Date de début* :
       </strong>
-      {{ form_widget(edit_form.dateStart,{'attr':{'class': 'col xs-12 col-md-2 center','tabindex':'13'}}) }}
-      {{ form_widget(edit_form.timeStart,{'attr':{'class': 'col xs-12 col-md-2 center','tabindex':'14'}}) }}
+      {{ form_widget(edit_form.dateStart,{'attr':{'class': 'col xs-12 col-md-2 center','tabindex':'3'}}) }}
+      {{ form_widget(edit_form.timeStart,{'attr':{'class': 'col xs-12 col-md-2 center','tabindex':'4'}}) }}
       <strong class="col-xs-12 col-md-2">
         Date de fin* :
       </strong>
-      {{ form_widget(edit_form.dateEnd,{'attr':{'class': 'col xs-12 col-md-2 center','tabindex':'15'}}) }}
-      {{ form_widget(edit_form.timeEnd,{'attr':{'class': 'col xs-12 col-md-2 center','tabindex':'16'}}) }}
+      {{ form_widget(edit_form.dateEnd,{'attr':{'class': 'col xs-12 col-md-2 center','tabindex':'5'}}) }}
+      {{ form_widget(edit_form.timeEnd,{'attr':{'class': 'col xs-12 col-md-2 center','tabindex':'6'}}) }}
     </div>
 
     <div class="row center">
@@ -46,13 +46,13 @@
         <div class="row">
           <strong class="hidden-xs hidden-sm strong">Sélectionnez le</strong>
           <strong class="visible-xs visible-sm">Sélectionnez :</strong>
-          {{ form_widget(edit_form.sector, { 'attr': {'class': 'btn btn-default center','tabindex':'3'}}) }}
+          {{ form_widget(edit_form.sector, { 'attr': {'class': 'btn btn-default center','tabindex':'7'}}) }}
           <strong class="hidden-xs hidden-sm strong">le</strong>
-          {{ form_widget(edit_form.publics, { 'attr': {'class': 'btn btn-default center','tabindex':'4'}}) }}
+          {{ form_widget(edit_form.publics, { 'attr': {'class': 'btn btn-default center','tabindex':'8'}}) }}
           <strong class="hidden-xs hidden-sm strong">
             et le
           </strong>
-          {{ form_widget(edit_form.type, { 'attr': {'class': 'btn btn-default center','tabindex':'5'}}) }}
+          {{ form_widget(edit_form.type, { 'attr': {'class': 'btn btn-default center','tabindex':'9'}}) }}
         </div>
       </div>
     </div>
@@ -69,11 +69,11 @@
       <div class="row">
 
         <div class="col-md-12">
-          {{ form_widget(edit_form.title, { 'attr': {'id': 'title','class':'col-md-12 title', 'placeholder': 'Titre*','tabindex':'6'}}) }}
+          {{ form_widget(edit_form.title, { 'attr': {'id': 'title','class':'col-md-12 title', 'placeholder': 'Titre*','tabindex':'10'}}) }}
         </div>
 
         <div class="col-md-12">
-          {{ form_widget(edit_form.description, { 'attr': {'class': 'inline col-md-12', 'placeholder': 'Description*','tabindex':'7'}}) }}
+          {{ form_widget(edit_form.description, { 'attr': {'class': 'inline col-md-12', 'placeholder': 'Description*','tabindex':'11'}}) }}
         </div>
 
         <div class="col-md-12">
@@ -95,12 +95,12 @@
           <div class="col-md-4">
             <strong>Brouillon</strong>
             <br>
-            {{ form_widget(edit_form.scratch, { 'attr': {'class':'headlines-check','label':'À la une','tabindex':'23'} }) }}
+            {{ form_widget(edit_form.scratch, { 'attr': {'class':'headlines-check','label':'À la une','tabindex':'20'} }) }}
           </div>
           <div class="col-md-4">
             <strong>À la une</strong>
             <br>
-            {{ form_widget(edit_form.headlines, { 'attr': {'class':'headlines-check','label':'À la une','tabindex':'23'} }) }}
+            {{ form_widget(edit_form.headlines, { 'attr': {'class':'headlines-check','label':'À la une','tabindex':'21'} }) }}
           </div>
         </div>
       </div>
@@ -111,11 +111,11 @@
         <div class="col-md-12  detail-top">
           <a class="hidden-xs hidden-sm picto-item" href="#" aria-label='Seuls les champs "Villes" et "Code Postal" sont obligatoires.'><span class="glyphicon glyphicon-info-sign"></a><h4 class="col-md-12 center">Adresse</h4>
           <div class="col-md-12 place center">
-            {{ form_widget(edit_form.place.adress1, { 'attr': {'class': 'col-md-12 center title','tabindex':'8'}}) }}
-            {{ form_widget(edit_form.place.adress2, { 'attr': {'class': 'col-md-12 center','tabindex':'9'}}) }}
-            {{ form_widget(edit_form.place.city, { 'attr': {'class': 'col-md-6 center','tabindex':'10'}}) }}
-            {{ form_widget(edit_form.place.cp, { 'attr': {'class': 'col-md-push-1 col-md-5 center','tabindex':'11'}}) }}
-            {{ form_widget(edit_form.place.country, { 'attr': {'class': 'col-md-push-3 col-md-6 center','tabindex':'12'}}) }}
+            {{ form_widget(edit_form.place.adress1, { 'attr': {'class': 'col-md-12 center title','tabindex':'12'}}) }}
+            {{ form_widget(edit_form.place.adress2, { 'attr': {'class': 'col-md-12 center','tabindex':'13'}}) }}
+            {{ form_widget(edit_form.place.city, { 'attr': {'class': 'col-md-6 center','tabindex':'14'}}) }}
+            {{ form_widget(edit_form.place.cp, { 'attr': {'class': 'col-md-push-1 col-md-5 center','tabindex':'15'}}) }}
+            {{ form_widget(edit_form.place.country, { 'attr': {'class': 'col-md-push-3 col-md-6 center','tabindex':'16'}}) }}
           </div>
         </div>
         <div class="col-md-12 center links">
@@ -141,7 +141,7 @@
         </a>
       </div>
       <div class="col-md-6">
-        {{ form_row(edit_form.submit,{ 'attr':  { 'class':'btn-submit center','label': 'Publier','tabindex':'22' }}) }}</div>
+        {{ form_row(edit_form.submit,{ 'attr':  { 'class':'btn-submit center','label': 'Publier','tabindex':'22' }}) }}
     </div>
   </div>
 

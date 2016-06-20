@@ -15,3 +15,5 @@ services:
         class: Users\UsersBundle\Form\ChangePasswordFormType
         tags:
             - { name: form.type, alias: app_user_change_password }
+     app.notif:
+        class: Core\CoreBundle\Controller\DefaultController

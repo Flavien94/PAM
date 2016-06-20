@@ -82,7 +82,6 @@ class EventController extends Controller
         $entity = new Event();
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
-        dump($entity);
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
@@ -162,13 +161,18 @@ class EventController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('EventBundle:Event')->find($id);
-
+        $author = $entity->getAuthor();
+        $scratch = $entity->getScratch();
+        $user = $this->container->get('security.context')->getToken()->getUser()->getUsername();
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Event entity.');
+          throw $this->createNotFoundException('Unable to find Event entity.');
+        }
+
+        if($scratch === true AND $author != $user ){
+          return $this->redirectToRoute('event');
         }
 
         $deleteForm = $this->createDeleteForm($id);
-
         return array(
             'entity'      => $entity,
             'delete_form' => $deleteForm->createView(),
@@ -307,21 +311,12 @@ class EventController extends Controller
     {
       $user = $this->container->get('security.context')->getToken()->getUser()->getUsername();
       $em = $this->getDoctrine()->getManager();
-
       $entities = $em->getRepository('EventBundle:Event')->findAll();
-
-      $q = $em->createQueryBuilder()
-                    ->select('b')
-                    ->from('EventBundle:Event',  'b');
-
-
       $entities = $em->createQueryBuilder()
                     ->select('b')
                     ->from('EventBundle:Event',  'b')
-                    ->where('b.dateEnd > :now')
-                    ->andwhere('b.author = :user ')
+                    ->where('b.author = :user ')
                     ->setParameter('user', $user)
-                    ->setParameter('now', new \DateTime('now'))
                     ->addOrderBy('b.dateStart', 'ASC')
                     ->getQuery()
                     ->getResult();

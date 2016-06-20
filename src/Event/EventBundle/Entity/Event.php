@@ -64,6 +64,42 @@ class Event
 
     /**
      * @var ArrayCollection
+     * @Assert\Collection(
+     *  fields={
+     *    "0" = @Assert\File(
+     *             maxSize="5M",
+     *             mimeTypes = {"application/pdf","image/*"},
+     *             mimeTypesMessage = "Ceci n'est pas un PDF",
+     *             maxSizeMessage = "Le fichier est trop volumineux. Sa taille ne doit pas dépasser 5 MB.",
+     *           ),
+     *    "1" = @Assert\File(
+     *             maxSize="5M",
+     *             mimeTypes = {"application/pdf","image/*"},
+     *             mimeTypesMessage = "Ceci n'est pas un PDF",
+     *             maxSizeMessage = "Le fichier est trop volumineux. Sa taille ne doit pas dépasser 5 MB.",
+     *           ),
+     *    "2" = @Assert\File(
+     *             maxSize="5M",
+     *             mimeTypes = {"application/pdf","image/*"},
+     *             mimeTypesMessage = "Ceci n'est pas un PDF",
+     *             maxSizeMessage = "Le fichier est trop volumineux. Sa taille ne doit pas dépasser 5 MB.",
+     *           ),
+     *    "3" = @Assert\File(
+     *             maxSize="5M",
+     *             mimeTypes = {"application/pdf","image/*"},
+     *             mimeTypesMessage = "Ceci n'est pas un PDF",
+     *             maxSizeMessage = "Le fichier est trop volumineux. Sa taille ne doit pas dépasser 5 MB.",
+     *           ),
+     *    "4" = @Assert\File(
+     *             maxSize="5M",
+     *             mimeTypes = {"application/pdf","image/*"},
+     *             mimeTypesMessage = "Ceci n'est pas un PDF",
+     *             maxSizeMessage = "Le fichier est trop volumineux. Sa taille ne doit pas dépasser 5 MB.",
+     *           )
+     * },
+     * allowExtraFields = true,
+     * allowMissingFields = true
+     *)
      */
     private $uploadedFiles;
     /**
@@ -655,7 +691,6 @@ class Event
                  $this->getLinks()->add($link);
                  $link->setEvent($this);
                  $link->setUrl($uploadedLink->url);
-                 dump($link);
                  unset($uploadedLink);
              }
          }

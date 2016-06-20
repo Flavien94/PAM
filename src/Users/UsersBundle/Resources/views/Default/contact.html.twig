@@ -4,7 +4,7 @@
   <link href="{{ asset('css/event/index.css') }}" type="text/css" rel="stylesheet"/>
 {% endblock %}
 {% block body -%}
-<div class="container-fluid list-container">
+<div id="contact_list" class="container-fluid list-container">
 
   <div class="col-md-12 message-scroll mCustomScrollbar">
     <h1>Messages</h1>
@@ -15,7 +15,11 @@
             <table class="col-xs-12 col-md-12 col-sm-12 col-lg-12 records_list result">
                 <tbody>
             <td>
-              <h4>{{ contact.object }}</h4>
+              <h4>{{ contact.object }}
+                {% if contact.seen == 0 %}
+                <span class="badge">Pas lu</span>
+                {% endif %}
+              </h4>
               {{ contact.message[:290] }}
               {% if contact.message > contact.message[: 290] %}
                 ...
@@ -23,8 +27,10 @@
               <br>
             </td>
             <td class="hidden-xs">
+              <label>Nom et Prénom du contact :</label>
+              {% if contact.lastname %}{{ contact.lastname }}{% endif %}
               {% if contact.firstname %}{{ contact.firstname }}{% endif %}
-                {% if contact.lastname %}{{ contact.lastname }}{% endif %}
+                <label>Email du contact :</label>
                 {% if contact.email %}{{ contact.email }}{% endif %}
             </td>
             <td>

@@ -90,6 +90,9 @@ td a:hover, .page:hover {
   text-align: center;
   border: none;
 }
+#contact_list td {
+width: 40%;
+}
 .list-container .btn-edit {
   width: 175px;
   margin: 0;
@@ -129,10 +132,4 @@ td a:hover, .page:hover {
     height: 70vh;
   }
 
-}
-.scratch{
-  background: grey;
-font-size: medium;
-padding: 2px;
-border-radius: 4px;
 }
