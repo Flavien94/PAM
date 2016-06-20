@@ -63,12 +63,10 @@
                   </li>
                   <li>
                     <a href="{{ path('contact_admin') }}">Message(s)
-                      <span class="badge">
                       {{ render(controller(
                        'CoreBundle:Default:notification',
                        { 'max': 3 }
                    )) }}
-                 </span>
                     </a>
                   </li>
                 {% endif %}
