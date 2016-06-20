@@ -90,17 +90,17 @@
         </div>
         <div class="col-md-12 add">
           <div class="col-md-4">
-            {{ form_widget(form.uploadedLinks, { 'attr': {'class': 'btn-add-link inline','tabindex':'12'}}) }}
+            {{ form_widget(form.uploadedLinks, { 'attr': {'class': 'btn-add-link inline','tabindex':'19'}}) }}
           </div>
           <div class="col-md-4">
             <strong>Brouillon</strong>
             <br>
-            {{ form_widget(form.scratch, { 'attr': {'class':'headlines-check','label':'À la une','tabindex':'15'} }) }}
+            {{ form_widget(form.scratch, { 'attr': {'class':'headlines-check','label':'À la une','tabindex':'20'} }) }}
           </div>
           <div class="col-md-4">
             <strong>À la une</strong>
             <br>
-            {{ form_widget(form.headlines, { 'attr': {'class':'headlines-check','label':'À la une','tabindex':'16'} }) }}
+            {{ form_widget(form.headlines, { 'attr': {'class':'headlines-check','label':'À la une','tabindex':'21'} }) }}
           </div>
         </div>
       </div>
@@ -111,19 +111,19 @@
         <div class="col-md-12  detail-top">
           <a class="hidden-xs hidden-sm picto-item" href="#" aria-label='Seuls les champs "Villes" et "Code Postal" sont obligatoires.'><span class="glyphicon glyphicon-info-sign"></a><h4 class="col-md-12 center">Adresse</h4>
           <div class="col-md-12 place center">
-            {{ form_widget(form.place.adress1, { 'attr': {'class': 'col-md-12 center title','tabindex':'8'}}) }}
-            {{ form_widget(form.place.adress2, { 'attr': {'class': 'col-md-12 center','tabindex':'9'}}) }}
-            {{ form_widget(form.place.city, { 'attr': {'class': 'col-md-6 center','tabindex':'10'}}) }}
-            {{ form_widget(form.place.cp, { 'attr': {'class': 'col-md-push-1 col-md-5 center','tabindex':'11'}}) }}
-            {{ form_widget(form.place.country, { 'attr': {'class': 'col-md-push-3 col-md-6 center','tabindex':'12'}}) }}
+            {{ form_widget(form.place.adress1, { 'attr': {'class': 'col-md-12 center title','tabindex':'12'}}) }}
+            {{ form_widget(form.place.adress2, { 'attr': {'class': 'col-md-12 center','tabindex':'13'}}) }}
+            {{ form_widget(form.place.city, { 'attr': {'class': 'col-md-6 center','tabindex':'14'}}) }}
+            {{ form_widget(form.place.cp, { 'attr': {'class': 'col-md-push-1 col-md-5 center','tabindex':'15'}}) }}
+            {{ form_widget(form.place.country, { 'attr': {'class': 'col-md-push-3 col-md-6 center','tabindex':'16'}}) }}
           </div>
         </div>
         <div class="col-md-12 center links">
           <hr>
           <h4>Fichiers</h4>
-          {{ form_widget(form.images, { 'attr': {'class': 'col-md-12','tabindex':'13'} }) }}
+          {{ form_widget(form.images, { 'attr': {'class': 'col-md-12','tabindex':'17'} }) }}
           <strong class="col-md-12">Ajouter des fichiers annexes</strong>
-          {{ form_widget(form.uploadedFiles, { 'attr': {'class': 'col-md-12','tabindex':'14'} }) }}
+          {{ form_widget(form.uploadedFiles, { 'attr': {'class': 'col-md-12','tabindex':'18'} }) }}
         </div>
       </div>
 
@@ -141,7 +141,7 @@
         </a>
       </div>
       <div class="col-md-6">
-        {{ form_row(form.submit,{ 'attr':  { 'class':'btn-submit center','label': 'Publier','tabindex':'17' }}) }}</div>
+        {{ form_row(form.submit,{ 'attr':  { 'class':'btn-submit center','label': 'Publier','tabindex':'22' }}) }}</div>
     </div>
   </div>
 
