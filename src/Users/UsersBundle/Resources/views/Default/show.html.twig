@@ -15,14 +15,18 @@
         <hr>
           <div class="row">
             <div class="col-md-12" style="text-align:center">
-              <div class="col-md-6">
+              <div class="col-md-4">
                 <label class="message-lab">Contact :</label>
                 {{ contact.firstname }}
                 {{ contact.lastname }}
               </div>
-              <div class="col-md-6">
+              <div class="col-md-4">
                 <label class="message-lab">Email du contact :</label>
                 {{ contact.email }}
+              </div>
+              <div class="col-md-4">
+                <label class="message-lab">Date :</label>
+                {{ contact.date_create }}
               </div>
             </div>
           </div>

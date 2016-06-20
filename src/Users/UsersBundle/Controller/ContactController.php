@@ -25,6 +25,7 @@ class ContactController extends Controller {
       $entities = $em->createQueryBuilder()
                     ->select('c')
                     ->from('CoreBundle:Contact',  'c')
+                    ->addOrderBy('c.id', 'DESC')
                     ->getQuery()
                     ->getResult();
 
@@ -41,7 +42,7 @@ class ContactController extends Controller {
     {
       $em = $this->getDoctrine()->getEntityManager();
       $connection = $em->getConnection();
-      $statement = $connection->prepare("SELECT id, firstname, lastname, email, object, message, seen FROM contact WHERE id = $id");
+      $statement = $connection->prepare("SELECT id, firstname, lastname, email, object, message, seen, date_create FROM contact WHERE id = $id");
       $statement->execute();
       $results = $statement->fetchAll();
       if ($results) {

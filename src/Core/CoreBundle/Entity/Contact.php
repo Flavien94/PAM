@@ -64,6 +64,16 @@ class Contact
     private $seen;
 
     /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date_create", type="datetime")
+     */
+    private $dateCreate;
+    public function __construct()
+    {
+      $this->dateCreate = new \DateTime();
+    }
+    /**
      * Get id
      *
      * @return integer
