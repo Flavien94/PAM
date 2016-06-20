@@ -45,7 +45,6 @@ class EventController extends Controller
                       ->select('b')
                       ->from('EventBundle:Event',  'b')
                       ->where('b.dateEnd > :now')
-                      ->andwhere('b.scratch = 0')
                       ->setParameter('now', new \DateTime('now'))
                       ->addOrderBy('b.dateStart', 'ASC')
                       ->getQuery()
@@ -81,7 +80,6 @@ class EventController extends Controller
         $entity = new Event();
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
-        dump($entity);
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
@@ -304,26 +302,11 @@ class EventController extends Controller
      */
     public function myeventAction(Request $request)
     {
+      $em = $this->getDoctrine()->getEntityManager();
       $user = $this->container->get('security.context')->getToken()->getUser()->getUsername();
-      $em = $this->getDoctrine()->getManager();
-
-      $entities = $em->getRepository('EventBundle:Event')->findAll();
-
-      $q = $em->createQueryBuilder()
-                    ->select('b')
-                    ->from('EventBundle:Event',  'b');
-
-
-      $entities = $em->createQueryBuilder()
-                    ->select('b')
-                    ->from('EventBundle:Event',  'b')
-                    ->where('b.dateEnd > :now')
-                    ->andwhere('b.author = :user ')
-                    ->setParameter('user', $user)
-                    ->setParameter('now', new \DateTime('now'))
-                    ->addOrderBy('b.dateStart', 'ASC')
-                    ->getQuery()
-                    ->getResult();
+      $sql = $em->getConnection()->prepare('SELECT event.id, date_start, date_end, title, description, url FROM event JOIN images ON (event.image_id = images.id) WHERE author = "'.$user.'"');
+      $sql->execute();
+      $entities = $sql->fetchAll();
         return array(
             'entities' => $entities
         );

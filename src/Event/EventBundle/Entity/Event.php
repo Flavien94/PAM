@@ -691,7 +691,6 @@ class Event
                  $this->getLinks()->add($link);
                  $link->setEvent($this);
                  $link->setUrl($uploadedLink->url);
-                 dump($link);
                  unset($uploadedLink);
              }
          }
