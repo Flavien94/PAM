@@ -45,6 +45,7 @@ class EventController extends Controller
                       ->select('b')
                       ->from('EventBundle:Event',  'b')
                       ->where('b.dateEnd > :now')
+                      ->andwhere('b.scratch = 0')
                       ->setParameter('now', new \DateTime('now'))
                       ->addOrderBy('b.dateStart', 'ASC')
                       ->getQuery()
