@@ -1,5 +1,5 @@
-{% for notif in notifs if notif == 1 %}
+{% if notifs > 1 %}
 <span class="badge badgeNotif">
-      {{ notif }}
+      {{ notifs }}
     </span>
-{% endfor %}
+{% endif %}
