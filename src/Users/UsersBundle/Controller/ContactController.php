@@ -27,7 +27,7 @@ class ContactController extends Controller {
                     ->from('CoreBundle:Contact',  'c')
                     ->getQuery()
                     ->getResult();
-      dump($entities);
+
       return $this->render('UsersBundle:Default:contact.html.twig', array('contacts' => $entities ));
     }
     /**
