@@ -46,7 +46,7 @@ class SearchController extends Controller
          if($search != null) {
            $sql = $sql . ' AND MATCH (city, cp, title, description, contact_name ) AGAINST ("'.$search.'*" IN BOOLEAN MODE)';
            $countSql = $countSql . ' AND MATCH (city, cp, title, description, contact_name ) AGAINST ("'.$search.'*" IN BOOLEAN MODE)';
-           }
+         }
 
          if($dateStart != null) {
              $sql = $sql . ' AND date_start >= "'.$dateStart.'"';
