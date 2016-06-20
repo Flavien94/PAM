@@ -6,7 +6,7 @@
 {% endblock %}
 {% block body -%}
 {% if entity.scratch == 1 and entity.author != app.user.username %}
-<meta http-equiv="refresh" content="0; url={{ path('event') }}" />
+<meta http-equiv="refresh" content="0; url={{ path('search') }}" />
 {% else %}
   <div class="container event2-container">
 
@@ -198,7 +198,7 @@
 
 <div class="col-md-12 center record_actions">
 <li class="horizontal-list">
-<a class="btn btn-default btn-edit" href="{{ path('event') }}">
+<a class="btn btn-default btn-edit" href="{{ path('search') }}">
   Retourner à la liste
 </a>
 </li>

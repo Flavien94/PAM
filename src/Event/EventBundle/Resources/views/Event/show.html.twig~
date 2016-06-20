@@ -103,7 +103,7 @@
 
         <ul class="record_actions">
     <li>
-        <a href="{{ path('event') }}">
+        <a href="{{ path('search') }}">
             Back to the list
         </a>
     </li>

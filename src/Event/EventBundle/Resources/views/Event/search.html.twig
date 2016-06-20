@@ -11,10 +11,18 @@
     {% else %}
       <div class="col-md-12 scroll mCustomScrollbar">
         {% if events|length > 1 %}
-        <h1>Evénements correspondants</h1>
-        {% else %}
-        <h1>Evénement correspondant</h1>
-        {% endif %}
+
+        <div class="col-md-12">
+<span class="badge">Nombre d'événements : {{ count }}</span>
+
+        </div>
+        <div class="col-md-12">
+          <h1>Evénements</h1>
+          {% else %}
+          <h1>Evénement</h1>
+          {% endif %}
+        </div>
+
 
         <table class="col-xs-12 col-md-12 col-sm-12 col-lg-12 records_list result">
           <div class="row">
@@ -47,8 +55,20 @@
             {% endfor %}
           </div>
         </table>
+
       </div>
     {% endif %}
+    <div class="center">
+    {% if page > 1 %}
+    <a class='page' href="{{ path('search', {'page': page - 1}, {'page': page - 1}) }}">Page précédente</a>
+    {% endif %}
+    {{ page }}
+    {% if page < nbPage  %}
+    <a class='page' href="{{ path('search', {'page': page + 1}, {'page': page + 1}) }}">Page suivante</a>
+    {% endif %}
+
+  </div>
+
   </div>
 
 </div>

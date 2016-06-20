@@ -34,7 +34,7 @@ li {
 }
 .scroll, .error {
   margin-top: 15%;
-  height: 60vh;
+  height: 59vh;
   top: 30%;
 }
 .event-scroll {
@@ -59,11 +59,11 @@ li {
 .date {
   text-align: center;
 }
-td a {
+td a, .page {
   color: #FF5950;
   text-decoration: underline;
 }
-td a:hover {
+td a:hover, .page:hover {
   color: black;
 }
 .btn-edit {
