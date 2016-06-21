@@ -205,9 +205,6 @@ class Event
 
     public function __construct()
     {
-      // $this->sector = new ArrayCollection();
-      // $this->publics = new ArrayCollection();
-      // $this->type = new ArrayCollection();
       $this->files = new ArrayCollection();
       $this->uploadedFiles = new ArrayCollection();
       $this->links = new ArrayCollection();

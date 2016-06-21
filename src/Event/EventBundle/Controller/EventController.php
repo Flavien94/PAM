@@ -82,8 +82,13 @@ class EventController extends Controller
         $entity = new Event();
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
+
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            if($entity->getHeadlines() == true){
+              $queryOldHL= $em->createQuery('UPDATE EventBundle:Event e SET e.headlines = 0 WHERE e.headlines = 1');
+              $query = $queryOldHL->getResult();
+            }
             $em->persist($entity);
             $em->flush();
             return $this->redirect($this->generateUrl('event_show', array('id' => $entity->getId())));
