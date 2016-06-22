@@ -168,15 +168,19 @@ class EventController extends Controller
         $entity = $em->getRepository('EventBundle:Event')->find($id);
         $author = $entity->getAuthor();
         $scratch = $entity->getScratch();
-        $user = $this->container->get('security.context')->getToken()->getUser()->getUsername();
+        $user = $this->container->get('security.context')->getToken()->getUser();
         if (!$entity) {
           throw $this->createNotFoundException('Unable to find Event entity.');
         }
-
-        if($scratch === true AND $author != $user ){
+        if ($user === 'anon.') {
           return $this->redirectToRoute('event');
         }
-
+        else {
+          $username = $user->getUsername();
+        if($scratch === true AND $author != $username ){
+          return $this->redirectToRoute('event');
+        }
+      }
         $deleteForm = $this->createDeleteForm($id);
         return array(
             'entity'      => $entity,
