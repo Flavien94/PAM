@@ -292,7 +292,7 @@ class EventController extends Controller
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('event'));
+        return $this->redirect($this->generateUrl('search'));
     }
 
     /**
@@ -341,7 +341,7 @@ class EventController extends Controller
     * )
     */
    public function mydeleteAction($id) {
-     
+
          $em = $this->getDoctrine()->getManager();
          $entity = $em->getRepository('EventBundle:Event')->find($id);
 
@@ -352,7 +352,7 @@ class EventController extends Controller
          $em->remove($entity);
          $em->flush();
 
-     return $this->redirect($this->generateUrl('event'));
+     return $this->redirect($this->generateUrl('search'));
    }
 
 }
