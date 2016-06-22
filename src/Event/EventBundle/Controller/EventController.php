@@ -333,4 +333,26 @@ class EventController extends Controller
             'entities' => $entities
         );
     }
+    /**
+    * @Route(
+    *    path          = "/mydelete/{id}",
+    *    name          = "myevent_delete",
+    *    methods       = { "GET" },
+    * )
+    */
+   public function mydeleteAction($id) {
+     
+         $em = $this->getDoctrine()->getManager();
+         $entity = $em->getRepository('EventBundle:Event')->find($id);
+
+         if (!$entity) {
+             throw $this->createNotFoundException('Unable to find Event entity.');
+         }
+
+         $em->remove($entity);
+         $em->flush();
+
+     return $this->redirect($this->generateUrl('event'));
+   }
+
 }

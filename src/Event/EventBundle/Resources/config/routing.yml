@@ -22,3 +22,8 @@ event_update:
 event_delete:
     path:     admin/{id}/delete
     defaults: { _controller: EventBundle:Event:delete }
+myevent_delete:
+    path: /mydelete/{id}
+    defaults: { _controller: EventBundle:Event:mydelete }
+    requirements:
+    methods: GET
