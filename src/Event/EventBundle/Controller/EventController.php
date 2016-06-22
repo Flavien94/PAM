@@ -172,15 +172,15 @@ class EventController extends Controller
         if (!$entity) {
           throw $this->createNotFoundException('Unable to find Event entity.');
         }
-        if ($user === 'anon.') {
+        if ($user === 'anon.' AND $scratch === true) {
           return $this->redirectToRoute('event');
         }
-        else {
+        if ($user != 'anon.' AND $scratch === true) {
           $username = $user->getUsername();
-        if($scratch === true AND $author != $username ){
-          return $this->redirectToRoute('event');
+          if ($author != $username) {
+            return $this->redirectToRoute('event');
+          }
         }
-      }
         $deleteForm = $this->createDeleteForm($id);
         return array(
             'entity'      => $entity,
