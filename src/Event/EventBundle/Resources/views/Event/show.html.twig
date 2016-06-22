@@ -203,7 +203,7 @@
   Retourner à la liste
 </a>
 </li>
-{% if (is_granted("IS_AUTHENTICATED_REMEMBERED")and entity.author == app.user.username or is_granted("ROLE_SUPER_ADMIN")) %}
+{% if (is_granted("IS_AUTHENTICATED_REMEMBERED") and entity.author == app.user.username or is_granted("ROLE_SUPER_ADMIN")) %}
 <li class="horizontal-list">
   <a class="btn btn-default btn-edit" href="{{ path('event_edit', { 'id': entity.id }) }}">Éditer</a>
 </li>
