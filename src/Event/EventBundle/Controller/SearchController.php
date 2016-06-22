@@ -39,7 +39,7 @@ class SearchController extends Controller
       $errorMessage = "Aucun événement ne correspond à votre recherche.";
          $em = $this->getDoctrine()->getManager();
 
-           $sql = 'SELECT event.id, date_start, date_end, title, description, contact_name, scratch, city, cp, url FROM event JOIN place ON (event.place_id = place.id) LEFT JOIN images ON (event.image_id = images.id) WHERE scratch = 0 ';
+           $sql = 'SELECT event.id, date_start, date_end, title, description, contact_name, scratch, city, cp, url, author FROM event JOIN place ON (event.place_id = place.id) LEFT JOIN images ON (event.image_id = images.id) WHERE scratch = 0 ';
            $countSql = 'SELECT COUNT(*) as count FROM event JOIN place ON (event.place_id = place.id) WHERE scratch = 0 ';
 
 
